@@ -10,12 +10,7 @@ public class Json_Patcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string filename = "dialoguetest.json";
-        string path = "C:/Users/tksth/Desktop/Project_V/Project_V/Assets/StreamingAssets/resource/test/" + filename;
-        File.WriteAllText(path, ExcelToJsonConverter.ConvertExcelToJson("C:/Users/tksth/Desktop/Project_V/Project_V/Assets/ExcelFiles" + "/dialoguetest.xlsx"));
-
-        Debug.Log("¿Ï·á");
-        Debug.Log(path);
+        ExcelToJson("dialoguetest");
     }
 
     //C:\Users\tksth\Desktop\Project_V\Project_V\Assets\ExcelFiles
@@ -24,5 +19,14 @@ public class Json_Patcher : MonoBehaviour
     void Update()
     {
         
+    }
+    
+    private void ExcelToJson(string file)
+    {
+        string filename = file + ".json";
+        string path = "C:/Users/tksth/Desktop/Project_V/Project_V/Assets/StreamingAssets/resource/test/" + filename;
+        File.WriteAllText(path, ExcelToJsonConverter.ConvertExcelToJson("C:/Users/tksth/Desktop/Project_V/Project_V/Assets/ExcelFiles/" + file +".xlsx"));
+
+        Debug.Log(path);
     }
 }
