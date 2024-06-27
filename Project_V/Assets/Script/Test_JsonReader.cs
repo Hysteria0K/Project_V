@@ -29,16 +29,20 @@ public class Test_JsonReader : MonoBehaviour
         public Test_Dialogue_Attributes[] Test;
     }
 
-
     [SerializeField]
     private string Filename;
+
+    public Test_Parse Test_Dialogue;
+
+    private void Awake()
+    {
+        Test_Dialogue = JsonUtility.FromJson<Test_Parse>(ReadJson());
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        Test_Parse Test_Dialogue = JsonUtility.FromJson<Test_Parse>(ReadJson());
 
-        Debug.Log(Test_Dialogue.Test[0].Text);
     }
 
     // Update is called once per frame
@@ -50,7 +54,6 @@ public class Test_JsonReader : MonoBehaviour
     private string ReadJson()
     {
         string JsonText = File.ReadAllText(Application.persistentDataPath + "/resource/jsonfiles/" + Filename + ".json");
-        Debug.Log(JsonText);
 
         return (JsonText);
     }
