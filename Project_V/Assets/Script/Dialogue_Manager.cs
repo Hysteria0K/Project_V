@@ -51,5 +51,24 @@ public class Dialogue_Manager : MonoBehaviour
     {
         Dialogue_Text.text = Json[index].Text;
         Dialogue_Name.text = Json[index].Name;
+
+        SpriteControl(Dialogue_Sprite1, Json[index].Sprite1, Json[index].Pos1, Json[index].Layer1);
+        SpriteControl(Dialogue_Sprite2, Json[index].Sprite2, Json[index].Pos2, Json[index].Layer2);
+        SpriteControl(Dialogue_Sprite3, Json[index].Sprite3, Json[index].Pos3, Json[index].Layer3);
+    }
+
+    private void SpriteControl(GameObject Sprite, string Json_Sprite, int Json_Sprite_Pos, int Json_Sprite_Layer)
+    {
+        if (Json_Sprite != "")
+        {
+            Debug.Log(Json_Sprite);
+            Sprite.SetActive(true);
+            Sprite.transform.position = new Vector3(960 +Json_Sprite_Pos, 540, Json_Sprite_Layer);
+        }
+
+        else
+        {
+            Sprite.SetActive(false);
+        }
     }
 }
