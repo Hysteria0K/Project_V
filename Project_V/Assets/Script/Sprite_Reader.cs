@@ -9,6 +9,8 @@ using UnityEngine.U2D;
 public class Sprite_Reader : MonoBehaviour
 {
     public Sprite testc;
+    public Sprite charlotte;
+    public Sprite leni;
     private void Awake()
     {
         Read_Sprite();
@@ -29,6 +31,8 @@ public class Sprite_Reader : MonoBehaviour
     private void Read_Sprite()
     {
         testc = Load_Sprite(testc, nameof(testc));
+        charlotte = Load_Sprite(charlotte, nameof(charlotte));
+        leni = Load_Sprite(leni, nameof(leni));
     }
 
     private Sprite Load_Sprite(Sprite img, string nameofimg)

@@ -8,12 +8,12 @@
       "Sprite1": "testc",
       "Pos1": 213.0,
       "Layer1": 0.0,
-      "Sprite2": null,
-      "Pos2": null,
-      "Layer2": null,
-      "Sprite3": null,
-      "Pos3": null,
-      "Layer3": null
+      "Sprite2": "charlotte",
+      "Pos2": 300.0,
+      "Layer2": 1.0,
+      "Sprite3": "leni",
+      "Pos3": 500.0,
+      "Layer3": 2.0
     },
     {
       "Chapter": "Test",
@@ -23,12 +23,12 @@
       "Sprite1": "testc",
       "Pos1": 1000.0,
       "Layer1": 0.0,
-      "Sprite2": null,
-      "Pos2": null,
-      "Layer2": null,
-      "Sprite3": null,
-      "Pos3": null,
-      "Layer3": null
+      "Sprite2": "charlotte",
+      "Pos2": 500.0,
+      "Layer2": 1.0,
+      "Sprite3": "leni",
+      "Pos3": 564.0,
+      "Layer3": 2.0
     },
     {
       "Chapter": "Test",
@@ -40,25 +40,25 @@
       "Layer1": 0.0,
       "Sprite2": null,
       "Pos2": null,
-      "Layer2": null,
-      "Sprite3": null,
-      "Pos3": null,
-      "Layer3": null
+      "Layer2": 1.0,
+      "Sprite3": "leni",
+      "Pos3": 200.0,
+      "Layer3": 2.0
     },
     {
       "Chapter": "Test",
       "Index": 3.0,
       "Name": "테스트4",
       "Text": "대화테스트4번",
-      "Sprite1": "testc",
-      "Pos1": -500.0,
-      "Layer1": 0.0,
-      "Sprite2": null,
-      "Pos2": null,
-      "Layer2": null,
-      "Sprite3": null,
-      "Pos3": null,
-      "Layer3": null
+      "Sprite1": null,
+      "Pos1": null,
+      "Layer1": null,
+      "Sprite2": "charlotte",
+      "Pos2": 213.0,
+      "Layer2": 1.0,
+      "Sprite3": "leni",
+      "Pos3": -500.0,
+      "Layer3": 2.0
     },
     {
       "Chapter": "Test",
@@ -68,12 +68,12 @@
       "Sprite1": "testc",
       "Pos1": 258.0,
       "Layer1": 0.0,
-      "Sprite2": null,
-      "Pos2": null,
-      "Layer2": null,
-      "Sprite3": null,
-      "Pos3": null,
-      "Layer3": null
+      "Sprite2": "charlotte",
+      "Pos2": 0.0,
+      "Layer2": 1.0,
+      "Sprite3": "leni",
+      "Pos3": 54.0,
+      "Layer3": 2.0
     },
     {
       "Chapter": "Test",
@@ -81,14 +81,14 @@
       "Name": "테스트6",
       "Text": "대화테스트6번",
       "Sprite1": "testc",
-      "Pos1": 213.0,
+      "Pos1": 200.0,
       "Layer1": 0.0,
-      "Sprite2": null,
-      "Pos2": null,
-      "Layer2": null,
-      "Sprite3": null,
-      "Pos3": null,
-      "Layer3": null
+      "Sprite2": "charlotte",
+      "Pos2": 55.0,
+      "Layer2": 1.0,
+      "Sprite3": "leni",
+      "Pos3": 2.0,
+      "Layer3": 2.0
     },
     {
       "Chapter": "Test",
@@ -96,14 +96,14 @@
       "Name": "테스트7",
       "Text": "대화테스트7번",
       "Sprite1": "testc",
-      "Pos1": 213.0,
-      "Layer1": 0.0,
-      "Sprite2": null,
-      "Pos2": null,
-      "Layer2": null,
-      "Sprite3": null,
-      "Pos3": null,
-      "Layer3": null
+      "Pos1": 200.0,
+      "Layer1": 1.0,
+      "Sprite2": "charlotte",
+      "Pos2": 100.0,
+      "Layer2": 0.0,
+      "Sprite3": "leni",
+      "Pos3": 2.0,
+      "Layer3": 2.0
     },
     {
       "Chapter": "Test",
@@ -111,14 +111,14 @@
       "Name": "테스트8",
       "Text": "대화테스트8번",
       "Sprite1": "testc",
-      "Pos1": 213.0,
+      "Pos1": 1.0,
       "Layer1": 0.0,
-      "Sprite2": null,
-      "Pos2": null,
-      "Layer2": null,
-      "Sprite3": null,
-      "Pos3": null,
-      "Layer3": null
+      "Sprite2": "charlotte",
+      "Pos2": -400.0,
+      "Layer2": 1.0,
+      "Sprite3": "leni",
+      "Pos3": 21.0,
+      "Layer3": 2.0
     },
     {
       "Chapter": "Test",
@@ -126,14 +126,14 @@
       "Name": "테스트9",
       "Text": "대화테스트9번",
       "Sprite1": "testc",
-      "Pos1": 213.0,
+      "Pos1": 200.0,
       "Layer1": 0.0,
-      "Sprite2": null,
-      "Pos2": null,
-      "Layer2": null,
-      "Sprite3": null,
-      "Pos3": null,
-      "Layer3": null
+      "Sprite2": "charlotte",
+      "Pos2": 654.0,
+      "Layer2": 1.0,
+      "Sprite3": "leni",
+      "Pos3": 3.0,
+      "Layer3": 2.0
     }
   ]
 }
