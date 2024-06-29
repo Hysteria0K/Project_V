@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System.Reflection;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using UnityEditor.U2D.Aseprite;
+using System;
 
 public class Dialogue_Manager : MonoBehaviour
 {
@@ -13,6 +18,7 @@ public class Dialogue_Manager : MonoBehaviour
     public GameObject Dialogue_Sprite3;
 
     public Test_JsonReader JsonReader;
+    public Sprite_Reader SpriteReader;
 
     [SerializeField]
     private string SceneName;
@@ -40,7 +46,7 @@ public class Dialogue_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Index < JsonReader.Test_Dialogue.Test.Length-1)
+        if (Input.GetMouseButtonDown(0) && Index < JsonReader.Test_Dialogue.Test.Length-1) //일단 클릭하면 넘어가기
         {
             Index++;
             Next_Dialogue(Index, JsonReader.Test_Dialogue.Test);
@@ -61,14 +67,25 @@ public class Dialogue_Manager : MonoBehaviour
     {
         if (Json_Sprite != "")
         {
-            Debug.Log(Json_Sprite);
             Sprite.SetActive(true);
             Sprite.transform.position = new Vector3(960 +Json_Sprite_Pos, 540, Json_Sprite_Layer);
+            Sprite.GetComponent<Image>().sprite = GetSprite_From_Name(Json_Sprite);
         }
 
         else
         {
             Sprite.SetActive(false);
         }
+    }
+
+    private Sprite GetSprite_From_Name(string classname)
+    {
+        Type spriteReaderType = SpriteReader.GetType();
+
+        FieldInfo fieldInfo = spriteReaderType.GetField(classname);
+
+        Debug.Log(fieldInfo);
+
+        return fieldInfo.GetValue(SpriteReader) as Sprite;
     }
 }
