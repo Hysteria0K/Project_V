@@ -84,8 +84,6 @@ public class Dialogue_Manager : MonoBehaviour
 
         FieldInfo fieldInfo = spriteReaderType.GetField(classname);
 
-        Debug.Log(fieldInfo);
-
         return fieldInfo.GetValue(SpriteReader) as Sprite;
     }
 }

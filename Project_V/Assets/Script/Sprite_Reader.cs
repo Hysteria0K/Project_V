@@ -11,9 +11,10 @@ public class Sprite_Reader : MonoBehaviour
     public Sprite testc;
     public Sprite charlotte;
     public Sprite leni;
+
     private void Awake()
     {
-        Read_Sprite();
+        //Read_Sprite();
     }
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class Sprite_Reader : MonoBehaviour
         
     }
 
+    /* 동적할당
     private void Read_Sprite()
     {
         testc = Load_Sprite(testc, nameof(testc));
@@ -42,4 +44,5 @@ public class Sprite_Reader : MonoBehaviour
 
         return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
     }
+    */
 }
