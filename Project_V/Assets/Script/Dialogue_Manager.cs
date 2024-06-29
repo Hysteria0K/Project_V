@@ -23,6 +23,8 @@ public class Dialogue_Manager : MonoBehaviour
     [SerializeField]
     private string SceneName;
     private int Index = 0;
+    private int MaxIndex = 0;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -36,6 +38,7 @@ public class Dialogue_Manager : MonoBehaviour
             case "Test_Dialogue":
                 {
                     Next_Dialogue(0, JsonReader.Test_Dialogue.Test);
+                    MaxIndex = JsonReader.Test_Dialogue.Test.Length - 1;
                     break;
                 }
 
@@ -46,7 +49,7 @@ public class Dialogue_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Index < JsonReader.Test_Dialogue.Test.Length-1) //일단 클릭하면 넘어가기
+        if (Input.GetMouseButtonDown(0) && Index < MaxIndex) //일단 클릭하면 넘어가기
         {
             Index++;
             Next_Dialogue(Index, JsonReader.Test_Dialogue.Test);

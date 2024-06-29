@@ -27,6 +27,7 @@ public class Test_JsonReader : MonoBehaviour
     public class Test_Parse
     {
         public Test_Dialogue_Attributes[] Test;
+        // public Test_Dialogue_Attributes[] Test2; 이런식으로 추가가능
     }
 
     [SerializeField]
@@ -42,7 +43,6 @@ public class Test_JsonReader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
