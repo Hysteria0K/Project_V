@@ -24,8 +24,8 @@ public class Json_Patcher : MonoBehaviour
     private void ExcelToJson(string file)
     {
         string filename = file + ".json";
-        string path = "C:/Users/tksth/Desktop/Project_V/Project_V/Assets/StreamingAssets/resource/test/" + filename;
-        File.WriteAllText(path, ExcelToJsonConverter.ConvertExcelToJson("C:/Users/tksth/Desktop/Project_V/Project_V/Assets/ExcelFiles/" + file +".xlsx"));
+        string path = "Assets/StreamingAssets/resource/test/" + filename;
+        File.WriteAllText(path, ExcelToJsonConverter.ConvertExcelToJson("Assets/ExcelFiles/" + file +".xlsx"));
 
         Debug.Log(path);
     }
