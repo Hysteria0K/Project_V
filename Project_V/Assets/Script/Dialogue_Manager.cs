@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using System.Reflection;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
-using UnityEditor.U2D.Aseprite;
 using System;
 
 public class Dialogue_Manager : MonoBehaviour

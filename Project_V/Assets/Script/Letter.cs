@@ -8,11 +8,13 @@ using TMPro;
 public class Letter : MonoBehaviour
 {
     public RectTransform Table_Area_Transform;
+    public RectTransform Check_Stamp_Area_Transform;
 
     private RectTransform Letter_Transform;
 
     private Rect rect1;
     private Rect rect2;
+    private Rect Check_Stamp;
 
     public GameObject Letter_Small;
     public GameObject Letter_Large;
@@ -56,6 +58,14 @@ public class Letter : MonoBehaviour
 
         OriginWidth = Letter_Transform.rect.width;
         OriginHeight= Letter_Transform.rect.height;
+
+        rect1 = new Rect(Table_Area_Transform.position.x - Table_Area_Transform.rect.width / 2,
+                Table_Area_Transform.position.y - Table_Area_Transform.rect.height / 2,
+                Table_Area_Transform.rect.width, Table_Area_Transform.rect.height);
+
+        Check_Stamp = new Rect(Check_Stamp_Area_Transform.position.x - OriginWidth / 2,
+                      Check_Stamp_Area_Transform.position.y - OriginWidth / 2,
+                      OriginWidth, OriginHeight);
     }
 
     // Update is called once per frame
@@ -81,14 +91,11 @@ public class Letter : MonoBehaviour
 
     private void Letter_Collider()
     {
-        rect1 = new Rect(Table_Area_Transform.position.x - Table_Area_Transform.rect.width / 2,
-                        Table_Area_Transform.position.y - Table_Area_Transform.rect.height / 2,
-                        Table_Area_Transform.rect.width, Table_Area_Transform.rect.height);
         rect2 = new Rect(Letter_Transform.position.x - OriginWidth / 2,
                          Letter_Transform.position.y - OriginHeight / 2,
                          OriginWidth, OriginHeight);
 
-        if (rect1.Overlaps(rect2))
+        if (rect2.Overlaps(rect1))
         {
             if (OnTable == false)
             {
@@ -103,6 +110,11 @@ public class Letter : MonoBehaviour
                 OnTable = false;
                 Change_Check = true;
             }
+        }
+
+        if (rect2.Overlaps(Check_Stamp))
+        {
+            Letter_Transform.position = Check_Stamp_Area_Transform.position;
         }
     }
 

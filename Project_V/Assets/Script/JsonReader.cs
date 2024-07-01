@@ -60,9 +60,11 @@ public class JsonReader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         Debug.Log(NameList.namelist[1].FirstName + NameList.namelist[1].SecondName);
         Debug.Log(ArmyUnit.armyunit[0].Regiment);
         Debug.Log(Rank.militaryrank[10].Rank);
+        */
     }
 
     // Update is called once per frame
