@@ -8,7 +8,9 @@ using UnityEngine.UI;
 
 public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 {
-    public Sprite Stamp_Image;
+    public GameObject Stamp;
+
+    public Transform Canvas;
 
     private RectTransform Stamp_Transform;
 
@@ -55,6 +57,8 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
     IEnumerator StampUp()
     {
+        Instantiate(Stamp, Stamp_Transform.position, Stamp_Transform.rotation, Canvas);
+
         yield return new WaitForSeconds(1.0f);
 
         while (true)

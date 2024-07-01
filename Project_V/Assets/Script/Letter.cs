@@ -7,8 +7,10 @@ using TMPro;
 
 public class Letter : MonoBehaviour
 {
-    public RectTransform Table_Area_Transform;
-    public RectTransform Check_Stamp_Area_Transform;
+    [Header("Object")]
+    [SerializeField] private RectTransform Table_Area_Transform;
+    [SerializeField] private RectTransform Check_Stamp_Area_Transform;
+    [SerializeField] private JsonReader JsonReader;
 
     private RectTransform Letter_Transform;
 
@@ -24,8 +26,6 @@ public class Letter : MonoBehaviour
 
     private float OriginWidth;
     private float OriginHeight;
-
-    public JsonReader JsonReader;
 
     [Header("Letter info")]
     [SerializeField] private int FirstName;
@@ -45,12 +45,16 @@ public class Letter : MonoBehaviour
 
     private void Awake()
     {
-        Letter_Set();
+        Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
+        Check_Stamp_Area_Transform = GameObject.Find("Check_Stamp_Area").GetComponent<RectTransform>();
+        JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        Letter_Set();
+
         Letter_Transform = GetComponent<RectTransform>();
 
         OnTable = false;
