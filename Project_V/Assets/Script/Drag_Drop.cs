@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Drag_Drop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Drag_Drop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
 {
     private Image Image;
     private Vector2 BeginPosition;
@@ -33,5 +33,10 @@ public class Drag_Drop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
         Debug.Log("ÀÌµ¿ ¿Ï");
+    }
+
+    void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        transform.SetAsLastSibling();
     }
 }
