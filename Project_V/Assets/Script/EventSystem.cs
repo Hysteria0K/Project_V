@@ -24,6 +24,8 @@ public class EventSystem : MonoBehaviour
             Debug.Log("복사불필요");
         }
 
+        Cursor.lockState = CursorLockMode.Confined;
+
     }
 
     // Start is called before the first frame update
