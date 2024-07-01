@@ -4,19 +4,22 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Letter : MonoBehaviour
 {
     [Header("Object")]
     [SerializeField] private RectTransform Table_Area_Transform;
     [SerializeField] private RectTransform Check_Stamp_Area_Transform;
+    [SerializeField] private RectTransform PostBox_Area_Transform;
     [SerializeField] private JsonReader JsonReader;
 
     private RectTransform Letter_Transform;
 
-    private Rect rect1;
-    private Rect rect2;
+    private Rect Table;
+    private Rect Letter_Rect;
     private Rect Check_Stamp;
+    private Rect PostBox;
 
     public GameObject Letter_Small;
     public GameObject Letter_Large;
@@ -51,6 +54,7 @@ public class Letter : MonoBehaviour
     {
         Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
         Check_Stamp_Area_Transform = GameObject.Find("Check_Stamp_Area").GetComponent<RectTransform>();
+        PostBox_Area_Transform = GameObject.Find("PostBox_Area").GetComponent<RectTransform>();
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
     }
 
@@ -67,13 +71,17 @@ public class Letter : MonoBehaviour
         OriginWidth = Letter_Transform.rect.width;
         OriginHeight= Letter_Transform.rect.height;
 
-        rect1 = new Rect(Table_Area_Transform.position.x - Table_Area_Transform.rect.width / 2,
+        Table = new Rect(Table_Area_Transform.position.x - Table_Area_Transform.rect.width / 2,
                 Table_Area_Transform.position.y - Table_Area_Transform.rect.height / 2,
                 Table_Area_Transform.rect.width, Table_Area_Transform.rect.height);
 
         Check_Stamp = new Rect(Check_Stamp_Area_Transform.position.x - OriginWidth / 2,
                       Check_Stamp_Area_Transform.position.y - OriginWidth / 2,
                       OriginWidth, OriginHeight);
+
+        PostBox = new Rect(PostBox_Area_Transform.position.x - PostBox_Area_Transform.rect.width / 2,
+                  PostBox_Area_Transform.position.y - PostBox_Area_Transform.rect.height / 2,
+                  PostBox_Area_Transform.rect.width, PostBox_Area_Transform.rect.height);
 
         Stamp_Ready = false;
         Stamp_Value = 0;
@@ -102,11 +110,11 @@ public class Letter : MonoBehaviour
 
     private void Letter_Collider()
     {
-        rect2 = new Rect(Letter_Transform.position.x - OriginWidth / 2,
+        Letter_Rect = new Rect(Letter_Transform.position.x - OriginWidth / 2,
                          Letter_Transform.position.y - OriginHeight / 2,
-                         OriginWidth, OriginHeight);
+                         1, 1);
 
-        if (rect2.Overlaps(rect1))
+        if (Letter_Rect.Overlaps(Table))
         {
             if (OnTable == false)
             {
@@ -123,7 +131,7 @@ public class Letter : MonoBehaviour
             }
         }
 
-        if (rect2.Overlaps(Check_Stamp))
+        if (Letter_Rect.Overlaps(Check_Stamp))
         {
             Letter_Transform.position = Check_Stamp_Area_Transform.position;
             Stamp_Ready = true;
@@ -131,6 +139,13 @@ public class Letter : MonoBehaviour
         else 
         {
             Stamp_Ready = false;
+        }
+
+        if (Letter_Rect.Overlaps(PostBox))
+        {
+            Debug.Log("집하장행");
+
+            Destroy(this.gameObject);
         }
     }
 

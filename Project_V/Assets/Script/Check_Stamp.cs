@@ -98,7 +98,9 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         for (int i = Child_Count - 1; i >= 0; i--)
         {
             GameObject child = Parent.transform.GetChild(i).gameObject;
-            if (child.GetComponent<Letter>().Stamp_Ready == true)
+            Letter Target = child.GetComponent<Letter>();
+
+            if (Target != null && Target.Stamp_Ready == true)
             {
                 return child;
             }

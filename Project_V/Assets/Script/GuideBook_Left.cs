@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class Drag_Drop : MonoBehaviour, IDragHandler, IPointerDownHandler
+public class GuideBook_Left : MonoBehaviour, IPointerDownHandler
 {
+    public GuideBook GuideBook;
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
@@ -17,13 +18,12 @@ public class Drag_Drop : MonoBehaviour, IDragHandler, IPointerDownHandler
         
     }
 
-    void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
-    {
-        transform.position = eventData.position;
-    }
-
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        transform.SetAsLastSibling();
+        if (GuideBook.Guidebook_Page != 1)
+        {
+            GuideBook.Guidebook_Page--;
+            Debug.Log(GuideBook.Guidebook_Page);
+        }
     }
 }
