@@ -10,7 +10,7 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 {
     public GameObject Stamp;
 
-    public Transform Canvas;
+    public GameObject Letters;
 
     private RectTransform Stamp_Transform;
 
@@ -26,7 +26,7 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
@@ -57,7 +57,7 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
     IEnumerator StampUp()
     {
-        Instantiate(Stamp, Stamp_Transform.position, Stamp_Transform.rotation, Canvas);
+        Instantiate(Stamp, Stamp_Transform.position, Stamp_Transform.rotation, FindLetter(Letters).transform.GetChild(1).transform);
 
         yield return new WaitForSeconds(1.0f);
 
@@ -74,5 +74,20 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
             Stamp_Transform.position += new Vector3(0, 5, 0);
             Move_Count++;
         }
+    }
+
+    private GameObject FindLetter(GameObject Parent)
+    {
+        int Child_Count = Parent.transform.childCount;
+
+        for (int i = Child_Count - 1; i >= 0; i--)
+        {
+            GameObject child = Parent.transform.GetChild(i).gameObject;
+            if (child.GetComponent<Letter>().Stamp_Ready == true)
+            {
+                return child;
+            }
+        }
+        return null;
     }
 }

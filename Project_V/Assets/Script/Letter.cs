@@ -43,6 +43,9 @@ public class Letter : MonoBehaviour
     public TextMeshProUGUI APO_text;
     public TextMeshProUGUI Force_text;
 
+    [Header("Stamp_Ready")]
+    public bool Stamp_Ready;
+
     private void Awake()
     {
         Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
@@ -70,6 +73,8 @@ public class Letter : MonoBehaviour
         Check_Stamp = new Rect(Check_Stamp_Area_Transform.position.x - OriginWidth / 2,
                       Check_Stamp_Area_Transform.position.y - OriginWidth / 2,
                       OriginWidth, OriginHeight);
+
+        Stamp_Ready = false;
     }
 
     // Update is called once per frame
@@ -119,6 +124,11 @@ public class Letter : MonoBehaviour
         if (rect2.Overlaps(Check_Stamp))
         {
             Letter_Transform.position = Check_Stamp_Area_Transform.position;
+            Stamp_Ready = true;
+        }
+        else 
+        {
+            Stamp_Ready = false;
         }
     }
 
