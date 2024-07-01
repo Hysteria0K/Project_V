@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Letter : MonoBehaviour
 {
@@ -15,12 +17,35 @@ public class Letter : MonoBehaviour
     public GameObject Letter_Small;
     public GameObject Letter_Large;
 
-    [SerializeField]
     private bool OnTable;
     private bool Change_Check;
 
     private float OriginWidth;
     private float OriginHeight;
+
+    public JsonReader JsonReader;
+
+    [Header("Letter info")]
+    [SerializeField] private int FirstName;
+    [SerializeField] private int SecondName;
+    [SerializeField] private int Rank;
+    [SerializeField] private int Regiment;
+    [SerializeField] private int Battalion;
+    [SerializeField] private int APO;
+    [SerializeField] private int Force;
+    [SerializeField] private int Stamp;
+
+    [Header("Text")]
+    public TextMeshProUGUI Rank_Name_text;
+    public TextMeshProUGUI Regiment_Battalion_text;
+    public TextMeshProUGUI APO_text;
+    public TextMeshProUGUI Force_text;
+
+    private void Awake()
+    {
+        Letter_Set();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,5 +117,30 @@ public class Letter : MonoBehaviour
     {
         Letter_Small.SetActive(true);
         Letter_Large.SetActive(false);
+    }
+    private void Letter_Set()
+    {
+        // 올바른 편지 (틀린 부분 없음)
+        FirstName = Random.Range(0, JsonReader.NameList.namelist.Length);
+        SecondName = Random.Range(0, JsonReader.NameList.namelist.Length);
+        Rank = Random.Range(0, JsonReader.Rank.militaryrank.Length);
+        Regiment = Random.Range(0, JsonReader.ArmyUnit.armyunit.Length);
+        Battalion = Regiment;
+        APO = Regiment;
+        Force = Regiment;
+        //Stamp = 우표 나중에 여러개 넣고 돌리면 될듯
+
+        Letter_Text();
+    }
+
+    private void Letter_Text()
+    {
+        Rank_Name_text.text = JsonReader.Rank.militaryrank[Rank].Rank + ", " + 
+                              JsonReader.NameList.namelist[FirstName].FirstName + " " +
+                              JsonReader.NameList.namelist[SecondName].SecondName;
+        Regiment_Battalion_text.text = JsonReader.ArmyUnit.armyunit[Battalion].Battalion + ", " +
+                                       JsonReader.ArmyUnit.armyunit[Regiment].Regiment;
+        APO_text.text = "APO " + JsonReader.ArmyUnit.armyunit[APO].APO.TrimEnd('.', '0');
+        Force_text.text = JsonReader.ArmyUnit.armyunit[Force].Forces;
     }
 }
