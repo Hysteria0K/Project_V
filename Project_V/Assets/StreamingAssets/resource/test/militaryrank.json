@@ -1,0 +1,52 @@
+{
+  "militaryrank": [
+    {
+      "Index": 0.0,
+      "Rank": "Private"
+    },
+    {
+      "Index": 1.0,
+      "Rank": "Lance Corporal"
+    },
+    {
+      "Index": 2.0,
+      "Rank": "Corporal"
+    },
+    {
+      "Index": 3.0,
+      "Rank": "Sergent"
+    },
+    {
+      "Index": 4.0,
+      "Rank": "Staff Sergent"
+    },
+    {
+      "Index": 5.0,
+      "Rank": "Warrant Officer Class 2"
+    },
+    {
+      "Index": 6.0,
+      "Rank": "Warrant Officer Class 1"
+    },
+    {
+      "Index": 7.0,
+      "Rank": "Conductor"
+    },
+    {
+      "Index": 8.0,
+      "Rank": "Army Sergent Major"
+    },
+    {
+      "Index": 9.0,
+      "Rank": "Second Lieutenant"
+    },
+    {
+      "Index": 10.0,
+      "Rank": "Lieutenant"
+    },
+    {
+      "Index": 11.0,
+      "Rank": "Captain"
+    }
+  ]
+}

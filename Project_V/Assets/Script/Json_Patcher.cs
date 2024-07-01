@@ -11,6 +11,9 @@ public class Json_Patcher : MonoBehaviour
     void Start()
     {
         ExcelToJson("dialoguetest");
+        ExcelToJson("armyunit");
+        ExcelToJson("militaryrank");
+        ExcelToJson("namelist");
     }
 
     //C:\Users\tksth\Desktop\Project_V\Project_V\Assets\ExcelFiles

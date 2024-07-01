@@ -1,0 +1,88 @@
+{
+  "armyunit": [
+    {
+      "Index": 0.0,
+      "Regiment": "24th Infantry Regiment",
+      "Battalion": "1st Battalion",
+      "APO": 123.0,
+      "Forces": "British Expeditionary Forces"
+    },
+    {
+      "Index": 1.0,
+      "Regiment": "24th Infantry Regiment",
+      "Battalion": "2nd Battalion",
+      "APO": 123.0,
+      "Forces": "British Expeditionary Forces"
+    },
+    {
+      "Index": 2.0,
+      "Regiment": "24th Infantry Regiment",
+      "Battalion": "4th Battalion",
+      "APO": 123.0,
+      "Forces": "British Expeditionary Forces"
+    },
+    {
+      "Index": 3.0,
+      "Regiment": "24th Infantry Regiment",
+      "Battalion": "8th Battalion",
+      "APO": 123.0,
+      "Forces": "British Expeditionary Forces"
+    },
+    {
+      "Index": 4.0,
+      "Regiment": "1st Infantry Regiment",
+      "Battalion": "2rd Battalion",
+      "APO": 544.0,
+      "Forces": "British Expeditionary Forces"
+    },
+    {
+      "Index": 5.0,
+      "Regiment": "1st Infantry Regiment",
+      "Battalion": "3th Battalion",
+      "APO": 544.0,
+      "Forces": "British Expeditionary Forces"
+    },
+    {
+      "Index": 6.0,
+      "Regiment": "1st Infantry Regiment",
+      "Battalion": "5th Battalion",
+      "APO": 544.0,
+      "Forces": "British Expeditionary Forces"
+    },
+    {
+      "Index": 7.0,
+      "Regiment": "1st Infantry Regiment",
+      "Battalion": "6th Battalion",
+      "APO": 544.0,
+      "Forces": "British Expeditionary Forces"
+    },
+    {
+      "Index": 8.0,
+      "Regiment": "17th Infantry Regiment",
+      "Battalion": "1th Battalion",
+      "APO": 237.0,
+      "Forces": "British Expeditionary Forces"
+    },
+    {
+      "Index": 9.0,
+      "Regiment": "17th Infantry Regiment",
+      "Battalion": "3th Battalion",
+      "APO": 237.0,
+      "Forces": "British Expeditionary Forces"
+    },
+    {
+      "Index": 10.0,
+      "Regiment": "17th Infantry Regiment",
+      "Battalion": "4th Battalion",
+      "APO": 237.0,
+      "Forces": "British Expeditionary Forces"
+    },
+    {
+      "Index": 11.0,
+      "Regiment": "17th Infantry Regiment",
+      "Battalion": "5th Battalion",
+      "APO": 237.0,
+      "Forces": "British Expeditionary Forces"
+    }
+  ]
+}
