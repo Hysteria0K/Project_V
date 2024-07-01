@@ -43,8 +43,9 @@ public class Letter : MonoBehaviour
     public TextMeshProUGUI APO_text;
     public TextMeshProUGUI Force_text;
 
-    [Header("Stamp_Ready")]
+    [Header("Stamp")]
     public bool Stamp_Ready;
+    public int Stamp_Value; // 0 = 안함, 1 = stamp_1, 2 = stamp_Approved, 3 = stamp_Denied, 4 = 여러개 동시에 찍음
 
     private void Awake()
     {
@@ -75,6 +76,7 @@ public class Letter : MonoBehaviour
                       OriginWidth, OriginHeight);
 
         Stamp_Ready = false;
+        Stamp_Value = 0;
     }
 
     // Update is called once per frame

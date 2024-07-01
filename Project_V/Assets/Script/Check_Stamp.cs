@@ -16,6 +16,7 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
     private int Move_Count = 0;
     [SerializeField] private bool Is_Ready;
+    [SerializeField] private int Stamp_Value;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +58,21 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
     IEnumerator StampUp()
     {
-        Instantiate(Stamp, Stamp_Transform.position, Stamp_Transform.rotation, FindLetter(Letters).transform.GetChild(1).transform);
+        if (FindLetter(Letters) != null)
+        {
+            GameObject Target = FindLetter(Letters);
+            Instantiate(Stamp, Stamp_Transform.position, Stamp_Transform.rotation, Target.transform.GetChild(1).transform);
+
+            if (Target.GetComponent<Letter>().Stamp_Value == 0 || Target.GetComponent<Letter>().Stamp_Value == this.Stamp_Value)
+            {
+                Target.GetComponent<Letter>().Stamp_Value = this.Stamp_Value;
+            }
+
+            else
+            {
+                Target.GetComponent<Letter>().Stamp_Value = 4;
+            }
+        }
 
         yield return new WaitForSeconds(1.0f);
 

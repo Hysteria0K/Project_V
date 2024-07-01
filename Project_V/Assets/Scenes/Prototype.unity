@@ -288,6 +288,7 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: 44a91c424dd179e43a399d5f9837f66d, type: 3}
   Letters: {fileID: 803566165}
   Is_Ready: 0
+  Stamp_Value: 2
 --- !u!1 &252757835
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +424,7 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: c1e78d72cc332d444a8e2e99a8c5c19d, type: 3}
   Letters: {fileID: 803566165}
   Is_Ready: 0
+  Stamp_Value: 1
 --- !u!1 &483705011
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +769,7 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: 13e4d41dfbde7364c85200618c881e90, type: 3}
   Letters: {fileID: 803566165}
   Is_Ready: 0
+  Stamp_Value: 3
 --- !u!1 &781998962
 GameObject:
   m_ObjectHideFlags: 0
