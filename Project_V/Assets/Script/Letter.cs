@@ -11,7 +11,6 @@ public class Letter : MonoBehaviour, IEndDragHandler
 {
     [Header("Object")]
     [SerializeField] private RectTransform Table_Area_Transform;
-    [SerializeField] private RectTransform Check_Stamp_Area_Transform;
     [SerializeField] private RectTransform PostBox_Area_Transform;
     [SerializeField] private JsonReader JsonReader;
 
@@ -19,7 +18,6 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
     private Rect Table;
     private Rect Letter_Rect;
-    private Rect Check_Stamp;
     private Rect PostBox;
 
     public GameObject Letter_Small;
@@ -27,9 +25,6 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
     private bool OnTable;
     private bool Change_Check;
-
-    private float OriginWidth;
-    private float OriginHeight;
 
     [Header("Letter info")]
     [SerializeField] private int FirstName;
@@ -48,13 +43,11 @@ public class Letter : MonoBehaviour, IEndDragHandler
     public TextMeshProUGUI Force_text;
 
     [Header("Stamp")]
-    public bool Stamp_Ready;
     public int Stamp_Value; // 0 = 안함, 1 = stamp_1, 2 = stamp_Approved, 3 = stamp_Denied, 4 = 여러개 동시에 찍음
 
     private void Awake()
     {
         Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
-        Check_Stamp_Area_Transform = GameObject.Find("Check_Stamp_Area").GetComponent<RectTransform>();
         PostBox_Area_Transform = GameObject.Find("PostBox_Area").GetComponent<RectTransform>();
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
     }
@@ -69,22 +62,14 @@ public class Letter : MonoBehaviour, IEndDragHandler
         OnTable = false;
         Change_Check = false;
 
-        OriginWidth = Letter_Transform.rect.width;
-        OriginHeight= Letter_Transform.rect.height;
-
         Table = new Rect(Table_Area_Transform.position.x - Table_Area_Transform.rect.width / 2,
                 Table_Area_Transform.position.y - Table_Area_Transform.rect.height / 2,
                 Table_Area_Transform.rect.width, Table_Area_Transform.rect.height);
-
-        Check_Stamp = new Rect(Check_Stamp_Area_Transform.position.x - OriginWidth / 2,
-                      Check_Stamp_Area_Transform.position.y - OriginWidth / 2,
-                      OriginWidth, OriginHeight);
 
         PostBox = new Rect(PostBox_Area_Transform.position.x - PostBox_Area_Transform.rect.width / 2,
                   PostBox_Area_Transform.position.y - PostBox_Area_Transform.rect.height / 2,
                   PostBox_Area_Transform.rect.width, PostBox_Area_Transform.rect.height);
 
-        Stamp_Ready = false;
         Stamp_Value = 0;
     }
 
@@ -111,9 +96,9 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
     private void Letter_Collider()
     {
-        Letter_Rect = new Rect(Letter_Transform.position.x - OriginWidth / 2,
-                         Letter_Transform.position.y - OriginHeight / 2,
-                         1, 1);
+        Letter_Rect = new Rect(Letter_Transform.position.x - Letter_Transform.rect.width / 2,
+                         Letter_Transform.position.y - Letter_Transform.rect.height / 2,
+                         Letter_Transform.rect.width, Letter_Transform.rect.height);
 
         if (Letter_Rect.Overlaps(Table))
         {
@@ -130,16 +115,6 @@ public class Letter : MonoBehaviour, IEndDragHandler
                 OnTable = false;
                 Change_Check = true;
             }
-        }
-
-        if (Letter_Rect.Overlaps(Check_Stamp))
-        {
-            Letter_Transform.position = Check_Stamp_Area_Transform.position;
-            Stamp_Ready = true;
-        }
-        else 
-        {
-            Stamp_Ready = false;
         }
     }
 

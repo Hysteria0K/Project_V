@@ -9,24 +9,56 @@ using UnityEngine.UI;
 public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 {
     public GameObject Stamp;
-
     public GameObject Letters;
+    public Stamp_Bar_Edge Stamp_Bar_Edge;
 
     private RectTransform Stamp_Transform;
 
+    private RectTransform Letter_Large_Transform;
+
+    private Rect Letter_Large_Rect;
+    private Rect Stamp_Rect;
+
     private int Move_Count = 0;
+
     [SerializeField] private bool Is_Ready;
+    [SerializeField] private bool Stamp_Available;
+
+    [Header("Setting")]
     [SerializeField] private int Stamp_Value;
+
     // Start is called before the first frame update
     void Start()
     {
         Stamp_Transform = GetComponent<RectTransform>();
         Is_Ready = true;
+        Stamp_Available = false;
+
+        Stamp_Rect = new Rect(Stamp_Transform.position.x - Stamp_Bar_Edge.X_Position_Saved - Stamp_Transform.rect.width / 2,
+        Stamp_Transform.position.y - Stamp_Transform.rect.height / 2 - 50 /*내려갔을때 감소하는 값 나중에 하드코딩 없앨때 하면댐*/,
+        Stamp_Transform.rect.width, Stamp_Transform.rect.height);
+
+        Debug.Log(Stamp_Rect);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Letter_Large_Transform = Find_Letter_Large(FindLetter(Letters));
+
+        Letter_Large_Rect = new Rect(Letter_Large_Transform.position.x - Letter_Large_Transform.rect.width / 2,
+                 Letter_Large_Transform.position.y - Letter_Large_Transform.rect.height / 2,
+                 Letter_Large_Transform.rect.width, Letter_Large_Transform.rect.height);
+
+        if (IsRectContained(Stamp_Rect, Letter_Large_Rect))
+        {
+            Stamp_Available = true;
+        }
+
+        else
+        {
+            Stamp_Available = false;
+        }
 
     }
 
@@ -58,7 +90,7 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
     IEnumerator StampUp()
     {
-        if (FindLetter(Letters) != null)
+        if (Stamp_Available == true)
         {
             GameObject Target = FindLetter(Letters);
             Instantiate(Stamp, Stamp_Transform.position, Stamp_Transform.rotation, Target.transform.GetChild(1).transform);
@@ -100,11 +132,28 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
             GameObject child = Parent.transform.GetChild(i).gameObject;
             Letter Target = child.GetComponent<Letter>();
 
-            if (Target != null && Target.Stamp_Ready == true)
+            if (Target != null)
             {
                 return child;
             }
         }
         return null;
+    }
+
+    private RectTransform Find_Letter_Large(GameObject Letter)
+    {
+        int Child_Count = Letter.transform.childCount;
+
+        GameObject Letter_Large = Letter.transform.GetChild(Child_Count - 1).gameObject;
+
+        return Letter_Large.GetComponent<RectTransform>();
+    }
+
+    private bool IsRectContained(Rect StampRect, Rect LargeLetterRect)
+    {
+        return LargeLetterRect.Contains(new Vector2(StampRect.xMin, StampRect.yMin)) &&
+              LargeLetterRect.Contains(new Vector2(StampRect.xMax, StampRect.yMin)) &&
+              LargeLetterRect.Contains(new Vector2(StampRect.xMin, StampRect.yMax)) &&
+              LargeLetterRect.Contains(new Vector2(StampRect.xMax, StampRect.yMax));
     }
 }

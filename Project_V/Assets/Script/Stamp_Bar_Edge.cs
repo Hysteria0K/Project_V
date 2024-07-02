@@ -8,12 +8,18 @@ public class Stamp_Bar_Edge : MonoBehaviour, IPointerDownHandler
 {
     public RectTransform Check_Stamp;
 
-    [SerializeField] private bool isOpen;
-    [SerializeField] private float X_Position_Saved;
+    public bool isOpen;
+
+    public float X_Position_Saved;
+
+    void Awake()
+    {
+        X_Position_Saved = Check_Stamp.position.x - 960;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        X_Position_Saved = Check_Stamp.position.x - 960;
         isOpen = false;
     }
 
