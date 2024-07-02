@@ -13,6 +13,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
     [SerializeField] private RectTransform Table_Area_Transform;
     [SerializeField] private RectTransform Letter_Area_Transform;
     [SerializeField] private RectTransform PostBox_Area_Transform;
+    [SerializeField] private RectTransform Big_Border_Transform;
     [SerializeField] private JsonReader JsonReader;
 
     private RectTransform Letter_Transform;
@@ -20,12 +21,16 @@ public class Letter : MonoBehaviour, IEndDragHandler
     private Rect Table;
     private Rect Letter_Rect;
     private Rect PostBox;
+    private Rect Letter_Area;
 
     public GameObject Letter_Small;
     public GameObject Letter_Large;
 
     private bool OnTable;
     private bool Change_Check;
+
+    private float Half_Width;
+    private float Half_Height;
 
     [Header("Letter info")]
     [SerializeField] private int FirstName;
@@ -51,6 +56,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
         Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
         Letter_Area_Transform = GameObject.Find("Letter_Area").GetComponent<RectTransform>();
         PostBox_Area_Transform = GameObject.Find("PostBox_Area").GetComponent<RectTransform>();
+        Big_Border_Transform = GameObject.Find("Big_Border").GetComponent<RectTransform>();
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
     }
 
@@ -72,7 +78,14 @@ public class Letter : MonoBehaviour, IEndDragHandler
                   PostBox_Area_Transform.position.y - PostBox_Area_Transform.rect.height / 2,
                   PostBox_Area_Transform.rect.width, PostBox_Area_Transform.rect.height);
 
+        Letter_Area = new Rect(Letter_Area_Transform.position.x - Letter_Area_Transform.rect.width / 2,
+                               Letter_Area_Transform.position.y - Letter_Area_Transform.rect.height / 2,
+                               Letter_Area_Transform.rect.width, Letter_Area_Transform.rect.height);
+
         Stamp_Value = 0;
+
+        Half_Width = Letter_Transform.rect.width / 2;
+        Half_Height = Letter_Transform.rect.height / 2;
     }
 
     // Update is called once per frame
@@ -102,8 +115,6 @@ public class Letter : MonoBehaviour, IEndDragHandler
                          Letter_Transform.position.y,
                          1, 1);
 
-        Debug.Log(Letter_Rect);
-
         if (Letter_Rect.Overlaps(Table))
         {
             if (OnTable == false)
@@ -115,7 +126,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
         }
         else
         {
-            if (OnTable == true)
+            if (OnTable == true && Letter_Rect.Overlaps(Letter_Area))
             {
                 OnTable = false;
                 Change_Check = true;
@@ -125,7 +136,19 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
         if (Letter_Rect.Overlaps(PostBox))
         {
+            OnTable = false;
+            Change_Check = true;
             this.transform.SetParent(PostBox_Area_Transform);
+        }
+
+        if (this.transform.parent != PostBox_Area_Transform)
+        {
+            Move_Limit(Letter_Transform, Big_Border_Transform);
+        }
+
+        else
+        {
+            Move_Limit(Letter_Transform, PostBox_Area_Transform);
         }
     }
 
@@ -169,11 +192,51 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
     void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (Letter_Rect.Overlaps(PostBox))
+        if (this.transform.parent == PostBox_Area_Transform)
         {
             Debug.Log("집하장행");
 
             Destroy(this.gameObject);
         }
+    }
+
+    void Move_Limit(RectTransform Move, RectTransform Limit)
+    {
+        // rectToLimit의 현재 위치
+        Vector3[] rectCorners = new Vector3[4];
+        Move.GetWorldCorners(rectCorners);
+
+        // boundingRect의 경계 위치
+        Vector3[] boundingCorners = new Vector3[4];
+        Limit.GetWorldCorners(boundingCorners);
+
+        Vector3 limitedPosition = Move.position;
+
+        // 왼쪽 경계 제한
+        if (rectCorners[0].x < boundingCorners[0].x - Half_Width)
+        {
+            limitedPosition.x += boundingCorners[0].x - rectCorners[0].x - Half_Width;
+        }
+
+        // 오른쪽 경계 제한
+        if (rectCorners[2].x > boundingCorners[2].x + Half_Width)
+        {
+            limitedPosition.x -= rectCorners[2].x - boundingCorners[2].x - Half_Width;
+        }
+
+        // 아래쪽 경계 제한
+        if (rectCorners[0].y < boundingCorners[0].y - Half_Height)
+        {
+            limitedPosition.y += boundingCorners[0].y - rectCorners[0].y - Half_Height;
+        }
+
+        // 위쪽 경계 제한
+        if (rectCorners[1].y > boundingCorners[1].y + Half_Height)
+        {
+            limitedPosition.y -= rectCorners[1].y - boundingCorners[1].y - Half_Height;
+        }
+
+        // 제한된 위치 적용
+        Move.position = limitedPosition;
     }
 }

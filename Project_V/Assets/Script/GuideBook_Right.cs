@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GuideBook_Right : MonoBehaviour, IPointerDownHandler
+public class GuideBook_Right : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
+    private Vector3 Saved_Position;
+
     public GameObject GuideBook;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,10 @@ public class GuideBook_Right : MonoBehaviour, IPointerDownHandler
     {
         
     }
+    void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        GuideBook.transform.position = Saved_Position;
+    }
 
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
@@ -26,5 +32,7 @@ public class GuideBook_Right : MonoBehaviour, IPointerDownHandler
             GuideBook.GetComponent<GuideBook>().Guidebook_Page++;
             Debug.Log(GuideBook.GetComponent<GuideBook>().Guidebook_Page);
         }
+
+        Saved_Position = GuideBook.transform.position;
     }
 }
