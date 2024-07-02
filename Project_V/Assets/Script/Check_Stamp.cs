@@ -19,12 +19,13 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
     private Rect Letter_Large_Rect;
     private Rect Stamp_Rect;
 
-    private int Move_Count = 0;
-
     [SerializeField] private bool Is_Ready;
 
     [Header("Setting")]
     [SerializeField] private int Stamp_Value;
+    [SerializeField] private float Stamp_Down;
+    [SerializeField] private Vector3 Stamp_Down_Position;
+    [SerializeField] private Vector3 Stamp_Up_Position;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +33,14 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         Stamp_Transform = GetComponent<RectTransform>();
         Is_Ready = true;
 
+        Stamp_Down = 50;
+
         Stamp_Rect = new Rect(Stamp_Transform.position.x - Stamp_Bar_Edge.X_Position_Saved - Stamp_Transform.rect.width / 2,
-        Stamp_Transform.position.y - Stamp_Transform.rect.height / 2 - 50 /*내려갔을때 감소하는 값 나중에 하드코딩 없앨때 하면댐*/,
+        Stamp_Transform.position.y - Stamp_Transform.rect.height / 2 - Stamp_Down,
         Stamp_Transform.rect.width, Stamp_Transform.rect.height);
+
+        Stamp_Down_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y - Stamp_Down, this.transform.position.z);
+        Stamp_Up_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y, this.transform.position.z);
     }
 
     // Update is called once per frame
@@ -56,16 +62,14 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
 
-            if (Move_Count >= 10)
+            if (Stamp_Transform.position == Stamp_Down_Position)
             {
-                Move_Count = 0;
                 StartCoroutine(StampUp());
                 break;
             }
-            Stamp_Transform.position -= new Vector3(0, 5, 0);
-            Move_Count++;
+            Stamp_Transform.position -= new Vector3(0, Stamp_Down/10, 0);
         }
     }
 
@@ -91,16 +95,14 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
         while (true)
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
 
-            if (Move_Count >= 10)
+            if (Stamp_Transform.position == Stamp_Up_Position)
             {
-                Move_Count = 0;
                 Is_Ready = true;
                 break;
             }
-            Stamp_Transform.position += new Vector3(0, 5, 0);
-            Move_Count++;
+            Stamp_Transform.position += new Vector3(0, Stamp_Down / 10, 0);
         }
     }
 
