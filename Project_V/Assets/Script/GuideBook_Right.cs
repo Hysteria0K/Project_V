@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class GuideBook_Right : MonoBehaviour, IPointerDownHandler
 {
-    public GuideBook GuideBook;
+    public GameObject GuideBook;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +20,11 @@ public class GuideBook_Right : MonoBehaviour, IPointerDownHandler
 
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (GuideBook.Guidebook_Page != GuideBook.Guidebook_EndPage)
+        GuideBook.GetComponent<Transform>().transform.SetAsLastSibling();
+        if (GuideBook.GetComponent<GuideBook>().Guidebook_Page != GuideBook.GetComponent<GuideBook>().Guidebook_EndPage)
         {
-            GuideBook.Guidebook_Page++;
-            Debug.Log(GuideBook.Guidebook_Page);
+            GuideBook.GetComponent<GuideBook>().Guidebook_Page++;
+            Debug.Log(GuideBook.GetComponent<GuideBook>().Guidebook_Page);
         }
     }
 }

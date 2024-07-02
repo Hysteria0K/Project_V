@@ -5,11 +5,12 @@ using UnityEngine.EventSystems;
 
 public class GuideBook_Left : MonoBehaviour, IPointerDownHandler
 {
-    public GuideBook GuideBook;
+    public GameObject GuideBook;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+ 
     }
 
     // Update is called once per frame
@@ -20,10 +21,11 @@ public class GuideBook_Left : MonoBehaviour, IPointerDownHandler
 
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (GuideBook.Guidebook_Page != 1)
+        GuideBook.GetComponent<Transform>().transform.SetAsLastSibling();
+        if (GuideBook.GetComponent<GuideBook>().Guidebook_Page != 1)
         {
-            GuideBook.Guidebook_Page--;
-            Debug.Log(GuideBook.Guidebook_Page);
+            GuideBook.GetComponent<GuideBook>().Guidebook_Page--;
+            Debug.Log(GuideBook.GetComponent<GuideBook>().Guidebook_Page);
         }
     }
 }

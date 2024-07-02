@@ -5,8 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
-public class Letter : MonoBehaviour
+public class Letter : MonoBehaviour, IEndDragHandler
 {
     [Header("Object")]
     [SerializeField] private RectTransform Table_Area_Transform;
@@ -140,13 +141,6 @@ public class Letter : MonoBehaviour
         {
             Stamp_Ready = false;
         }
-
-        if (Letter_Rect.Overlaps(PostBox))
-        {
-            Debug.Log("집하장행");
-
-            Destroy(this.gameObject);
-        }
     }
 
     private void Letter_On_Table()
@@ -185,5 +179,15 @@ public class Letter : MonoBehaviour
                                        JsonReader.ArmyUnit.armyunit[Regiment].Regiment;
         APO_text.text = "APO " + JsonReader.ArmyUnit.armyunit[APO].APO.TrimEnd('.', '0');
         Force_text.text = JsonReader.ArmyUnit.armyunit[Force].Forces;
+    }
+
+    void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        if (Letter_Rect.Overlaps(PostBox))
+        {
+            Debug.Log("집하장행");
+
+            Destroy(this.gameObject);
+        }
     }
 }
