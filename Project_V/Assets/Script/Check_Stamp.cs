@@ -149,9 +149,9 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
     private bool IsRectContained(Rect StampRect, Rect LargeLetterRect)
     {
-        return LargeLetterRect.Contains(new Vector2(StampRect.xMin, StampRect.yMin)) &&
-              LargeLetterRect.Contains(new Vector2(StampRect.xMax, StampRect.yMin)) &&
-              LargeLetterRect.Contains(new Vector2(StampRect.xMin, StampRect.yMax)) &&
+        return LargeLetterRect.Contains(new Vector2(StampRect.xMin, StampRect.yMin)) ||
+              LargeLetterRect.Contains(new Vector2(StampRect.xMax, StampRect.yMin)) ||
+              LargeLetterRect.Contains(new Vector2(StampRect.xMin, StampRect.yMax)) ||
               LargeLetterRect.Contains(new Vector2(StampRect.xMax, StampRect.yMax));
     }
 }
