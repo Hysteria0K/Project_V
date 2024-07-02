@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class GuideBook : MonoBehaviour
 {
@@ -17,11 +18,11 @@ public class GuideBook : MonoBehaviour
     private RectTransform Guidebook_Transform;
 
     private Rect Table;
-    private Rect Guidebook_Rect;
     private Rect Letter_Area;
 
     public GameObject Guidebook_Small;
     public GameObject Guidebook_Large;
+    public Drag_Drop Drag_Drop;
 
     private bool OnTable;
     private bool Change_Check;
@@ -80,6 +81,8 @@ public class GuideBook : MonoBehaviour
             else
             {
                 Guidebook_Not_On_Table();
+                Guidebook_Transform.position = Input.mousePosition;
+                Drag_Drop.Mouse_Center = true;
             }
 
             Change_Check = false;
@@ -90,16 +93,11 @@ public class GuideBook : MonoBehaviour
             Guidebook_Page_Text.text = $"{Guidebook_Page}" + "Page";
         }
 
-        Move_Limit(Guidebook_Transform, Big_Border_Transform);
     }
 
     private void Guidebook_Collider()
     {
-        Guidebook_Rect = new Rect(Guidebook_Transform.position.x,
-                         Guidebook_Transform.position.y,
-                         10, 10);
-
-        if (Guidebook_Rect.Overlaps(Table))
+        if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= Letter_Area.xMax)
         {
             if (OnTable == false)
             {
@@ -110,13 +108,15 @@ public class GuideBook : MonoBehaviour
         }
         else
         {
-            if (OnTable == true && Guidebook_Rect.Overlaps(Letter_Area))
+            if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.x < Table.xMin)
             {
                 OnTable = false;
                 Change_Check = true;
                 this.transform.SetParent(Letter_Area_Transform);
             }
         }
+
+        Move_Limit(Guidebook_Transform, Big_Border_Transform);
     }
 
     private void Guidebook_On_Table()

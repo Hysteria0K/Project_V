@@ -51,9 +51,6 @@ public class Letter : MonoBehaviour, IEndDragHandler
     [Header("Stamp")]
     public int Stamp_Value; // 0 = 안함, 1 = stamp_1, 2 = stamp_Approved, 3 = stamp_Denied, 4 = 여러개 동시에 찍음
 
-    private Vector2 Vect2;
-    private Vector3 Saved_Position;
-
     private void Awake()
     {
         Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
@@ -239,8 +236,6 @@ public class Letter : MonoBehaviour, IEndDragHandler
     }
     void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        Drag_Drop.Mouse_Center = false;
-        Drag_Drop.Is_Drag = false;
         if (this.transform.parent == PostBox_Area_Transform)
         {
             Debug.Log("집하장행");

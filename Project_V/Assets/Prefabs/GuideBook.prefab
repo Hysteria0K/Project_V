@@ -105,7 +105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2043893284752693478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -472,6 +472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639e2c9d8325774ba1f04962335f384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Mouse_Center: 0
+  Is_Drag: 0
 --- !u!114 &8994878445106299162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,6 +493,7 @@ MonoBehaviour:
   Guidebook_Page_Text: {fileID: 7005777642237608163}
   Guidebook_Small: {fileID: 2625077345782625694}
   Guidebook_Large: {fileID: 941120987809360372}
+  Drag_Drop: {fileID: 7577147225963281710}
   Guidebook_Page: 0
   Guidebook_EndPage: 10
 --- !u!1 &9063267771920310593
