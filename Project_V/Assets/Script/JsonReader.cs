@@ -10,7 +10,7 @@ public class JsonReader : MonoBehaviour
     {
         public int Index;
         public string FirstName;
-        public string SecondName;
+        public string LastName;
     }
 
     [System.Serializable]
@@ -30,6 +30,16 @@ public class JsonReader : MonoBehaviour
         public string Rank;
     }
 
+    [System.Serializable]
+    public class Telephone_Attributes
+    {
+        public string Order;
+        public int Index;
+        public string Talk;
+        public string Text;
+        public string Sprite;
+    }
+
     public class NameList_Parse
     {
         public NameList_Attributes[] namelist;
@@ -46,15 +56,23 @@ public class JsonReader : MonoBehaviour
         public Militaryrank_Attributes[] militaryrank;
     }
 
+    public class Telephone_Parse
+    {
+        public Telephone_Attributes[] Stamp;
+        // Ex) public Telephone_Attributes[] WrongSomething;
+    }
+
     public NameList_Parse NameList;
     public ArmyUnit_Parse ArmyUnit;
     public Rank_Parse Rank;
+    public Telephone_Parse Telephone;
 
     private void Awake()
     {
         NameList = JsonUtility.FromJson<NameList_Parse>(ReadJson("namelist"));
         ArmyUnit = JsonUtility.FromJson<ArmyUnit_Parse>(ReadJson("armyunit"));
         Rank = JsonUtility.FromJson<Rank_Parse>(ReadJson("militaryrank"));
+        Telephone = JsonUtility.FromJson<Telephone_Parse>(ReadJson("telephone"));
     }
 
     // Start is called before the first frame update

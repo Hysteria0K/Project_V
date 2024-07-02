@@ -28,7 +28,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
     [Header("Letter info")]
     [SerializeField] private int FirstName;
-    [SerializeField] private int SecondName;
+    [SerializeField] private int LastName;
     [SerializeField] private int Rank;
     [SerializeField] private int Regiment;
     [SerializeField] private int Battalion;
@@ -134,7 +134,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
     {
         // 올바른 편지 (틀린 부분 없음)
         FirstName = Random.Range(0, JsonReader.NameList.namelist.Length);
-        SecondName = Random.Range(0, JsonReader.NameList.namelist.Length);
+        LastName = Random.Range(0, JsonReader.NameList.namelist.Length);
         Rank = Random.Range(0, JsonReader.Rank.militaryrank.Length);
         Regiment = Random.Range(0, JsonReader.ArmyUnit.armyunit.Length);
         Battalion = Regiment;
@@ -149,7 +149,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
     {
         Rank_Name_text.text = JsonReader.Rank.militaryrank[Rank].Rank + ", " + 
                               JsonReader.NameList.namelist[FirstName].FirstName + " " +
-                              JsonReader.NameList.namelist[SecondName].SecondName;
+                              JsonReader.NameList.namelist[LastName].LastName;
         Regiment_Battalion_text.text = JsonReader.ArmyUnit.armyunit[Battalion].Battalion + ", " +
                                        JsonReader.ArmyUnit.armyunit[Regiment].Regiment;
         APO_text.text = "APO " + JsonReader.ArmyUnit.armyunit[APO].APO.TrimEnd('.', '0');
