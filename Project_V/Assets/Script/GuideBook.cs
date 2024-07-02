@@ -9,6 +9,7 @@ public class GuideBook : MonoBehaviour
     [Header("Object")]
     [SerializeField] private RectTransform Table_Area_Transform;
     [SerializeField] private JsonReader JsonReader;
+    [SerializeField] private RectTransform Letter_Area_Transform;
     public TextMeshProUGUI Guidebook_Page_Text;
 
     private RectTransform Guidebook_Transform;
@@ -33,6 +34,7 @@ public class GuideBook : MonoBehaviour
     {
         Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
+        Letter_Area_Transform = GameObject.Find("Letter_Area").GetComponent<RectTransform>();
 
         OnTable = false;
         Change_Check = false;
@@ -40,15 +42,13 @@ public class GuideBook : MonoBehaviour
         Table = new Rect(Table_Area_Transform.position.x - Table_Area_Transform.rect.width / 2,
                 Table_Area_Transform.position.y - Table_Area_Transform.rect.height / 2,
                 Table_Area_Transform.rect.width, Table_Area_Transform.rect.height);
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         Guidebook_Transform = GetComponent<RectTransform>();
-
-        OriginWidth = Guidebook_Transform.rect.width;
-        OriginHeight = Guidebook_Transform.rect.height;
 
         Guidebook_Page = 1;
     }
@@ -81,9 +81,9 @@ public class GuideBook : MonoBehaviour
 
     private void Guidebook_Collider()
     {
-        Guidebook_Rect = new Rect(Guidebook_Transform.position.x - OriginWidth / 2,
-                         Guidebook_Transform.position.y - OriginHeight / 2,
-                         OriginWidth, OriginHeight);
+        Guidebook_Rect = new Rect(Guidebook_Transform.position.x,
+                         Guidebook_Transform.position.y,
+                         1, 1);
 
         if (Guidebook_Rect.Overlaps(Table))
         {
@@ -91,6 +91,7 @@ public class GuideBook : MonoBehaviour
             {
                 OnTable = true;
                 Change_Check = true;
+                this.transform.SetParent(Table_Area_Transform);
             }
         }
         else
@@ -99,6 +100,7 @@ public class GuideBook : MonoBehaviour
             {
                 OnTable = false;
                 Change_Check = true;
+                this.transform.SetParent(Letter_Area_Transform);
             }
         }
     }

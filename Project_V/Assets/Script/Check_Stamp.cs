@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 {
     public GameObject Stamp;
-    public GameObject Letters;
+    public GameObject Table_Area;
     public Stamp_Bar_Edge Stamp_Bar_Edge;
 
     private RectTransform Stamp_Transform;
@@ -71,7 +71,7 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
     IEnumerator StampUp()
     {
-        GameObject Target = FindLetter(Letters);
+        GameObject Target = FindLetter(Table_Area);
         if (Target != null)
         {
             Instantiate(Stamp, Stamp_Transform.position, Stamp_Transform.rotation, Target.transform.GetChild(1).transform);

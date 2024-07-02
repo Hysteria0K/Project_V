@@ -11,6 +11,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
 {
     [Header("Object")]
     [SerializeField] private RectTransform Table_Area_Transform;
+    [SerializeField] private RectTransform Letter_Area_Transform;
     [SerializeField] private RectTransform PostBox_Area_Transform;
     [SerializeField] private JsonReader JsonReader;
 
@@ -48,6 +49,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
     private void Awake()
     {
         Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
+        Letter_Area_Transform = GameObject.Find("Letter_Area").GetComponent<RectTransform>();
         PostBox_Area_Transform = GameObject.Find("PostBox_Area").GetComponent<RectTransform>();
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
     }
@@ -96,9 +98,11 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
     private void Letter_Collider()
     {
-        Letter_Rect = new Rect(Letter_Transform.position.x - Letter_Transform.rect.width / 2,
-                         Letter_Transform.position.y - Letter_Transform.rect.height / 2,
-                         Letter_Transform.rect.width, Letter_Transform.rect.height);
+        Letter_Rect = new Rect(Letter_Transform.position.x,
+                         Letter_Transform.position.y,
+                         1, 1);
+
+        Debug.Log(Letter_Rect);
 
         if (Letter_Rect.Overlaps(Table))
         {
@@ -106,6 +110,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
             {
                 OnTable = true;
                 Change_Check = true;
+                this.transform.SetParent(Table_Area_Transform);
             }
         }
         else
@@ -114,7 +119,13 @@ public class Letter : MonoBehaviour, IEndDragHandler
             {
                 OnTable = false;
                 Change_Check = true;
+                this.transform.SetParent(Letter_Area_Transform);
             }
+        }
+
+        if (Letter_Rect.Overlaps(PostBox))
+        {
+            this.transform.SetParent(PostBox_Area_Transform);
         }
     }
 
