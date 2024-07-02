@@ -11,10 +11,16 @@ public class Drag_Drop : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     private RectTransform ThisRect;
 
+    public bool Mouse_Center;
+    public bool Is_Drag;
+
     // Start is called before the first frame update
     void Start()
     {
         ThisRect= GetComponent<RectTransform>();
+
+        Mouse_Center = false;
+        Is_Drag = false;
     }
 
     // Update is called once per frame
@@ -25,7 +31,15 @@ public class Drag_Drop : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        transform.position = eventData.position - (Vect2 - new Vector2(Saved_Position.x, Saved_Position.y));
+        if (Mouse_Center == false)
+        {
+            transform.position = eventData.position - (Vect2 - new Vector2(Saved_Position.x, Saved_Position.y));
+        }
+
+        else
+        {
+            transform.position = eventData.position;
+        }
     }
 
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
@@ -33,5 +47,6 @@ public class Drag_Drop : MonoBehaviour, IDragHandler, IPointerDownHandler
         transform.SetAsLastSibling();
         Vect2 = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Saved_Position = ThisRect.position;
+        Is_Drag = true;
     }
 }

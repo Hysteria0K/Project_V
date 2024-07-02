@@ -19,15 +19,15 @@ public class Letter : MonoBehaviour, IEndDragHandler
     private RectTransform Letter_Transform;
 
     private Rect Table;
-    private Rect Letter_Rect;
     private Rect PostBox;
     private Rect Letter_Area;
 
     public GameObject Letter_Small;
     public GameObject Letter_Large;
+    public Drag_Drop Drag_Drop;
 
-    private bool OnTable;
-    private bool Change_Check;
+    [SerializeField] private bool OnTable;
+    [SerializeField] private bool Change_Check;
 
     private float Half_Width;
     private float Half_Height;
@@ -50,6 +50,9 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
     [Header("Stamp")]
     public int Stamp_Value; // 0 = 안함, 1 = stamp_1, 2 = stamp_Approved, 3 = stamp_Denied, 4 = 여러개 동시에 찍음
+
+    private Vector2 Vect2;
+    private Vector3 Saved_Position;
 
     private void Awake()
     {
@@ -103,6 +106,8 @@ public class Letter : MonoBehaviour, IEndDragHandler
             else
             {
                 Letter_Not_On_Table();
+                Letter_Transform.position = Input.mousePosition;
+                Drag_Drop.Mouse_Center = true;
             }
 
             Change_Check = false;
@@ -111,43 +116,46 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
     private void Letter_Collider()
     {
-        Letter_Rect = new Rect(Letter_Transform.position.x,
-                         Letter_Transform.position.y,
-                         1, 1);
-
-        if (Letter_Rect.Overlaps(Table))
+        if (this.transform.parent != PostBox_Area_Transform)
         {
-            if (OnTable == false)
+            if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= Letter_Area.xMax)
             {
-                OnTable = true;
-                Change_Check = true;
-                this.transform.SetParent(Table_Area_Transform);
+                if (OnTable == false)
+                {
+                    OnTable = true;
+                    Change_Check = true;
+                    this.transform.SetParent(Table_Area_Transform);
+                }
             }
-        }
-        else
-        {
-            if (OnTable == true && Letter_Rect.Overlaps(Letter_Area))
+            else
+            {
+                if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.x < Table.xMin)
+                {
+                    OnTable = false;
+                    Change_Check = true;
+                    this.transform.SetParent(Letter_Area_Transform);
+                }
+            }
+
+            if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= PostBox.xMin && Input.mousePosition.y >= Table.yMax)
             {
                 OnTable = false;
                 Change_Check = true;
-                this.transform.SetParent(Letter_Area_Transform);
+                this.transform.SetParent(PostBox_Area_Transform);
             }
-        }
 
-        if (Letter_Rect.Overlaps(PostBox))
-        {
-            OnTable = false;
-            Change_Check = true;
-            this.transform.SetParent(PostBox_Area_Transform);
-        }
-
-        if (this.transform.parent != PostBox_Area_Transform)
-        {
             Move_Limit(Letter_Transform, Big_Border_Transform);
         }
 
         else
         {
+            if (Drag_Drop.Is_Drag == true && Input.mousePosition.y < PostBox.yMin)
+            {
+                OnTable = true;
+                Change_Check = true;
+                this.transform.SetParent(Table_Area_Transform);
+            }
+
             Move_Limit(Letter_Transform, PostBox_Area_Transform);
         }
     }
@@ -190,16 +198,6 @@ public class Letter : MonoBehaviour, IEndDragHandler
         Force_text.text = JsonReader.ArmyUnit.armyunit[Force].Forces;
     }
 
-    void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
-    {
-        if (this.transform.parent == PostBox_Area_Transform)
-        {
-            Debug.Log("집하장행");
-
-            Destroy(this.gameObject);
-        }
-    }
-
     void Move_Limit(RectTransform Move, RectTransform Limit)
     {
         // rectToLimit의 현재 위치
@@ -238,5 +236,16 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
         // 제한된 위치 적용
         Move.position = limitedPosition;
+    }
+    void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        Drag_Drop.Mouse_Center = false;
+        Drag_Drop.Is_Drag = false;
+        if (this.transform.parent == PostBox_Area_Transform)
+        {
+            Debug.Log("집하장행");
+
+            Destroy(this.gameObject);
+        }
     }
 }

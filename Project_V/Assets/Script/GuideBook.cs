@@ -97,7 +97,7 @@ public class GuideBook : MonoBehaviour
     {
         Guidebook_Rect = new Rect(Guidebook_Transform.position.x,
                          Guidebook_Transform.position.y,
-                         1, 1);
+                         10, 10);
 
         if (Guidebook_Rect.Overlaps(Table))
         {
