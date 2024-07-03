@@ -7,12 +7,15 @@ public class Telephone_Saver : MonoBehaviour
     public GameObject Telephone;
     public RectTransform Canvas;
 
+    [SerializeField] private float Delay_Time;
+
     public bool IsLocked;
 
     // Start is called before the first frame update
     void Start()
     {
         IsLocked = false;
+        Delay_Time = 5.0f;
     }
 
     // Update is called once per frame
@@ -20,8 +23,8 @@ public class Telephone_Saver : MonoBehaviour
     {
         if (IsLocked == false && this.transform.childCount != 0)
         {
-            Spawn_Telephone();
-            Destroy(this.transform.GetChild(0).gameObject);
+            StartCoroutine(Delay());
+            IsLocked = true;
         }
     }
 
@@ -29,6 +32,12 @@ public class Telephone_Saver : MonoBehaviour
     {
         Telephone.GetComponent<Telephone>().Reason = this.transform.GetChild(0).GetComponent<Telephone_Saved>().Reason;
         Instantiate(Telephone, new Vector3(104, 801, 0), new Quaternion(0, 0, 0, 0), Canvas);
-        IsLocked = true;
+        Destroy(this.transform.GetChild(0).gameObject);
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(Delay_Time);
+        Spawn_Telephone();
     }
 }
