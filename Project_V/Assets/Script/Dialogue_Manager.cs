@@ -7,11 +7,12 @@ using System.IO;
 using System.Reflection;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using System;
+using TMPro;
 
 public class Dialogue_Manager : MonoBehaviour
 {
-    public Text Dialogue_Text;
-    public Text Dialogue_Name;
+    public TextMeshProUGUI Dialogue_Text;
+    public TextMeshProUGUI Dialogue_Name;
     public GameObject Dialogue_Sprite1;
     public GameObject Dialogue_Sprite2;
     public GameObject Dialogue_Sprite3;
