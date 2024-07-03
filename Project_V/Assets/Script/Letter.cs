@@ -241,7 +241,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
     {
         if (this.transform.parent == PostBox_Area_Transform)
         {
-            if (Stamp_Value == 4 && Stamp_Value == 0)
+            if (Stamp_Value == 4 || Stamp_Value == 0)
             {
                 Telephone_Saved.GetComponent<Telephone_Saved>().Reason = "Stamp";
                 Instantiate(Telephone_Saved, Telephone_Saver);
