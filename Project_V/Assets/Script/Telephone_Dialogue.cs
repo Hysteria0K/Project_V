@@ -13,6 +13,8 @@ public class Telephone_Dialogue : MonoBehaviour
 
     public string Parse_text;
 
+    public int Index;
+
     private float delay = 0.125f;
 
     private void Awake()
@@ -43,7 +45,26 @@ public class Telephone_Dialogue : MonoBehaviour
                 count++;
             }
 
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(d);
+        }
+
+        Telephone.Up_Check = true;
+        StartCoroutine(Move_Coroutine());
+    }
+
+    IEnumerator Move_Coroutine()
+    {
+        float Value_Count = 0;
+        while (Index != Telephone.MaxIndex)
+        {
+            yield return new WaitForSeconds(0.03f);
+
+            if (Value_Count >= Telephone.Up_Value)
+            {
+                break;
+            }
+            this.transform.position += new Vector3(0, Telephone.Up_Value / 10, 0);
+            Value_Count += Telephone.Up_Value / 10;
         }
 
         Telephone.Text_End_Check = true;

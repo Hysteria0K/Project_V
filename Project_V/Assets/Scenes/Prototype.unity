@@ -290,6 +290,9 @@ MonoBehaviour:
   Stamp_Bar_Edge: {fileID: 1943908690}
   Is_Ready: 0
   Stamp_Value: 2
+  Stamp_Down: 0
+  Stamp_Down_Position: {x: 0, y: 0, z: 0}
+  Stamp_Up_Position: {x: 0, y: 0, z: 0}
 --- !u!1 &252757835
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +337,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &382747383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 382747384}
+  - component: {fileID: 382747385}
+  m_Layer: 0
+  m_Name: Telephone_Saver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &382747384
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382747383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4.140717}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 184.60832, y: 832.7378}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &382747385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382747383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef818a0071586a4d92c76da5b8a4cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Telephone: {fileID: 3882363357672167873, guid: 7be85a74c87f2444297e12f570b2f4e3, type: 3}
+  Canvas: {fileID: 1556057629}
+  IsLocked: 0
 --- !u!1 &444271308
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +481,9 @@ MonoBehaviour:
   Stamp_Bar_Edge: {fileID: 1943908690}
   Is_Ready: 0
   Stamp_Value: 1
+  Stamp_Down: 0
+  Stamp_Down_Position: {x: 0, y: 0, z: 0}
+  Stamp_Up_Position: {x: 0, y: 0, z: 0}
 --- !u!1 &483705011
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +864,9 @@ MonoBehaviour:
   Stamp_Bar_Edge: {fileID: 1943908690}
   Is_Ready: 0
   Stamp_Value: 3
+  Stamp_Down: 0
+  Stamp_Down_Position: {x: 0, y: 0, z: 0}
+  Stamp_Up_Position: {x: 0, y: 0, z: 0}
 --- !u!1 &781998962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,62 +1062,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5736101206533577794, guid: 90c990a16e1e08c4e8ad1c0656963434, type: 3}
   m_PrefabInstance: {fileID: 974920985}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1217880803
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1217880804}
-  - component: {fileID: 1217880805}
-  m_Layer: 5
-  m_Name: Telephone_Dialogue
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1217880804
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217880803}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1556057629}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -856, y: 261}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1217880805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217880803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8dae78069883e74aaea8209db48e75d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Right_Dialogue: {fileID: 1577726886229201860, guid: b7dbbdc0aa056e24ca4aa208ff0f8df9, type: 3}
-  Left_Dialogue: {fileID: 126320901650908009, guid: d1bf539b17080114e9baa3606eb19f47, type: 3}
-  Reason: Stamp
-  Index: 0
-  MaxIndex: 0
-  Parse_text: 
-  Talker: 
-  Text_End_Check: 0
 --- !u!1 &1555566774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1247,6 @@ RectTransform:
   m_Children:
   - {fileID: 781998963}
   - {fileID: 1779170997}
-  - {fileID: 1217880804}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1767,3 +1770,4 @@ SceneRoots:
   - {fileID: 1556057629}
   - {fileID: 483705014}
   - {fileID: 252757837}
+  - {fileID: 382747384}

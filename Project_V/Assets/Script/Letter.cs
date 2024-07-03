@@ -15,6 +15,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
     [SerializeField] private RectTransform PostBox_Area_Transform;
     [SerializeField] private RectTransform Big_Border_Transform;
     [SerializeField] private JsonReader JsonReader;
+    [SerializeField] private RectTransform Telephone_Saver;
 
     private RectTransform Letter_Transform;
 
@@ -24,6 +25,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
     public GameObject Letter_Small;
     public GameObject Letter_Large;
+    public GameObject Telephone_Saved;
     public Drag_Drop Drag_Drop;
 
     [SerializeField] private bool OnTable;
@@ -58,6 +60,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
         PostBox_Area_Transform = GameObject.Find("PostBox_Area").GetComponent<RectTransform>();
         Big_Border_Transform = GameObject.Find("Big_Border").GetComponent<RectTransform>();
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
+        Telephone_Saver = GameObject.Find("Telephone_Saver").GetComponent<RectTransform>();
     }
 
     // Start is called before the first frame update
@@ -238,7 +241,11 @@ public class Letter : MonoBehaviour, IEndDragHandler
     {
         if (this.transform.parent == PostBox_Area_Transform)
         {
-            Debug.Log("집하장행");
+            if (Stamp_Value == 4 && Stamp_Value == 0)
+            {
+                Telephone_Saved.GetComponent<Telephone_Saved>().Reason = "Stamp";
+                Instantiate(Telephone_Saved, Telephone_Saver);
+            }
 
             Destroy(this.gameObject);
         }

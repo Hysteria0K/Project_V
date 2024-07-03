@@ -23,6 +23,8 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
     [Header("Setting")]
     [SerializeField] private int Stamp_Value;
+
+    [Header("Coroutine Values")]
     [SerializeField] private float Stamp_Down;
     [SerializeField] private Vector3 Stamp_Down_Position;
     [SerializeField] private Vector3 Stamp_Up_Position;
