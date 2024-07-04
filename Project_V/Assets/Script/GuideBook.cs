@@ -213,6 +213,6 @@ public class GuideBook : MonoBehaviour
         Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(false);
         Guidebook_Page = 5;
         Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(true);
-        Next_Page_Button.SetActive(true);
+        Prev_Page_Button.SetActive(true);
     }
 }
