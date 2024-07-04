@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,8 +11,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool Spawn_Check;
 
     public GameObject Letter;
-
     public RectTransform Letter_Area;
+    public TextMeshProUGUI Timer_Text;
+    public TextMeshProUGUI Score_Text;
+
+    public float Limit_Time;
+
+    public float Current_Time;
+
+    public int Min;
+    public int Sec;
 
 
     private void Awake()
@@ -19,6 +28,9 @@ public class GameManager : MonoBehaviour
         Letter_Count_Max = 3;
         Letter_Count = 0;
         Spawn_Check = false;
+
+        Limit_Time = 300;
+        Current_Time = Limit_Time;
     }
 
     // Start is called before the first frame update
@@ -35,6 +47,14 @@ public class GameManager : MonoBehaviour
             StartCoroutine(Spawn_Letter());
             Spawn_Check = true;
         }
+
+        Current_Time -= Time.deltaTime;
+
+        Min = (int)Current_Time / 60;
+        Sec = (int)Current_Time % 60;
+
+        Timer_Text.text = "Time : " + Min.ToString() + ":" + string.Format("{0:D2}", Sec);
+        Score_Text.text = "Score : " + Score.ToString();
     }
 
     IEnumerator Spawn_Letter()
