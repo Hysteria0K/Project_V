@@ -65,14 +65,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.90898895, b: 0.5896226, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4dfca2206071c7040b24bd5751176356, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -311,12 +311,15 @@ MonoBehaviour:
   Big_Border_Transform: {fileID: 0}
   JsonReader: {fileID: 0}
   Telephone_Saver: {fileID: 0}
+  GameManager: {fileID: 0}
   Letter_Small: {fileID: 5590400894972993479}
   Letter_Large: {fileID: 430668944418519085}
   Telephone_Saved: {fileID: 3643836792736701156, guid: d787477775ff35e428a89f0fb47eb4e5, type: 3}
   Drag_Drop: {fileID: 91783897905128734}
   OnTable: 0
   Change_Check: 0
+  Spawn_Number: 0
+  Spawned: 0
   FirstName: 0
   LastName: 0
   Rank: 0
@@ -330,6 +333,9 @@ MonoBehaviour:
   APO_text: {fileID: 5625436543409909259}
   Force_text: {fileID: 8644890813100461273}
   Stamp_Value: 0
+  Is_Stamp: 0
+  Is_Duplicated: 0
+  Valid: 0
 --- !u!1 &3234098840095733002
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -531,7 +537,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b8bb03863fa143e4c99b9e8fecf80d62, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -606,7 +612,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: ce75641929707374ca902f964622e5ed, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -681,7 +687,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 2718ff0632598b049a4ee26d16bd22fe, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

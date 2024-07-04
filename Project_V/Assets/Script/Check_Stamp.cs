@@ -48,13 +48,11 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         Stamp_Up_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y, this.transform.position.z);
 
         Stamp_Perfect = false;
+
+        Debug.Log(transform.name + Stamp_Rect);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    #region µµÀå Âï±â ÇÔ¼ö
 
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
@@ -74,17 +72,18 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
             this.GetComponent<Number_Stamp>().Button_10.GetComponent<Button>().interactable = false;
             this.GetComponent<Number_Stamp>().Button_1.GetComponent<Button>().interactable = false;
         }
-        
+
         while (true)
         {
             yield return new WaitForSeconds(0.01f);
 
+            Debug.Log(this.transform.position + "," + Stamp_Down_Position);
             if (this.transform.position == Stamp_Down_Position)
             {
                 StartCoroutine(StampUp());
                 break;
             }
-            this.transform.position -= new Vector3(0, Stamp_Down/10, 0);
+            this.transform.position -= new Vector3(0, Stamp_Down / 10, 0);
         }
     }
 
@@ -93,7 +92,7 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         GameObject Target = FindLetter(Table_Area);
         if (Target != null)
         {
-            Instance_Pos = new Vector3(this.transform.position.x, this.transform.position.y - (this.GetComponent<RectTransform>().rect.height - Stamp_Transform.rect.height)/2, this.transform.position.z);
+            Instance_Pos = new Vector3(this.transform.position.x, this.transform.position.y - (this.GetComponent<RectTransform>().rect.height - Stamp_Transform.rect.height) / 2, this.transform.position.z);
 
             if (Stamp.GetComponent<TextMeshProUGUI>() != false)
             {
@@ -138,6 +137,8 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         Stamp_Perfect = false;
     }
 
+    #endregion µµÀå Âï±â ÇÔ¼ö
+
     private GameObject FindLetter(GameObject Parent)
     {
         int Child_Count = Parent.transform.childCount;
@@ -172,7 +173,7 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
         if (IsRectContained(Stamp_Rect, Letter_Large_Rect))
         {
-            if(IsRectContained_Perfect(Stamp_Rect, Letter_Large_Rect) != false)
+            if (IsRectContained_Perfect(Stamp_Rect, Letter_Large_Rect) != false)
             {
                 Stamp_Perfect = true;
                 Debug.Log("Àß ÂïÈû");
