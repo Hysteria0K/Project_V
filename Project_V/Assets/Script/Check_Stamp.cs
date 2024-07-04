@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 {
@@ -22,27 +23,31 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
     [SerializeField] private bool Is_Ready;
 
     [Header("Setting")]
-    [SerializeField] private int Stamp_Value;
+    public int Stamp_Value;
 
     [Header("Coroutine Values")]
     [SerializeField] private float Stamp_Down;
     [SerializeField] private Vector3 Stamp_Down_Position;
     [SerializeField] private Vector3 Stamp_Up_Position;
 
+    private Vector3 Instance_Pos;
+    private bool Stamp_Perfect;
     // Start is called before the first frame update
     void Start()
     {
-        Stamp_Transform = GetComponent<RectTransform>();
+        Stamp_Transform = Stamp.GetComponent<RectTransform>();
         Is_Ready = true;
 
         Stamp_Down = 50;
 
-        Stamp_Rect = new Rect(Stamp_Transform.position.x - Stamp_Bar_Edge.X_Position_Saved - Stamp_Transform.rect.width / 2,
-        Stamp_Transform.position.y - Stamp_Transform.rect.height / 2 - Stamp_Down,
+        Stamp_Rect = new Rect(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved - Stamp_Transform.rect.width / 2,
+        this.transform.position.y - Stamp_Transform.rect.height / 2 - Stamp_Down,
         Stamp_Transform.rect.width, Stamp_Transform.rect.height);
 
         Stamp_Down_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y - Stamp_Down, this.transform.position.z);
         Stamp_Up_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y, this.transform.position.z);
+
+        Stamp_Perfect = false;
     }
 
     // Update is called once per frame
@@ -62,16 +67,24 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
     IEnumerator StampDown()
     {
+        if (this.GetComponent<Number_Stamp>() != null)
+        {
+            Stamp_Value = this.GetComponent<Number_Stamp>().Stamp_Value;
+            this.GetComponent<Number_Stamp>().Button_100.GetComponent<Button>().interactable = false;
+            this.GetComponent<Number_Stamp>().Button_10.GetComponent<Button>().interactable = false;
+            this.GetComponent<Number_Stamp>().Button_1.GetComponent<Button>().interactable = false;
+        }
+        
         while (true)
         {
             yield return new WaitForSeconds(0.01f);
 
-            if (Stamp_Transform.position == Stamp_Down_Position)
+            if (this.transform.position == Stamp_Down_Position)
             {
                 StartCoroutine(StampUp());
                 break;
             }
-            Stamp_Transform.position -= new Vector3(0, Stamp_Down/10, 0);
+            this.transform.position -= new Vector3(0, Stamp_Down/10, 0);
         }
     }
 
@@ -80,16 +93,24 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         GameObject Target = FindLetter(Table_Area);
         if (Target != null)
         {
-            Instantiate(Stamp, Stamp_Transform.position, Stamp_Transform.rotation, Target.transform.GetChild(1).transform);
+            Instance_Pos = new Vector3(this.transform.position.x, this.transform.position.y - (this.GetComponent<RectTransform>().rect.height - Stamp_Transform.rect.height)/2, this.transform.position.z);
 
-            if (Target.GetComponent<Letter>().Stamp_Value == 0 || Target.GetComponent<Letter>().Stamp_Value == this.Stamp_Value)
+            if (Stamp.GetComponent<TextMeshProUGUI>() != false)
+            {
+                Stamp.GetComponent<TextMeshProUGUI>().text = string.Format("{0:D3}", Stamp_Value);
+            }
+
+            Instantiate(Stamp, Instance_Pos, this.transform.rotation, Target.transform.GetChild(1).transform);
+
+            if (Target.GetComponent<Letter>().Is_Stamp == false && Stamp_Perfect == true)
             {
                 Target.GetComponent<Letter>().Stamp_Value = this.Stamp_Value;
+                Target.GetComponent<Letter>().Is_Stamp = true;
             }
 
             else
             {
-                Target.GetComponent<Letter>().Stamp_Value = 4;
+                Target.GetComponent<Letter>().Is_Duplicated = true;
             }
         }
 
@@ -99,13 +120,22 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         {
             yield return new WaitForSeconds(0.01f);
 
-            if (Stamp_Transform.position == Stamp_Up_Position)
+            if (this.transform.position == Stamp_Up_Position)
             {
+                if (this.GetComponent<Number_Stamp>() != null)
+                {
+                    this.GetComponent<Number_Stamp>().Button_100.GetComponent<Button>().interactable = true;
+                    this.GetComponent<Number_Stamp>().Button_10.GetComponent<Button>().interactable = true;
+                    this.GetComponent<Number_Stamp>().Button_1.GetComponent<Button>().interactable = true;
+                }
+
                 Is_Ready = true;
                 break;
             }
-            Stamp_Transform.position += new Vector3(0, Stamp_Down / 10, 0);
+            this.transform.position += new Vector3(0, Stamp_Down / 10, 0);
         }
+
+        Stamp_Perfect = false;
     }
 
     private GameObject FindLetter(GameObject Parent)
@@ -142,6 +172,11 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
         if (IsRectContained(Stamp_Rect, Letter_Large_Rect))
         {
+            if(IsRectContained_Perfect(Stamp_Rect, Letter_Large_Rect) != false)
+            {
+                Stamp_Perfect = true;
+                Debug.Log("Àß ÂïÈû");
+            }
             return true;
         }
 
@@ -156,6 +191,14 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         return LargeLetterRect.Contains(new Vector2(StampRect.xMin, StampRect.yMin)) ||
               LargeLetterRect.Contains(new Vector2(StampRect.xMax, StampRect.yMin)) ||
               LargeLetterRect.Contains(new Vector2(StampRect.xMin, StampRect.yMax)) ||
+              LargeLetterRect.Contains(new Vector2(StampRect.xMax, StampRect.yMax));
+    }
+
+    private bool IsRectContained_Perfect(Rect StampRect, Rect LargeLetterRect)
+    {
+        return LargeLetterRect.Contains(new Vector2(StampRect.xMin, StampRect.yMin)) &&
+              LargeLetterRect.Contains(new Vector2(StampRect.xMax, StampRect.yMin)) &&
+              LargeLetterRect.Contains(new Vector2(StampRect.xMin, StampRect.yMax)) &&
               LargeLetterRect.Contains(new Vector2(StampRect.xMax, StampRect.yMax));
     }
 }

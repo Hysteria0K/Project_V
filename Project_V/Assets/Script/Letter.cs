@@ -52,6 +52,10 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
     [Header("Stamp")]
     public int Stamp_Value; // 0 = 안함, 1 = stamp_1, 2 = stamp_Approved, 3 = stamp_Denied, 4 = 여러개 동시에 찍음
+    public bool Is_Stamp;
+    public bool Is_Duplicated;
+    public bool Valid;
+    private string Reason;
 
     private void Awake()
     {
@@ -89,6 +93,10 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
         Half_Width = Letter_Transform.rect.width / 2;
         Half_Height = Letter_Transform.rect.height / 2;
+
+        Is_Stamp = false;
+        Is_Duplicated = false;
+        Valid = false;
     }
 
     // Update is called once per frame
@@ -241,13 +249,29 @@ public class Letter : MonoBehaviour, IEndDragHandler
     {
         if (this.transform.parent == PostBox_Area_Transform)
         {
-            if (Stamp_Value == 4 || Stamp_Value == 0)
+            Check_Valid();
+            if (Valid == false)
             {
-                Telephone_Saved.GetComponent<Telephone_Saved>().Reason = "Stamp";
+                Telephone_Saved.GetComponent<Telephone_Saved>().Reason = Reason;
                 Instantiate(Telephone_Saved, Telephone_Saver);
             }
 
             Destroy(this.gameObject);
+        }
+    }
+
+    private void Check_Valid()
+    {
+        if (string.Format("{0:D3}", Stamp_Value) == JsonReader.ArmyUnit.armyunit[APO].APO.TrimEnd('.', '0') && Is_Duplicated == false)
+        {
+            Debug.Log("적합");
+        }
+
+        else
+        {
+            Valid = false;
+            Reason = "Stamp";
+            Debug.Log("도장 부적합");
         }
     }
 }
