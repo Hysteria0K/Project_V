@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 
 public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 {
@@ -41,25 +42,24 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         Stamp_Down = 50;
 
         Stamp_Rect = new Rect(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved - Stamp_Transform.rect.width / 2,
-        this.transform.position.y - Stamp_Transform.rect.height / 2 - Stamp_Down,
+        this.transform.position.y - Stamp_Transform.rect.height/ 2 - Stamp_Down,
         Stamp_Transform.rect.width, Stamp_Transform.rect.height);
 
         Stamp_Down_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y - Stamp_Down, this.transform.position.z);
         Stamp_Up_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y, this.transform.position.z);
 
         Stamp_Perfect = false;
-
-        Debug.Log(transform.name + Stamp_Rect);
     }
 
     #region 도장 찍기 함수
 
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (Is_Ready == true)
+        if (Is_Ready == true && Stamp_Bar_Edge.Open_Complete == true)
         {
             StartCoroutine(StampDown());
             Is_Ready = false;
+            Stamp_Bar_Edge.Click_On = false;
         }
     }
 
@@ -77,7 +77,6 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         {
             yield return new WaitForSeconds(0.01f);
 
-            Debug.Log(this.transform.position + "," + Stamp_Down_Position);
             if (this.transform.position == Stamp_Down_Position)
             {
                 StartCoroutine(StampUp());
@@ -129,6 +128,7 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
                 }
 
                 Is_Ready = true;
+                Stamp_Bar_Edge.Click_On = true;
                 break;
             }
             this.transform.position += new Vector3(0, Stamp_Down / 10, 0);

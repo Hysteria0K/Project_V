@@ -14,40 +14,49 @@ public class Stamp_Bar_Edge : MonoBehaviour, IPointerDownHandler
 
     public float X_Position_Saved;
 
+    public bool Open_Complete;
+
+    public bool Click_On;
+
     #region 애니변수
-    private Vector2 vec1;
-    private Vector2 vec2;
+    private Vector2 vec1; //접혔을때
+    private Vector2 vec2; //펼쳐졌을때
     //반동거리
     #endregion 애니변수
 
     void Awake()
     {
-        X_Position_Saved = Check_Stamp.position.x - 960;
+        X_Position_Saved = Check_Bar.rect.width; //튀어나가는 값;
 
-        vec1 = new Vector2(Check_Stamp.anchoredPosition.x, Check_Stamp.anchoredPosition.y);
-        vec2 = new Vector2(Check_Bar.sizeDelta.x * -1, Check_Stamp.anchoredPosition.y);
+        vec1 = new Vector2(Check_Stamp.transform.position.x, Check_Stamp.transform.position.y);
+        vec2 = new Vector2(Check_Stamp.position.x - X_Position_Saved, Check_Stamp.transform.position.y);
     }
 
     void Start()
     {
         isOpen = false;
+        Open_Complete = false;
+        Click_On = true;
     }
 
     #region 이벤트 함수
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (isOpen == false)
+        if (Click_On == true)
         {
-            //Check_Stamp.position = Check_Stamp.position - new Vector3(X_Position_Saved, 0, 0);
-            isOpen = true;
-            StartCoroutine("Ani_StampBarMove");
-        }
+            if (isOpen == false)
+            {
+                //Check_Stamp.position = Check_Stamp.position - new Vector3(X_Position_Saved, 0, 0);
+                isOpen = true;
+                StartCoroutine("Ani_StampBarMove");
+            }
 
-        else
-        {
-            //Check_Stamp.position = Check_Stamp.position + new Vector3(X_Position_Saved, 0, 0);
-            isOpen = false;
-            StartCoroutine("Ani_StampBarMove");
+            else
+            {
+                //Check_Stamp.position = Check_Stamp.position + new Vector3(X_Position_Saved, 0, 0);
+                isOpen = false;
+                StartCoroutine("Ani_StampBarMove");
+            }
         }
     }
     #endregion 이벤트 함수
@@ -55,7 +64,7 @@ public class Stamp_Bar_Edge : MonoBehaviour, IPointerDownHandler
     #region 애니메이션 함수
     IEnumerator Ani_StampBarMove()
     {
-        float speed = 0.07f;
+        float speed = 0.08f;
         float value = 0;
         int step = 0;
 
@@ -66,23 +75,23 @@ public class Stamp_Bar_Edge : MonoBehaviour, IPointerDownHandler
                 case 0:
                     value = value + speed;
                     if (isOpen)
-                        Check_Stamp.anchoredPosition = Vector2.Lerp(vec1, vec2, Mathf.Min(value, 1));
+                        Check_Stamp.transform.position = Vector2.Lerp(vec1, vec2, Mathf.Min(value, 1));
                     else
-                        Check_Stamp.anchoredPosition = Vector2.Lerp(vec2, vec1, Mathf.Min(value, 1));
+                        Check_Stamp.transform.position = Vector2.Lerp(vec2, vec1, Mathf.Min(value, 1));
                     break;
                 case 1:
                     value = value + speed;
                     if (isOpen)
-                        Check_Stamp.anchoredPosition = Vector2.Lerp(vec2, new Vector2(vec2.x * 0.9f, vec2.y), Mathf.Min(value, 1));
+                        Check_Stamp.transform.position = Vector2.Lerp(vec2, new Vector2(vec2.x * 1.05f, vec2.y), Mathf.Min(value, 1));
                     else
-                        Check_Stamp.anchoredPosition = Vector2.Lerp(vec1, new Vector2(vec2.x * 0.1f, vec2.y), Mathf.Min(value, 1));
+                        Check_Stamp.transform.position = Vector2.Lerp(vec1, new Vector2(vec1.x * 0.95f, vec1.y), Mathf.Min(value, 1));
                     break;
                 case 2:
-                    value = value + speed * 0.8f;
+                    value = value + speed * 0.6f;
                     if (isOpen)
-                        Check_Stamp.anchoredPosition = Vector2.Lerp(new Vector2(vec2.x * 0.9f, vec2.y), vec2, Mathf.Min(value, 1));
+                        Check_Stamp.transform.position = Vector2.Lerp(new Vector2(vec2.x * 1.05f, vec2.y), vec2, Mathf.Min(value, 1));
                     else
-                        Check_Stamp.anchoredPosition = Vector2.Lerp(new Vector2(vec2.x * 0.1f, vec2.y), vec1, Mathf.Min(value, 1));
+                        Check_Stamp.transform.position = Vector2.Lerp(new Vector2(vec1.x * 0.95f, vec1.y), vec1, Mathf.Min(value, 1));
                     break;
             }
 
@@ -90,6 +99,15 @@ public class Stamp_Bar_Edge : MonoBehaviour, IPointerDownHandler
             {
                 if (step == 2)
                 {
+                    if (isOpen)
+                    {
+                        Open_Complete = true;
+                    }
+
+                    else
+                    {
+                        Open_Complete = false;
+                    }
                     yield break;
                 }
                 else
