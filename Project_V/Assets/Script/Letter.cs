@@ -264,7 +264,8 @@ public class Letter : MonoBehaviour, IEndDragHandler
     {
         if (string.Format("{0:D3}", Stamp_Value) == JsonReader.ArmyUnit.armyunit[APO].APO.TrimEnd('.', '0') && Is_Duplicated == false)
         {
-            Debug.Log("적합");
+            Valid = true;
+            Debug.Log("문제없음");
         }
 
         else

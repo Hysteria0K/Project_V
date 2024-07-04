@@ -23,6 +23,7 @@ public class GuideBook : MonoBehaviour
     public GameObject Guidebook_Small;
     public GameObject Guidebook_Large;
     public Drag_Drop Drag_Drop;
+    public GameObject Page_List;
 
     private bool OnTable;
     private bool Change_Check;
@@ -169,5 +170,19 @@ public class GuideBook : MonoBehaviour
 
         // 제한된 위치 적용
         Move.position = limitedPosition;
+    }
+
+    public void Next_Page()
+    {
+        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(false);
+        Guidebook_Page++;
+        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(true);
+    }
+
+    public void Prev_Page()
+    {
+        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(false);
+        Guidebook_Page--;
+        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(true);
     }
 }

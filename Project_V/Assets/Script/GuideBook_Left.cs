@@ -31,8 +31,7 @@ public class GuideBook_Left : MonoBehaviour, IPointerDownHandler, IDragHandler
         GuideBook.GetComponent<Transform>().transform.SetAsLastSibling();
         if (GuideBook.GetComponent<GuideBook>().Guidebook_Page != 1)
         {
-            GuideBook.GetComponent<GuideBook>().Guidebook_Page--;
-            Debug.Log(GuideBook.GetComponent<GuideBook>().Guidebook_Page);
+            GuideBook.GetComponent<GuideBook>().Prev_Page();
         }
 
         Saved_Position = GuideBook.transform.position;

@@ -29,8 +29,7 @@ public class GuideBook_Right : MonoBehaviour, IPointerDownHandler, IDragHandler
         GuideBook.GetComponent<Transform>().transform.SetAsLastSibling();
         if (GuideBook.GetComponent<GuideBook>().Guidebook_Page != GuideBook.GetComponent<GuideBook>().Guidebook_EndPage)
         {
-            GuideBook.GetComponent<GuideBook>().Guidebook_Page++;
-            Debug.Log(GuideBook.GetComponent<GuideBook>().Guidebook_Page);
+            GuideBook.GetComponent<GuideBook>().Next_Page();
         }
 
         Saved_Position = GuideBook.transform.position;
