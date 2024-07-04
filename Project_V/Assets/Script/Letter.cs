@@ -272,7 +272,9 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
             else
             {
                 GameManager.Score++;
+                GameManager.Score_Update();
             }
+
             GameManager.Letter_Count--;
             Destroy(this.gameObject);
         }

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Score_Update();
     }
 
     // Update is called once per frame
@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
         Sec = (int)Current_Time % 60;
 
         Timer_Text.text = "Time : " + Min.ToString() + ":" + string.Format("{0:D2}", Sec);
-        Score_Text.text = "Score : " + Score.ToString();
     }
 
     IEnumerator Spawn_Letter()
@@ -68,5 +67,10 @@ public class GameManager : MonoBehaviour
         }
 
         Spawn_Check = false;
+    }
+
+    public void Score_Update()
+    {
+        Score_Text.text = "Score : " + Score.ToString();
     }
 }
