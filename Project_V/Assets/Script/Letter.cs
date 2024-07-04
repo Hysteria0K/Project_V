@@ -7,7 +7,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 
-public class Letter : MonoBehaviour, IEndDragHandler
+public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
 {
     [Header("Object")]
     [SerializeField] private RectTransform Table_Area_Transform;
@@ -16,6 +16,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
     [SerializeField] private RectTransform Big_Border_Transform;
     [SerializeField] private JsonReader JsonReader;
     [SerializeField] private RectTransform Telephone_Saver;
+    [SerializeField] private GameManager GameManager;
 
     private RectTransform Letter_Transform;
 
@@ -33,6 +34,9 @@ public class Letter : MonoBehaviour, IEndDragHandler
 
     private float Half_Width;
     private float Half_Height;
+
+    public int Spawn_Number;
+    [SerializeField]private bool Spawned;
 
     [Header("Letter info")]
     [SerializeField] private int FirstName;
@@ -65,6 +69,7 @@ public class Letter : MonoBehaviour, IEndDragHandler
         Big_Border_Transform = GameObject.Find("Big_Border").GetComponent<RectTransform>();
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
         Telephone_Saver = GameObject.Find("Telephone_Saver").GetComponent<RectTransform>();
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Start is called before the first frame update
@@ -97,28 +102,35 @@ public class Letter : MonoBehaviour, IEndDragHandler
         Is_Stamp = false;
         Is_Duplicated = false;
         Valid = false;
+
+        Spawned = true;
+
+        StartCoroutine(Spawn_Move());
     }
 
     // Update is called once per frame
     void Update()
     {
-        Letter_Collider();
-
-        if (Change_Check)
+        if (Spawned != true)
         {
-            if (OnTable == true)
-            {
-                Letter_On_Table();
-            }
+            Letter_Collider();
 
-            else
+            if (Change_Check)
             {
-                Letter_Not_On_Table();
-                Letter_Transform.position = Input.mousePosition;
-                Drag_Drop.Mouse_Center = true;
-            }
+                if (OnTable == true)
+                {
+                    Letter_On_Table();
+                }
 
-            Change_Check = false;
+                else
+                {
+                    Letter_Not_On_Table();
+                    Letter_Transform.position = Input.mousePosition;
+                    Drag_Drop.Mouse_Center = true;
+                }
+
+                Change_Check = false;
+            }
         }
     }
 
@@ -250,12 +262,18 @@ public class Letter : MonoBehaviour, IEndDragHandler
         if (this.transform.parent == PostBox_Area_Transform)
         {
             Check_Valid();
+
             if (Valid == false)
             {
                 Telephone_Saved.GetComponent<Telephone_Saved>().Reason = Reason;
                 Instantiate(Telephone_Saved, Telephone_Saver);
             }
 
+            else
+            {
+                GameManager.Score++;
+            }
+            GameManager.Letter_Count--;
             Destroy(this.gameObject);
         }
     }
@@ -274,5 +292,24 @@ public class Letter : MonoBehaviour, IEndDragHandler
             Reason = "Stamp";
             Debug.Log("도장 부적합");
         }
+    }
+
+    void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        if (Spawned == true)
+        {
+            Spawned = false;
+        }
+    }
+
+    IEnumerator Spawn_Move()
+    {
+        while(this.transform.position.y <= Letter_Area_Transform.position.y + (230 - 160 * (Spawn_Number-1)) && Spawned == true)
+        {
+            yield return new WaitForSeconds(0.01f);
+            this.transform.position += new Vector3(0, 20, 0);
+        }
+
+        Spawned = false;
     }
 }
