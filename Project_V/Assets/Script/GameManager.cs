@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Runtime.InteropServices;
 
 public class GameManager : MonoBehaviour
 {
@@ -54,6 +55,11 @@ public class GameManager : MonoBehaviour
         Sec = (int)Current_Time % 60;
 
         Timer_Text.text = "Time : " + Min.ToString() + ":" + string.Format("{0:D2}", Sec);
+
+        if (Current_Time <= 0)
+        {
+            ExitGame();
+        }
     }
 
     IEnumerator Spawn_Letter()
@@ -72,5 +78,14 @@ public class GameManager : MonoBehaviour
     public void Score_Update()
     {
         Score_Text.text = "Score : " + Score.ToString();
+    }
+
+    private void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(); // 어플리케이션 종료
+#endif
     }
 }
