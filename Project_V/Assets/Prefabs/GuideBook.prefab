@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6272069293153672960
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2244,6 +2244,9 @@ MonoBehaviour:
   Guidebook_Small: {fileID: 2625077345782625694}
   Guidebook_Large: {fileID: 941120987809360372}
   Drag_Drop: {fileID: 7577147225963281710}
+  Page_List: {fileID: 4073540546664310433}
+  Next_Page_Button: {fileID: 9063267771920310593}
+  Prev_Page_Button: {fileID: 112664490075426403}
   Guidebook_Page: 0
   Guidebook_EndPage: 10
 --- !u!1 &9063267771920310593

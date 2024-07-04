@@ -24,6 +24,8 @@ public class GuideBook : MonoBehaviour
     public GameObject Guidebook_Large;
     public Drag_Drop Drag_Drop;
     public GameObject Page_List;
+    public GameObject Next_Page_Button;
+    public GameObject Prev_Page_Button;
 
     private bool OnTable;
     private bool Change_Check;
@@ -174,15 +176,35 @@ public class GuideBook : MonoBehaviour
 
     public void Next_Page()
     {
+        if (Guidebook_Page == 1)
+        {
+            Prev_Page_Button.SetActive(true);
+        }
+
         Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(false);
         Guidebook_Page++;
         Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(true);
+
+        if (Guidebook_Page == Guidebook_EndPage)
+        {
+            Next_Page_Button.SetActive(false);
+        }
     }
 
     public void Prev_Page()
     {
+        if (Guidebook_Page == Guidebook_EndPage)
+        {
+            Next_Page_Button.SetActive(true);
+        }
+
         Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(false);
         Guidebook_Page--;
         Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(true);
+
+        if (Guidebook_Page == 1)
+        {
+            Prev_Page_Button.SetActive(false);
+        }
     }
 }
