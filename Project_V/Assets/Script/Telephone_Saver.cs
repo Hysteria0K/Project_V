@@ -15,7 +15,7 @@ public class Telephone_Saver : MonoBehaviour
     void Start()
     {
         IsLocked = false;
-        Delay_Time = 5.0f;
+        Delay_Time = 1.5f;
     }
 
     // Update is called once per frame

@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Letter_Count_Max = 3;
+        Letter_Count_Max = 1;
         Letter_Count = 0;
         Spawn_Check = false;
 
