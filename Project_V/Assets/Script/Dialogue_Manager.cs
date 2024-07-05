@@ -29,10 +29,14 @@ public class Dialogue_Manager : MonoBehaviour
     [SerializeField] private bool Text_End;
     [SerializeField] private float Next_Talk_a = 1;
     [SerializeField] private bool Next_Talk_Full = true;
+    [SerializeField] private bool Is_Auto = false;
+    [SerializeField] private float Skip_Timer;
 
     [Header("Control")]
     [SerializeField] private float Text_delay = 0.125f;
     [SerializeField] private float Next_Talk_Speed = 1f;
+    [SerializeField] private float Auto_Delay = 1.5f;
+    [SerializeField] private string Next_Scene_Name = "Prototype";
 
     // Start is called before the first frame update
     private void Awake()
@@ -58,17 +62,19 @@ public class Dialogue_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Index < MaxIndex && Text_End == true) //일단 클릭하면 넘어가기
-        {
-            Index++;
-            Next_Dialogue(Index, JsonReader.Test_Dialogue.Test);
-            Next_Talk_a = 1;
-            Next_Talk.color = new Color(Next_Talk.color.r, Next_Talk.color.g, Next_Talk.color.b, Next_Talk_a);
-        }
-
         if (Text_End == true)
         {
             Next_Talk_Control();
+        }
+
+        if (Is_Auto == true && Text_End == true)
+        {
+            Skip_Timer += Time.deltaTime;
+
+            if (Skip_Timer >= Auto_Delay)
+            {
+                Next();
+            }
         }
     }
 
@@ -126,6 +132,7 @@ public class Dialogue_Manager : MonoBehaviour
         }
 
         Text_End = true;
+        Skip_Timer = 0.0f;
     }
 
     private void Next_Talk_Control()
@@ -151,5 +158,37 @@ public class Dialogue_Manager : MonoBehaviour
             Next_Talk_a += Time.deltaTime * Next_Talk_Speed;
             Next_Talk.color = new Color(Next_Talk.color.r, Next_Talk.color.g, Next_Talk.color.b, Next_Talk_a);
         }
+    }
+
+    public void Next()
+    {
+        if (Text_End == true)
+        {
+            Index++;
+        }
+
+        if (Index > MaxIndex)
+        {
+            Next_Scene();
+            Text_End = false;
+        }
+
+        if (Index <= MaxIndex && Text_End == true)
+        {
+            Next_Dialogue(Index, JsonReader.Test_Dialogue.Test);
+            Next_Talk_a = 1;
+            Next_Talk.color = new Color(Next_Talk.color.r, Next_Talk.color.g, Next_Talk.color.b, Next_Talk_a);
+        }
+    }
+
+    public void Auto_Change()
+    {
+        if (Is_Auto) Is_Auto = false;
+        else Is_Auto = true;
+    }
+
+    public void Next_Scene()
+    {
+        SceneManager.LoadScene(Next_Scene_Name);
     }
 }
