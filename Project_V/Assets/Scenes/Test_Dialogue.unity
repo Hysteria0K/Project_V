@@ -1059,7 +1059,12 @@ MonoBehaviour:
   Dialogue_Sprite3: {fileID: 1272429070}
   JsonReader: {fileID: 2062086554}
   SpriteReader: {fileID: 1553586683}
+  Next_Talk: {fileID: 1912721982}
   SceneName: 
+  Index: 0
+  MaxIndex: 0
+  delay: 0.125
+  Text_End: 0
 --- !u!4 &645788743
 Transform:
   m_ObjectHideFlags: 0
