@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Runtime.InteropServices;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
     public RectTransform Letter_Area;
     public TextMeshProUGUI Timer_Text;
     public TextMeshProUGUI Score_Text;
+    public Telephone_Saver Telephone_Saver;
+    public GameObject Game_End;
+    public TextMeshProUGUI Game_End_Score;
 
     public float Limit_Time;
 
@@ -43,7 +47,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Letter_Count <= 0 && Spawn_Check == false) 
+        if (Letter_Count <= 0 && Spawn_Check == false && Telephone_Saver.IsLocked == false) 
         {
             StartCoroutine(Spawn_Letter());
             Spawn_Check = true;
@@ -58,7 +62,7 @@ public class GameManager : MonoBehaviour
 
         if (Current_Time <= 0)
         {
-            ExitGame();
+            EndGame();
         }
     }
 
@@ -80,12 +84,17 @@ public class GameManager : MonoBehaviour
         Score_Text.text = "Score : " + Score.ToString();
     }
 
-    private void ExitGame()
+    private void EndGame()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit(); // 어플리케이션 종료
-#endif
+        Game_End.SetActive(true);
+        Game_End_Score.text = "Score : " + Score.ToString();
+        Score_Text.gameObject.SetActive(false);
+        Timer_Text.gameObject.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
