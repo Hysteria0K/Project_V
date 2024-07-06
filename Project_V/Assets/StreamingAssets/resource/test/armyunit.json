@@ -2,87 +2,87 @@
   "armyunit": [
     {
       "Index": 0.0,
-      "Regiment": "24th Infantry Regiment",
-      "Battalion": "1st Battalion",
+      "Regiment": "24th 보병 연대",
+      "Battalion": "1st 대대",
       "APO": 123.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     },
     {
       "Index": 1.0,
-      "Regiment": "24th Infantry Regiment",
-      "Battalion": "2nd Battalion",
+      "Regiment": "24th 보병 연대",
+      "Battalion": "2nd 대대",
       "APO": 123.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     },
     {
       "Index": 2.0,
-      "Regiment": "24th Infantry Regiment",
-      "Battalion": "4th Battalion",
+      "Regiment": "24th 보병 연대",
+      "Battalion": "4th 대대",
       "APO": 123.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     },
     {
       "Index": 3.0,
-      "Regiment": "24th Infantry Regiment",
-      "Battalion": "8th Battalion",
+      "Regiment": "24th 보병 연대",
+      "Battalion": "8th 대대",
       "APO": 123.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     },
     {
       "Index": 4.0,
-      "Regiment": "1st Infantry Regiment",
-      "Battalion": "2rd Battalion",
+      "Regiment": "1st 보병 연대",
+      "Battalion": "2rd 대대",
       "APO": 544.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     },
     {
       "Index": 5.0,
-      "Regiment": "1st Infantry Regiment",
-      "Battalion": "3th Battalion",
+      "Regiment": "1st 보병 연대",
+      "Battalion": "3th 대대",
       "APO": 544.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     },
     {
       "Index": 6.0,
-      "Regiment": "1st Infantry Regiment",
-      "Battalion": "5th Battalion",
+      "Regiment": "1st 보병 연대",
+      "Battalion": "5th 대대",
       "APO": 544.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     },
     {
       "Index": 7.0,
-      "Regiment": "1st Infantry Regiment",
-      "Battalion": "6th Battalion",
+      "Regiment": "1st 보병 연대",
+      "Battalion": "6th 대대",
       "APO": 544.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     },
     {
       "Index": 8.0,
-      "Regiment": "17th Infantry Regiment",
-      "Battalion": "1th Battalion",
+      "Regiment": "17th 보병 연대",
+      "Battalion": "1th 대대",
       "APO": 237.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     },
     {
       "Index": 9.0,
-      "Regiment": "17th Infantry Regiment",
-      "Battalion": "3th Battalion",
+      "Regiment": "17th 보병 연대",
+      "Battalion": "3th 대대",
       "APO": 237.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     },
     {
       "Index": 10.0,
-      "Regiment": "17th Infantry Regiment",
-      "Battalion": "4th Battalion",
+      "Regiment": "17th 보병 연대",
+      "Battalion": "4th 대대",
       "APO": 237.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     },
     {
       "Index": 11.0,
-      "Regiment": "17th Infantry Regiment",
-      "Battalion": "5th Battalion",
+      "Regiment": "17th 보병 연대",
+      "Battalion": "5th 대대",
       "APO": 237.0,
-      "Forces": "British Expeditionary Forces"
+      "Forces": "영국 원정군"
     }
   ]
 }

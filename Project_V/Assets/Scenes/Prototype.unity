@@ -1336,7 +1336,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 0
   Text: {fileID: 467362543}
-  Number_Stamp: {fileID: 0}
 --- !u!1 &444271308
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,7 +3558,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 0
   Text: {fileID: 1185052111}
-  Number_Stamp: {fileID: 0}
 --- !u!1 &1673002116
 GameObject:
   m_ObjectHideFlags: 0
@@ -4312,7 +4310,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 0
   Text: {fileID: 474510374}
-  Number_Stamp: {fileID: 0}
 --- !u!1 &1805824995
 GameObject:
   m_ObjectHideFlags: 0

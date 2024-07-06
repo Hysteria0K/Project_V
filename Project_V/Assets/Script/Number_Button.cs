@@ -9,8 +9,6 @@ public class Number_Button : MonoBehaviour
 
     public TextMeshProUGUI Text;
 
-    public Number_Stamp Number_Stamp;
-
     // Start is called before the first frame update
     void Start()
     {
