@@ -197,7 +197,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         // 올바른 편지 (틀린 부분 없음)
         FirstName = Random.Range(0, JsonReader.NameList.namelist.Length);
         LastName = Random.Range(0, JsonReader.NameList.namelist.Length);
-        Rank = Random.Range(0, JsonReader.Rank.militaryrank.Length);
+        Rank = Set_Rank();
         Regiment = Random.Range(0, JsonReader.ArmyUnit.armyunit.Length);
         Battalion = Regiment;
         APO = Regiment;
@@ -313,5 +313,31 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         }
 
         Spawned = false;
+    }
+
+    private int Set_Rank()
+    {
+        int Value;
+        int Max_Value = 0;
+        int Stacked_Value = 0;
+
+        for (int i = 0; i < JsonReader.Rank.militaryrank.Length; i++)
+        {
+            Max_Value += JsonReader.Rank.militaryrank[i].Ratio;
+        }
+
+        Value = Random.Range(1, Max_Value+1);
+
+        for (int i =0; i < JsonReader.Rank.militaryrank.Length; i++)
+        {
+            Stacked_Value += JsonReader.Rank.militaryrank[i].Ratio;
+
+            if (Value <= Stacked_Value)
+            {
+                return i;
+            }
+        }
+
+        return 0;
     }
 }

@@ -28,6 +28,7 @@ public class JsonReader : MonoBehaviour
     {
         public int Index;
         public string Rank;
+        public int Ratio;
     }
 
     [System.Serializable]
