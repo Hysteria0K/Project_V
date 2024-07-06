@@ -74,7 +74,15 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             Letter_Count++;
             Letter.GetComponent<Letter>().Spawn_Number = Letter_Count;
+
+            Letter_Spawner.Generate_Complete = false;
             Letter_Spawner.Spawn_Letter();
+
+            while(!Letter_Spawner.Generate_Complete)
+            {
+               
+
+            }
             Instantiate(Letter, Letter_Area.position - new Vector3(0, 700, 0), new Quaternion(0,0,0,0) ,Letter_Area);
         }
 

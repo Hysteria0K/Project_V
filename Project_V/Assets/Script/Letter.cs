@@ -193,20 +193,6 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         Letter_Small.SetActive(true);
         Letter_Large.SetActive(false);
     }
-    private void Letter_Set()
-    {
-        // 올바른 편지 (틀린 부분 없음)
-        FirstName = Random.Range(0, JsonReader.NameList.namelist.Length);
-        LastName = Random.Range(0, JsonReader.NameList.namelist.Length);
-        Rank = Set_Rank();
-        Regiment = Random.Range(0, JsonReader.ArmyUnit.armyunit.Length);
-        Battalion = Regiment;
-        APO = Regiment;
-        Force = Regiment;
-        //Stamp = 우표 나중에 여러개 넣고 돌리면 될듯
-
-        Letter_Text();
-    }
 
     private void Letter_Text()
     {
@@ -290,7 +276,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
             Debug.Log("문제없음");
         }
 
-        else
+        else 
         {
             Valid = false;
             Reason = "Stamp";
@@ -302,6 +288,13 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         {
             Valid = true;
             Debug.Log("문제있는편지 분류 성공");
+        }
+
+        if (Problem == true && Stamp_Value != 9999)
+        {
+            Valid = false;
+            Reason = "Stamp";
+            Debug.Log("도장 부적합");
         }
 
     }

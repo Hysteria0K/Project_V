@@ -26,6 +26,8 @@ public class Letter_Spawner : MonoBehaviour
 
     private bool Dead_Spawn = false;
 
+    public bool Generate_Complete;
+
     private void Awake()
     {
         if (GameLevel.Is_Dead)
@@ -164,7 +166,7 @@ public class Letter_Spawner : MonoBehaviour
                 Letter.FirstName = DeadList[Value_2].FirstName;
                 Letter.LastName = DeadList[Value_2].LastName;
                 Letter.Rank = DeadList[Value_2].Rank;
-                Letter.Regiment = DeadList[Value_2].Rank;
+                Letter.Regiment = DeadList[Value_2].ArmyUnit_Index;
                 Letter.Battalion = DeadList[Value_2].ArmyUnit_Index;
                 Letter.APO = DeadList[Value_2].ArmyUnit_Index;
                 Letter.Force = DeadList[Value_2].ArmyUnit_Index;
@@ -190,8 +192,11 @@ public class Letter_Spawner : MonoBehaviour
                     }
                 }
 
-                Dead_Spawn = false;
+                Letter.Problem = false;
             }
+
+            Dead_Spawn = false;
+            Generate_Complete = true;
         }
     }
 
