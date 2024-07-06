@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Drag_Drop : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDragHandler
+public class Drag_Drop : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDragHandler, IPointerUpHandler
 {
     private Vector2 Vect2;
     private Vector3 Saved_Position;
@@ -50,6 +50,12 @@ public class Drag_Drop : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndD
         Is_Drag = true;
     }
     void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        Mouse_Center = false;
+        Is_Drag = false;
+    }
+
+    void IPointerUpHandler.OnPointerUp(UnityEngine.EventSystems.PointerEventData eventData)
     {
         Mouse_Center = false;
         Is_Drag = false;

@@ -1,0 +1,22 @@
+{
+  "poststamp": [
+    {
+      "Index": 0.0,
+      "Sprite": "Dumystamp_1",
+      "Ratio": 32.0,
+      "Valid": true
+    },
+    {
+      "Index": 1.0,
+      "Sprite": "Dumystamp_2",
+      "Ratio": 16.0,
+      "Valid": true
+    },
+    {
+      "Index": 2.0,
+      "Sprite": "Imvalidstamp",
+      "Ratio": 8.0,
+      "Valid": false
+    }
+  ]
+}
