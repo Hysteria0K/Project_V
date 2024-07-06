@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public Telephone_Saver Telephone_Saver;
     public GameObject Game_End;
     public TextMeshProUGUI Game_End_Score;
+    public Letter_Spawner Letter_Spawner;
 
     public float Limit_Time;
 
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             Letter_Count++;
             Letter.GetComponent<Letter>().Spawn_Number = Letter_Count;
+            Letter_Spawner.Spawn_Letter();
             Instantiate(Letter, Letter_Area.position - new Vector3(0, 700, 0), new Quaternion(0,0,0,0) ,Letter_Area);
         }
 

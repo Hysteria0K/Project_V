@@ -12,6 +12,8 @@ public class Letter_Spawner : MonoBehaviour
     public TextMeshProUGUI Dead_People_2;
     public TextMeshProUGUI Dead_People_3;
 
+    public Letter Letter;
+
     public class DeadPeople
     {
         public int FirstName;
@@ -21,6 +23,8 @@ public class Letter_Spawner : MonoBehaviour
     }
 
     public DeadPeople[] DeadList;
+
+    private bool Dead_Spawn = false;
 
     private void Awake()
     {
@@ -67,7 +71,6 @@ public class Letter_Spawner : MonoBehaviour
                     {
                         Create_DeadPeople_Info(i);
                     }
-
                     else
                     {
                         break;
@@ -140,5 +143,65 @@ public class Letter_Spawner : MonoBehaviour
              + JsonReader.ArmyUnit.armyunit[DeadList[i].ArmyUnit_Index].Regiment + ", " + JsonReader.ArmyUnit.armyunit[DeadList[i].ArmyUnit_Index].Forces + "\n";
 
         return text;
+    }
+    public void Spawn_Letter()
+    {
+        if (GameLevel.Is_Dead)
+        {
+            int Value;
+            Value = Random.Range(0, 100);
+
+            if (Value < GameLevel.Dead_Percentage)
+            {
+                Dead_Spawn = true;
+            }
+
+            if (Dead_Spawn == true)
+            {
+                int Value_2;
+                Value_2 = Random.Range(0, DeadList.Length);
+
+                Letter.FirstName = DeadList[Value_2].FirstName;
+                Letter.LastName = DeadList[Value_2].LastName;
+                Letter.Rank = DeadList[Value_2].Rank;
+                Letter.Regiment = DeadList[Value_2].Rank;
+                Letter.Battalion = DeadList[Value_2].ArmyUnit_Index;
+                Letter.APO = DeadList[Value_2].ArmyUnit_Index;
+                Letter.Force = DeadList[Value_2].ArmyUnit_Index;
+                Letter.Problem = true;
+            }
+
+            else
+            { 
+                Letter_Set();
+
+                for (int i = 0; i < DeadList.Length; i++)
+                {
+                    while (true)
+                    {
+                        if (DeadList[i].FirstName == Letter.FirstName &&
+                            DeadList[i].LastName == Letter.LastName &&
+                            DeadList[i].Rank == Letter.Rank &&
+                            DeadList[i].ArmyUnit_Index == Letter.Regiment)
+                        {
+                            Letter_Set();
+                        }
+                        else break;
+                    }
+                }
+
+                Dead_Spawn = false;
+            }
+        }
+    }
+
+    private void Letter_Set()
+    {
+        Letter.FirstName = Random.Range(0, JsonReader.NameList.namelist.Length);
+        Letter.LastName = Random.Range(0, JsonReader.NameList.namelist.Length);
+        Letter.Rank = Set_Rank();
+        Letter.Regiment = Random.Range(0, JsonReader.ArmyUnit.armyunit.Length);
+        Letter.Battalion = Letter.Regiment;
+        Letter.APO = Letter.Regiment;
     }
 }

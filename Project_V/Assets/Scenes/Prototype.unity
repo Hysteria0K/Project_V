@@ -2585,7 +2585,7 @@ MonoBehaviour:
   Table_Area: {fileID: 655193894}
   Stamp_Bar_Edge: {fileID: 1943908690}
   Is_Ready: 0
-  Stamp_Value: 3
+  Stamp_Value: 9999
   Stamp_Down: 0
   Stamp_Down_Position: {x: 0, y: 0, z: 0}
   Stamp_Up_Position: {x: 0, y: 0, z: 0}
@@ -3307,6 +3307,7 @@ MonoBehaviour:
   Telephone_Saver: {fileID: 382747385}
   Game_End: {fileID: 1855360996}
   Game_End_Score: {fileID: 203590851}
+  Letter_Spawner: {fileID: 1825016793}
   Limit_Time: 0
   Current_Time: 0
   Min: 0
@@ -5104,6 +5105,7 @@ MonoBehaviour:
   Dead_People_1: {fileID: 455936334}
   Dead_People_2: {fileID: 1475499873}
   Dead_People_3: {fileID: 352563291}
+  Letter: {fileID: 4145164800215035226, guid: 90c990a16e1e08c4e8ad1c0656963434, type: 3}
 --- !u!1 &1840048691
 GameObject:
   m_ObjectHideFlags: 0

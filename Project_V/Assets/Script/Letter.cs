@@ -39,14 +39,14 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     [SerializeField]private bool Spawned;
 
     [Header("Letter info")]
-    [SerializeField] private int FirstName;
-    [SerializeField] private int LastName;
-    [SerializeField] private int Rank;
-    [SerializeField] private int Regiment;
-    [SerializeField] private int Battalion;
-    [SerializeField] private int APO;
-    [SerializeField] private int Force;
-    [SerializeField] private int Stamp;
+    [SerializeField] public int FirstName;
+    [SerializeField] public int LastName;
+    [SerializeField] public int Rank;
+    [SerializeField] public int Regiment;
+    [SerializeField] public int Battalion;
+    [SerializeField] public int APO;
+    [SerializeField] public int Force;
+    [SerializeField] public int Stamp;
 
     [Header("Text")]
     public TextMeshProUGUI Rank_Name_text;
@@ -55,11 +55,12 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     public TextMeshProUGUI Force_text;
 
     [Header("Stamp")]
-    public int Stamp_Value; // 0 = 안함, 1 = stamp_1, 2 = stamp_Approved, 3 = stamp_Denied, 4 = 여러개 동시에 찍음
+    public int Stamp_Value; 
     public bool Is_Stamp;
     public bool Is_Duplicated;
     public bool Valid;
     private string Reason;
+    public bool Problem = false;
 
     private void Awake()
     {
@@ -75,7 +76,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     // Start is called before the first frame update
     void Start()
     {
-        Letter_Set();
+        Letter_Text();
 
         Letter_Transform = GetComponent<RectTransform>();
 
@@ -282,6 +283,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
 
     private void Check_Valid()
     {
+        // 정상적인 편지 분류
         if (string.Format("{0:D3}", Stamp_Value) == JsonReader.ArmyUnit.armyunit[APO].APO.TrimEnd('.', '0') && Is_Duplicated == false)
         {
             Valid = true;
@@ -294,6 +296,14 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
             Reason = "Stamp";
             Debug.Log("도장 부적합");
         }
+
+        // 비정상적인 편지 분류
+        if (Problem == true && Stamp_Value == 9999 && Is_Duplicated == false)
+        {
+            Valid = true;
+            Debug.Log("문제있는편지 분류 성공");
+        }
+
     }
 
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
