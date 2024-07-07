@@ -217,6 +217,8 @@ public class Letter_Spawner : MonoBehaviour
         else { Letter.Problem = true; }
 
         Generate_Complete = true;
+        Check_Dead = false;
+        Check_Invalid_Stamp = false;
     }
 
     private void Letter_Set()
