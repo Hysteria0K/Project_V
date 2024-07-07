@@ -12,6 +12,10 @@ public class Sprite_Reader : MonoBehaviour
     public Sprite charlotte;
     public Sprite leni;
 
+    public Sprite Dumystamp_1;
+    public Sprite Dumystamp_2;
+    public Sprite Imvalidstamp;
+
     private void Awake()
     {
         //Read_Sprite();

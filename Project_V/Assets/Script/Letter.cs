@@ -6,6 +6,9 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
+using System.Reflection;
+using UnityEditor.U2D.Aseprite;
+using System;
 
 public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
 {
@@ -17,6 +20,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     [SerializeField] private JsonReader JsonReader;
     [SerializeField] private RectTransform Telephone_Saver;
     [SerializeField] private GameManager GameManager;
+    [SerializeField] private Sprite_Reader SpriteReader;
 
     private RectTransform Letter_Transform;
 
@@ -28,6 +32,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     public GameObject Letter_Large;
     public GameObject Telephone_Saved;
     public Drag_Drop Drag_Drop;
+    public Image poststamp_image;
 
     [SerializeField] private bool OnTable;
     [SerializeField] private bool Change_Check;
@@ -46,7 +51,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     [SerializeField] public int Battalion;
     [SerializeField] public int APO;
     [SerializeField] public int Force;
-    [SerializeField] public int Stamp;
+    [SerializeField] public int PostStamp;
 
     [Header("Text")]
     public TextMeshProUGUI Rank_Name_text;
@@ -71,6 +76,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
         Telephone_Saver = GameObject.Find("Telephone_Saver").GetComponent<RectTransform>();
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        SpriteReader = GameObject.Find("Sprite_Reader").GetComponent<Sprite_Reader>();
     }
 
     // Start is called before the first frame update
@@ -107,6 +113,8 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         Spawned = true;
 
         StartCoroutine(Spawn_Move());
+
+        poststamp_image.sprite = GetSprite_From_Name(JsonReader.PostStamp.poststamp[PostStamp].Sprite);
     }
 
     // Update is called once per frame
@@ -298,7 +306,6 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         }
 
     }
-
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
         if (Spawned == true)
@@ -317,30 +324,12 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
 
         Spawned = false;
     }
-
-    private int Set_Rank()
+    private Sprite GetSprite_From_Name(string classname)
     {
-        int Value;
-        int Max_Value = 0;
-        int Stacked_Value = 0;
+        Type spriteReaderType = SpriteReader.GetType();
 
-        for (int i = 0; i < JsonReader.Rank.militaryrank.Length; i++)
-        {
-            Max_Value += JsonReader.Rank.militaryrank[i].Ratio;
-        }
+        FieldInfo fieldInfo = spriteReaderType.GetField(classname);
 
-        Value = Random.Range(1, Max_Value+1);
-
-        for (int i =0; i < JsonReader.Rank.militaryrank.Length; i++)
-        {
-            Stacked_Value += JsonReader.Rank.militaryrank[i].Ratio;
-
-            if (Value <= Stacked_Value)
-            {
-                return i;
-            }
-        }
-
-        return 0;
+        return fieldInfo.GetValue(SpriteReader) as Sprite;
     }
 }

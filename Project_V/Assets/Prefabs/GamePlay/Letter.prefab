@@ -388,10 +388,12 @@ MonoBehaviour:
   JsonReader: {fileID: 0}
   Telephone_Saver: {fileID: 0}
   GameManager: {fileID: 0}
+  SpriteReader: {fileID: 0}
   Letter_Small: {fileID: 5590400894972993479}
   Letter_Large: {fileID: 430668944418519085}
   Telephone_Saved: {fileID: 3643836792736701156, guid: d787477775ff35e428a89f0fb47eb4e5, type: 3}
   Drag_Drop: {fileID: 91783897905128734}
+  poststamp_image: {fileID: 6382783480563745024}
   OnTable: 0
   Change_Check: 0
   Spawn_Number: 0
@@ -403,7 +405,7 @@ MonoBehaviour:
   Battalion: 0
   APO: 0
   Force: 0
-  Stamp: 0
+  PostStamp: 0
   Rank_Name_text: {fileID: 1351583987890918647}
   Regiment_Battalion_text: {fileID: 4063408470368560677}
   APO_text: {fileID: 5625436543409909259}
@@ -762,7 +764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2718ff0632598b049a4ee26d16bd22fe, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

@@ -2491,6 +2491,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!1 &731087665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731087667}
+  - component: {fileID: 731087666}
+  m_Layer: 0
+  m_Name: Sprite_Reader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &731087666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731087665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cffc9860da55141bfd75ecfa9e06b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testc: {fileID: 21300000, guid: 40738095e42779e479d0af66972ac6f1, type: 3}
+  charlotte: {fileID: 21300000, guid: f376d040b8953a54c995aa0aa3748a8f, type: 3}
+  leni: {fileID: 21300000, guid: edf255527b9de4d40b7ceb612ce3dfd2, type: 3}
+  Dumystamp_1: {fileID: 21300000, guid: 2383c9ca9a37fbd4cb599424c89deccb, type: 3}
+  Dumystamp_2: {fileID: 21300000, guid: 3879d9ccc9d9e4a4f981c83b4b1047d9, type: 3}
+  Imvalidstamp: {fileID: 21300000, guid: 2718ff0632598b049a4ee26d16bd22fe, type: 3}
+--- !u!4 &731087667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731087665}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1298.3646, y: 347.50092, z: 1.8950984}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &759195553
 GameObject:
   m_ObjectHideFlags: 0
@@ -3326,6 +3376,7 @@ MonoBehaviour:
   Is_Dead: 1
   Dead_Count: 10
   Dead_Percentage: 25
+  Is_Imvalid_Stamp: 1
 --- !u!1 &1238082676
 GameObject:
   m_ObjectHideFlags: 0
@@ -5106,6 +5157,7 @@ MonoBehaviour:
   Dead_People_2: {fileID: 1475499873}
   Dead_People_3: {fileID: 352563291}
   Letter: {fileID: 4145164800215035226, guid: 90c990a16e1e08c4e8ad1c0656963434, type: 3}
+  Generate_Complete: 0
 --- !u!1 &1840048691
 GameObject:
   m_ObjectHideFlags: 0
@@ -8172,3 +8224,4 @@ SceneRoots:
   - {fileID: 252757837}
   - {fileID: 382747384}
   - {fileID: 1825016792}
+  - {fileID: 731087667}

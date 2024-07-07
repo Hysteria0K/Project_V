@@ -174,7 +174,7 @@ public class Letter_Spawner : MonoBehaviour
             }
 
             else
-            { 
+            {
                 Letter_Set();
 
                 for (int i = 0; i < DeadList.Length; i++)
@@ -196,8 +196,17 @@ public class Letter_Spawner : MonoBehaviour
             }
 
             Dead_Spawn = false;
-            Generate_Complete = true;
         }
+        if (GameLevel.Is_Imvalid_Stamp)
+        {
+            Letter.PostStamp = Set_PostStamp();
+
+            if (JsonReader.PostStamp.poststamp[Letter.PostStamp].Valid == false) { Letter.Problem = true; }
+
+            else { Letter.Problem = false; }
+        }
+
+        Generate_Complete = true;
     }
 
     private void Letter_Set()
@@ -208,5 +217,32 @@ public class Letter_Spawner : MonoBehaviour
         Letter.Regiment = Random.Range(0, JsonReader.ArmyUnit.armyunit.Length);
         Letter.Battalion = Letter.Regiment;
         Letter.APO = Letter.Regiment;
+        Letter.Force = Letter.Regiment;
+    }
+
+    private int Set_PostStamp()
+    {
+        int Value;
+        int Max_Value = 0;
+        int Stacked_Value = 0;
+
+        for (int i = 0; i < JsonReader.PostStamp.poststamp.Length; i++)
+        {
+            Max_Value += JsonReader.PostStamp.poststamp[i].Ratio;
+        }
+
+        Value = Random.Range(1, Max_Value + 1);
+
+        for (int i = 0; i < JsonReader.PostStamp.poststamp.Length; i++)
+        {
+            Stacked_Value += JsonReader.PostStamp.poststamp[i].Ratio;
+
+            if (Value <= Stacked_Value)
+            {
+                return i;
+            }
+        }
+
+        return 0;
     }
 }
