@@ -1,39 +1,37 @@
-{
-  "Stamp": [
-    {
-      "Order": "Stamp",
-      "Index": 0.0,
-      "Talk": "Right",
-      "Text": "여보세요.",
-      "Sprite": "charlotte"
-    },
-    {
-      "Order": "Stamp",
-      "Index": 1.0,
-      "Talk": "Left",
-      "Text": "선생님 도장 틀렸어요.",
-      "Sprite": "testc"
-    },
-    {
-      "Order": "Stamp",
-      "Index": 2.0,
-      "Talk": "Right",
-      "Text": "그렇군요.",
-      "Sprite": "charlotte"
-    },
-    {
-      "Order": "Stamp",
-      "Index": 3.0,
-      "Talk": "Right",
-      "Text": "주의하겠습니다.",
-      "Sprite": "charlotte"
-    },
-    {
-      "Order": "Stamp",
-      "Index": 4.0,
-      "Talk": "Left",
-      "Text": "네 수고요.",
-      "Sprite": "testc"
-    }
-  ]
-}
+[
+  {
+    "Order": "Stamp",
+    "Index": 0.0,
+    "Talk": "Right",
+    "Text": "여보세요.",
+    "Sprite": "charlotte"
+  },
+  {
+    "Order": "Stamp",
+    "Index": 1.0,
+    "Talk": "Left",
+    "Text": "선생님 도장 틀렸어요.",
+    "Sprite": "testc"
+  },
+  {
+    "Order": "Stamp",
+    "Index": 2.0,
+    "Talk": "Right",
+    "Text": "그렇군요.",
+    "Sprite": "charlotte"
+  },
+  {
+    "Order": "Stamp",
+    "Index": 3.0,
+    "Talk": "Right",
+    "Text": "주의하겠습니다.",
+    "Sprite": "charlotte"
+  },
+  {
+    "Order": "Stamp",
+    "Index": 4.0,
+    "Talk": "Left",
+    "Text": "네 수고요.",
+    "Sprite": "testc"
+  }
+]

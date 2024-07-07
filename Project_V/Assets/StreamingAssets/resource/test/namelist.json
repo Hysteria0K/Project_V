@@ -1,109 +1,172 @@
-{
-  "namelist": [
-    {
-      "Index": 0.0,
-      "FirstName": "Adelaide",
-      "LastName": "Smith"
-    },
-    {
-      "Index": 1.0,
-      "FirstName": "Agnes",
-      "LastName": "Jones"
-    },
-    {
-      "Index": 2.0,
-      "FirstName": "Beatrice",
-      "LastName": "Williams"
-    },
-    {
-      "Index": 3.0,
-      "FirstName": "Clementine",
-      "LastName": "Taylor"
-    },
-    {
-      "Index": 4.0,
-      "FirstName": "Cora",
-      "LastName": "Brown"
-    },
-    {
-      "Index": 5.0,
-      "FirstName": "Dorothy",
-      "LastName": "Davies"
-    },
-    {
-      "Index": 6.0,
-      "FirstName": "Edith",
-      "LastName": "Evans"
-    },
-    {
-      "Index": 7.0,
-      "FirstName": "Hazel",
-      "LastName": "Wilson"
-    },
-    {
-      "Index": 8.0,
-      "FirstName": "Penelope",
-      "LastName": "Thomas"
-    },
-    {
-      "Index": 9.0,
-      "FirstName": "Theodora",
-      "LastName": "Roberts"
-    },
-    {
-      "Index": 10.0,
-      "FirstName": "Winifred",
-      "LastName": "Robinson"
-    },
-    {
-      "Index": 11.0,
-      "FirstName": "Abraham",
-      "LastName": "Thompson"
-    },
-    {
-      "Index": 12.0,
-      "FirstName": "Benedict",
-      "LastName": "Wright"
-    },
-    {
-      "Index": 13.0,
-      "FirstName": "Caleb",
-      "LastName": "Walker"
-    },
-    {
-      "Index": 14.0,
-      "FirstName": "Edwin",
-      "LastName": "White"
-    },
-    {
-      "Index": 15.0,
-      "FirstName": "Elias",
-      "LastName": "Edwards"
-    },
-    {
-      "Index": 16.0,
-      "FirstName": "Gilbert",
-      "LastName": "Hughes"
-    },
-    {
-      "Index": 17.0,
-      "FirstName": "Ives",
-      "LastName": "Green"
-    },
-    {
-      "Index": 18.0,
-      "FirstName": "Maxwell",
-      "LastName": "Hall"
-    },
-    {
-      "Index": 19.0,
-      "FirstName": "Rufus",
-      "LastName": "Lewis"
-    },
-    {
-      "Index": 20.0,
-      "FirstName": "Spencer",
-      "LastName": "Harris"
-    }
-  ]
-}
+[
+  {
+    "Index": 0.0,
+    "FirstName": "애들레이드",
+    "LastName": "스미스"
+  },
+  {
+    "Index": 1.0,
+    "FirstName": "아그네스",
+    "LastName": "존스"
+  },
+  {
+    "Index": 2.0,
+    "FirstName": "베아트리체",
+    "LastName": "윌리엄스"
+  },
+  {
+    "Index": 3.0,
+    "FirstName": "클레멘타인",
+    "LastName": "테일러"
+  },
+  {
+    "Index": 4.0,
+    "FirstName": "코라",
+    "LastName": "갈색"
+  },
+  {
+    "Index": 5.0,
+    "FirstName": "도로시",
+    "LastName": "데이비스"
+  },
+  {
+    "Index": 6.0,
+    "FirstName": "이디스",
+    "LastName": "에반스"
+  },
+  {
+    "Index": 7.0,
+    "FirstName": "헤이즐",
+    "LastName": "윌슨"
+  },
+  {
+    "Index": 8.0,
+    "FirstName": "페넬로페",
+    "LastName": "토마스"
+  },
+  {
+    "Index": 9.0,
+    "FirstName": "테오도라",
+    "LastName": "로버츠"
+  },
+  {
+    "Index": 10.0,
+    "FirstName": "위니프레드",
+    "LastName": "로빈슨"
+  },
+  {
+    "Index": 11.0,
+    "FirstName": "아브라함",
+    "LastName": "톰슨"
+  },
+  {
+    "Index": 12.0,
+    "FirstName": "베네딕토",
+    "LastName": "장인"
+  },
+  {
+    "Index": 13.0,
+    "FirstName": "갈렙",
+    "LastName": "워커"
+  },
+  {
+    "Index": 14.0,
+    "FirstName": "에드윈",
+    "LastName": "화이트"
+  },
+  {
+    "Index": 15.0,
+    "FirstName": "길버트",
+    "LastName": "에드워즈"
+  },
+  {
+    "Index": 16.0,
+    "FirstName": "맥스웰",
+    "LastName": "휴즈"
+  },
+  {
+    "Index": 17.0,
+    "FirstName": "스탠리",
+    "LastName": "초록의"
+  },
+  {
+    "Index": 18.0,
+    "FirstName": "해리",
+    "LastName": "현관"
+  },
+  {
+    "Index": 19.0,
+    "FirstName": "라자니",
+    "LastName": "루이스"
+  },
+  {
+    "Index": 20.0,
+    "FirstName": "클레멘트",
+    "LastName": "해리스"
+  },
+  {
+    "Index": 21.0,
+    "FirstName": "어니스트",
+    "LastName": "볼드윈"
+  },
+  {
+    "Index": 22.0,
+    "FirstName": "맥스웰",
+    "LastName": "얀손"
+  },
+  {
+    "Index": 23.0,
+    "FirstName": "조지",
+    "LastName": "폴리"
+  },
+  {
+    "Index": 24.0,
+    "FirstName": "제임스",
+    "LastName": "애틀리"
+  },
+  {
+    "Index": 25.0,
+    "FirstName": "톰",
+    "LastName": "에이킨"
+  },
+  {
+    "Index": 26.0,
+    "FirstName": "아서",
+    "LastName": "파커"
+  },
+  {
+    "Index": 27.0,
+    "FirstName": "프랭크",
+    "LastName": "잉글랜드"
+  },
+  {
+    "Index": 28.0,
+    "FirstName": "해롤드",
+    "LastName": "그로스티스"
+  },
+  {
+    "Index": 29.0,
+    "FirstName": "에드먼드",
+    "LastName": "홀브룩"
+  },
+  {
+    "Index": 30.0,
+    "FirstName": "존",
+    "LastName": "배드콕"
+  },
+  {
+    "Index": 31.0,
+    "FirstName": "앨런",
+    "LastName": "블랙웰"
+  },
+  {
+    "Index": 32.0,
+    "FirstName": "앤드류",
+    "LastName": "커닝햄"
+  },
+  {
+    "Index": 33.0,
+    "FirstName": "찰스",
+    "LastName": "파운드"
+  }
+]

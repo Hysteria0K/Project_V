@@ -8,6 +8,8 @@ using UnityEngine.U2D;
 
 public class Sprite_Reader : MonoBehaviour
 {
+    [Header("Dummy")]
+    #region 더미 리소스
     public Sprite testc;
     public Sprite charlotte;
     public Sprite leni;
@@ -16,21 +18,13 @@ public class Sprite_Reader : MonoBehaviour
     public Sprite Dumystamp_2;
     public Sprite Imvalidstamp;
 
+    public Sprite D_308801;
+    public Sprite D_308001;
+    #endregion 더미 리소스
+
     private void Awake()
     {
         //Read_Sprite();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     /* 동적할당

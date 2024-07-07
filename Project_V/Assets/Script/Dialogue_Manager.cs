@@ -33,7 +33,7 @@ public class Dialogue_Manager : MonoBehaviour
     [SerializeField] private float Skip_Timer;
 
     [Header("Control")]
-    [SerializeField] private float Text_delay = 0.125f;
+    [SerializeField] private float Text_delay;
     [SerializeField] private float Next_Talk_Speed = 1f;
     [SerializeField] private float Auto_Delay = 1.5f;
     [SerializeField] private string Next_Scene_Name = "Prototype";
@@ -59,7 +59,6 @@ public class Dialogue_Manager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Text_End == true)
@@ -93,7 +92,7 @@ public class Dialogue_Manager : MonoBehaviour
         if (Json_Sprite != "")
         {
             Sprite.SetActive(true);
-            Sprite.transform.position = new Vector3(960 +Json_Sprite_Pos, 540, Json_Sprite_Layer);
+            Sprite.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, Json_Sprite_Pos);
             Sprite.GetComponent<Image>().sprite = GetSprite_From_Name(Json_Sprite);
         }
 

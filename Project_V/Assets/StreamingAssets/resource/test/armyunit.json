@@ -1,88 +1,218 @@
-{
-  "armyunit": [
-    {
-      "Index": 0.0,
-      "Regiment": "24th 보병 연대",
-      "Battalion": "1st 대대",
-      "APO": 123.0,
-      "Forces": "영국 원정군"
-    },
-    {
-      "Index": 1.0,
-      "Regiment": "24th 보병 연대",
-      "Battalion": "2nd 대대",
-      "APO": 123.0,
-      "Forces": "영국 원정군"
-    },
-    {
-      "Index": 2.0,
-      "Regiment": "24th 보병 연대",
-      "Battalion": "4th 대대",
-      "APO": 123.0,
-      "Forces": "영국 원정군"
-    },
-    {
-      "Index": 3.0,
-      "Regiment": "24th 보병 연대",
-      "Battalion": "8th 대대",
-      "APO": 123.0,
-      "Forces": "영국 원정군"
-    },
-    {
-      "Index": 4.0,
-      "Regiment": "1st 보병 연대",
-      "Battalion": "2rd 대대",
-      "APO": 544.0,
-      "Forces": "영국 원정군"
-    },
-    {
-      "Index": 5.0,
-      "Regiment": "1st 보병 연대",
-      "Battalion": "3th 대대",
-      "APO": 544.0,
-      "Forces": "영국 원정군"
-    },
-    {
-      "Index": 6.0,
-      "Regiment": "1st 보병 연대",
-      "Battalion": "5th 대대",
-      "APO": 544.0,
-      "Forces": "영국 원정군"
-    },
-    {
-      "Index": 7.0,
-      "Regiment": "1st 보병 연대",
-      "Battalion": "6th 대대",
-      "APO": 544.0,
-      "Forces": "영국 원정군"
-    },
-    {
-      "Index": 8.0,
-      "Regiment": "17th 보병 연대",
-      "Battalion": "1th 대대",
-      "APO": 237.0,
-      "Forces": "영국 원정군"
-    },
-    {
-      "Index": 9.0,
-      "Regiment": "17th 보병 연대",
-      "Battalion": "3th 대대",
-      "APO": 237.0,
-      "Forces": "영국 원정군"
-    },
-    {
-      "Index": 10.0,
-      "Regiment": "17th 보병 연대",
-      "Battalion": "4th 대대",
-      "APO": 237.0,
-      "Forces": "영국 원정군"
-    },
-    {
-      "Index": 11.0,
-      "Regiment": "17th 보병 연대",
-      "Battalion": "5th 대대",
-      "APO": 237.0,
-      "Forces": "영국 원정군"
-    }
-  ]
-}
+[
+  {
+    "Index": 0.0,
+    "Forces": "영국 원정군",
+    "Corps": "1군단",
+    "Regiment": "왕립 스코틀랜드 보병 연대",
+    "Battalion": "1st 대대",
+    "APO": 123.0
+  },
+  {
+    "Index": 1.0,
+    "Forces": "영국 원정군",
+    "Corps": "1군단",
+    "Regiment": "왕립 스코틀랜드 보병 연대",
+    "Battalion": "1st 대대",
+    "APO": 123.0
+  },
+  {
+    "Index": 2.0,
+    "Forces": "영국 원정군",
+    "Corps": "1군단",
+    "Regiment": "왕립 스코틀랜드 보병 연대",
+    "Battalion": "1st 대대",
+    "APO": 123.0
+  },
+  {
+    "Index": 3.0,
+    "Forces": "영국 원정군",
+    "Corps": "1군단",
+    "Regiment": "왕립 하이랜드 보병 연대",
+    "Battalion": "1th 대대",
+    "APO": 123.0
+  },
+  {
+    "Index": 4.0,
+    "Forces": "영국 원정군",
+    "Corps": "1군단",
+    "Regiment": "왕립 하이랜드 보병 연대",
+    "Battalion": "2nd 대대",
+    "APO": 123.0
+  },
+  {
+    "Index": 5.0,
+    "Forces": "영국 원정군",
+    "Corps": "1군단",
+    "Regiment": "왕립 하이랜드 보병 연대",
+    "Battalion": "3th 대대",
+    "APO": 123.0
+  },
+  {
+    "Index": 6.0,
+    "Forces": "영국 원정군",
+    "Corps": "1군단",
+    "Regiment": "블랙와치 보병 연대",
+    "Battalion": "1th 대대",
+    "APO": 123.0
+  },
+  {
+    "Index": 7.0,
+    "Forces": "영국 원정군",
+    "Corps": "1군단",
+    "Regiment": "블랙와치 보병 연대",
+    "Battalion": "2nd 대대",
+    "APO": 123.0
+  },
+  {
+    "Index": 8.0,
+    "Forces": "영국 원정군",
+    "Corps": "1군단",
+    "Regiment": "블랙와치 보병 연대",
+    "Battalion": "3th 대대",
+    "APO": 123.0
+  },
+  {
+    "Index": 9.0,
+    "Forces": "영국 원정군",
+    "Corps": "2군단",
+    "Regiment": "웨스트서리 보병 연대",
+    "Battalion": "1th 대대",
+    "APO": 544.0
+  },
+  {
+    "Index": 10.0,
+    "Forces": "영국 원정군",
+    "Corps": "2군단",
+    "Regiment": "웨스트서리 보병 연대",
+    "Battalion": "2nd 대대",
+    "APO": 544.0
+  },
+  {
+    "Index": 11.0,
+    "Forces": "영국 원정군",
+    "Corps": "2군단",
+    "Regiment": "웨스트서리 보병 연대",
+    "Battalion": "3th 대대",
+    "APO": 544.0
+  },
+  {
+    "Index": 12.0,
+    "Forces": "영국 원정군",
+    "Corps": "2군단",
+    "Regiment": "이스트서리 보병 연대",
+    "Battalion": "1th 대대",
+    "APO": 544.0
+  },
+  {
+    "Index": 13.0,
+    "Forces": "영국 원정군",
+    "Corps": "2군단",
+    "Regiment": "이스트서리 보병 연대",
+    "Battalion": "2nd 대대",
+    "APO": 544.0
+  },
+  {
+    "Index": 14.0,
+    "Forces": "영국 원정군",
+    "Corps": "2군단",
+    "Regiment": "이스트서리 보병 연대",
+    "Battalion": "3th 대대",
+    "APO": 544.0
+  },
+  {
+    "Index": 15.0,
+    "Forces": "영국 원정군",
+    "Corps": "2군단",
+    "Regiment": "헌팅던셔 보병 연대",
+    "Battalion": "1th 대대",
+    "APO": 544.0
+  },
+  {
+    "Index": 16.0,
+    "Forces": "영국 원정군",
+    "Corps": "2군단",
+    "Regiment": "헌팅던셔 보병 연대",
+    "Battalion": "2nd 대대",
+    "APO": 544.0
+  },
+  {
+    "Index": 17.0,
+    "Forces": "영국 원정군",
+    "Corps": "2군단",
+    "Regiment": "헌팅던셔 보병 연대",
+    "Battalion": "3th 대대",
+    "APO": 544.0
+  },
+  {
+    "Index": 18.0,
+    "Forces": "영국 원정군",
+    "Corps": "3군단",
+    "Regiment": "왕립 이스트켄트 보병 연대",
+    "Battalion": "1th 대대",
+    "APO": 237.0
+  },
+  {
+    "Index": 19.0,
+    "Forces": "영국 원정군",
+    "Corps": "3군단",
+    "Regiment": "왕립 이스트켄트 보병 연대",
+    "Battalion": "2nd 대대",
+    "APO": 237.0
+  },
+  {
+    "Index": 20.0,
+    "Forces": "영국 원정군",
+    "Corps": "3군단",
+    "Regiment": "왕립 이스트켄트 보병 연대",
+    "Battalion": "3th 대대",
+    "APO": 237.0
+  },
+  {
+    "Index": 21.0,
+    "Forces": "영국 원정군",
+    "Corps": "3군단",
+    "Regiment": "웨스트켄트 보병 연대",
+    "Battalion": "1th 대대",
+    "APO": 237.0
+  },
+  {
+    "Index": 22.0,
+    "Forces": "영국 원정군",
+    "Corps": "3군단",
+    "Regiment": "웨스트켄트 보병 연대",
+    "Battalion": "2nd 대대",
+    "APO": 237.0
+  },
+  {
+    "Index": 23.0,
+    "Forces": "영국 원정군",
+    "Corps": "3군단",
+    "Regiment": "웨스트켄트 보병 연대",
+    "Battalion": "3th 대대",
+    "APO": 237.0
+  },
+  {
+    "Index": 24.0,
+    "Forces": "영국 원정군",
+    "Corps": "3군단",
+    "Regiment": "왕립 얼스터 보병 연대",
+    "Battalion": "1th 대대",
+    "APO": 237.0
+  },
+  {
+    "Index": 25.0,
+    "Forces": "영국 원정군",
+    "Corps": "3군단",
+    "Regiment": "왕립 얼스터 보병 연대",
+    "Battalion": "2nd 대대",
+    "APO": 237.0
+  },
+  {
+    "Index": 26.0,
+    "Forces": "영국 원정군",
+    "Corps": "3군단",
+    "Regiment": "왕립 얼스터 보병 연대",
+    "Battalion": "3th 대대",
+    "APO": 237.0
+  }
+]

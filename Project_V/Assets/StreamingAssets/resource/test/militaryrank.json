@@ -1,74 +1,72 @@
-{
-  "militaryrank": [
-    {
-      "Index": 0.0,
-      "Rank": "이등병",
-      "Ratio": 32.0
-    },
-    {
-      "Index": 1.0,
-      "Rank": "상등병",
-      "Ratio": 32.0
-    },
-    {
-      "Index": 2.0,
-      "Rank": "중사",
-      "Ratio": 16.0
-    },
-    {
-      "Index": 3.0,
-      "Rank": "상사",
-      "Ratio": 16.0
-    },
-    {
-      "Index": 4.0,
-      "Rank": "이등준위",
-      "Ratio": 16.0
-    },
-    {
-      "Index": 5.0,
-      "Rank": "군수이등준위",
-      "Ratio": 16.0
-    },
-    {
-      "Index": 6.0,
-      "Rank": "일등준위",
-      "Ratio": 8.0
-    },
-    {
-      "Index": 7.0,
-      "Rank": "군수일등준위",
-      "Ratio": 4.0
-    },
-    {
-      "Index": 8.0,
-      "Rank": "육군주임준위",
-      "Ratio": 4.0
-    },
-    {
-      "Index": 9.0,
-      "Rank": "소위",
-      "Ratio": 8.0
-    },
-    {
-      "Index": 10.0,
-      "Rank": "중위",
-      "Ratio": 4.0
-    },
-    {
-      "Index": 11.0,
-      "Rank": "대위",
-      "Ratio": 2.0
-    },
-    {
-      "Index": 12.0,
-      "Rank": "소령",
-      "Ratio": 1.0
-    },
-    {
-      "Index": 13.0,
-      "Rank": "중령",
-      "Ratio": 1.0
-    }
-  ]
-}
+[
+  {
+    "Index": 0.0,
+    "Rank": "이등병",
+    "Ratio": 32.0
+  },
+  {
+    "Index": 1.0,
+    "Rank": "상등병",
+    "Ratio": 32.0
+  },
+  {
+    "Index": 2.0,
+    "Rank": "중사",
+    "Ratio": 16.0
+  },
+  {
+    "Index": 3.0,
+    "Rank": "상사",
+    "Ratio": 16.0
+  },
+  {
+    "Index": 4.0,
+    "Rank": "이등준위",
+    "Ratio": 16.0
+  },
+  {
+    "Index": 5.0,
+    "Rank": "군수이등준위",
+    "Ratio": 16.0
+  },
+  {
+    "Index": 6.0,
+    "Rank": "일등준위",
+    "Ratio": 8.0
+  },
+  {
+    "Index": 7.0,
+    "Rank": "군수일등준위",
+    "Ratio": 4.0
+  },
+  {
+    "Index": 8.0,
+    "Rank": "육군주임준위",
+    "Ratio": 4.0
+  },
+  {
+    "Index": 9.0,
+    "Rank": "소위",
+    "Ratio": 8.0
+  },
+  {
+    "Index": 10.0,
+    "Rank": "중위",
+    "Ratio": 4.0
+  },
+  {
+    "Index": 11.0,
+    "Rank": "대위",
+    "Ratio": 2.0
+  },
+  {
+    "Index": 12.0,
+    "Rank": "소령",
+    "Ratio": 1.0
+  },
+  {
+    "Index": 13.0,
+    "Rank": "중령",
+    "Ratio": 1.0
+  }
+]
