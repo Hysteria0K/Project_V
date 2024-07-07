@@ -208,8 +208,8 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
                               JsonReader.NameList.namelist[LastName].LastName;
         Regiment_Battalion_text.text = JsonReader.ArmyUnit.armyunit[Battalion].Battalion + ", " +
                                        JsonReader.ArmyUnit.armyunit[Regiment].Regiment;
-        APO_text.text = "APO " + JsonReader.ArmyUnit.armyunit[APO].APO.TrimEnd('.', '0');
-        Force_text.text = JsonReader.ArmyUnit.armyunit[Force].Forces;
+        //APO_text.text = "APO " + JsonReader.ArmyUnit.armyunit[APO].APO.TrimEnd('.', '0');
+        //Force_text.text = JsonReader.ArmyUnit.armyunit[Force].Forces;
     }
 
     void Move_Limit(RectTransform Move, RectTransform Limit)
