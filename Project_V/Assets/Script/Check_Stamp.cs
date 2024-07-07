@@ -45,8 +45,6 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         this.transform.position.y - this.GetComponent<RectTransform>().rect.height / 2 - Stamp_Down,
         Stamp.GetComponent<RectTransform>().rect.width, Stamp.GetComponent<RectTransform>().rect.height);
 
-        Debug.Log(Stamp_Rect);
-
         Stamp_Down_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y - Stamp_Down, this.transform.position.z);
         Stamp_Up_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y, this.transform.position.z);
 
@@ -94,8 +92,6 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
         if (Target != null)
         {
             Instance_Pos = new Vector3(this.transform.position.x, this.transform.position.y - (this.GetComponent<RectTransform>().rect.height - Stamp_Transform.rect.height) / 2, this.transform.position.z);
-
-            Debug.Log(Instance_Pos);
 
             if (Stamp.GetComponent<TextMeshProUGUI>() != false)
             {

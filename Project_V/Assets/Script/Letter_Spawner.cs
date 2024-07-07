@@ -28,6 +28,9 @@ public class Letter_Spawner : MonoBehaviour
 
     public bool Generate_Complete;
 
+    private bool Check_Dead;
+    private bool Check_Invalid_Stamp;
+
     private void Awake()
     {
         if (GameLevel.Is_Dead)
@@ -171,6 +174,7 @@ public class Letter_Spawner : MonoBehaviour
                 Letter.APO = DeadList[Value_2].ArmyUnit_Index;
                 Letter.Force = DeadList[Value_2].ArmyUnit_Index;
                 Letter.Problem = true;
+                Check_Dead = true;
             }
 
             else
@@ -191,20 +195,26 @@ public class Letter_Spawner : MonoBehaviour
                         else break;
                     }
                 }
-
-                Letter.Problem = false;
+                Check_Dead = false;
             }
-
             Dead_Spawn = false;
         }
-        if (GameLevel.Is_Imvalid_Stamp)
+
+        if (GameLevel.Is_Invalid_Stamp)
         {
             Letter.PostStamp = Set_PostStamp();
 
-            if (JsonReader.PostStamp.poststamp[Letter.PostStamp].Valid == false) { Letter.Problem = true; }
+            if (JsonReader.PostStamp.poststamp[Letter.PostStamp].Valid == false) { Check_Invalid_Stamp = true; }
 
-            else { Letter.Problem = false; }
+            else { Check_Invalid_Stamp = false; }
         }
+
+        if (Check_Dead == false && Check_Invalid_Stamp == false)
+        {
+            Letter.Problem = false;
+        }
+
+        else { Letter.Problem = true; }
 
         Generate_Complete = true;
     }
