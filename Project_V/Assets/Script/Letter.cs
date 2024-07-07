@@ -7,7 +7,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using System.Reflection;
-using UnityEditor.U2D.Aseprite;
 using System;
 
 public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
