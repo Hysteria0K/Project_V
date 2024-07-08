@@ -1,7 +1,7 @@
 {"namelist":[
   {
     "Index": 0.0,
-    "FirstName": "애들레이드",
+    "FirstName": "아델라이데",
     "LastName": "스미스"
   },
   {
@@ -11,7 +11,7 @@
   },
   {
     "Index": 2.0,
-    "FirstName": "베아트리체",
+    "FirstName": "베아트리스",
     "LastName": "윌리엄스"
   },
   {
@@ -22,7 +22,7 @@
   {
     "Index": 4.0,
     "FirstName": "코라",
-    "LastName": "갈색"
+    "LastName": "브라운"
   },
   {
     "Index": 5.0,
@@ -41,7 +41,7 @@
   },
   {
     "Index": 8.0,
-    "FirstName": "페넬로페",
+    "FirstName": "페넬로피",
     "LastName": "토마스"
   },
   {
@@ -56,17 +56,17 @@
   },
   {
     "Index": 11.0,
-    "FirstName": "아브라함",
+    "FirstName": "에이브러햄",
     "LastName": "톰슨"
   },
   {
     "Index": 12.0,
-    "FirstName": "베네딕토",
-    "LastName": "장인"
+    "FirstName": "베네딕트",
+    "LastName": "라이트"
   },
   {
     "Index": 13.0,
-    "FirstName": "갈렙",
+    "FirstName": "케일럽",
     "LastName": "워커"
   },
   {
@@ -87,12 +87,12 @@
   {
     "Index": 17.0,
     "FirstName": "스탠리",
-    "LastName": "초록의"
+    "LastName": "그린"
   },
   {
     "Index": 18.0,
     "FirstName": "해리",
-    "LastName": "현관"
+    "LastName": "홀"
   },
   {
     "Index": 19.0,
