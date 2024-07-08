@@ -110,8 +110,14 @@ public class JsonReader : MonoBehaviour
 
     private string ReadJson(string Filename)
     {
+#if UNITY_EDITOR
+        string JsonText = File.ReadAllText("Assets/StreamingAssets/resource/test/" + Filename + ".json");
+
+        return (JsonText);
+#else
         string JsonText = File.ReadAllText(Application.persistentDataPath + "/resource/jsonfiles/" + Filename + ".json");
 
         return (JsonText);
+#endif
     }
 }
