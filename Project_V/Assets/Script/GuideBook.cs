@@ -33,10 +33,9 @@ public class GuideBook : MonoBehaviour
     private float Half_Width;
     private float Half_Height;
 
-
     [Header("Page")]
     public int Guidebook_Page;
-    public int Guidebook_EndPage = 10; // 나중에 데이터파싱해서 사용
+    public int Guidebook_EndPage; // 나중에 데이터파싱해서 사용 -> 자식 오브젝트 수로 판단
 
     private void Awake()
     {
@@ -64,6 +63,7 @@ public class GuideBook : MonoBehaviour
         Guidebook_Transform = GetComponent<RectTransform>();
 
         Guidebook_Page = 1;
+        Guidebook_EndPage = Page_List.transform.childCount;
 
         Half_Width = Guidebook_Transform.rect.width / 2;
         Half_Height = Guidebook_Transform.rect.height / 2;
@@ -208,11 +208,23 @@ public class GuideBook : MonoBehaviour
         }
     }
 
-    public void Goto_Page_5()
+    public void Button_GotoHome()
     {
         Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(false);
-        Guidebook_Page = 5;
+        Guidebook_Page = 1;
         Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(true);
+        Prev_Page_Button.SetActive(false);
+        Next_Page_Button.SetActive(true);
+    }
+
+    public void Button_GotoPage(int pagenumner)
+    {
+        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(false);
+        Guidebook_Page = pagenumner;
+        Page_List.transform.GetChild(pagenumner - 1).gameObject.SetActive(true);
+
         Prev_Page_Button.SetActive(true);
+        if (Guidebook_Page == Guidebook_EndPage)
+            Next_Page_Button.SetActive(false);
     }
 }

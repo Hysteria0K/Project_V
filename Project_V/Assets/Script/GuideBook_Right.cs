@@ -8,17 +8,7 @@ public class GuideBook_Right : MonoBehaviour, IPointerDownHandler, IDragHandler
     private Vector3 Saved_Position;
 
     public GameObject GuideBook;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
         GuideBook.transform.position = Saved_Position;
