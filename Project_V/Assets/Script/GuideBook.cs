@@ -9,16 +9,19 @@ public class GuideBook : MonoBehaviour
 {
     [Header("Object")]
     [SerializeField] private RectTransform Table_Area_Transform;
-    [SerializeField] private JsonReader JsonReader;
     [SerializeField] private RectTransform Letter_Area_Transform;
     [SerializeField] private RectTransform Big_Border_Transform;
+    [SerializeField] private JsonReader JsonReader;
+
+    private GameObject Table_Area;
+    private GameObject Letter_Area;
 
     public TextMeshProUGUI Guidebook_Page_Text;
 
     private RectTransform Guidebook_Transform;
 
-    private Rect Table;
-    private Rect Letter_Area;
+    private Rect Table_Rect;
+    private Rect Letter_Rect;
 
     public GameObject Guidebook_Small;
     public GameObject Guidebook_Large;
@@ -39,27 +42,25 @@ public class GuideBook : MonoBehaviour
 
     private void Awake()
     {
+        Table_Area = GameObject.Find("Table_Area");
+        Letter_Area = GameObject.Find("Letter_Area");
+
         Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
-        JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
         Letter_Area_Transform = GameObject.Find("Letter_Area").GetComponent<RectTransform>();
         Big_Border_Transform = GameObject.Find("Big_Border").GetComponent<RectTransform>();
 
+        //JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
+
         OnTable = false;
         Change_Check = false;
-
-        Table = new Rect(Table_Area_Transform.position.x - Table_Area_Transform.rect.width / 2,
-                Table_Area_Transform.position.y - Table_Area_Transform.rect.height / 2,
-                Table_Area_Transform.rect.width, Table_Area_Transform.rect.height);
-
-        Letter_Area = new Rect(Letter_Area_Transform.position.x - Letter_Area_Transform.rect.width / 2,
-                       Letter_Area_Transform.position.y - Letter_Area_Transform.rect.height / 2,
-                       Letter_Area_Transform.rect.width, Letter_Area_Transform.rect.height);
-
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        Table_Rect = Table_Area.GetComponent<Rect_Area>().Rect;
+        Letter_Rect = Letter_Area.GetComponent<Rect_Area>().Rect;
+
         Guidebook_Transform = GetComponent<RectTransform>();
 
         Guidebook_Page = 1;
@@ -100,7 +101,7 @@ public class GuideBook : MonoBehaviour
 
     private void Guidebook_Collider()
     {
-        if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= Letter_Area.xMax)
+        if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= Letter_Rect.xMax)
         {
             if (OnTable == false)
             {
@@ -111,7 +112,7 @@ public class GuideBook : MonoBehaviour
         }
         else
         {
-            if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.x < Table.xMin)
+            if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.x < Table_Rect.xMin)
             {
                 OnTable = false;
                 Change_Check = true;

@@ -21,11 +21,15 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     [SerializeField] private GameManager GameManager;
     [SerializeField] private Sprite_Reader SpriteReader;
 
+    private GameObject Table_Area;
+    private GameObject Letter_Area;
+    private GameObject PostBox_Area;
+
     private RectTransform Letter_Transform;
 
-    private Rect Table;
-    private Rect PostBox;
-    private Rect Letter_Area;
+    private Rect Table_Rect;
+    private Rect PostBox_Rect;
+    private Rect Letter_Rect;
 
     public GameObject Letter_Small;
     public GameObject Letter_Large;
@@ -68,9 +72,14 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
 
     private void Awake()
     {
-        Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
-        Letter_Area_Transform = GameObject.Find("Letter_Area").GetComponent<RectTransform>();
-        PostBox_Area_Transform = GameObject.Find("PostBox_Area").GetComponent<RectTransform>();
+        Table_Area = GameObject.Find("Table_Area");
+        Letter_Area = GameObject.Find("Letter_Area");
+        PostBox_Area = GameObject.Find("PostBox_Area");
+
+        Table_Area_Transform = Table_Area.GetComponent<RectTransform>();
+        Letter_Area_Transform = Letter_Area.GetComponent<RectTransform>();
+        PostBox_Area_Transform = PostBox_Area.GetComponent<RectTransform>();
+
         Big_Border_Transform = GameObject.Find("Big_Border").GetComponent<RectTransform>();
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
         Telephone_Saver = GameObject.Find("Telephone_Saver").GetComponent<RectTransform>();
@@ -88,17 +97,9 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         OnTable = false;
         Change_Check = false;
 
-        Table = new Rect(Table_Area_Transform.position.x - Table_Area_Transform.rect.width / 2,
-                Table_Area_Transform.position.y - Table_Area_Transform.rect.height / 2,
-                Table_Area_Transform.rect.width, Table_Area_Transform.rect.height);
-
-        PostBox = new Rect(PostBox_Area_Transform.position.x - PostBox_Area_Transform.rect.width / 2,
-                  PostBox_Area_Transform.position.y - PostBox_Area_Transform.rect.height / 2,
-                  PostBox_Area_Transform.rect.width, PostBox_Area_Transform.rect.height);
-
-        Letter_Area = new Rect(Letter_Area_Transform.position.x - Letter_Area_Transform.rect.width / 2,
-                               Letter_Area_Transform.position.y - Letter_Area_Transform.rect.height / 2,
-                               Letter_Area_Transform.rect.width, Letter_Area_Transform.rect.height);
+        Table_Rect = Table_Area.GetComponent<Rect_Area>().Rect;
+        Letter_Rect = Letter_Area.GetComponent<Rect_Area>().Rect;
+        PostBox_Rect = PostBox_Area.GetComponent<Rect_Area>().Rect;
 
         Stamp_Value = 0;
 
@@ -146,7 +147,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     {
         if (this.transform.parent != PostBox_Area_Transform)
         {
-            if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= Letter_Area.xMax)
+            if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= Letter_Rect.xMax)
             {
                 if (OnTable == false)
                 {
@@ -157,7 +158,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
             }
             else
             {
-                if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.x < Table.xMin)
+                if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.x < Table_Rect.xMin)
                 {
                     OnTable = false;
                     Change_Check = true;
@@ -165,7 +166,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
                 }
             }
 
-            if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= PostBox.xMin && Input.mousePosition.y >= Table.yMax)
+            if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= PostBox_Rect.xMin && Input.mousePosition.y >= Table_Rect.yMax)
             {
                 OnTable = false;
                 Change_Check = true;
@@ -177,7 +178,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
 
         else
         {
-            if (Drag_Drop.Is_Drag == true && Input.mousePosition.y < PostBox.yMin)
+            if (Drag_Drop.Is_Drag == true && Input.mousePosition.y < PostBox_Rect.yMin)
             {
                 OnTable = true;
                 Change_Check = true;

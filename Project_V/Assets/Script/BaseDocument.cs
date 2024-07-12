@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class BaseDocument : MonoBehaviour
 {
+    private GameObject Table_Area;
+    private GameObject Letter_Area;
+
     [SerializeField] private RectTransform Table_Area_Transform;
     [SerializeField] private RectTransform Letter_Area_Transform;
     [SerializeField] private RectTransform Big_Border_Transform;
 
     private RectTransform BaseDocument_Transform;
 
-    private Rect Table;
-    private Rect Letter_Area;
+    private Rect Table_Rect;
+    private Rect Letter_Rect;
 
     public GameObject BaseDocument_Small;
     public GameObject BaseDocument_Large;
@@ -26,28 +29,24 @@ public class BaseDocument : MonoBehaviour
 
     private void Awake()
     {
-        Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
-        Letter_Area_Transform = GameObject.Find("Letter_Area").GetComponent<RectTransform>();
+        Table_Area = GameObject.Find("Table_Area");
+        Letter_Area = GameObject.Find("Letter_Area");
+
+        Table_Area_Transform = Table_Area.GetComponent<RectTransform>();
+        Letter_Area_Transform = Letter_Area.GetComponent<RectTransform>();
         Big_Border_Transform = GameObject.Find("Big_Border").GetComponent<RectTransform>();
 
         OnTable = false;
         Change_Check = false;
-
-        Table = new Rect(Table_Area_Transform.position.x - Table_Area_Transform.rect.width / 2,
-                Table_Area_Transform.position.y - Table_Area_Transform.rect.height / 2,
-                Table_Area_Transform.rect.width, Table_Area_Transform.rect.height);
-
-        Letter_Area = new Rect(Letter_Area_Transform.position.x - Letter_Area_Transform.rect.width / 2,
-                       Letter_Area_Transform.position.y - Letter_Area_Transform.rect.height / 2,
-                       Letter_Area_Transform.rect.width, Letter_Area_Transform.rect.height);
-
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        BaseDocument_Transform = GetComponent<RectTransform>();
+        Table_Rect = Table_Area.GetComponent<Rect_Area>().Rect;
+        Letter_Rect = Letter_Area.GetComponent<Rect_Area>().Rect;
 
+        BaseDocument_Transform = GetComponent<RectTransform>();
 
         Half_Width = BaseDocument_Transform.rect.width / 2;
         Half_Height = BaseDocument_Transform.rect.height / 2;
@@ -79,7 +78,7 @@ public class BaseDocument : MonoBehaviour
 
     private void BaseDocument_Collider()
     {
-        if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= Letter_Area.xMax)
+        if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= Letter_Rect.xMax)
         {
             if (OnTable == false)
             {
@@ -90,7 +89,7 @@ public class BaseDocument : MonoBehaviour
         }
         else
         {
-            if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.x < Table.xMin)
+            if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.x < Table_Rect.xMin)
             {
                 OnTable = false;
                 Change_Check = true;
