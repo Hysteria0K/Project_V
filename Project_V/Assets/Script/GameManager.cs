@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int Letter_Count;
-    [SerializeField] private int Letter_Count_Max;
     public int Score;
     [SerializeField] private bool Spawn_Check;
 
@@ -21,21 +20,21 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI Game_End_Score;
     public Letter_Spawner Letter_Spawner;
 
-    public float Limit_Time;
-
     public float Current_Time;
 
     public int Min;
     public int Sec;
 
+    [Header("Control")]
+    [SerializeField] private int Letter_Count_Max = 1;
+    public float Limit_Time = 300;
+
 
     private void Awake()
     {
-        Letter_Count_Max = 1;
         Letter_Count = 0;
         Spawn_Check = false;
 
-        Limit_Time = 300;
         Current_Time = Limit_Time;
     }
 

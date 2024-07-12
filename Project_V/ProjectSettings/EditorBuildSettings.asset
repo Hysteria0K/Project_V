@@ -9,15 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/FileCheck.unity
+    path: Assets/Script/Scenes/FileCheck.unity
     guid: df6331c50e8f40f49994cdd121dc20a2
   - enabled: 1
-    path: Assets/Scenes/Title.unity
+    path: Assets/Script/Scenes/Title.unity
     guid: 305e7221b91976c4e990371a0f80a407
   - enabled: 1
-    path: Assets/Scenes/Test_Dialogue.unity
+    path: Assets/Script/Scenes/Test_Dialogue.unity
     guid: 6ac873ec7f851c74db812fda1b4e8852
   - enabled: 1
-    path: Assets/Scenes/Prototype.unity
+    path: Assets/Script/Scenes/Prototype.unity
     guid: 17ec5a4e9be76234daae148678456c10
   m_configObjects: {}

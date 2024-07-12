@@ -1367,8 +1367,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Telephone: {fileID: 3882363357672167873, guid: 7be85a74c87f2444297e12f570b2f4e3, type: 3}
   Canvas: {fileID: 1556057629}
-  Delay_Time: 0
   IsLocked: 0
+  Delay_Time: 1.5
 --- !u!1 &384363427
 GameObject:
   m_ObjectHideFlags: 0
@@ -3173,7 +3173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Letter_Count: 0
-  Letter_Count_Max: 0
   Score: 0
   Spawn_Check: 0
   Letter: {fileID: 856275089615170457, guid: 90c990a16e1e08c4e8ad1c0656963434, type: 3}
@@ -3184,10 +3183,11 @@ MonoBehaviour:
   Game_End: {fileID: 1855360996}
   Game_End_Score: {fileID: 203590851}
   Letter_Spawner: {fileID: 1825016793}
-  Limit_Time: 0
   Current_Time: 0
   Min: 0
   Sec: 0
+  Letter_Count_Max: 1
+  Limit_Time: 300
 --- !u!114 &1234890869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5385,9 +5385,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Table_Area_Transform: {fileID: 0}
-  JsonReader: {fileID: 0}
   Letter_Area_Transform: {fileID: 0}
   Big_Border_Transform: {fileID: 0}
+  JsonReader: {fileID: 0}
   Guidebook_Page_Text: {fileID: 5333580779896747321}
   Guidebook_Small: {fileID: 5400183218177343183}
   Guidebook_Large: {fileID: 1275020242391878119}

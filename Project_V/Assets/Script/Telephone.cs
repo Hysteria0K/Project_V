@@ -27,8 +27,11 @@ public class Telephone : MonoBehaviour
     private bool Destroy_Check;
 
     [Header("Settings")]
-    public float Up_Value;
+    public float Up_Value = 80;
 
+    [Header("Control")]
+    public float Destroy_Delay = 1.0f;
+         
     private void Awake()
     {
         Telephone_Saver = GameObject.Find("Telephone_Saver").GetComponent<Telephone_Saver>();
@@ -41,8 +44,6 @@ public class Telephone : MonoBehaviour
         Text_End_Check = true;
 
         Index = 0;
-
-        Up_Value = 80;
 
         Destroy_Check = false;
 
@@ -59,7 +60,7 @@ public class Telephone : MonoBehaviour
         {
             Destroy_Check = true;
 
-            StartCoroutine(Delay_Destroy(1.0f));
+            StartCoroutine(Delay_Destroy(Destroy_Delay));
         }
 
         if (Text_End_Check == true && Destroy_Check == false)

@@ -135,7 +135,7 @@ public class GuideBook : MonoBehaviour
         Guidebook_Large.SetActive(false);
     }
 
-    void Move_Limit(RectTransform Move, RectTransform Limit)
+    private void Move_Limit(RectTransform Move, RectTransform Limit)
     {
         // rectToLimit의 현재 위치
         Vector3[] rectCorners = new Vector3[4];

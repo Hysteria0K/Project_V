@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Right_Dialogue: {fileID: 1577726886229201860, guid: b7dbbdc0aa056e24ca4aa208ff0f8df9, type: 3}
   Left_Dialogue: {fileID: 126320901650908009, guid: d1bf539b17080114e9baa3606eb19f47, type: 3}
-  Reason: 
+  Reason: Stamp
   Index: 0
   MaxIndex: 0
   Parse_text: 
@@ -58,3 +58,4 @@ MonoBehaviour:
   Text_End_Check: 0
   Up_Check: 0
   Up_Value: 80
+  Destroy_Delay: 1

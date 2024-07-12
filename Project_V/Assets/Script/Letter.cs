@@ -11,15 +11,14 @@ using System;
 
 public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
 {
-    [Header("Object")]
-    [SerializeField] private RectTransform Table_Area_Transform;
-    [SerializeField] private RectTransform Letter_Area_Transform;
-    [SerializeField] private RectTransform PostBox_Area_Transform;
-    [SerializeField] private RectTransform Big_Border_Transform;
-    [SerializeField] private JsonReader JsonReader;
-    [SerializeField] private RectTransform Telephone_Saver;
-    [SerializeField] private GameManager GameManager;
-    [SerializeField] private Sprite_Reader SpriteReader;
+    private RectTransform Table_Area_Transform;
+    private RectTransform Letter_Area_Transform;
+    private RectTransform PostBox_Area_Transform;
+    private RectTransform Big_Border_Transform;
+    private JsonReader JsonReader;
+    private RectTransform Telephone_Saver;
+    private GameManager GameManager;
+    private Sprite_Reader SpriteReader;
 
     private GameObject Table_Area;
     private GameObject Letter_Area;
@@ -69,6 +68,10 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     public bool Valid;
     private string Reason;
     public bool Problem = false;
+
+    [Header("Control")]
+    public float Spawn_Y = 230;
+    public float Move_Speed = 20;
 
     private void Awake()
     {
@@ -213,7 +216,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         //Force_text.text = JsonReader.ArmyUnit.armyunit[Force].Forces;
     }
 
-    void Move_Limit(RectTransform Move, RectTransform Limit)
+    private void Move_Limit(RectTransform Move, RectTransform Limit)
     {
         // rectToLimit의 현재 위치
         Vector3[] rectCorners = new Vector3[4];
@@ -316,10 +319,10 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
 
     IEnumerator Spawn_Move()
     {
-        while(this.transform.position.y <= Letter_Area_Transform.position.y + (230 - 160 * (Spawn_Number-1)) && Spawned == true)
+        while(this.transform.position.y <= Letter_Area_Transform.position.y + Spawn_Y && Spawned == true)
         {
             yield return new WaitForSeconds(0.01f);
-            this.transform.position += new Vector3(0, 20, 0);
+            this.transform.position += new Vector3(0, Move_Speed, 0);
         }
 
         Spawned = false;

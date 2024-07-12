@@ -15,7 +15,8 @@ public class Telephone_Dialogue : MonoBehaviour
 
     public int Index;
 
-    private float delay = 0.125f;
+    [Header("Control")]
+    [SerializeField] private float Text_Delay = 0.125f;
 
     private void Awake()
     {
@@ -25,7 +26,7 @@ public class Telephone_Dialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(textPrint(delay));
+        StartCoroutine(textPrint(Text_Delay));
     }
 
     // Update is called once per frame

@@ -7,15 +7,15 @@ public class Telephone_Saver : MonoBehaviour
     public GameObject Telephone;
     public RectTransform Canvas;
 
-    [SerializeField] private float Delay_Time;
-
     public bool IsLocked;
+
+    [Header("Control")]
+    [SerializeField] private float Delay_Time = 1.5f;
 
     // Start is called before the first frame update
     void Start()
     {
         IsLocked = false;
-        Delay_Time = 1.5f;
     }
 
     // Update is called once per frame
