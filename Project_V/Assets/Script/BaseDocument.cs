@@ -62,13 +62,13 @@ public class BaseDocument : MonoBehaviour
             if (OnTable == true)
             {
                 BaseDocument_On_Table();
+                BaseDocument_Transform.position = Input.mousePosition;
+                Drag_Drop.Mouse_Center = true;
             }
 
             else
             {
                 BaseDocument_Not_On_Table();
-                BaseDocument_Transform.position = Input.mousePosition;
-                Drag_Drop.Mouse_Center = true;
             }
 
             Change_Check = false;
@@ -78,7 +78,7 @@ public class BaseDocument : MonoBehaviour
 
     private void BaseDocument_Collider()
     {
-        if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= Letter_Rect.xMax)
+        if (Drag_Drop.Is_Drag == true && Input.mousePosition.y <= Letter_Rect.yMin)
         {
             if (OnTable == false)
             {
@@ -89,7 +89,7 @@ public class BaseDocument : MonoBehaviour
         }
         else
         {
-            if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.x < Table_Rect.xMin)
+            if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.y > Table_Rect.yMax)
             {
                 OnTable = false;
                 Change_Check = true;
@@ -102,14 +102,14 @@ public class BaseDocument : MonoBehaviour
 
     private void BaseDocument_On_Table()
     {
-        BaseDocument_Small.SetActive(false);
-        BaseDocument_Large.SetActive(true);
+        BaseDocument_Small.SetActive(true);
+        BaseDocument_Large.SetActive(false);
     }
 
     private void BaseDocument_Not_On_Table()
     {
-        BaseDocument_Small.SetActive(true);
-        BaseDocument_Large.SetActive(false);
+        BaseDocument_Small.SetActive(false);
+        BaseDocument_Large.SetActive(true);
     }
 
     private void Move_Limit(RectTransform Move, RectTransform Limit)
