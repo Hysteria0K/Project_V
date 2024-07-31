@@ -840,7 +840,7 @@ MonoBehaviour:
   Text_delay: 0.07
   Next_Talk_Speed: 1
   Auto_Delay: 1.5
-  Next_Scene_Name: Prototype
+  Next_Scene_Name: Play
 --- !u!4 &645788743
 Transform:
   m_ObjectHideFlags: 0
