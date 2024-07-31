@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime;
 
-public class Check_Stamp : MonoBehaviour, IPointerDownHandler
+public class Check_Stamp : MonoBehaviour, IEndDragHandler
 {
     public GameObject Stamp;
     public GameObject Table_Area;
@@ -19,9 +19,9 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
     private RectTransform Letter_Large_Transform;
 
     private Rect Letter_Large_Rect;
-    private Rect Stamp_Rect;
+    [SerializeField] private Rect Stamp_Rect;
 
-    [SerializeField] private bool Is_Ready;
+    public bool Is_Ready;
 
     [Header("Setting")]
     public int Stamp_Value;
@@ -41,26 +41,33 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
         Stamp_Down = 50;
 
-        Stamp_Rect = new Rect(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved - Stamp.GetComponent<RectTransform>().rect.width / 2,
+        /*Stamp_Rect = new Rect(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved - Stamp.GetComponent<RectTransform>().rect.width / 2,
+        this.transform.position.y - this.GetComponent<RectTransform>().rect.height / 2 - Stamp_Down,
+        Stamp.GetComponent<RectTransform>().rect.width, Stamp.GetComponent<RectTransform>().rect.height);*/
+
+        Stamp_Rect = new Rect(this.transform.position.x - Stamp.GetComponent<RectTransform>().rect.width / 2,
         this.transform.position.y - this.GetComponent<RectTransform>().rect.height / 2 - Stamp_Down,
         Stamp.GetComponent<RectTransform>().rect.width, Stamp.GetComponent<RectTransform>().rect.height);
 
-        Stamp_Down_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y - Stamp_Down, this.transform.position.z);
-        Stamp_Up_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y, this.transform.position.z);
+        /*Stamp_Down_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y - Stamp_Down, this.transform.position.z);
+        Stamp_Up_Position = new Vector3(this.transform.position.x - Stamp_Bar_Edge.X_Position_Saved, this.transform.position.y, this.transform.position.z);*/
+
+        Stamp_Down_Position = new Vector3(this.transform.position.x, this.transform.position.y - Stamp_Down, this.transform.position.z);
+        Stamp_Up_Position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
 
         Stamp_Perfect = false;
     }
 
     #region 도장 찍기 함수
 
-    void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
+    void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (Is_Ready == true && Stamp_Bar_Edge.Open_Complete == true)
-        {
-            StartCoroutine(StampDown());
-            Is_Ready = false;
-            Stamp_Bar_Edge.Click_On = false;
-        }
+        Stamp_Rect = new Rect(this.transform.position.x - Stamp.GetComponent<RectTransform>().rect.width / 2,
+        this.transform.position.y - this.GetComponent<RectTransform>().rect.height / 2 - Stamp_Down,
+        Stamp.GetComponent<RectTransform>().rect.width, Stamp.GetComponent<RectTransform>().rect.height);
+
+        Stamp_Down_Position = new Vector3(this.transform.position.x, this.transform.position.y - Stamp_Down, this.transform.position.z);
+        Stamp_Up_Position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
     }
 
     IEnumerator StampDown()
@@ -129,6 +136,7 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
 
                 Is_Ready = true;
                 Stamp_Bar_Edge.Click_On = true;
+                this.GetComponent<Drag_Drop>().enabled = true;
                 break;
             }
             this.transform.position += new Vector3(0, Stamp_Down / 10, 0);
@@ -201,5 +209,16 @@ public class Check_Stamp : MonoBehaviour, IPointerDownHandler
               LargeLetterRect.Contains(new Vector2(StampRect.xMax, StampRect.yMin)) &&
               LargeLetterRect.Contains(new Vector2(StampRect.xMin, StampRect.yMax)) &&
               LargeLetterRect.Contains(new Vector2(StampRect.xMax, StampRect.yMax));
+    }
+
+    public void Stamp_Work()
+    {
+        if (Is_Ready == true)
+        {
+            StartCoroutine(StampDown());
+            Is_Ready = false;
+            this.GetComponent<Drag_Drop>().enabled = false;
+            //Stamp_Bar_Edge.Click_On = false;
+        }
     }
 }

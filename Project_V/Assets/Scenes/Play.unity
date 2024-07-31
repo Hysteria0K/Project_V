@@ -1038,6 +1038,7 @@ GameObject:
   - component: {fileID: 125545815}
   - component: {fileID: 125545817}
   - component: {fileID: 125545816}
+  - component: {fileID: 125545818}
   m_Layer: 5
   m_Name: StampTop
   m_TagString: Untagged
@@ -1102,6 +1103,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125545814}
   m_CullTransparentMesh: 1
+--- !u!114 &125545818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125545814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e081823f690eaac40a7e41d08257b312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stamp: {fileID: 192629086}
 --- !u!1 &139510884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,6 +1365,7 @@ GameObject:
   - component: {fileID: 192629084}
   - component: {fileID: 192629086}
   - component: {fileID: 192629087}
+  - component: {fileID: 192629088}
   m_Layer: 5
   m_Name: Stamp_Approved
   m_TagString: Untagged
@@ -1374,11 +1389,11 @@ RectTransform:
   - {fileID: 1644983155}
   - {fileID: 1786630534}
   - {fileID: 125545815}
-  m_Father: {fileID: 886175394}
+  m_Father: {fileID: 781998963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 437.5, y: -180}
+  m_AnchoredPosition: {x: 437.5, y: -189}
   m_SizeDelta: {x: 112.4921, y: 89.575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &192629084
@@ -1434,6 +1449,12 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: 44a91c424dd179e43a399d5f9837f66d, type: 3}
   Table_Area: {fileID: 655193894}
   Stamp_Bar_Edge: {fileID: 1943908690}
+  Stamp_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   Is_Ready: 0
   Stamp_Value: 2
   Stamp_Down: 0
@@ -1455,6 +1476,20 @@ MonoBehaviour:
   Button_10: {fileID: 1644983159}
   Button_1: {fileID: 1786630538}
   Stamp_Value: 0
+--- !u!114 &192629088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192629082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1639e2c9d8325774ba1f04962335f384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mouse_Center: 0
+  Is_Drag: 0
 --- !u!1 &203590849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,6 +2741,12 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: c1e78d72cc332d444a8e2e99a8c5c19d, type: 3}
   Table_Area: {fileID: 655193894}
   Stamp_Bar_Edge: {fileID: 1943908690}
+  Stamp_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   Is_Ready: 0
   Stamp_Value: 1
   Stamp_Down: 0
@@ -3551,6 +3592,7 @@ GameObject:
   - component: {fileID: 551227107}
   - component: {fileID: 551227106}
   - component: {fileID: 551227105}
+  - component: {fileID: 551227109}
   m_Layer: 5
   m_Name: Stamp_Approved (2)
   m_TagString: Untagged
@@ -3574,11 +3616,11 @@ RectTransform:
   - {fileID: 1790458017}
   - {fileID: 1944125098}
   - {fileID: 2027600752}
-  m_Father: {fileID: 886175394}
+  m_Father: {fileID: 781998963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 322.90002, y: -180}
+  m_AnchoredPosition: {x: 322.90002, y: -189}
   m_SizeDelta: {x: 112.4921, y: 89.575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &551227105
@@ -3612,6 +3654,12 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: 44a91c424dd179e43a399d5f9837f66d, type: 3}
   Table_Area: {fileID: 655193894}
   Stamp_Bar_Edge: {fileID: 1943908690}
+  Stamp_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   Is_Ready: 0
   Stamp_Value: 2
   Stamp_Down: 0
@@ -3655,6 +3703,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551227103}
   m_CullTransparentMesh: 1
+--- !u!114 &551227109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551227103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1639e2c9d8325774ba1f04962335f384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mouse_Center: 0
+  Is_Drag: 0
 --- !u!1 &564054958
 GameObject:
   m_ObjectHideFlags: 0
@@ -4492,6 +4554,7 @@ GameObject:
   - component: {fileID: 759195556}
   - component: {fileID: 759195555}
   - component: {fileID: 759195557}
+  - component: {fileID: 759195558}
   m_Layer: 5
   m_Name: Stamp_Denied
   m_TagString: Untagged
@@ -4512,11 +4575,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 890701966}
-  m_Father: {fileID: 886175394}
+  m_Father: {fileID: 781998963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 660.9, y: -180}
+  m_AnchoredPosition: {x: 660.9, y: -189}
   m_SizeDelta: {x: 124.8328, y: 89.5744}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &759195555
@@ -4572,11 +4635,31 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: 13e4d41dfbde7364c85200618c881e90, type: 3}
   Table_Area: {fileID: 655193894}
   Stamp_Bar_Edge: {fileID: 1943908690}
+  Stamp_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   Is_Ready: 0
   Stamp_Value: 9999
   Stamp_Down: 0
   Stamp_Down_Position: {x: 0, y: 0, z: 0}
   Stamp_Up_Position: {x: 0, y: 0, z: 0}
+--- !u!114 &759195558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759195553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1639e2c9d8325774ba1f04962335f384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mouse_Center: 0
+  Is_Drag: 0
 --- !u!1 &767503006
 GameObject:
   m_ObjectHideFlags: 0
@@ -4685,6 +4768,10 @@ RectTransform:
   - {fileID: 1555566775}
   - {fileID: 1673002117}
   - {fileID: 930022427}
+  - {fileID: 192629083}
+  - {fileID: 1486720707}
+  - {fileID: 551227104}
+  - {fileID: 759195554}
   m_Father: {fileID: 1556057629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5170,10 +5257,6 @@ RectTransform:
   - {fileID: 15548940}
   - {fileID: 724936994}
   - {fileID: 341758805}
-  - {fileID: 192629083}
-  - {fileID: 1486720707}
-  - {fileID: 551227104}
-  - {fileID: 759195554}
   - {fileID: 1779170997}
   m_Father: {fileID: 1556057629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5335,6 +5418,7 @@ GameObject:
   - component: {fileID: 890701966}
   - component: {fileID: 890701968}
   - component: {fileID: 890701967}
+  - component: {fileID: 890701969}
   m_Layer: 5
   m_Name: StampTop
   m_TagString: Untagged
@@ -5399,6 +5483,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890701965}
   m_CullTransparentMesh: 1
+--- !u!114 &890701969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890701965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e081823f690eaac40a7e41d08257b312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stamp: {fileID: 759195557}
 --- !u!1 &930022426
 GameObject:
   m_ObjectHideFlags: 0
@@ -8274,6 +8371,7 @@ GameObject:
   - component: {fileID: 1486720710}
   - component: {fileID: 1486720709}
   - component: {fileID: 1486720708}
+  - component: {fileID: 1486720712}
   m_Layer: 5
   m_Name: Stamp_Approved (1)
   m_TagString: Untagged
@@ -8297,11 +8395,11 @@ RectTransform:
   - {fileID: 1930326288}
   - {fileID: 1543745884}
   - {fileID: 1843881495}
-  m_Father: {fileID: 886175394}
+  m_Father: {fileID: 781998963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 549.99, y: -180}
+  m_AnchoredPosition: {x: 549.99, y: -189}
   m_SizeDelta: {x: 112.4921, y: 89.575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486720708
@@ -8335,6 +8433,12 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: 44a91c424dd179e43a399d5f9837f66d, type: 3}
   Table_Area: {fileID: 655193894}
   Stamp_Bar_Edge: {fileID: 1943908690}
+  Stamp_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   Is_Ready: 0
   Stamp_Value: 2
   Stamp_Down: 0
@@ -8378,6 +8482,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486720706}
   m_CullTransparentMesh: 1
+--- !u!114 &1486720712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486720706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1639e2c9d8325774ba1f04962335f384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mouse_Center: 0
+  Is_Drag: 0
 --- !u!1 &1511865881
 GameObject:
   m_ObjectHideFlags: 0
@@ -11611,6 +11729,7 @@ GameObject:
   - component: {fileID: 1843881495}
   - component: {fileID: 1843881497}
   - component: {fileID: 1843881496}
+  - component: {fileID: 1843881498}
   m_Layer: 5
   m_Name: StampTop
   m_TagString: Untagged
@@ -11675,6 +11794,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843881494}
   m_CullTransparentMesh: 1
+--- !u!114 &1843881498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843881494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e081823f690eaac40a7e41d08257b312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stamp: {fileID: 1486720709}
 --- !u!1 &1853524313
 GameObject:
   m_ObjectHideFlags: 0
@@ -12804,6 +12936,7 @@ GameObject:
   - component: {fileID: 2027600752}
   - component: {fileID: 2027600754}
   - component: {fileID: 2027600753}
+  - component: {fileID: 2027600755}
   m_Layer: 5
   m_Name: StampTop
   m_TagString: Untagged
@@ -12868,6 +13001,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027600751}
   m_CullTransparentMesh: 1
+--- !u!114 &2027600755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027600751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e081823f690eaac40a7e41d08257b312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stamp: {fileID: 551227106}
 --- !u!224 &346671688246461075
 RectTransform:
   m_ObjectHideFlags: 0
