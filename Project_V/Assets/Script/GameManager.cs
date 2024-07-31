@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject Letter;
     public RectTransform Letter_Area;
+    public RectTransform Table_Area;
     public TextMeshProUGUI Timer_Text;
     public TextMeshProUGUI Score_Text;
     public Telephone_Saver Telephone_Saver;
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
             Letter_Spawner.Generate_Complete = false;
             Letter_Spawner.Spawn_Letter();
             while (!Letter_Spawner.Generate_Complete) { } // 생성이 완료될 때까지 대기
-            Instantiate(Letter, Letter_Area.position - new Vector3(0, 700, 0), new Quaternion(0,0,0,0) ,Letter_Area);
+            Instantiate(Letter, Letter_Area.position, new Quaternion(0,0,0,0) , Table_Area); //Prototype = Letter_Area
         }
 
         Spawn_Check = false;

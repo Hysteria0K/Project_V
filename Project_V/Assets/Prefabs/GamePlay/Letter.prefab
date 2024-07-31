@@ -115,7 +115,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 350}
+  m_SizeDelta: {x: 423.4, y: 239.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3552258559864272002
 CanvasRenderer:
@@ -393,14 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7084801e83f25a64895163d3b420abf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Table_Area_Transform: {fileID: 0}
-  Letter_Area_Transform: {fileID: 0}
-  PostBox_Area_Transform: {fileID: 0}
-  Big_Border_Transform: {fileID: 0}
-  JsonReader: {fileID: 0}
-  Telephone_Saver: {fileID: 0}
-  GameManager: {fileID: 0}
-  SpriteReader: {fileID: 0}
   Letter_Small: {fileID: 5590400894972993479}
   Letter_Large: {fileID: 430668944418519085}
   Telephone_Saved: {fileID: 3643836792736701156, guid: d787477775ff35e428a89f0fb47eb4e5, type: 3}
@@ -408,16 +400,16 @@ MonoBehaviour:
   poststamp_image: {fileID: 6382783480563745024}
   OnTable: 0
   Change_Check: 0
-  Spawn_Number: 0
+  Spawn_Number: 1
   Spawned: 0
-  FirstName: 0
-  LastName: 0
-  Rank: 0
-  Regiment: 0
-  Battalion: 0
-  APO: 0
-  Force: 0
-  PostStamp: 0
+  FirstName: 32
+  LastName: 16
+  Rank: 5
+  Regiment: 26
+  Battalion: 26
+  APO: 26
+  Force: 26
+  PostStamp: 2
   Rank_Name_text: {fileID: 1351583987890918647}
   Regiment_Battalion_text: {fileID: 4063408470368560677}
   APO_text: {fileID: 5625436543409909259}
@@ -426,7 +418,9 @@ MonoBehaviour:
   Is_Stamp: 0
   Is_Duplicated: 0
   Valid: 0
-  Problem: 0
+  Problem: 1
+  Spawn_Y: -500
+  Move_Speed: 20
 --- !u!1 &3234098840095733002
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,8 +456,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -95.18959}
-  m_SizeDelta: {x: 179.31, y: 39.79}
+  m_AnchoredPosition: {x: 0, y: -101.15959}
+  m_SizeDelta: {x: 161.38, y: 35.81}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3505747770448791806
 CanvasRenderer:
@@ -520,8 +514,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -556,7 +550,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -552.60156, w: 0}
+  m_margin: {x: 0, y: 0, z: -246.91284, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -613,7 +607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 292, y: 98}
+  m_AnchoredPosition: {x: 284, y: 98}
   m_SizeDelta: {x: 533.6012, y: 156.5746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7880756141252827102
@@ -676,8 +670,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 59, y: -60}
-  m_SizeDelta: {x: 305.838, y: 221.35132}
+  m_AnchoredPosition: {x: 47.4, y: -48}
+  m_SizeDelta: {x: 233.7371, y: 169.8506}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9059488805242888710
 CanvasRenderer:
@@ -826,8 +820,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -72, y: -77}
-  m_SizeDelta: {x: 100, y: 120}
+  m_AnchoredPosition: {x: -47.97818, y: -58.37927}
+  m_SizeDelta: {x: 77.7077, y: 100.9801}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4399214913266938031
 CanvasRenderer:
@@ -1051,8 +1045,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -136.6796}
-  m_SizeDelta: {x: 299.67, y: 39.79}
+  m_AnchoredPosition: {x: 0, y: -138.6696}
+  m_SizeDelta: {x: 269.71, y: 35.81}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5801728880904522772
 CanvasRenderer:
@@ -1109,8 +1103,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1145,7 +1139,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -556.1898, w: 0}
+  m_margin: {x: 0, y: 0, z: -130.99304, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -70,18 +70,18 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     public bool Problem = false;
 
     [Header("Control")]
-    public float Spawn_Y = 230;
+    public float Spawn_Y = -500;
     public float Move_Speed = 20;
 
     private void Awake()
     {
         Table_Area = GameObject.Find("Table_Area");
         Letter_Area = GameObject.Find("Letter_Area");
-        PostBox_Area = GameObject.Find("PostBox_Area");
+        //PostBox_Area = GameObject.Find("PostBox_Area");
 
         Table_Area_Transform = Table_Area.GetComponent<RectTransform>();
         Letter_Area_Transform = Letter_Area.GetComponent<RectTransform>();
-        PostBox_Area_Transform = PostBox_Area.GetComponent<RectTransform>();
+        //PostBox_Area_Transform = PostBox_Area.GetComponent<RectTransform>();
 
         Big_Border_Transform = GameObject.Find("Big_Border").GetComponent<RectTransform>();
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
@@ -102,7 +102,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
 
         Table_Rect = Table_Area.GetComponent<Rect_Area>().Rect;
         Letter_Rect = Letter_Area.GetComponent<Rect_Area>().Rect;
-        PostBox_Rect = PostBox_Area.GetComponent<Rect_Area>().Rect;
+        //PostBox_Rect = PostBox_Area.GetComponent<Rect_Area>().Rect;
 
         Stamp_Value = 0;
 
@@ -150,7 +150,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     {
         if (this.transform.parent != PostBox_Area_Transform)
         {
-            if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= Letter_Rect.xMax)
+            if (Drag_Drop.Is_Drag == true && Input.mousePosition.y <= Letter_Rect.yMin)
             {
                 if (OnTable == false)
                 {
@@ -161,25 +161,25 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
             }
             else
             {
-                if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.x < Table_Rect.xMin)
+                if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.y > Table_Rect.yMax)
                 {
                     OnTable = false;
                     Change_Check = true;
                     this.transform.SetParent(Letter_Area_Transform);
                 }
             }
-
+            /*
             if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= PostBox_Rect.xMin && Input.mousePosition.y >= Table_Rect.yMax)
             {
                 OnTable = false;
                 Change_Check = true;
                 this.transform.SetParent(PostBox_Area_Transform);
-            }
+            }*/
 
             Move_Limit(Letter_Transform, Big_Border_Transform);
         }
 
-        else
+        /*else
         {
             if (Drag_Drop.Is_Drag == true && Input.mousePosition.y < PostBox_Rect.yMin)
             {
@@ -189,7 +189,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
             }
 
             Move_Limit(Letter_Transform, PostBox_Area_Transform);
-        }
+        }*/
     }
 
     private void Letter_On_Table()
@@ -255,9 +255,10 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         // 제한된 위치 적용
         Move.position = limitedPosition;
     }
+
     void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (this.transform.parent == PostBox_Area_Transform)
+        if (this.transform.parent == Letter_Area_Transform) //Prototype = PostBox_Area_Transform
         {
             Check_Valid();
 
@@ -319,14 +320,15 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
 
     IEnumerator Spawn_Move()
     {
-        while(this.transform.position.y <= Letter_Area_Transform.position.y + Spawn_Y && Spawned == true)
+        while(this.transform.position.y >= Letter_Area_Transform.position.y + Spawn_Y && Spawned == true)
         {
             yield return new WaitForSeconds(0.01f);
-            this.transform.position += new Vector3(0, Move_Speed, 0);
+            this.transform.position -= new Vector3(0, Move_Speed, 0);
         }
 
         Spawned = false;
     }
+
     private Sprite GetSprite_From_Name(string classname)
     {
         Type spriteReaderType = SpriteReader.GetType();

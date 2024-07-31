@@ -80,13 +80,13 @@ public class GuideBook : MonoBehaviour
             if (OnTable == true)
             {
                 Guidebook_On_Table();
+                Guidebook_Transform.position = Input.mousePosition;
+                Drag_Drop.Mouse_Center = true;
             }
 
             else
             {
                 Guidebook_Not_On_Table();
-                Guidebook_Transform.position = Input.mousePosition;
-                Drag_Drop.Mouse_Center = true;
             }
 
             Change_Check = false;
@@ -101,7 +101,7 @@ public class GuideBook : MonoBehaviour
 
     private void Guidebook_Collider()
     {
-        if (Drag_Drop.Is_Drag == true && Input.mousePosition.x >= Letter_Rect.xMax)
+        if (Drag_Drop.Is_Drag == true && Input.mousePosition.y <= Letter_Rect.yMin)
         {
             if (OnTable == false)
             {
@@ -112,7 +112,7 @@ public class GuideBook : MonoBehaviour
         }
         else
         {
-            if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.x < Table_Rect.xMin)
+            if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.y > Table_Rect.yMax)
             {
                 OnTable = false;
                 Change_Check = true;
@@ -125,14 +125,14 @@ public class GuideBook : MonoBehaviour
 
     private void Guidebook_On_Table()
     {
-        Guidebook_Small.SetActive(false);
-        Guidebook_Large.SetActive(true);
+        Guidebook_Small.SetActive(true);
+        Guidebook_Large.SetActive(false);
     }
 
     private void Guidebook_Not_On_Table()
     {
-        Guidebook_Small.SetActive(true);
-        Guidebook_Large.SetActive(false);
+        Guidebook_Small.SetActive(false);
+        Guidebook_Large.SetActive(true);
     }
 
     private void Move_Limit(RectTransform Move, RectTransform Limit)
