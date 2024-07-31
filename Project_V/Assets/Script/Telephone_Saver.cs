@@ -31,7 +31,7 @@ public class Telephone_Saver : MonoBehaviour
     public void Spawn_Telephone()
     {
         Telephone.GetComponent<Telephone>().Reason = this.transform.GetChild(0).GetComponent<Telephone_Saved>().Reason;
-        Instantiate(Telephone, new Vector3(104, 801, 0), new Quaternion(0, 0, 0, 0), Canvas);
+        Instantiate(Telephone, new Vector3(104, 601, 0), new Quaternion(0, 0, 0, 0), Canvas);
         Destroy(this.transform.GetChild(0).gameObject);
     }
 

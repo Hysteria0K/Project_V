@@ -58,8 +58,15 @@ public class Check_Stamp : MonoBehaviour, IEndDragHandler
         Stamp_Perfect = false;
     }
 
-    #region 도장 찍기 함수
+    void Update()
+    {
+        if (Is_Ready == true)
+        {
+            Move_Limit(this.GetComponent<RectTransform>(), Table_Area.GetComponent<RectTransform>());
+        }
+    }
 
+    #region 도장 찍기 함수
     void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
         Stamp_Rect = new Rect(this.transform.position.x - Stamp.GetComponent<RectTransform>().rect.width / 2,
@@ -220,5 +227,44 @@ public class Check_Stamp : MonoBehaviour, IEndDragHandler
             this.GetComponent<Drag_Drop>().enabled = false;
             //Stamp_Bar_Edge.Click_On = false;
         }
+    }
+    private void Move_Limit(RectTransform Move, RectTransform Limit)
+    {
+        // rectToLimit의 현재 위치
+        Vector3[] rectCorners = new Vector3[4];
+        Move.GetWorldCorners(rectCorners);
+
+        // boundingRect의 경계 위치
+        Vector3[] boundingCorners = new Vector3[4];
+        Limit.GetWorldCorners(boundingCorners);
+
+        Vector3 limitedPosition = Move.position;
+
+        // 왼쪽 경계 제한
+        if (rectCorners[0].x < boundingCorners[0].x)
+        {
+            limitedPosition.x += boundingCorners[0].x - rectCorners[0].x;
+        }
+
+        // 오른쪽 경계 제한
+        if (rectCorners[2].x > boundingCorners[2].x)
+        {
+            limitedPosition.x -= rectCorners[2].x - boundingCorners[2].x;
+        }
+
+        // 아래쪽 경계 제한
+        if (rectCorners[0].y < boundingCorners[0].y)
+        {
+            limitedPosition.y += boundingCorners[0].y - rectCorners[0].y;
+        }
+
+        // 위쪽 경계 제한
+        if (rectCorners[1].y > boundingCorners[1].y)
+        {
+            limitedPosition.y -= rectCorners[1].y - boundingCorners[1].y;
+        }
+
+        // 제한된 위치 적용
+        Move.position = limitedPosition;
     }
 }
