@@ -13,15 +13,25 @@ public class Check_Stamp : MonoBehaviour, IEndDragHandler
     public GameObject Stamp;
     public GameObject Table_Area;
     public Stamp_Bar_Edge Stamp_Bar_Edge;
+    public Transform Drawer_Right;
+    public GameObject Drawer_Right_BG;
+    public Transform Front_Table_Area;
+
+    public RectTransform Big_Border;
+
+    private Vector3 Origin_Pos;
 
     private RectTransform Stamp_Transform;
 
     private RectTransform Letter_Large_Transform;
 
+    private Drag_Drop Drag_Drop;
+
     private Rect Letter_Large_Rect;
     [SerializeField] private Rect Stamp_Rect;
 
-    public bool Is_Ready;
+    private bool Is_Ready;
+    private bool OnTable;
 
     [Header("Setting")]
     public int Stamp_Value;
@@ -37,7 +47,9 @@ public class Check_Stamp : MonoBehaviour, IEndDragHandler
     void Start()
     {
         Stamp_Transform = Stamp.GetComponent<RectTransform>();
+        Drag_Drop = this.GetComponent<Drag_Drop>();
         Is_Ready = true;
+        OnTable = false;
 
         Stamp_Down = 50;
 
@@ -56,14 +68,13 @@ public class Check_Stamp : MonoBehaviour, IEndDragHandler
         Stamp_Up_Position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
 
         Stamp_Perfect = false;
+
+        Origin_Pos = this.transform.position;
     }
 
     void Update()
     {
-        if (Is_Ready == true)
-        {
-            Move_Limit(this.GetComponent<RectTransform>(), Table_Area.GetComponent<RectTransform>());
-        }
+        Stamp_Collider();
     }
 
     #region 도장 찍기 함수
@@ -220,7 +231,7 @@ public class Check_Stamp : MonoBehaviour, IEndDragHandler
 
     public void Stamp_Work()
     {
-        if (Is_Ready == true)
+        if (Is_Ready == true && OnTable == true)
         {
             StartCoroutine(StampDown());
             Is_Ready = false;
@@ -253,7 +264,7 @@ public class Check_Stamp : MonoBehaviour, IEndDragHandler
         }
 
         // 아래쪽 경계 제한
-        if (rectCorners[0].y < boundingCorners[0].y)
+        if (rectCorners[0].y < boundingCorners[0].y )
         {
             limitedPosition.y += boundingCorners[0].y - rectCorners[0].y;
         }
@@ -266,5 +277,30 @@ public class Check_Stamp : MonoBehaviour, IEndDragHandler
 
         // 제한된 위치 적용
         Move.position = limitedPosition;
+    }
+    private void Stamp_Collider()
+    {
+        if (Drag_Drop.Is_Drag == true && Input.mousePosition.y <= Drawer_Right_BG.GetComponent<Rect_Area>().Rect.yMin)
+        {
+            if (OnTable == false)
+            {
+                OnTable = true;
+                this.transform.SetParent(Front_Table_Area);
+            }
+        }
+        else
+        {
+            if (Drag_Drop.Is_Drag == false && Input.mousePosition.y > Front_Table_Area.GetComponent<Rect_Area>().Rect.yMax)
+            {
+                OnTable = false;
+                this.transform.SetParent(Drawer_Right);
+                this.transform.position = Origin_Pos;
+            }
+        }
+
+        if (Is_Ready == true)
+        {
+            Move_Limit(this.GetComponent<RectTransform>(), Big_Border);
+        }
     }
 }
