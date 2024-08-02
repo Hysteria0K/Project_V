@@ -86,6 +86,13 @@ public class Check_Stamp : MonoBehaviour, IEndDragHandler
 
         Stamp_Down_Position = new Vector3(this.transform.position.x, this.transform.position.y - Stamp_Down, this.transform.position.z);
         Stamp_Up_Position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+
+        if (Drag_Drop.Is_Drag == false && Input.mousePosition.y > Front_Table_Area.GetComponent<Rect_Area>().Rect.yMax)
+        {
+            OnTable = false;
+            this.transform.SetParent(Drawer_Right);
+            this.transform.position = Origin_Pos;
+        }
     }
 
     IEnumerator StampDown()
@@ -286,15 +293,6 @@ public class Check_Stamp : MonoBehaviour, IEndDragHandler
             {
                 OnTable = true;
                 this.transform.SetParent(Front_Table_Area);
-            }
-        }
-        else
-        {
-            if (Drag_Drop.Is_Drag == false && Input.mousePosition.y > Front_Table_Area.GetComponent<Rect_Area>().Rect.yMax)
-            {
-                OnTable = false;
-                this.transform.SetParent(Drawer_Right);
-                this.transform.position = Origin_Pos;
             }
         }
 
