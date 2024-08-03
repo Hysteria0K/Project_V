@@ -8,13 +8,10 @@ using UnityEngine.EventSystems;
 public class GuideBook : MonoBehaviour
 {
     [Header("Object")]
-    [SerializeField] private RectTransform Table_Area_Transform;
-    [SerializeField] private RectTransform Letter_Area_Transform;
     [SerializeField] private RectTransform Big_Border_Transform;
     [SerializeField] private JsonReader JsonReader;
 
-    private GameObject Table_Area;
-    private GameObject Letter_Area;
+    private GameObject Left_Drawer_Area;
 
     public TextMeshProUGUI Guidebook_Page_Text;
 
@@ -22,6 +19,7 @@ public class GuideBook : MonoBehaviour
 
     private Rect Table_Rect;
     private Rect Letter_Rect;
+    private Rect Left_Drawer_Area_Rect;
 
     public GameObject Guidebook_Small;
     public GameObject Guidebook_Large;
@@ -35,6 +33,7 @@ public class GuideBook : MonoBehaviour
 
     private float Half_Width;
     private float Half_Height;
+    private Vector3 Origin_Pos;
 
     [Header("Page")]
     public int Guidebook_Page;
@@ -42,11 +41,8 @@ public class GuideBook : MonoBehaviour
 
     private void Awake()
     {
-        Table_Area = GameObject.Find("Table_Area");
-        Letter_Area = GameObject.Find("Letter_Area");
+        Left_Drawer_Area = GameObject.Find("Left_Drawer_Area");
 
-        Table_Area_Transform = GameObject.Find("Table_Area").GetComponent<RectTransform>();
-        Letter_Area_Transform = GameObject.Find("Letter_Area").GetComponent<RectTransform>();
         Big_Border_Transform = GameObject.Find("Big_Border").GetComponent<RectTransform>();
 
         //JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
@@ -58,8 +54,7 @@ public class GuideBook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Table_Rect = Table_Area.GetComponent<Rect_Area>().Rect;
-        Letter_Rect = Letter_Area.GetComponent<Rect_Area>().Rect;
+        Left_Drawer_Area_Rect = Left_Drawer_Area.GetComponent<Rect_Area>().Rect;
 
         Guidebook_Transform = GetComponent<RectTransform>();
 
@@ -68,6 +63,8 @@ public class GuideBook : MonoBehaviour
 
         Half_Width = Guidebook_Transform.rect.width / 2;
         Half_Height = Guidebook_Transform.rect.height / 2;
+
+        Origin_Pos = this.transform.position;
     }
 
     // Update is called once per frame
@@ -95,28 +92,34 @@ public class GuideBook : MonoBehaviour
         if (OnTable == true)
         {
             Guidebook_Page_Text.text = $"{Guidebook_Page}" + "Page";
+
+            if (this.transform.position != Origin_Pos && Drag_Drop.Is_Drag == false)
+            {
+                this.transform.position = Origin_Pos;
+            }
         }
 
     }
 
     private void Guidebook_Collider()
     {
-        if (Drag_Drop.Is_Drag == true && Input.mousePosition.y <= Letter_Rect.yMin)
+        if (Drag_Drop.Is_Drag == true && (Input.mousePosition.y >= Left_Drawer_Area_Rect.yMin && Input.mousePosition.y <= Left_Drawer_Area_Rect.yMax
+            && Input.mousePosition.x >= Left_Drawer_Area_Rect.xMin && Input.mousePosition.x <= Left_Drawer_Area_Rect.xMax))
         {
             if (OnTable == false)
             {
                 OnTable = true;
                 Change_Check = true;
-                this.transform.SetParent(Table_Area_Transform);
+                this.transform.SetParent(Left_Drawer_Area.transform);
             }
         }
         else
         {
-            if (OnTable == true && Drag_Drop.Is_Drag == true && Input.mousePosition.y > Table_Rect.yMax)
+            if (OnTable == true && Drag_Drop.Is_Drag == true)
             {
                 OnTable = false;
                 Change_Check = true;
-                this.transform.SetParent(Letter_Area_Transform);
+                this.transform.SetParent(Big_Border_Transform);
             }
         }
 
