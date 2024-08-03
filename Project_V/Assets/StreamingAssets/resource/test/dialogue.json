@@ -208,5 +208,20 @@
     "Sprite3": null,
     "Pos3": null,
     "Layer3": null
+  },
+  {
+    "Id": "Stamp",
+    "Index": 5.0,
+    "Name": "테스트",
+    "Text": "진짜 오지게 긴 단어를 넣어서 이게 어디까지 늘어나서 줄 바꿈이 되는지 테스트를 하고자 함에 이러한 긴 문장을 작성하는 것에 대한 회의감을 느끼고 있는 중입니다.",
+    "Sprite1": null,
+    "Pos1": null,
+    "Layer1": null,
+    "Sprite2": null,
+    "Pos2": null,
+    "Layer2": null,
+    "Sprite3": null,
+    "Pos3": null,
+    "Layer3": null
   }
 ]}

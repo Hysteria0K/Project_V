@@ -11,30 +11,58 @@ public class Telephone_Dialogue : MonoBehaviour
 
     public TextMeshProUGUI Name;
 
+    public GameObject Dialogue_Invisible;
+    public RectTransform Dialogue_Visible;
+
+    private TextMeshProUGUI Invisible_Text;
+
     private Telephone Telephone;
 
     public string Parse_text;
 
     public int Index;
 
+    private bool Size_Check = false;
+
     [Header("Control")]
     [SerializeField] private float Text_Delay = 0.125f;
     [SerializeField] private float Wait_Delay = 0.3f;
+    [SerializeField] private float Min_Text = 300.0f;
+    [SerializeField] private float Max_Text = 600.0f;
 
     private void Awake()
     {
         Telephone = gameObject.transform.parent.GetComponent<Telephone>();
+
+        Invisible_Text = Dialogue_Invisible.GetComponent<TextMeshProUGUI>();
+        Invisible_Text.text = Parse_text;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(textPrint(Text_Delay));
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(Dialogue_Invisible.GetComponent<RectTransform>().rect.width);
+        if (Size_Check == false)
+        {
+            if (Dialogue_Invisible.GetComponent<RectTransform>().rect.width >= Min_Text)
+            {
+                this.GetComponent<RectTransform>().sizeDelta = new Vector2(this.GetComponent<RectTransform>().rect.width +
+                    (Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Min_Text), this.GetComponent<RectTransform>().rect.height);
+                this.transform.position += new Vector3((Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Min_Text) / 2, 0);
+
+                Dialogue_Visible.sizeDelta = new Vector2(Dialogue_Visible.rect.width +
+                    (Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Min_Text), Dialogue_Visible.rect.height);
+            }
+            Size_Check = true;
+
+            StartCoroutine(textPrint(Text_Delay));
+        }
     }
 
     IEnumerator textPrint(float d)
