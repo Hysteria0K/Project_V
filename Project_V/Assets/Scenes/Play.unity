@@ -15054,8 +15054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33722b361cc0dbb4fa97cfe0bc7525d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Table_Area_Transform: {fileID: 0}
-  Letter_Area_Transform: {fileID: 0}
   Big_Border_Transform: {fileID: 0}
   JsonReader: {fileID: 0}
   Guidebook_Page_Text: {fileID: 745113738}
@@ -17196,8 +17194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33722b361cc0dbb4fa97cfe0bc7525d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Table_Area_Transform: {fileID: 0}
-  Letter_Area_Transform: {fileID: 0}
   Big_Border_Transform: {fileID: 0}
   JsonReader: {fileID: 0}
   Guidebook_Page_Text: {fileID: 172928621}
@@ -32320,8 +32316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33722b361cc0dbb4fa97cfe0bc7525d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Table_Area_Transform: {fileID: 0}
-  Letter_Area_Transform: {fileID: 0}
   Big_Border_Transform: {fileID: 0}
   JsonReader: {fileID: 0}
   Guidebook_Page_Text: {fileID: 329652765}
@@ -33884,12 +33878,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33722b361cc0dbb4fa97cfe0bc7525d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Table_Area_Transform: {fileID: 0}
-  Letter_Area_Transform: {fileID: 0}
   Big_Border_Transform: {fileID: 0}
   JsonReader: {fileID: 0}
   Guidebook_Page_Text: {fileID: 5259416946735136623}
-  Guidebook_Small: {fileID: 5190630204778083481}
+  Guidebook_Small: {fileID: 1666230401}
   Guidebook_Large: {fileID: 1389453439686853553}
   Drag_Drop: {fileID: 6435481145377784694}
   Page_List: {fileID: 8665363350104190012}

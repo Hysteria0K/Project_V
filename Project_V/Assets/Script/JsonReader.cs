@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using Unity.VisualScripting;
+using System.Data;
+using UnityEngine.UIElements;
 
 public class JsonReader : MonoBehaviour
 {
@@ -50,6 +53,24 @@ public class JsonReader : MonoBehaviour
         public bool Valid;
     }
 
+    [System.Serializable]
+    public class Dialogue_Attributes
+    {
+        public string Id;
+        public int Index;
+        public string Name;
+        public string Text;
+        public string Sprite1;
+        public int Pos1;
+        public int Layer1;
+        public string Sprite2;
+        public int Pos2;
+        public int Layer2;
+        public string Sprite3;
+        public int Pos3;
+        public int Layer3;
+    }
+
     public class NameList_Parse
     {
         public NameList_Attributes[] namelist;
@@ -76,12 +97,20 @@ public class JsonReader : MonoBehaviour
     {
         public PostStamp_Attributes[] poststamp;
     }
+    
+    public class Dialogue_Parse
+    {
+        public Dialogue_Attributes[] dialogue;
+    }
 
     public NameList_Parse NameList;
     public ArmyUnit_Parse ArmyUnit;
     public Rank_Parse Rank;
     public Telephone_Parse Telephone;
     public PostStamp_Parse PostStamp;
+    public Dialogue_Parse Dialogue;
+
+    public Dictionary<string, Dictionary<int, Dialogue_Attributes>> Dialogue_Dictionary;
 
     private void Awake()
     {
@@ -90,6 +119,11 @@ public class JsonReader : MonoBehaviour
         Rank = JsonUtility.FromJson<Rank_Parse>(ReadJson("militaryrank"));
         Telephone = JsonUtility.FromJson<Telephone_Parse>(ReadJson("telephone"));
         PostStamp = JsonUtility.FromJson<PostStamp_Parse>(ReadJson("poststamp"));
+        Dialogue = JsonUtility.FromJson<Dialogue_Parse>(ReadJson("dialogue"));
+
+        Dialogue_Dictionary = new Dictionary<string, Dictionary<int, Dialogue_Attributes>>();
+        Dialogue_To_Dictionary();
+        //Debug.Log(Dialogue_Dictionary["Test"][0].Text);
     }
 
     // Start is called before the first frame update
@@ -100,12 +134,6 @@ public class JsonReader : MonoBehaviour
         Debug.Log(ArmyUnit.armyunit[0].Regiment);
         Debug.Log(Rank.militaryrank[10].Rank);
         */
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private string ReadJson(string Filename)
@@ -119,5 +147,27 @@ public class JsonReader : MonoBehaviour
 
         return (JsonText);
 #endif
+    }
+
+    private void Dialogue_To_Dictionary()
+    {
+        Dictionary<int, Dialogue_Attributes> Temp_dictionary = new Dictionary<int, Dialogue_Attributes>();
+
+        string Saved_ID = Dialogue.dialogue[0].Id;
+
+        for (int i = 0; i < Dialogue.dialogue.Length; i++)
+        {
+            if (Saved_ID != Dialogue.dialogue[i].Id)
+            {
+                //Debug.Log("º¯È¯");
+                Dialogue_Dictionary.Add(Saved_ID, Temp_dictionary);
+                Temp_dictionary = new Dictionary<int, Dialogue_Attributes>();
+                Saved_ID = Dialogue.dialogue[i].Id;
+            }
+
+            Temp_dictionary.Add(Dialogue.dialogue[i].Index, Dialogue.dialogue[i]);
+        }
+
+        Dialogue_Dictionary.Add(Saved_ID, Temp_dictionary);
     }
 }

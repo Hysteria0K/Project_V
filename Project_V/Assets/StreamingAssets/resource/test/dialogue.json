@@ -1,6 +1,6 @@
-{"Test":[
+{"dialogue":[
   {
-    "Chapter": "Test",
+    "Id": "Test",
     "Index": 0.0,
     "Name": "테스트1",
     "Text": "대화테스트1번",
@@ -15,10 +15,10 @@
     "Layer3": 2.0
   },
   {
-    "Chapter": "Test",
+    "Id": "Test",
     "Index": 1.0,
     "Name": "테스트2",
-    "Text": "스트리밍에셋에서도 작동함",
+    "Text": "대화테스트2번",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
     "Layer1": 0.0,
@@ -30,7 +30,7 @@
     "Layer3": 2.0
   },
   {
-    "Chapter": "Test",
+    "Id": "Test",
     "Index": 2.0,
     "Name": "테스트3",
     "Text": "대화테스트3번",
@@ -45,7 +45,7 @@
     "Layer3": 2.0
   },
   {
-    "Chapter": "Test",
+    "Id": "Test",
     "Index": 3.0,
     "Name": "테스트4",
     "Text": "대화테스트4번",
@@ -60,7 +60,7 @@
     "Layer3": 2.0
   },
   {
-    "Chapter": "Test",
+    "Id": "Test",
     "Index": 4.0,
     "Name": "테스트5",
     "Text": "대화테스트5번",
@@ -75,7 +75,7 @@
     "Layer3": 2.0
   },
   {
-    "Chapter": "Test",
+    "Id": "Test",
     "Index": 5.0,
     "Name": "테스트6",
     "Text": "대화테스트6번",
@@ -90,7 +90,7 @@
     "Layer3": 2.0
   },
   {
-    "Chapter": "Test",
+    "Id": "Test",
     "Index": 6.0,
     "Name": "테스트7",
     "Text": "대화테스트7번",
@@ -105,7 +105,7 @@
     "Layer3": 2.0
   },
   {
-    "Chapter": "Test",
+    "Id": "Test",
     "Index": 7.0,
     "Name": "테스트8",
     "Text": "대화테스트8번",
@@ -120,7 +120,7 @@
     "Layer3": 2.0
   },
   {
-    "Chapter": "Test",
+    "Id": "Test",
     "Index": 8.0,
     "Name": "테스트9",
     "Text": "대화테스트9번",
@@ -133,5 +133,80 @@
     "Sprite3": "D_308001",
     "Pos3": 874.0,
     "Layer3": 2.0
+  },
+  {
+    "Id": "Stamp",
+    "Index": 0.0,
+    "Name": "애들리",
+    "Text": "여보세요.",
+    "Sprite1": "charlotte",
+    "Pos1": 0.0,
+    "Layer1": null,
+    "Sprite2": null,
+    "Pos2": null,
+    "Layer2": null,
+    "Sprite3": null,
+    "Pos3": null,
+    "Layer3": null
+  },
+  {
+    "Id": "Stamp",
+    "Index": 1.0,
+    "Name": "전화",
+    "Text": "선생님 도장 틀렸어요.",
+    "Sprite1": "testc",
+    "Pos1": 0.0,
+    "Layer1": null,
+    "Sprite2": null,
+    "Pos2": null,
+    "Layer2": null,
+    "Sprite3": null,
+    "Pos3": null,
+    "Layer3": null
+  },
+  {
+    "Id": "Stamp",
+    "Index": 2.0,
+    "Name": "애들리",
+    "Text": "그렇군요.",
+    "Sprite1": "charlotte",
+    "Pos1": 0.0,
+    "Layer1": null,
+    "Sprite2": null,
+    "Pos2": null,
+    "Layer2": null,
+    "Sprite3": null,
+    "Pos3": null,
+    "Layer3": null
+  },
+  {
+    "Id": "Stamp",
+    "Index": 3.0,
+    "Name": "애들리",
+    "Text": "주의하겠습니다.",
+    "Sprite1": "charlotte",
+    "Pos1": 0.0,
+    "Layer1": null,
+    "Sprite2": null,
+    "Pos2": null,
+    "Layer2": null,
+    "Sprite3": null,
+    "Pos3": null,
+    "Layer3": null
+  },
+  {
+    "Id": "Stamp",
+    "Index": 4.0,
+    "Name": "전화",
+    "Text": "네 수고요.",
+    "Sprite1": "testc",
+    "Pos1": 0.0,
+    "Layer1": null,
+    "Sprite2": null,
+    "Pos2": null,
+    "Layer2": null,
+    "Sprite3": null,
+    "Pos3": null,
+    "Layer3": null
   }
 ]}

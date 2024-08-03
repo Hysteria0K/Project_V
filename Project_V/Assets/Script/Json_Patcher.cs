@@ -10,7 +10,7 @@ public class Json_Patcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ExcelToJson("dialoguetest", "Test");
+        ExcelToJson("dialogue", "dialogue");
         ExcelToJson("armyunit", "armyunit");
         ExcelToJson("militaryrank", "militaryrank");
         ExcelToJson("namelist", "namelist");
