@@ -6,10 +6,10 @@ public class Telephone : MonoBehaviour
 {
     private JsonReader JsonReader;
 
-    public GameObject Right_Dialogue;
-    public GameObject Left_Dialogue;
+    public GameObject Dialogue;
 
     private Telephone_Saver Telephone_Saver;
+    private Vector3 Dialogue_Position;
 
     public string Reason;
 
@@ -30,13 +30,16 @@ public class Telephone : MonoBehaviour
     public float Up_Value = 80;
 
     [Header("Control")]
-    public float Destroy_Delay = 1.0f;
+    //public float Destroy_Delay = 1.0f;
+    private float Dialogue_Delay = 0.3f;
          
     private void Awake()
     {
         Telephone_Saver = GameObject.Find("Telephone_Saver").GetComponent<Telephone_Saver>();
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
         thisRect = GetComponent<RectTransform>();
+
+        Dialogue_Position = GameObject.Find("DialogueText_Position").transform.position;
     }
     // Start is called before the first frame update
     void Start()
@@ -47,10 +50,7 @@ public class Telephone : MonoBehaviour
 
         Destroy_Check = false;
 
-        if (Reason == "Stamp")
-        {
-            MaxIndex = JsonReader.Telephone.Stamp.Length-1;
-        }
+        MaxIndex = JsonReader.Dialogue_Dictionary[Reason].Count - 1;
     }
 
     // Update is called once per frame
@@ -58,49 +58,38 @@ public class Telephone : MonoBehaviour
     {
         if (Index > MaxIndex && Text_End_Check == true)
         {
-            Destroy_Check = true;
-
-            StartCoroutine(Delay_Destroy(Destroy_Delay));
+            Telephone_Saver.IsLocked = false;
+            Destroy(this.gameObject);
         }
 
         if (Text_End_Check == true && Destroy_Check == false)
         {
-            Make_Dialogue();
-            Index++;
             Text_End_Check = false;
+            StartCoroutine(Delay_Make_Dialogue(Dialogue_Delay));
         }
 
+        /*
         if (Up_Check == true && Destroy_Check == false)
         {
             Move_Dialogue();
             Up_Check = false;
-        }
+        }*/
     }
 
     private void Make_Dialogue()
     {
-        if (Reason == "Stamp")
-        {
-            Parse_text = JsonReader.Telephone.Stamp[Index].Text;
-            // Talker_Sprite = JsonReader.Telephone.Stamp[Index].Sprite;
-            Talker = JsonReader.Telephone.Stamp[Index].Talk;
-        }
 
-        if (Talker == "Right")
-        {
-            Right_Dialogue.GetComponent<Telephone_Dialogue>().Parse_text = Parse_text;
-            Right_Dialogue.GetComponent<Telephone_Dialogue>().Index = Index;
-            Instantiate(Right_Dialogue, thisRect.position, thisRect.rotation, thisRect);
-        }
+        Parse_text = JsonReader.Dialogue_Dictionary[Reason][Index].Text;
+        // Talker_Sprite = JsonReader.Telephone.Stamp[Index].Sprite;
+        Talker = JsonReader.Dialogue_Dictionary[Reason][Index].Name;
 
-        if (Talker == "Left")
-        {
-            Left_Dialogue.GetComponent<Telephone_Dialogue>().Parse_text = Parse_text;
-            Left_Dialogue.GetComponent<Telephone_Dialogue>().Index = Index;
-            Instantiate(Left_Dialogue, thisRect.position, thisRect.rotation, thisRect);
-        }
+        Dialogue.GetComponent<Telephone_Dialogue>().Parse_text = Parse_text;
+        Dialogue.GetComponent<Telephone_Dialogue>().Index = Index;
+        Dialogue.GetComponent<Telephone_Dialogue>().Name.text = Talker;
+        Instantiate(Dialogue, Dialogue_Position, thisRect.rotation, thisRect);
     }
 
+    /*
     private void Move_Dialogue()
     {
         int Child_Count = this.transform.childCount;
@@ -127,11 +116,21 @@ public class Telephone : MonoBehaviour
             Value_Count += Up_Value /10;
         }
     }
-
+    
+    
     IEnumerator Delay_Destroy(float d)
     {
         yield return new WaitForSeconds(d);
         Destroy(this.gameObject);
         Telephone_Saver.IsLocked = false;
+    }
+    */
+
+    IEnumerator Delay_Make_Dialogue(float d)
+    {
+        yield return new WaitForSeconds(d);
+
+        Make_Dialogue();
+        Index++;
     }
 }

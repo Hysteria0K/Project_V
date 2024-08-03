@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9126837042519547720}
   - component: {fileID: 8139707766881886812}
   - component: {fileID: 3651052938110621455}
+  - component: {fileID: 5549863580164258082}
   m_Layer: 5
   m_Name: DialogueTextBox
   m_TagString: Untagged
@@ -93,6 +94,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &5549863580164258082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556637596612449759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144f8dbf030cc494b8b6c03888e6f6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Text: {fileID: 3656424339992369473}
+  Name: {fileID: 1862997698319987932}
+  Parse_text: 
+  Index: 0
+  Text_Delay: 0.125
 --- !u!1 &2926247609910345983
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,8 +551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC8FC\uC778\uACF5\uC740 \uBD84\uB958\uAC00 \uD544\uC694\uD55C \uC6B0\uD3B8\uC744
-    \uC8FC\uC18C, \uC6B0\uD3B8, \uBC30\uC1A1 \uBC29\uC2DD,  "
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 82f64c61059b372409ef9b3ec33872fc, type: 2}
   m_sharedMaterial: {fileID: -7864689912004933024, guid: 82f64c61059b372409ef9b3ec33872fc, type: 2}

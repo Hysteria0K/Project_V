@@ -35,16 +35,6 @@ public class JsonReader : MonoBehaviour
     }
 
     [System.Serializable]
-    public class Telephone_Attributes
-    {
-        public string Order;
-        public int Index;
-        public string Talk;
-        public string Text;
-        public string Sprite;
-    }
-
-    [System.Serializable]
     public class PostStamp_Attributes
     {
         public int Index;
@@ -74,7 +64,6 @@ public class JsonReader : MonoBehaviour
     public class NameList_Parse
     {
         public NameList_Attributes[] namelist;
-        // public Test_Dialogue_Attributes[] Test2; 이런식으로 추가가능
     }
 
     public class ArmyUnit_Parse
@@ -85,12 +74,6 @@ public class JsonReader : MonoBehaviour
     public class Rank_Parse
     {
         public Militaryrank_Attributes[] militaryrank;
-    }
-
-    public class Telephone_Parse
-    {
-        public Telephone_Attributes[] Stamp;
-        // Ex) public Telephone_Attributes[] WrongSomething;
     }
 
     public class PostStamp_Parse
@@ -106,7 +89,6 @@ public class JsonReader : MonoBehaviour
     public NameList_Parse NameList;
     public ArmyUnit_Parse ArmyUnit;
     public Rank_Parse Rank;
-    public Telephone_Parse Telephone;
     public PostStamp_Parse PostStamp;
     public Dialogue_Parse Dialogue;
 
@@ -117,7 +99,6 @@ public class JsonReader : MonoBehaviour
         NameList = JsonUtility.FromJson<NameList_Parse>(ReadJson("namelist"));
         ArmyUnit = JsonUtility.FromJson<ArmyUnit_Parse>(ReadJson("armyunit"));
         Rank = JsonUtility.FromJson<Rank_Parse>(ReadJson("militaryrank"));
-        Telephone = JsonUtility.FromJson<Telephone_Parse>(ReadJson("telephone"));
         PostStamp = JsonUtility.FromJson<PostStamp_Parse>(ReadJson("poststamp"));
         Dialogue = JsonUtility.FromJson<Dialogue_Parse>(ReadJson("dialogue"));
 

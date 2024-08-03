@@ -14,7 +14,6 @@ public class Json_Patcher : MonoBehaviour
         ExcelToJson("armyunit", "armyunit");
         ExcelToJson("militaryrank", "militaryrank");
         ExcelToJson("namelist", "namelist");
-        ExcelToJson("telephone", "Stamp");
         ExcelToJson("poststamp", "poststamp");
     }
 

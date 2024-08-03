@@ -7,7 +7,9 @@ using TMPro;
 public class Telephone_Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI Text;
-    public Image Talker;
+    //public Image Talker;
+
+    public TextMeshProUGUI Name;
 
     private Telephone Telephone;
 
@@ -17,6 +19,7 @@ public class Telephone_Dialogue : MonoBehaviour
 
     [Header("Control")]
     [SerializeField] private float Text_Delay = 0.125f;
+    [SerializeField] private float Wait_Delay = 0.3f;
 
     private void Awake()
     {
@@ -49,10 +52,14 @@ public class Telephone_Dialogue : MonoBehaviour
             yield return new WaitForSeconds(d);
         }
 
-        Telephone.Up_Check = true;
-        StartCoroutine(Move_Coroutine());
+        yield return new WaitForSeconds(Wait_Delay);
+
+        //Telephone.Up_Check = true;
+        Telephone.Text_End_Check = true;
+        Destroy(this.gameObject);
     }
 
+    /*
     IEnumerator Move_Coroutine()
     {
         float Value_Count = 0;
@@ -70,4 +77,5 @@ public class Telephone_Dialogue : MonoBehaviour
 
         Telephone.Text_End_Check = true;
     }
+    */
 }

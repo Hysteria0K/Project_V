@@ -48,8 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8dae78069883e74aaea8209db48e75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Right_Dialogue: {fileID: 1577726886229201860, guid: b7dbbdc0aa056e24ca4aa208ff0f8df9, type: 3}
-  Left_Dialogue: {fileID: 126320901650908009, guid: d1bf539b17080114e9baa3606eb19f47, type: 3}
+  Dialogue: {fileID: 1556637596612449759, guid: 2d18a162e6aa6534b81e812ca354def7, type: 3}
   Reason: Stamp
   Index: 0
   MaxIndex: 0
