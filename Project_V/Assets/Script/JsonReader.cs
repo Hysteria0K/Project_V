@@ -61,6 +61,20 @@ public class JsonReader : MonoBehaviour
         public int Layer3;
     }
 
+    [System.Serializable]
+    public class Rulebook_Attributes
+    {
+        public string Id;
+        public int Order;
+        public string Type;
+        public object Value1;
+        public object Value2;
+        public object Value3;
+        public object Value4;
+        public object Value5;
+        public object Value6;
+    }
+
     public class NameList_Parse
     {
         public NameList_Attributes[] namelist;
@@ -86,13 +100,20 @@ public class JsonReader : MonoBehaviour
         public Dialogue_Attributes[] dialogue;
     }
 
+    public class RulebookData_Parse
+    {
+        public Rulebook_Attributes[] rulebookdata;
+    }
+
     public NameList_Parse NameList;
     public ArmyUnit_Parse ArmyUnit;
     public Rank_Parse Rank;
     public PostStamp_Parse PostStamp;
     public Dialogue_Parse Dialogue;
+    public RulebookData_Parse RulebookData;
 
     public Dictionary<string, Dictionary<int, Dialogue_Attributes>> Dialogue_Dictionary;
+    public Dictionary<string, Dictionary<int, Rulebook_Attributes>> Rulebook_Dictionary;
 
     private void Awake()
     {
@@ -101,10 +122,15 @@ public class JsonReader : MonoBehaviour
         Rank = JsonUtility.FromJson<Rank_Parse>(ReadJson("militaryrank"));
         PostStamp = JsonUtility.FromJson<PostStamp_Parse>(ReadJson("poststamp"));
         Dialogue = JsonUtility.FromJson<Dialogue_Parse>(ReadJson("dialogue"));
+        RulebookData = JsonUtility.FromJson<RulebookData_Parse>(ReadJson("rulebookdata"));
 
         Dialogue_Dictionary = new Dictionary<string, Dictionary<int, Dialogue_Attributes>>();
         Dialogue_To_Dictionary();
-        //Debug.Log(Dialogue_Dictionary["Test"][0].Text);
+
+        Rulebook_Dictionary = new Dictionary<string, Dictionary<int, Rulebook_Attributes>>();
+        RulebookData_To_Dictionary();
+
+        //Debug.Log(Rulebook_Dictionary["BaseBook"][6].Value1);
     }
 
     // Start is called before the first frame update
@@ -150,5 +176,27 @@ public class JsonReader : MonoBehaviour
         }
 
         Dialogue_Dictionary.Add(Saved_ID, Temp_dictionary);
+    }
+
+    private void RulebookData_To_Dictionary()
+    {
+        Dictionary<int, Rulebook_Attributes> Temp_dictionary = new Dictionary<int, Rulebook_Attributes>();
+
+        string Saved_ID = RulebookData.rulebookdata[0].Id;
+
+        for (int i = 0; i < RulebookData.rulebookdata.Length; i++)
+        {
+            if (Saved_ID != RulebookData.rulebookdata[i].Id)
+            {
+                //Debug.Log("º¯È¯");
+                Rulebook_Dictionary.Add(Saved_ID, Temp_dictionary);
+                Temp_dictionary = new Dictionary<int, Rulebook_Attributes>();
+                Saved_ID = RulebookData.rulebookdata[i].Id;
+            }
+
+            Temp_dictionary.Add(RulebookData.rulebookdata[i].Order, RulebookData.rulebookdata[i]);
+        }
+
+        Rulebook_Dictionary.Add(Saved_ID, Temp_dictionary);
     }
 }

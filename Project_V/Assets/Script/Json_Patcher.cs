@@ -15,6 +15,7 @@ public class Json_Patcher : MonoBehaviour
         ExcelToJson("militaryrank", "militaryrank");
         ExcelToJson("namelist", "namelist");
         ExcelToJson("poststamp", "poststamp");
+        ExcelToJson("rulebookdata", "rulebookdata");
     }
 
     //C:\Users\tksth\Desktop\Project_V\Project_V\Assets\ExcelFiles
