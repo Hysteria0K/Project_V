@@ -259,13 +259,18 @@ MonoBehaviour:
   Text: {fileID: 3656424339992369473}
   Name: {fileID: 1862997698319987932}
   Dialogue_Invisible: {fileID: 814188666931538560}
-  Dialogue_Visible: {fileID: 6725287282429675268}
-  Parse_text: 
-  Index: 0
+  Dialogue_Visible: {fileID: 2856990684760932900}
+  Parse_text: "\uC9C4\uC9DC \uC624\uC9C0\uAC8C \uAE34 \uB2E8\uC5B4\uB97C \uB123\uC5B4\uC11C
+    \uC774\uAC8C \uC5B4\uB514\uAE4C\uC9C0 \uB298\uC5B4\uB098\uC11C \uC904 \uBC14\uAFC8\uC774
+    \uB418\uB294\uC9C0 \uD14C\uC2A4\uD2B8\uB97C \uD558\uACE0\uC790 \uD568\uC5D0 \uC774\uB7EC\uD55C
+    \uAE34 \uBB38\uC7A5\uC744 \uC791\uC131\uD558\uB294 \uAC83\uC5D0 \uB300\uD55C
+    \uD68C\uC758\uAC10\uC744 \uB290\uB07C\uACE0 \uC788\uB294 \uC911\uC785\uB2C8\uB2E4."
+  Index: 5
   Text_Delay: 0.125
   Wait_Delay: 0.3
   Min_Text: 300
   Max_Text: 600
+  Increase_Height: 30.5
 --- !u!1 &2926247609910345983
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +487,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC560\uB4E4\uB9AC"
+  m_text: "\uD14C\uC2A4\uD2B8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 82f64c61059b372409ef9b3ec33872fc, type: 2}
   m_sharedMaterial: {fileID: -7864689912004933024, guid: 82f64c61059b372409ef9b3ec33872fc, type: 2}
@@ -676,7 +681,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 15.900024, y: -50.824165}
-  m_SizeDelta: {x: 300, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &9101715813211055845
 CanvasRenderer:

@@ -86,7 +86,8 @@ public class Telephone : MonoBehaviour
         Dialogue.GetComponent<Telephone_Dialogue>().Parse_text = Parse_text;
         Dialogue.GetComponent<Telephone_Dialogue>().Index = Index;
         Dialogue.GetComponent<Telephone_Dialogue>().Name.text = Talker;
-        Instantiate(Dialogue, Dialogue_Position, thisRect.rotation, thisRect);
+        Dialogue.GetComponent<Telephone_Dialogue>().Dialogue_Position = Dialogue_Position;
+        Instantiate(Dialogue, Dialogue_Position - new Vector3(0, 1600, 0), thisRect.rotation, thisRect);
     }
 
     /*

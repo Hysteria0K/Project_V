@@ -18,17 +18,22 @@ public class Telephone_Dialogue : MonoBehaviour
 
     private Telephone Telephone;
 
+    public Vector3 Dialogue_Position;
+
     public string Parse_text;
 
     public int Index;
 
     private bool Size_Check = false;
 
+    private int Share_Height;
+
     [Header("Control")]
     [SerializeField] private float Text_Delay = 0.125f;
     [SerializeField] private float Wait_Delay = 0.3f;
     [SerializeField] private float Min_Text = 300.0f;
     [SerializeField] private float Max_Text = 600.0f;
+    [SerializeField] private float Increase_Height = 30.5f;
 
     private void Awake()
     {
@@ -41,7 +46,7 @@ public class Telephone_Dialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Share_Height = 0;
     }
 
     // Update is called once per frame
@@ -52,15 +57,36 @@ public class Telephone_Dialogue : MonoBehaviour
         {
             if (Dialogue_Invisible.GetComponent<RectTransform>().rect.width >= Min_Text)
             {
-                this.GetComponent<RectTransform>().sizeDelta = new Vector2(this.GetComponent<RectTransform>().rect.width +
-                    (Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Min_Text), this.GetComponent<RectTransform>().rect.height);
-                this.transform.position += new Vector3((Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Min_Text) / 2, 0);
+                if (Dialogue_Invisible.GetComponent<RectTransform>().rect.width > Max_Text)
+                {
+                    Share_Height = (int)(Mathf.Floor(Dialogue_Invisible.GetComponent<RectTransform>().rect.width / Max_Text));
 
-                Dialogue_Visible.sizeDelta = new Vector2(Dialogue_Visible.rect.width +
-                    (Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Min_Text), Dialogue_Visible.rect.height);
+                    this.GetComponent<RectTransform>().sizeDelta = new Vector2(Max_Text, 
+                        this.GetComponent<RectTransform>().rect.height + Share_Height * Increase_Height);
+                    //this.transform.position += new Vector3((Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Max_Text/2), 0);
+
+                    Dialogue_Visible.sizeDelta = new Vector2(Dialogue_Visible.rect.width + Max_Text,
+                        Dialogue_Visible.rect.height + Share_Height * Increase_Height);
+                }
+
+                else
+                {
+                    this.GetComponent<RectTransform>().sizeDelta = new Vector2(this.GetComponent<RectTransform>().rect.width +
+                    (Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Min_Text), this.GetComponent<RectTransform>().rect.height);
+                    //this.transform.position += new Vector3((Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Min_Text/2), 0);
+
+                    Dialogue_Visible.sizeDelta = new Vector2(Dialogue_Visible.rect.width +
+                        (Dialogue_Invisible.GetComponent<RectTransform>().rect.width), Dialogue_Visible.rect.height);
+                }
+            }
+
+            else
+            {
+                Dialogue_Visible.sizeDelta = new Vector2(Dialogue_Visible.rect.width + Min_Text, Dialogue_Visible.rect.height);
             }
             Size_Check = true;
 
+            this.transform.position = Dialogue_Position;
             StartCoroutine(textPrint(Text_Delay));
         }
     }
