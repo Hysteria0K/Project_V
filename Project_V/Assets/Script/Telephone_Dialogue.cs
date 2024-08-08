@@ -76,7 +76,7 @@ public class Telephone_Dialogue : MonoBehaviour
                     //this.transform.position += new Vector3((Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Min_Text/2), 0);
 
                     Dialogue_Visible.sizeDelta = new Vector2(Dialogue_Visible.rect.width +
-                        (Dialogue_Invisible.GetComponent<RectTransform>().rect.width), Dialogue_Visible.rect.height);
+                        (Dialogue_Invisible.GetComponent<RectTransform>().rect.width + 5), Dialogue_Visible.rect.height);
                 }
             }
 

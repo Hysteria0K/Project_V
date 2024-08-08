@@ -260,6 +260,7 @@ MonoBehaviour:
   Name: {fileID: 1862997698319987932}
   Dialogue_Invisible: {fileID: 814188666931538560}
   Dialogue_Visible: {fileID: 2856990684760932900}
+  Dialogue_Position: {x: 0, y: 0, z: 0}
   Parse_text: "\uC9C4\uC9DC \uC624\uC9C0\uAC8C \uAE34 \uB2E8\uC5B4\uB97C \uB123\uC5B4\uC11C
     \uC774\uAC8C \uC5B4\uB514\uAE4C\uC9C0 \uB298\uC5B4\uB098\uC11C \uC904 \uBC14\uAFC8\uC774
     \uB418\uB294\uC9C0 \uD14C\uC2A4\uD2B8\uB97C \uD558\uACE0\uC790 \uD568\uC5D0 \uC774\uB7EC\uD55C
