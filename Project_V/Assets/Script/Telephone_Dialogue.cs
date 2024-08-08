@@ -35,6 +35,8 @@ public class Telephone_Dialogue : MonoBehaviour
     [SerializeField] private float Max_Text = 600.0f;
     [SerializeField] private float Increase_Height = 30.5f;
 
+    private int Correct = 5; //오차 보정
+
     private void Awake()
     {
         Telephone = gameObject.transform.parent.GetComponent<Telephone>();
@@ -63,7 +65,7 @@ public class Telephone_Dialogue : MonoBehaviour
 
                     this.GetComponent<RectTransform>().sizeDelta = new Vector2(Max_Text, 
                         this.GetComponent<RectTransform>().rect.height + Share_Height * Increase_Height);
-                    //this.transform.position += new Vector3((Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Max_Text/2), 0);
+                    //this.transform.position += new Vector3(-(Max_Text-this.transform.position.x)/2, - Share_Height * Increase_Height/2);
 
                     Dialogue_Visible.sizeDelta = new Vector2(Dialogue_Visible.rect.width + Max_Text,
                         Dialogue_Visible.rect.height + Share_Height * Increase_Height);
@@ -73,10 +75,10 @@ public class Telephone_Dialogue : MonoBehaviour
                 {
                     this.GetComponent<RectTransform>().sizeDelta = new Vector2(this.GetComponent<RectTransform>().rect.width +
                     (Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Min_Text), this.GetComponent<RectTransform>().rect.height);
-                    //this.transform.position += new Vector3((Dialogue_Invisible.GetComponent<RectTransform>().rect.width - Min_Text/2), 0);
+                    //this.transform.position += new Vector3(-Min_Text/2, 0);
 
                     Dialogue_Visible.sizeDelta = new Vector2(Dialogue_Visible.rect.width +
-                        (Dialogue_Invisible.GetComponent<RectTransform>().rect.width + 5), Dialogue_Visible.rect.height);
+                        (Dialogue_Invisible.GetComponent<RectTransform>().rect.width + Correct), Dialogue_Visible.rect.height);
                 }
             }
 
@@ -87,6 +89,7 @@ public class Telephone_Dialogue : MonoBehaviour
             Size_Check = true;
 
             this.transform.position = Dialogue_Position;
+            //this.transform.position += new Vector3(0, 1600, 0); //테스트중
             StartCoroutine(textPrint(Text_Delay));
         }
     }
