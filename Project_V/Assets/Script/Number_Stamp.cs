@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Number_Stamp : MonoBehaviour
-{
+{ 
     public Number_Button Button_100;
     public Number_Button Button_10;
     public Number_Button Button_1;

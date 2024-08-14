@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Number_Button : MonoBehaviour
+public class Number_Button : MonoBehaviour, IPointerDownHandler
 {
     public int Number;
 
@@ -35,5 +36,10 @@ public class Number_Button : MonoBehaviour
         }
 
         Text.text = Number.ToString();
+    }
+
+    void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        transform.parent.GetComponent<Drag_Drop>().OnPointerDown();
     }
 }
