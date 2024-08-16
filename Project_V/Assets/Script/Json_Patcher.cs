@@ -8,14 +8,20 @@ using System.IO;
 public class Json_Patcher : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+#if UNITY_EDITOR
         ExcelToJson("dialogue", "dialogue");
         ExcelToJson("armyunit", "armyunit");
         ExcelToJson("militaryrank", "militaryrank");
         ExcelToJson("namelist", "namelist");
         ExcelToJson("poststamp", "poststamp");
         ExcelToJson("rulebookdata", "rulebookdata");
+#else
+        Destroy(this.gameObject);
+#endif
+        Debug.Log("복사완료");
+        Destroy(this.gameObject);
     }
 
     //C:\Users\tksth\Desktop\Project_V\Project_V\Assets\ExcelFiles
@@ -32,6 +38,6 @@ public class Json_Patcher : MonoBehaviour
         string path = "Assets/StreamingAssets/resource/test/" + filename;
         File.WriteAllText(path, "{\""+ Header + "\":"+ ExcelToJsonConverter.ConvertExcelToJson("Assets/ExcelFiles/" + file + ".xlsx") + "}");
 
-        Debug.Log(path);
+        //Debug.Log(path);
     }
 }

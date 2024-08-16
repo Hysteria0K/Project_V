@@ -130,6 +130,7 @@ public class JsonReader : MonoBehaviour
         Rulebook_Dictionary = new Dictionary<string, Dictionary<int, Rulebook_Attributes>>();
         RulebookData_To_Dictionary();
 
+        Debug.Log("JsonParse Complete");
         //Debug.Log(Rulebook_Dictionary["BaseBook"][6].Value1);
     }
 
