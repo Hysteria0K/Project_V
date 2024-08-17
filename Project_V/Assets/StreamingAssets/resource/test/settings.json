@@ -1,0 +1,13 @@
+{"settings":[
+  {
+    "Text_Delay": 0.125,
+    "Wait_Delay": 0.3,
+    "Min_Text": 300.0,
+    "Max_Text": 600.0,
+    "Increase_Height": 30.5,
+    "Dialogue_Delay": 0.3,
+    "L_Spawn_Y": -500.0,
+    "L_Move_Speed": 20.0,
+    "Telephone_Delay": 1.5
+  }
+]}

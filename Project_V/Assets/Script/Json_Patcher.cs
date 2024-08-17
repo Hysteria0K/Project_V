@@ -17,6 +17,7 @@ public class Json_Patcher : MonoBehaviour
         ExcelToJson("namelist", "namelist");
         ExcelToJson("poststamp", "poststamp");
         ExcelToJson("rulebookdata", "rulebookdata");
+        ExcelToJson("settings", "settings");
 #else
         Destroy(this.gameObject);
 #endif
