@@ -24264,7 +24264,7 @@ MonoBehaviour:
   Is_Dead: 1
   Dead_Count: 10
   Dead_Percentage: 40
-  Is_Invalid_Stamp: 1
+  Is_Invalid_Stamp: 0
 --- !u!1 &1242642162
 GameObject:
   m_ObjectHideFlags: 0

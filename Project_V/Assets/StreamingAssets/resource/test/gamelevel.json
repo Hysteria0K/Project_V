@@ -1,0 +1,13 @@
+{"gamelevel":[
+  {
+    "Day": 1.0,
+    "Letter_Count_Max": 1.0,
+    "Limit_Time": 300.0,
+    "Is_Dead": true,
+    "Dead_Count": 30.5,
+    "Dead_Percentage": 0.3,
+    "Is_Invalid_Stamp": -500.0,
+    "L_Move_Speed": 20.0,
+    "Telephone_Delay": 1.5
+  }
+]}

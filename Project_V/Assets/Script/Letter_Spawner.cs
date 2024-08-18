@@ -209,6 +209,20 @@ public class Letter_Spawner : MonoBehaviour
             else { Check_Invalid_Stamp = false; }
         }
 
+        else
+        {
+            while(true)
+            {
+                Letter.PostStamp = Set_PostStamp();
+
+                if (JsonReader.PostStamp.poststamp[Letter.PostStamp].Valid == true)
+                {
+                    Check_Invalid_Stamp = false;
+                    break;
+                }
+            }
+        }
+
         if (Check_Dead == false && Check_Invalid_Stamp == false)
         {
             Letter.Problem = false;
