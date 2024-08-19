@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Telephone_Saver : MonoBehaviour
 {
+    public JsonReader JsonReader;
     public GameObject Telephone;
     public RectTransform Canvas;
 
     public bool IsLocked;
 
     [Header("Control")]
-    [SerializeField] private float Delay_Time = 1.5f;
+    [SerializeField] private float Delay_Time;
 
     // Start is called before the first frame update
     void Start()
     {
+        Delay_Time = JsonReader.Settings.settings.Delay_Time;
         IsLocked = false;
     }
 

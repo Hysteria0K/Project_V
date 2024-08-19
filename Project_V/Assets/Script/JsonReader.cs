@@ -88,6 +88,20 @@ public class JsonReader : MonoBehaviour
         public bool Is_Invalid_Stamp;
     }
 
+    [System.Serializable]
+    public class Settings_Attributes
+    {
+        public float Text_Delay;
+        public float Wait_Delay;
+        public float Min_Text;
+        public float Max_Text;
+        public float Increase_Height;
+        public float Dialogue_Delay;
+        public float L_Spawn_Y;
+        public float L_Move_Speed;
+        public float Telephone_Delay;
+    }
+
     public class NameList_Parse
     {
         public NameList_Attributes[] namelist;
@@ -123,6 +137,11 @@ public class JsonReader : MonoBehaviour
         public GameLevel_Attributes[] gamelevel;
     }
 
+    public class Settings_Parse
+    {
+        public Settings_Attributes[] settings;
+    }
+
     public NameList_Parse NameList;
     public ArmyUnit_Parse ArmyUnit;
     public Rank_Parse Rank;
@@ -130,6 +149,7 @@ public class JsonReader : MonoBehaviour
     public Dialogue_Parse Dialogue;
     public RulebookData_Parse RulebookData;
     public GameLevel_Parse GameLevel;
+    public Settings_Parse Settings;
 
     public Dictionary<string, Dictionary<int, Dialogue_Attributes>> Dialogue_Dictionary;
     public Dictionary<string, Dictionary<int, Rulebook_Attributes>> Rulebook_Dictionary;
@@ -144,6 +164,7 @@ public class JsonReader : MonoBehaviour
         Dialogue = JsonUtility.FromJson<Dialogue_Parse>(ReadJson("dialogue"));
         RulebookData = JsonUtility.FromJson<RulebookData_Parse>(ReadJson("rulebookdata"));
         GameLevel = JsonUtility.FromJson<GameLevel_Parse>(ReadJson("gamelevel"));
+        Settings = JsonUtility.FromJson<Settings_Parse>(ReadJson("settings"));
 
         Dialogue_Dictionary = new Dictionary<string, Dictionary<int, Dialogue_Attributes>>();
         Dialogue_To_Dictionary();
