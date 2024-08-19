@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject Game_End;
     public TextMeshProUGUI Game_End_Score;
     public Letter_Spawner Letter_Spawner;
+    public JsonReader JsonReader;
 
     public float Current_Time;
 
@@ -27,21 +28,24 @@ public class GameManager : MonoBehaviour
     public int Sec;
 
     [Header("Control")]
-    [SerializeField] private int Letter_Count_Max = 1;
-    public float Limit_Time = 300;
+    [SerializeField] private int Letter_Count_Max;
+    public float Limit_Time;
 
 
     private void Awake()
     {
         Letter_Count = 0;
         Spawn_Check = false;
-
-        Current_Time = Limit_Time;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        Letter_Count_Max = JsonReader.GameLevel_Dictionary[this.GetComponent<GameLevel>().Day].Letter_Count_Max;
+        Limit_Time = JsonReader.GameLevel_Dictionary[this.GetComponent<GameLevel>().Day].Limit_Time;
+
+        Current_Time = Limit_Time;
+
         Score_Update();
     }
 

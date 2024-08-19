@@ -24244,11 +24244,12 @@ MonoBehaviour:
   Game_End: {fileID: 1855360996}
   Game_End_Score: {fileID: 203590851}
   Letter_Spawner: {fileID: 1825016793}
+  JsonReader: {fileID: 252757836}
   Current_Time: 0
   Min: 0
   Sec: 0
-  Letter_Count_Max: 1
-  Limit_Time: 300
+  Letter_Count_Max: 0
+  Limit_Time: 0
 --- !u!114 &1234890869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24261,9 +24262,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7288af876fe3c84aa63d82f78f1eb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Is_Dead: 1
-  Dead_Count: 10
-  Dead_Percentage: 40
+  JsonReader: {fileID: 252757836}
+  Day: 1
+  Is_Dead: 0
+  Dead_Count: 0
+  Dead_Percentage: 0
   Is_Invalid_Stamp: 0
 --- !u!1 &1242642162
 GameObject:
