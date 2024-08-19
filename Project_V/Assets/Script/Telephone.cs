@@ -31,8 +31,8 @@ public class Telephone : MonoBehaviour
 
     [Header("Control")]
     //public float Destroy_Delay = 1.0f;
-    private float Dialogue_Delay = 0.3f;
-         
+    [SerializeField] private float Dialogue_Delay;
+
     private void Awake()
     {
         Telephone_Saver = GameObject.Find("Telephone_Saver").GetComponent<Telephone_Saver>();
@@ -51,6 +51,14 @@ public class Telephone : MonoBehaviour
         Destroy_Check = false;
 
         MaxIndex = JsonReader.Dialogue_Dictionary[Reason].Count - 1;
+
+        Dialogue_Delay = JsonReader.Settings.settings[0].Dialogue_Delay;
+
+        Dialogue.GetComponent<Telephone_Dialogue>().Text_Delay = JsonReader.Settings.settings[0].Text_Delay;
+        Dialogue.GetComponent<Telephone_Dialogue>().Wait_Delay = JsonReader.Settings.settings[0].Wait_Delay;
+        Dialogue.GetComponent<Telephone_Dialogue>().Min_Text = JsonReader.Settings.settings[0].Min_Text;
+        Dialogue.GetComponent<Telephone_Dialogue>().Max_Text = JsonReader.Settings.settings[0].Max_Text;
+        Dialogue.GetComponent<Telephone_Dialogue>().Increase_Height = JsonReader.Settings.settings[0].Increase_Height;
     }
 
     // Update is called once per frame

@@ -70,8 +70,8 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     public bool Problem = false;
 
     [Header("Control")]
-    public float Spawn_Y = -500;
-    public float Move_Speed = 20;
+    public float Spawn_Y;
+    public float Move_Speed;
 
     private void Awake()
     {
@@ -114,6 +114,10 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         Valid = false;
 
         Spawned = true;
+
+        Spawn_Y = JsonReader.Settings.settings[0].L_Spawn_Y;
+
+        Move_Speed = JsonReader.Settings.settings[0].L_Move_Speed;
 
         StartCoroutine(Spawn_Move());
 

@@ -52,12 +52,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Letter_Count <= 0 && Spawn_Check == false && Telephone_Saver.IsLocked == false) 
-        {
-            StartCoroutine(Spawn_Letter());
-            Spawn_Check = true;
-        }
-
         Current_Time -= Time.deltaTime;
 
         Min = (int)Current_Time / 60;
@@ -68,6 +62,15 @@ public class GameManager : MonoBehaviour
         if (Current_Time <= 0)
         {
             EndGame();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (Letter_Count <= 0 && Spawn_Check == false && Telephone_Saver.IsLocked == false && Telephone_Saver.transform.childCount == 0)
+        {
+            StartCoroutine(Spawn_Letter());
+            Spawn_Check = true;
         }
     }
 

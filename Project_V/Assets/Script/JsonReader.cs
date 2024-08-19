@@ -179,6 +179,8 @@ public class JsonReader : MonoBehaviour
         //Debug.Log(Rulebook_Dictionary["BaseBook"][6].Value1);
 
         //Debug.Log(GameLevel_Dictionary[1].Is_Dead);
+
+        //Debug.Log(Settings.settings[0].Telephone_Delay);
     }
 
     // Start is called before the first frame update

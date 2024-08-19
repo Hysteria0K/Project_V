@@ -29,11 +29,11 @@ public class Telephone_Dialogue : MonoBehaviour
     private int Share_Height;
 
     [Header("Control")]
-    [SerializeField] private float Text_Delay = 0.125f;
-    [SerializeField] private float Wait_Delay = 0.3f;
-    [SerializeField] private float Min_Text = 300.0f;
-    [SerializeField] private float Max_Text = 600.0f;
-    [SerializeField] private float Increase_Height = 30.5f;
+    [SerializeField] public float Text_Delay;
+    [SerializeField] public float Wait_Delay;
+    [SerializeField] public float Min_Text;
+    [SerializeField] public float Max_Text;
+    [SerializeField] public float Increase_Height;
 
     private int Correct = 5; //오차 보정
 

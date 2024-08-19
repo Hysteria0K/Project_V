@@ -16,7 +16,7 @@ public class Telephone_Saver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Delay_Time = JsonReader.Settings.settings.Delay_Time;
+        Delay_Time = JsonReader.Settings.settings[0].Telephone_Delay;
         IsLocked = false;
     }
 
@@ -25,8 +25,8 @@ public class Telephone_Saver : MonoBehaviour
     {
         if (IsLocked == false && this.transform.childCount != 0)
         {
-            StartCoroutine(Delay());
             IsLocked = true;
+            StartCoroutine(Delay());
         }
     }
 
