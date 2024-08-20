@@ -7605,7 +7605,7 @@ MonoBehaviour:
   Telephone: {fileID: 3882363357672167873, guid: 7be85a74c87f2444297e12f570b2f4e3, type: 3}
   Canvas: {fileID: 1556057629}
   IsLocked: 0
-  Delay_Time: 1.5
+  Delay_Time: 0
 --- !u!1 &388381903
 GameObject:
   m_ObjectHideFlags: 0
