@@ -328,6 +328,11 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         {
             yield return new WaitForSeconds(0.01f);
             this.transform.position -= new Vector3(0, Move_Speed, 0);
+
+            if (this.transform.position.y + Letter_Large.GetComponent<RectTransform>().rect.height/2 <= Letter_Rect.yMin)
+            {
+                Letter_On_Table();
+            }
         }
 
         Spawned = false;

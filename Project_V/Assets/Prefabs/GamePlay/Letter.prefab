@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7084801e83f25a64895163d3b420abf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Letter_Small: {fileID: 5590400894972993479}
+  Letter_Small: {fileID: 40467786919171401}
   Letter_Large: {fileID: 430668944418519085}
   Telephone_Saved: {fileID: 3643836792736701156, guid: d787477775ff35e428a89f0fb47eb4e5, type: 3}
   Drag_Drop: {fileID: 91783897905128734}
