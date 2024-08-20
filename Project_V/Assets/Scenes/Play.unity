@@ -7601,10 +7601,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef818a0071586a4d92c76da5b8a4cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JsonReader: {fileID: 252757836}
   Telephone: {fileID: 3882363357672167873, guid: 7be85a74c87f2444297e12f570b2f4e3, type: 3}
   Canvas: {fileID: 1556057629}
   IsLocked: 0
-  Delay_Time: 1.5
+  Delay_Time: 0
 --- !u!1 &388381903
 GameObject:
   m_ObjectHideFlags: 0
