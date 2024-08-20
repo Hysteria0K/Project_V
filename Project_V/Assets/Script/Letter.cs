@@ -45,6 +45,8 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
     public int Spawn_Number;
     [SerializeField]private bool Spawned;
 
+    private bool Spawn_Larger;
+
     [Header("Letter info")]
     [SerializeField] public int FirstName;
     [SerializeField] public int LastName;
@@ -118,6 +120,8 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         Spawn_Y = JsonReader.Settings.settings[0].L_Spawn_Y;
 
         Move_Speed = JsonReader.Settings.settings[0].L_Move_Speed;
+
+        Spawn_Larger = false;
 
         StartCoroutine(Spawn_Move());
 
@@ -329,9 +333,10 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
             yield return new WaitForSeconds(0.01f);
             this.transform.position -= new Vector3(0, Move_Speed, 0);
 
-            if (this.transform.position.y + Letter_Large.GetComponent<RectTransform>().rect.height/2 <= Letter_Rect.yMin)
+            if (Spawn_Larger == false && this.transform.position.y + Letter_Large.GetComponent<RectTransform>().rect.height/2 <= Letter_Rect.yMin)
             {
                 Letter_On_Table();
+                Spawn_Larger = true;
             }
         }
 
