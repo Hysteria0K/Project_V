@@ -9,6 +9,7 @@ using System;
 
 public class JsonReader : MonoBehaviour
 {
+    #region Attributes
     [System.Serializable]
     public class NameList_Attributes
     {
@@ -68,12 +69,12 @@ public class JsonReader : MonoBehaviour
         public string Id;
         public int Order;
         public string Type;
-        public object Value1;
-        public object Value2;
-        public object Value3;
-        public object Value4;
-        public object Value5;
-        public object Value6;
+        public string Value1;
+        public string Value2;
+        public string Value3;
+        public string Value4;
+        public string Value5;
+        public string Value6;
     }
 
     [System.Serializable]
@@ -101,7 +102,9 @@ public class JsonReader : MonoBehaviour
         public float L_Move_Speed;
         public float Telephone_Delay;
     }
+    #endregion Attributes
 
+    #region Parse
     public class NameList_Parse
     {
         public NameList_Attributes[] namelist;
@@ -141,6 +144,7 @@ public class JsonReader : MonoBehaviour
     {
         public Settings_Attributes[] settings;
     }
+    #endregion Parse
 
     public NameList_Parse NameList;
     public ArmyUnit_Parse ArmyUnit;
@@ -177,20 +181,10 @@ public class JsonReader : MonoBehaviour
 
         Debug.Log("JsonParse Complete");
         //Debug.Log(Rulebook_Dictionary["BaseBook"][6].Value1);
-
-        //Debug.Log(GameLevel_Dictionary[1].Is_Dead);
-
-        //Debug.Log(Settings.settings[0].Telephone_Delay);
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        /*
-        Debug.Log(NameList.namelist[1].FirstName + NameList.namelist[1].SecondName);
-        Debug.Log(ArmyUnit.armyunit[0].Regiment);
-        Debug.Log(Rank.militaryrank[10].Rank);
-        */
     }
 
     private string ReadJson(string Filename)
@@ -206,6 +200,8 @@ public class JsonReader : MonoBehaviour
 #endif
     }
 
+
+    #region 배열, 자료형으로 변환
     private void Dialogue_To_Dictionary()
     {
         Dictionary<int, Dialogue_Attributes> Temp_dictionary = new Dictionary<int, Dialogue_Attributes>();
@@ -236,9 +232,8 @@ public class JsonReader : MonoBehaviour
 
         for (int i = 0; i < RulebookData.rulebookdata.Length; i++)
         {
-            if (Saved_ID != RulebookData.rulebookdata[i].Id)
+            if (Saved_ID != RulebookData.rulebookdata[i].Id.ToString())
             {
-                //Debug.Log("변환");
                 Rulebook_Dictionary.Add(Saved_ID, Temp_dictionary);
                 Temp_dictionary = new Dictionary<int, Rulebook_Attributes>();
                 Saved_ID = RulebookData.rulebookdata[i].Id;
@@ -257,4 +252,5 @@ public class JsonReader : MonoBehaviour
             GameLevel_Dictionary.Add(GameLevel.gamelevel[i].Day, GameLevel.gamelevel[i]);
         }
     }
+    #endregion 배열, 자료형으로 변환
 }

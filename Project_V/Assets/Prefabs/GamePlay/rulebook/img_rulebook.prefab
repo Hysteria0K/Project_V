@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6425011909591961315}
   - component: {fileID: 3954447560202832841}
   m_Layer: 5
-  m_Name: img_rulebook_desc
+  m_Name: img_rulebook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
