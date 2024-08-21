@@ -125,7 +125,7 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
 
         StartCoroutine(Spawn_Move());
 
-        poststamp_image.sprite = GetSprite_From_Name(JsonReader.PostStamp.poststamp[PostStamp].Sprite);
+        SpriteReader.LoadSprite(poststamp_image, JsonReader.PostStamp.poststamp[PostStamp].Sprite);
     }
 
     // Update is called once per frame

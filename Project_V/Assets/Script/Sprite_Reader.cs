@@ -5,42 +5,63 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.U2D;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.UI;
+using System.Net;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Sprite_Reader : MonoBehaviour
 {
     [Header("Dummy")]
     #region 더미 리소스
-    public Sprite testc;
-    public Sprite charlotte;
-    public Sprite leni;
-
-    public Sprite Dumystamp_1;
-    public Sprite Dumystamp_2;
-    public Sprite Imvalidstamp;
-
     public Sprite D_308801;
     public Sprite D_308001;
     #endregion 더미 리소스
 
+    public Dictionary<string, AsyncOperationHandle<Sprite>> Sprite_Dictionary;
+
     private void Awake()
     {
-        //Read_Sprite();
+        Sprite_Dictionary = new Dictionary<string, AsyncOperationHandle<Sprite>>();
+
+        //LoadSprite(GetComponent<Image>(),"Dumystamp_1");
     }
 
-    /* 동적할당
-    private void Read_Sprite()
+
+    public void LoadSprite(Image target, string Address)
     {
-        testc = Load_Sprite(testc, nameof(testc));
-        charlotte = Load_Sprite(charlotte, nameof(charlotte));
-        leni = Load_Sprite(leni, nameof(leni));
+        if (Sprite_Dictionary.ContainsKey(Address) == false)
+        {
+            var Load_Handle = Addressables.LoadAssetAsync<Sprite>(Address);
+            Load_Handle.Completed += handle => OnSpriteLoaded(handle, Address, target);
+        }
+
+        else
+        {
+            target.sprite = Sprite_Dictionary[Address].Result;
+        }
     }
 
-    private Sprite Load_Sprite(Sprite img, string nameofimg)
+    private void OnSpriteLoaded(AsyncOperationHandle<Sprite> handle, string Address, Image target)
     {
-        Texture2D texture = new Texture2D(2, 2);
-        texture.LoadImage(File.ReadAllBytes(Application.persistentDataPath + "/resource/imagefiles/" + nameofimg + ".png"));
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+        {
+            Debug.Log(Address + "로드");
+            Sprite_Dictionary.Add(Address, handle);
 
-        return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            target.sprite = Sprite_Dictionary[Address].Result;
+
+        }
+        else
+        {
+            Debug.LogError("Failed");
+        }
     }
-    */
+
+    public void Release_Sprite(string Address)
+    {
+        Addressables.Release(Sprite_Dictionary[Address]);
+        Sprite_Dictionary.Remove(Address);
+    }
 }
