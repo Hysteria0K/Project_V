@@ -168,7 +168,7 @@ public class JsonReader : MonoBehaviour
         Dialogue = JsonUtility.FromJson<Dialogue_Parse>(ReadJson("dialogue"));
         RulebookData = JsonUtility.FromJson<RulebookData_Parse>(ReadJson("rulebookdata"));
         GameLevel = JsonUtility.FromJson<GameLevel_Parse>(ReadJson("gamelevel"));
-        Settings = JsonUtility.FromJson<Settings_Parse>(ReadJson("settings"));
+        Settings = JsonUtility.FromJson<Settings_Parse>(ReadJson("gamesettings"));
 
         Dialogue_Dictionary = new Dictionary<string, Dictionary<int, Dialogue_Attributes>>();
         Dialogue_To_Dictionary();

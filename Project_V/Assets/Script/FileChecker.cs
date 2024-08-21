@@ -15,11 +15,13 @@ public class FileChecker : MonoBehaviour
             BetterStreamingAssets.Initialize();
             Debug.Log(filePath);
             CopyFilesToPersistentDataPath();
+            SceneManager.LoadScene("Title");
         }
 
         else
         {
             Debug.Log("복사불필요");
+            SceneManager.LoadScene("Title");
         }
 
     }
@@ -27,7 +29,6 @@ public class FileChecker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SceneManager.LoadScene("Title");
     }
 
     // Update is called once per frame

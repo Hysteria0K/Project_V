@@ -834,7 +834,6 @@ RectTransform:
   - {fileID: 1750156833}
   - {fileID: 1751196094}
   - {fileID: 1855360997}
-  - {fileID: 731087667}
   m_Father: {fileID: 1556057629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -14052,7 +14051,6 @@ GameObject:
   - component: {fileID: 731087667}
   - component: {fileID: 731087666}
   - component: {fileID: 731087669}
-  - component: {fileID: 731087668}
   m_Layer: 0
   m_Name: Sprite_Reader
   m_TagString: Untagged
@@ -14072,12 +14070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cffc9860da55141bfd75ecfa9e06b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testc: {fileID: 21300000, guid: 40738095e42779e479d0af66972ac6f1, type: 3}
-  charlotte: {fileID: 21300000, guid: f376d040b8953a54c995aa0aa3748a8f, type: 3}
-  leni: {fileID: 21300000, guid: edf255527b9de4d40b7ceb612ce3dfd2, type: 3}
-  Dumystamp_1: {fileID: 21300000, guid: 2383c9ca9a37fbd4cb599424c89deccb, type: 3}
-  Dumystamp_2: {fileID: 21300000, guid: 3879d9ccc9d9e4a4f981c83b4b1047d9, type: 3}
-  Imvalidstamp: {fileID: 21300000, guid: 2718ff0632598b049a4ee26d16bd22fe, type: 3}
   D_308801: {fileID: 0}
   D_308001: {fileID: 0}
 --- !u!224 &731087667
@@ -14092,43 +14084,13 @@ RectTransform:
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 51028473}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -421.8999, y: -362}
+  m_AnchoredPosition: {x: -404.0209, y: -351.92}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &731087668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731087665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &731087669
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41940,3 +41902,4 @@ SceneRoots:
   - {fileID: 252757837}
   - {fileID: 382747384}
   - {fileID: 1825016792}
+  - {fileID: 731087667}
