@@ -47,7 +47,7 @@ public class Sprite_Reader : MonoBehaviour
     {
         if (handle.Status == AsyncOperationStatus.Succeeded)
         {
-            Debug.Log(Address + "로드");
+            //Debug.Log(Address + "로드");
             Sprite_Dictionary.Add(Address, handle);
 
             target.sprite = Sprite_Dictionary[Address].Result;
