@@ -1,0 +1,16 @@
+{"character":[
+  {
+    "Index": 0.0,
+    "Name": "테스트1",
+    "Face_Sprite": "test1face",
+    "Face_Sprite_Mono": "test1face_mono",
+    "Standing_Sprite": "testchar1"
+  },
+  {
+    "Index": 1.0,
+    "Name": "테스트2",
+    "Face_Sprite": "test2face",
+    "Face_Sprite_Mono": "test2face_mono",
+    "Standing_Sprite": "testchar2"
+  }
+]}

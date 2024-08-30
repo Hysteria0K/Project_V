@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using System.Data;
 using UnityEngine.UIElements;
 using System;
+using UnityEngine.TextCore.Text;
 
 public class JsonReader : MonoBehaviour
 {
@@ -102,6 +103,17 @@ public class JsonReader : MonoBehaviour
         public float L_Move_Speed;
         public float Telephone_Delay;
     }
+
+    [System.Serializable]
+
+    public class Character_Attributes
+    {
+        public int Index;
+        public string Name;
+        public string Face_Sprite;
+        public string Face_Sprite_Mono;
+        public string Standing_Sprite;
+    }
     #endregion Attributes
 
     #region Parse
@@ -144,6 +156,11 @@ public class JsonReader : MonoBehaviour
     {
         public Settings_Attributes[] settings;
     }
+
+    public class Character_Parse
+    {
+        public Character_Attributes[] character;
+    }
     #endregion Parse
 
     public NameList_Parse NameList;
@@ -154,10 +171,12 @@ public class JsonReader : MonoBehaviour
     public RulebookData_Parse RulebookData;
     public GameLevel_Parse GameLevel;
     public Settings_Parse Settings;
+    public Character_Parse Character;
 
     public Dictionary<string, Dictionary<int, Dialogue_Attributes>> Dialogue_Dictionary;
     public Dictionary<string, Dictionary<int, Rulebook_Attributes>> Rulebook_Dictionary;
     public Dictionary<int, GameLevel_Attributes> GameLevel_Dictionary;
+    public Dictionary<string, Character_Attributes> Character_Dictionary;
 
     private void Awake()
     {
@@ -169,6 +188,7 @@ public class JsonReader : MonoBehaviour
         RulebookData = JsonUtility.FromJson<RulebookData_Parse>(ReadJson("rulebookdata"));
         GameLevel = JsonUtility.FromJson<GameLevel_Parse>(ReadJson("gamelevel"));
         Settings = JsonUtility.FromJson<Settings_Parse>(ReadJson("gamesettings"));
+        Character = JsonUtility.FromJson<Character_Parse>(ReadJson("character"));
 
         Dialogue_Dictionary = new Dictionary<string, Dictionary<int, Dialogue_Attributes>>();
         Dialogue_To_Dictionary();
@@ -178,6 +198,9 @@ public class JsonReader : MonoBehaviour
 
         GameLevel_Dictionary = new Dictionary<int, GameLevel_Attributes>();
         GameLevel_To_Dictionary();
+
+        Character_Dictionary = new Dictionary<string, Character_Attributes>();
+        Character_To_Dictionary();
 
         Debug.Log("JsonParse Complete");
         //Debug.Log(Rulebook_Dictionary["BaseBook"][6].Value1);
@@ -250,6 +273,13 @@ public class JsonReader : MonoBehaviour
         for (int i = 0; i < GameLevel.gamelevel.Length; i++)
         {
             GameLevel_Dictionary.Add(GameLevel.gamelevel[i].Day, GameLevel.gamelevel[i]);
+        }
+    }
+    private void Character_To_Dictionary()
+    {
+        for (int i = 0; i < Character.character.Length; i++)
+        {
+            Character_Dictionary.Add(Character.character[i].Name, Character.character[i]);
         }
     }
     #endregion 배열, 자료형으로 변환
