@@ -343,12 +343,4 @@ public class Letter : MonoBehaviour, IEndDragHandler, IPointerDownHandler
         Spawned = false;
     }
 
-    private Sprite GetSprite_From_Name(string classname)
-    {
-        Type spriteReaderType = SpriteReader.GetType();
-
-        FieldInfo fieldInfo = spriteReaderType.GetField(classname);
-
-        return fieldInfo.GetValue(SpriteReader) as Sprite;
-    }
 }

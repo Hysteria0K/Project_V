@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NPC_Select : MonoBehaviour
 {
+    public JsonReader Jsonreader;
     public GameObject Select_Closed;
     public GameObject Select_Open;
     public bool Is_Open;
