@@ -7734,11 +7734,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314482f67e839b0448a0ce806c901747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Jsonreader: {fileID: 252757836}
+  JsonReader: {fileID: 252757836}
+  SpriteReader: {fileID: 731087666}
   Select_Closed: {fileID: 1146548067}
   Select_Open: {fileID: 55329202}
   Is_Open: 0
-  Selected_Character: "\uD14C\uC2A4\uD2B81"
+  Selected_Character: "\uD14C\uC2A4\uD2B82"
+  Character_Sprite: {fileID: 1332708765}
 --- !u!1 &382747383
 GameObject:
   m_ObjectHideFlags: 0
