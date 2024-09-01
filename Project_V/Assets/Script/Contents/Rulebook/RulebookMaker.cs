@@ -62,6 +62,7 @@ public class RulebookMaker : MonoBehaviour
                             break;
                     }
 
+
                     //홀수
                     if (PageCount == 1)
                     {

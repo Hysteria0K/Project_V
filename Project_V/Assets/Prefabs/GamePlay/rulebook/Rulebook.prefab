@@ -692,6 +692,7 @@ GameObject:
   - component: {fileID: 3727195495046947936}
   - component: {fileID: 7131089028962773263}
   - component: {fileID: 2290327799261456015}
+  - component: {fileID: 6378856822034208989}
   m_Layer: 5
   m_Name: Rulebook
   m_TagString: Untagged
@@ -748,3 +749,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxPage: 0
   PageCount: 0
+--- !u!114 &6378856822034208989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946264950157538740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1639e2c9d8325774ba1f04962335f384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mouse_Center: 0
+  Is_Drag: 0
