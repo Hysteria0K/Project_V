@@ -25,12 +25,12 @@
     "Id": "BaseBook",
     "Order": 3.0,
     "Type": "Image",
-    "Value1": "Prototype_Sprites\\TAr0UZAUqBhOvjMN-tIwe_9ZGvr9AWLfrWxu9WWU4tnq-0pqZXryMMhrNxQ",
+    "Value1": "TAr0UZAUqBhOvjMN-tIwe_9ZGvr9AWLfrWxu9WWU4tnq-0pqZXryMMhrNxQ",
     "Value2": 226.0,
     "Value3": 230.0,
     "Value4": null,
     "Value5": 0.0,
-    "Value6": -171.0
+    "Value6": 46.6
   },
   {
     "Id": "BaseBook",
@@ -123,13 +123,13 @@
   {
     "Id": "BaseBook",
     "Order": 12.0,
-    "Type": "Textdesc",
+    "Type": "Text2",
     "Value1": "당신은 영국 전쟁성의 우편 검열관이며 시간 내에 최대한 많은 우편을 처리하는 것이다\n\n보내는 주소에 적힌 부대가 소속된 군단의 야전 우체국의 사설함 번호 도장을 찍고 집하장(초록색 박스)에 넣으십시오\n\n사망자 명단에 존재하는 대상에게 보내는 편지와 위조 우표가 찍힌 편지는 부적합 도장(빨간색)을 찍어서 집하장에 넣으십시오",
     "Value2": 16.0,
     "Value3": null,
-    "Value4": null,
+    "Value4": 267.7,
     "Value5": 0.0,
-    "Value6": -67.0
+    "Value6": 150.9
   },
   {
     "Id": "BaseBook",
@@ -162,7 +162,7 @@
     "Value3": null,
     "Value4": null,
     "Value5": 0.0,
-    "Value6": -83.0
+    "Value6": 134.3
   },
   {
     "Id": "BaseBook",

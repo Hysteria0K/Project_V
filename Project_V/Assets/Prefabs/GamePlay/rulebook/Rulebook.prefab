@@ -374,12 +374,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5891716363103958249}
   m_Layer: 5
-  m_Name: Page_1
+  m_Name: Page_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5891716363103958249
 RectTransform:
   m_ObjectHideFlags: 0
@@ -394,10 +394,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7161089458669239886}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 690, y: 436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6849669886195717185
 GameObject:
@@ -691,6 +691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3727195495046947936}
   - component: {fileID: 7131089028962773263}
+  - component: {fileID: 2290327799261456015}
   m_Layer: 5
   m_Name: Rulebook
   m_TagString: Untagged
@@ -733,3 +734,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8946264950157538740}
   m_CullTransparentMesh: 1
+--- !u!114 &2290327799261456015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946264950157538740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c234d247e28a474383e30fe568d0fb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxPage: 0
+  PageCount: 0

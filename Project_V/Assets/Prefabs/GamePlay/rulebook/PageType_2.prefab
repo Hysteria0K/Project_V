@@ -96,9 +96,9 @@ MonoBehaviour:
   m_fontSize: 25
   m_fontSizeBase: 25
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 16
+  m_fontSizeMax: 25
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -258,10 +258,10 @@ RectTransform:
   - {fileID: 6317653466378963137}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 172.5, y: 0}
-  m_SizeDelta: {x: -345, y: 0}
+  m_SizeDelta: {x: 1575, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5723729322857779716
 MonoBehaviour:
