@@ -39,7 +39,7 @@ public class NPC_Icon : MonoBehaviour, IPointerDownHandler
 
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (Npc_Select.Selected_Character != Character_Name)
+        if (Npc_Select.Selected_Character != Character_Name && Npc_Select.Character_Ready == true)
         {
             Npc_Select.Temp_Char = Npc_Select.Selected_Character;
             Npc_Select.Selected_Character = Character_Name;
