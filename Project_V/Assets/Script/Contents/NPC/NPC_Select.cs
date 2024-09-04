@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,11 +17,18 @@ public class NPC_Select : MonoBehaviour
     public string Selected_Character;
     public string Temp_Char;
 
+    public bool Character_Ready;
+
+    [Header("Control")]
+    [SerializeField] private float Fade_Delay = 0.05f;
+    [SerializeField] private float Wait_Delay = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
         Is_Open = false;
-        Change_Standing_Image();
+        Character_Ready = true;
+        SpriteReader.LoadSprite(Character_Sprite, JsonReader.Character_Dictionary[Selected_Character].Standing_Sprite);
     }
 
     // Update is called once per frame
@@ -48,7 +56,7 @@ public class NPC_Select : MonoBehaviour
 
     public void Change_Standing_Image()
     {
-        SpriteReader.LoadSprite(Character_Sprite, JsonReader.Character_Dictionary[Selected_Character].Standing_Sprite);
+        StartCoroutine(Fade_Change());
     }
 
     public void Change_Icon_Image()
@@ -62,5 +70,46 @@ public class NPC_Select : MonoBehaviour
             }
         }
         Temp_Char = "";
+    }
+
+    IEnumerator Fade_Change()
+    {
+        Character_Ready = false;
+        float temp = 1.0f;
+        bool check = true;
+
+        while (true)
+        {
+            yield return new WaitForSeconds(Fade_Delay);
+
+            if (check)
+            {
+                temp -= Fade_Delay;
+                Character_Sprite.color = new Color(255, 255, 255, temp);
+
+                if (temp <= 0)
+                {
+                    check = false;
+                    temp = 0;
+                    SpriteReader.LoadSprite(Character_Sprite, JsonReader.Character_Dictionary[Selected_Character].Standing_Sprite);
+                    Debug.Log("페이드 아웃");
+
+                    yield return new WaitForSeconds(Wait_Delay);
+                }
+            }
+
+            else
+            {
+                temp += Fade_Delay;
+                Character_Sprite.color = new Color(255, 255, 255, temp);
+
+                if (temp >= 1)
+                {
+                    Debug.Log("페이드 인");
+                    Character_Ready = true;
+                    break;
+                }
+            }
+        }
     }
 }

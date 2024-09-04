@@ -7701,10 +7701,12 @@ MonoBehaviour:
   Select_Closed: {fileID: 1146548067}
   Select_Open: {fileID: 55329202}
   Character_Sprite: {fileID: 1332708765}
-  Char_Icon: {fileID: 0}
+  Char_Icon: {fileID: 1031211996}
   Is_Open: 0
   Selected_Character: "\uD14C\uC2A4\uD2B82"
   Temp_Char: 
+  Character_Ready: 0
+  Fade_Delay: 0.05
 --- !u!1 &382747383
 GameObject:
   m_ObjectHideFlags: 0
