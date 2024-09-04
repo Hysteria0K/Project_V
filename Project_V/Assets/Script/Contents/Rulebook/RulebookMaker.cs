@@ -16,6 +16,7 @@ public class RulebookMaker : MonoBehaviour
     public RectTransform Left_Drawer_Area;
 
     #region 프리팹
+    public GameObject Icon_Rulebook;
     public GameObject obj_Rulebook;
     public GameObject obj_PageType_1;
     public GameObject obj_PageType_2;
@@ -26,7 +27,7 @@ public class RulebookMaker : MonoBehaviour
 
     void Start()
     {
-       Create("BaseBook");
+       //Create("BaseBook");
     }
 
     public void Create(string id)
@@ -136,6 +137,8 @@ public class RulebookMaker : MonoBehaviour
                     break;
             }
         }
+
+
     }
 
 }
