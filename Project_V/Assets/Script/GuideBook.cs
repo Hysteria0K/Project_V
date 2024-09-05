@@ -27,6 +27,7 @@ public class GuideBook : MonoBehaviour
     public GameObject Page_List;
     public GameObject Next_Page_Button;
     public GameObject Prev_Page_Button;
+    public GameObject Book_Animation;
 
     private bool OnTable;
     private bool Change_Check;
@@ -38,6 +39,9 @@ public class GuideBook : MonoBehaviour
     [Header("Page")]
     public int Guidebook_Page;
     public int Guidebook_EndPage; // 나중에 데이터파싱해서 사용 -> 자식 오브젝트 수로 판단
+
+    [Header("Control")]
+    [SerializeField] private float Animation_Speed = 0.03f;
 
     private void Awake()
     {
@@ -230,5 +234,27 @@ public class GuideBook : MonoBehaviour
         Prev_Page_Button.SetActive(true);
         if (Guidebook_Page == Guidebook_EndPage)
             Next_Page_Button.SetActive(false);
+    }
+
+    public void Book_Animation_Play()
+    {
+        StartCoroutine(Animation_Coroutine());
+    }
+
+    IEnumerator Animation_Coroutine()
+    {
+        for(int i = 0; i < Book_Animation.transform.childCount; i++)
+        {
+            Book_Animation.transform.GetChild(i).gameObject.SetActive(true);
+
+            if (i != 0)
+            {
+                Book_Animation.transform.GetChild(i - 1).gameObject.SetActive(false);
+            }
+
+            yield return new WaitForSeconds(Animation_Speed);
+        }
+
+        Book_Animation.transform.GetChild(Book_Animation.transform.childCount-1).gameObject.SetActive(false);
     }
 }

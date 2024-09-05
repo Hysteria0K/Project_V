@@ -23,5 +23,6 @@ public class GuideBook_Right : MonoBehaviour, IPointerDownHandler, IDragHandler
         }
 
         Saved_Position = GuideBook.transform.position;
+        GuideBook.GetComponent<GuideBook>().Book_Animation_Play();
     }
 }
