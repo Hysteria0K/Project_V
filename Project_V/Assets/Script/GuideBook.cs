@@ -13,7 +13,7 @@ public class GuideBook : MonoBehaviour
 
     private GameObject Left_Drawer_Area;
 
-    public TextMeshProUGUI Guidebook_Page_Text;
+    public TextMeshProUGUI PageCount_Text;
 
     private RectTransform Guidebook_Transform;
 
@@ -24,10 +24,6 @@ public class GuideBook : MonoBehaviour
     public GameObject Guidebook_Small;
     public GameObject Guidebook_Large;
     public Drag_Drop Drag_Drop;
-    public GameObject Page_List;
-    public GameObject Next_Page_Button;
-    public GameObject Prev_Page_Button;
-    public GameObject Book_Animation;
 
     private bool OnTable;
     private bool Change_Check;
@@ -37,7 +33,7 @@ public class GuideBook : MonoBehaviour
     private Vector3 Origin_Pos;
 
     [Header("Page")]
-    public int Guidebook_Page;
+    public int PageCount;
     public int Guidebook_EndPage; // 나중에 데이터파싱해서 사용 -> 자식 오브젝트 수로 판단
 
     [Header("Control")]
@@ -61,9 +57,6 @@ public class GuideBook : MonoBehaviour
         Left_Drawer_Area_Rect = Left_Drawer_Area.GetComponent<Rect_Area>().Rect;
 
         Guidebook_Transform = GetComponent<RectTransform>();
-
-        Guidebook_Page = 1;
-        Guidebook_EndPage = Page_List.transform.childCount;
 
         Half_Width = Guidebook_Transform.rect.width / 2;
         Half_Height = Guidebook_Transform.rect.height / 2;
@@ -95,7 +88,7 @@ public class GuideBook : MonoBehaviour
 
         if (OnTable == true)
         {
-            Guidebook_Page_Text.text = $"{Guidebook_Page}" + "Page";
+            PageCount_Text.text = $"{PageCount}" + "Page";
 
             if (this.transform.position != Origin_Pos && Drag_Drop.Is_Drag == false)
             {
@@ -180,81 +173,5 @@ public class GuideBook : MonoBehaviour
 
         // 제한된 위치 적용
         Move.position = limitedPosition;
-    }
-
-    public void Next_Page()
-    {
-        if (Guidebook_Page == 1)
-        {
-            Prev_Page_Button.SetActive(true);
-        }
-
-        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(false);
-        Guidebook_Page++;
-        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(true);
-
-        if (Guidebook_Page == Guidebook_EndPage)
-        {
-            Next_Page_Button.SetActive(false);
-        }
-    }
-
-    public void Prev_Page()
-    {
-        if (Guidebook_Page == Guidebook_EndPage)
-        {
-            Next_Page_Button.SetActive(true);
-        }
-
-        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(false);
-        Guidebook_Page--;
-        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(true);
-
-        if (Guidebook_Page == 1)
-        {
-            Prev_Page_Button.SetActive(false);
-        }
-    }
-
-    public void Button_GotoHome()
-    {
-        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(false);
-        Guidebook_Page = 1;
-        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(true);
-        Prev_Page_Button.SetActive(false);
-        Next_Page_Button.SetActive(true);
-    }
-
-    public void Button_GotoPage(int pagenumner)
-    {
-        Page_List.transform.GetChild(Guidebook_Page - 1).gameObject.SetActive(false);
-        Guidebook_Page = pagenumner;
-        Page_List.transform.GetChild(pagenumner - 1).gameObject.SetActive(true);
-
-        Prev_Page_Button.SetActive(true);
-        if (Guidebook_Page == Guidebook_EndPage)
-            Next_Page_Button.SetActive(false);
-    }
-
-    public void Book_Animation_Play()
-    {
-        StartCoroutine(Animation_Coroutine());
-    }
-
-    IEnumerator Animation_Coroutine()
-    {
-        for(int i = 0; i < Book_Animation.transform.childCount; i++)
-        {
-            Book_Animation.transform.GetChild(i).gameObject.SetActive(true);
-
-            if (i != 0)
-            {
-                Book_Animation.transform.GetChild(i - 1).gameObject.SetActive(false);
-            }
-
-            yield return new WaitForSeconds(Animation_Speed);
-        }
-
-        Book_Animation.transform.GetChild(Book_Animation.transform.childCount-1).gameObject.SetActive(false);
     }
 }

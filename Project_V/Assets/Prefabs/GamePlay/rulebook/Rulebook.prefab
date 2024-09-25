@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 2494377191958142549}
   - component: {fileID: 2154158189493146915}
   - component: {fileID: 440035366460048821}
-  - component: {fileID: 3458301881481659948}
+  - component: {fileID: 1888677212175569278}
   m_Layer: 5
   m_Name: GuideBook_Large_Prev_Page
   m_TagString: Untagged
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3458301881481659948
+--- !u!114 &1888677212175569278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,10 +235,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2514170023972903737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 992c2f16aeedd2141a3992a6ed8ec7c7, type: 3}
+  m_Script: {fileID: 11500000, guid: ec788b0437dd62244b86faf0ca98c774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 8946264950157538740}
+  leftright: 0
+  Rulebook: {fileID: 2290327799261456015}
 --- !u!1 &4518802076751937066
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec788b0437dd62244b86faf0ca98c774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 8946264950157538740}
+  leftright: 1
+  Rulebook: {fileID: 2290327799261456015}
 --- !u!1 &5002935167832476593
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,8 +749,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c234d247e28a474383e30fe568d0fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Icon: {fileID: 0}
   MaxPage: 0
-  PageCount: 0
+  PageCount: 1
+  Animation_Speed: 0.03
+  Page_List: {fileID: 5002935167832476593}
+  Book_Animation: {fileID: 0}
+  Prev_Page_Button: {fileID: 2514170023972903737}
+  Next_Page_Button: {fileID: 4518802076751937066}
 --- !u!114 &6378856822034208989
 MonoBehaviour:
   m_ObjectHideFlags: 0

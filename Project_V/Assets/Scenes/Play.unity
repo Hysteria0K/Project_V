@@ -25259,7 +25259,7 @@ MonoBehaviour:
   JsonReader: {fileID: 252757836}
   SpriteReader: {fileID: 731087666}
   Left_Drawer_Area: {fileID: 127596505}
-  Icon_Rulebook: {fileID: 0}
+  Icon_Rulebook: {fileID: 4928603940813997841, guid: 510d830d229eba8489a732aaa3cd6e51, type: 3}
   obj_Rulebook: {fileID: 8946264950157538740, guid: 3a68efb1598ca8840a99fbd0201bbab5, type: 3}
   obj_PageType_1: {fileID: 2276355854633983899, guid: 3b2194f3cf74a8f4db3ce761fa64e315, type: 3}
   obj_PageType_2: {fileID: 2462052138877336527, guid: 0c42e0ded82c11141a10c9095bd900fa, type: 3}

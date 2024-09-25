@@ -27,11 +27,12 @@ public class RulebookMaker : MonoBehaviour
 
     void Start()
     {
-       //Create("BaseBook");
+       Create("BaseBook");
     }
 
     public void Create(string id)
     {
+        #region 룰북_기본 세팅
         Debug.Log("룰북 생성" + id);
         GameObject mainobj = Instantiate(obj_Rulebook, Vector3.zero, Quaternion.identity, Left_Drawer_Area);
         mainobj.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
@@ -39,11 +40,9 @@ public class RulebookMaker : MonoBehaviour
         RulebookPage expage = null;
         int PageCount = 1;
         Transform Page_List = mainobj.transform.Find("Page_List");
-        mainobj.GetComponent<Rulebook>().MaxPage = 1;
-        GameObject exobj = Instantiate(Page_List.GetChild(0).gameObject, Vector3.zero, Quaternion.identity, Page_List);
-        exobj.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        exobj.transform.name = "Page_" + mainobj.GetComponent<Rulebook>().MaxPage;
-        exobj.SetActive(true);
+        //자유롭게 사용하는 임시 저장 오브젝트 변수
+        GameObject exobj = null;
+        #endregion 룰북_기본 세팅
 
         foreach (KeyValuePair<int, Rulebook_Attributes> Key in JsonReader.Rulebook_Dictionary[id])
         {
@@ -53,6 +52,18 @@ public class RulebookMaker : MonoBehaviour
             {
                 case "NewPage":
                     //페이지 레이아웃
+                    //새 페이지 생성
+                    if (PageCount == 1)
+                    {
+                        mainobj.GetComponent<Rulebook>().MaxPage++;
+                        exobj = Instantiate(Page_List.GetChild(0).gameObject, Vector3.zero, Quaternion.identity, Page_List);
+                        exobj.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+                        exobj.transform.name = "Page_" + mainobj.GetComponent<Rulebook>().MaxPage;
+
+                        if (mainobj.GetComponent<Rulebook>().MaxPage == 1)
+                            exobj.SetActive(true);
+                    }
+
                     switch (float.Parse(v.Value1))
                     {
                         case 1:
@@ -62,7 +73,6 @@ public class RulebookMaker : MonoBehaviour
                             expage = Instantiate(obj_PageType_2, Vector3.zero, Quaternion.identity, Page_List.GetChild(mainobj.GetComponent<Rulebook>().MaxPage)).GetComponent<RulebookPage>();
                             break;
                     }
-
 
                     //홀수
                     if (PageCount == 1)
@@ -79,15 +89,6 @@ public class RulebookMaker : MonoBehaviour
                         expage.GetComponent<RectTransform>().anchoredPosition = new Vector3(172.5f, 0, 0);
                         expage.GetComponent<RectTransform>().sizeDelta = new Vector2(345, 436);
                         PageCount = 1;
-                    }
-
-                    //새 페이지 생성
-                    if (PageCount == 1)
-                    {
-                        mainobj.GetComponent<Rulebook>().MaxPage++;
-                        exobj = Instantiate(Page_List.GetChild(0).gameObject, Vector3.zero, Quaternion.identity, Page_List);
-                        exobj.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
-                        exobj.transform.name = "Page_" + mainobj.GetComponent<Rulebook>().MaxPage;
                     }
                     break;
 
@@ -138,7 +139,10 @@ public class RulebookMaker : MonoBehaviour
             }
         }
 
-
+        #region 룰북_아이콘 세팅
+        GameObject Iconobj = Instantiate(Icon_Rulebook, Vector3.zero, Quaternion.identity, Left_Drawer_Area);
+        mainobj.transform.SetParent(Iconobj.transform,false);
+        #endregion 룰북_아이콘 세팅
     }
 
 }
