@@ -160,7 +160,6 @@ GameObject:
   m_Component:
   - component: {fileID: 717397529050337999}
   - component: {fileID: 1918062226318239907}
-  - component: {fileID: 1457429390925833133}
   - component: {fileID: 4162072623682857682}
   m_Layer: 5
   m_Name: Icon_Rulebook
@@ -203,27 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mouse_Center: 0
   Is_Drag: 0
---- !u!114 &1457429390925833133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4928603940813997841}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33722b361cc0dbb4fa97cfe0bc7525d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Big_Border_Transform: {fileID: 0}
-  JsonReader: {fileID: 0}
-  PageCount_Text: {fileID: 0}
-  Guidebook_Small: {fileID: 6000473552585083573}
-  Guidebook_Large: {fileID: 0}
-  Drag_Drop: {fileID: 1918062226318239907}
-  PageCount: 0
-  Guidebook_EndPage: 4
-  Animation_Speed: 0.03
 --- !u!114 &4162072623682857682
 MonoBehaviour:
   m_ObjectHideFlags: 0

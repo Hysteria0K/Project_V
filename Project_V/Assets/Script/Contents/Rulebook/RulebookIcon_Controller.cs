@@ -9,9 +9,7 @@ public class RulebookIcon_Controller : MonoBehaviour
     [SerializeField] private RectTransform Big_Border_Transform;
 
     private GameObject Left_Drawer_Area;
-
     private RectTransform Guidebook_Transform;
-
     private Rect Left_Drawer_Area_Rect;
 
     [Space (10f)]

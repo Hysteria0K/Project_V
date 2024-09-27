@@ -63,6 +63,7 @@ public class RulebookMaker : MonoBehaviour
                         exobj = Instantiate(Page_List.GetChild(0).gameObject, Vector3.zero, Quaternion.identity, Page_List);
                         exobj.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
                         exobj.transform.name = "Page_" + mainobj.GetComponent<Rulebook>().MaxPage;
+                        exobj.AddComponent<CanvasGroup>();
 
                         if (mainobj.GetComponent<Rulebook>().MaxPage == 1)
                             exobj.SetActive(true);

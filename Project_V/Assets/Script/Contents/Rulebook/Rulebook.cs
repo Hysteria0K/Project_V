@@ -12,11 +12,15 @@ public class Rulebook : MonoBehaviour
 
     [Header("Control")]
     [SerializeField] private float Animation_Speed = 0.03f;
+    [SerializeField] private float Fade_Time = 0.5f;
+    [SerializeField] private float Fade_Delay = 0.05f;
 
     public GameObject Page_List;
     public GameObject Book_Animation;
     public GameObject Prev_Page_Button;
     public GameObject Next_Page_Button;
+
+    Coroutine Fade_Now;
 
     void Start()
     {
@@ -30,8 +34,11 @@ public class Rulebook : MonoBehaviour
         Next_Page_Button.SetActive(true);
 
         Page_List.transform.GetChild(PageCount).gameObject.SetActive(false);
+        Page_List.transform.GetChild(PageCount).GetComponent<CanvasGroup>().alpha = 0;
+
         PageCount++;
         Page_List.transform.GetChild(PageCount).gameObject.SetActive(true);
+        Page_List.transform.GetChild(PageCount).GetComponent<CanvasGroup>().alpha = 0;
 
         if (PageCount ==  MaxPage)
         {
@@ -50,8 +57,11 @@ public class Rulebook : MonoBehaviour
         }
 
         Page_List.transform.GetChild(PageCount).gameObject.SetActive(false);
+        Page_List.transform.GetChild(PageCount).GetComponent<CanvasGroup>().alpha = 0;
+
         PageCount--;
         Page_List.transform.GetChild(PageCount).gameObject.SetActive(true);
+        Page_List.transform.GetChild(PageCount).GetComponent<CanvasGroup>().alpha = 0;
 
         if (PageCount == 1)
         {
@@ -81,13 +91,23 @@ public class Rulebook : MonoBehaviour
     #endregion 버튼
 
     #region 애니메이션
-    public void Book_Animation_Play()
+    public void Book_Animation_Play(bool prev)
     {
-        StartCoroutine(Animation_Coroutine());
+        StartCoroutine(Animation_Coroutine(prev));
     }
 
-    IEnumerator Animation_Coroutine()
+    IEnumerator Animation_Coroutine(bool prev)
     {
+        if (prev)
+        {
+            Book_Animation.transform.rotation = new Quaternion(0, 0, 0, 0);
+        }
+
+        else
+        {
+            Book_Animation.transform.rotation = new Quaternion(0, 180, 0, 0);
+        }
+
         for (int i = 0; i < Book_Animation.transform.childCount; i++)
         {
             Book_Animation.transform.GetChild(i).gameObject.SetActive(true);
@@ -101,6 +121,34 @@ public class Rulebook : MonoBehaviour
         }
 
         Book_Animation.transform.GetChild(Book_Animation.transform.childCount - 1).gameObject.SetActive(false);
+
+        if (Fade_Now != null)
+        {
+            StopCoroutine(Fade_Now);
+        }
+
+        Fade_Now = StartCoroutine(Fade_Coroutine(Fade_Delay, PageCount));
     }
     #endregion 애니메이션
+
+    #region Fade연출
+    IEnumerator Fade_Coroutine(float fade_delay, int Page_Count)
+    {
+        float i = 0;
+
+        while(true)
+        {
+            if (i >= 1) break;
+
+            i += Fade_Delay / Fade_Time;
+            Page_List.transform.GetChild(Page_Count).GetComponent<CanvasGroup>().alpha = i;
+
+            yield return new WaitForSeconds(fade_delay);
+        }
+
+        Fade_Now = null;
+    }
+
+
+    #endregion
 }

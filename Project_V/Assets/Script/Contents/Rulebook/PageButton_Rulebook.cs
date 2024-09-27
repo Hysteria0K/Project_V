@@ -11,6 +11,27 @@ public class PageButton_Rulebook : MonoBehaviour, IPointerDownHandler, IDragHand
 
     public Rulebook Rulebook;
 
+    private bool Button_Ready = true;
+    private float Button_Time = 0;
+
+    [Header("Control")]
+    private float Button_Delay = 0.2f;
+
+    void Update()
+    {
+        if (Button_Ready != true)
+        {
+            Button_Time += Time.deltaTime;
+
+            if (Button_Time >= Button_Delay)
+            {
+                Button_Time = 0;
+                Button_Ready = true;
+            }
+        }
+    }
+
+
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
         //GuideBook.transform.position = Saved_Position;
@@ -20,19 +41,25 @@ public class PageButton_Rulebook : MonoBehaviour, IPointerDownHandler, IDragHand
     {
         Rulebook.Icon.GetComponent<Transform>().transform.SetAsLastSibling();
 
-        if (leftright)
+        if (Button_Ready)
         {
-            if (Rulebook.PageCount < Rulebook.MaxPage)
+            if (leftright)
             {
-                Rulebook.Next_Page();
-                //Rulebook.Book_Animation_Play();
+                if (Rulebook.PageCount < Rulebook.MaxPage)
+                {
+                    Rulebook.Next_Page();
+                    Rulebook.Book_Animation_Play(false);
+                    Button_Ready = false;
+                }
             }
-        }
-        else
-        {
-            if (Rulebook.PageCount != 1)
+            else
             {
-                Rulebook.Prev_Page();
+                if (Rulebook.PageCount != 1)
+                {
+                    Rulebook.Prev_Page();
+                    Rulebook.Book_Animation_Play(true);
+                    Button_Ready = false;
+                }
             }
         }
 
