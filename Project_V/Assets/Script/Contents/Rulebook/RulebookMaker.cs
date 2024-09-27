@@ -148,7 +148,7 @@ public class RulebookMaker : MonoBehaviour
         GameObject Iconobj = Instantiate(Icon_Rulebook, Pos.position, Quaternion.identity, Left_Drawer_Area);
         mainobj.transform.SetParent(Iconobj.transform,false);
         //추가
-        Iconobj.GetComponent<RulebookIcon_Controller>().Rulebook_Large = mainobj;
+        Iconobj.GetComponent<IconRulebook_Controller>().Rulebook_Large = mainobj;
         mainobj.SetActive(false);
         #endregion 룰북_아이콘 세팅
     }

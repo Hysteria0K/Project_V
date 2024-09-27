@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class RulebookIcon_Controller : MonoBehaviour
+public class IconRulebook_Controller : MonoBehaviour
 {
     [Header("Find_Object")]
     [SerializeField] private RectTransform Big_Border_Transform;
