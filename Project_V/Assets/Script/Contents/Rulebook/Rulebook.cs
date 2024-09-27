@@ -14,6 +14,11 @@ public class Rulebook : MonoBehaviour
     [SerializeField] private float Animation_Speed = 0.03f;
     [SerializeField] private float Fade_Time = 0.5f;
     [SerializeField] private float Fade_Delay = 0.05f;
+    [SerializeField] private float Button_Delay = 0.4f;
+
+    [Header("Button")]
+    public bool Button_Ready = true;
+    private float Button_Time = 0;
 
     public GameObject Page_List;
     public GameObject Book_Animation;
@@ -147,6 +152,33 @@ public class Rulebook : MonoBehaviour
         }
 
         Fade_Now = null;
+    }
+
+    #endregion
+
+    #region ¹öÆ° µô·¹ÀÌ
+
+    public void Button_Delay_Start()
+    {
+        StartCoroutine(Button_Coroutine());
+    }
+
+    IEnumerator Button_Coroutine()
+    {
+        while (true)
+        {
+            if (Button_Time >= Button_Delay)
+            {
+                break;
+            }
+
+            Button_Time += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Button_Time = 0;
+        Button_Ready = true;
     }
 
 

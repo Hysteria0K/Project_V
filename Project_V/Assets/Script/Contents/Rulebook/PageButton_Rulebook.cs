@@ -11,15 +11,9 @@ public class PageButton_Rulebook : MonoBehaviour, IPointerDownHandler, IDragHand
 
     public Rulebook Rulebook;
 
-    private bool Button_Ready = true;
-    private float Button_Time = 0;
-
-    [Header("Control")]
-    private float Button_Delay = 0.2f;
-
     void Update()
     {
-        if (Button_Ready != true)
+       /* if (Button_Ready != true)
         {
             Button_Time += Time.deltaTime;
 
@@ -28,7 +22,7 @@ public class PageButton_Rulebook : MonoBehaviour, IPointerDownHandler, IDragHand
                 Button_Time = 0;
                 Button_Ready = true;
             }
-        }
+        }*/
     }
 
 
@@ -41,7 +35,7 @@ public class PageButton_Rulebook : MonoBehaviour, IPointerDownHandler, IDragHand
     {
         Rulebook.Icon.GetComponent<Transform>().transform.SetAsLastSibling();
 
-        if (Button_Ready)
+        if (Rulebook.Button_Ready)
         {
             if (leftright)
             {
@@ -49,7 +43,7 @@ public class PageButton_Rulebook : MonoBehaviour, IPointerDownHandler, IDragHand
                 {
                     Rulebook.Next_Page();
                     Rulebook.Book_Animation_Play(false);
-                    Button_Ready = false;
+                    Rulebook.Button_Ready = false;
                 }
             }
             else
@@ -58,9 +52,10 @@ public class PageButton_Rulebook : MonoBehaviour, IPointerDownHandler, IDragHand
                 {
                     Rulebook.Prev_Page();
                     Rulebook.Book_Animation_Play(true);
-                    Button_Ready = false;
+                    Rulebook.Button_Ready = false;
                 }
             }
+            Rulebook.Button_Delay_Start();
         }
 
         Saved_Position = Rulebook.Icon.transform.position;
