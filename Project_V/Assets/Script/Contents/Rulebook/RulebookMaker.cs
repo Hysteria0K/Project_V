@@ -15,6 +15,9 @@ public class RulebookMaker : MonoBehaviour
     public Sprite_Reader SpriteReader;
     public RectTransform Left_Drawer_Area;
 
+    // 히스 작업 추가
+    public Transform Rulebook_Pos;
+
     #region 프리팹
     public GameObject Icon_Rulebook;
     public GameObject obj_Rulebook;
@@ -27,10 +30,11 @@ public class RulebookMaker : MonoBehaviour
 
     void Start()
     {
-       Create("BaseBook");
+       Create("BaseBook", Rulebook_Pos);
     }
 
-    public void Create(string id)
+    // 함수 뒤에 좌표 지정 추가
+    public void Create(string id, Transform Pos)
     {
         #region 룰북_기본 세팅
         Debug.Log("룰북 생성" + id);
@@ -140,8 +144,11 @@ public class RulebookMaker : MonoBehaviour
         }
 
         #region 룰북_아이콘 세팅
-        GameObject Iconobj = Instantiate(Icon_Rulebook, Vector3.zero, Quaternion.identity, Left_Drawer_Area);
+        GameObject Iconobj = Instantiate(Icon_Rulebook, Pos.position, Quaternion.identity, Left_Drawer_Area);
         mainobj.transform.SetParent(Iconobj.transform,false);
+        //추가
+        Iconobj.GetComponent<RulebookIcon_Controller>().Rulebook_Large = mainobj;
+        mainobj.SetActive(false);
         #endregion 룰북_아이콘 세팅
     }
 

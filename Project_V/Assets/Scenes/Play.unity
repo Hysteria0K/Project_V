@@ -6391,7 +6391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec788b0437dd62244b86faf0ca98c774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 1062813735}
+  leftright: 0
+  Rulebook: {fileID: 0}
 --- !u!114 &323283873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16174,9 +16175,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1074619994}
   - {fileID: 127596505}
   - {fileID: 655193895}
+  - {fileID: 1074619994}
   - {fileID: 1824933602}
   - {fileID: 1555566775}
   - {fileID: 1673002117}
@@ -18343,15 +18344,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Big_Border_Transform: {fileID: 0}
   JsonReader: {fileID: 0}
-  Guidebook_Page_Text: {fileID: 745113738}
-  Guidebook_Small: {fileID: 1233986645}
+  PageCount_Text: {fileID: 0}
+  Guidebook_Small: {fileID: 141476131}
   Guidebook_Large: {fileID: 1219967708}
   Drag_Drop: {fileID: 905158229}
-  Page_List: {fileID: 1483303584}
-  Next_Page_Button: {fileID: 2101644421}
-  Prev_Page_Button: {fileID: 2053368905}
-  Book_Animation: {fileID: 0}
-  Guidebook_Page: 0
+  PageCount: 0
   Guidebook_EndPage: 4
   Animation_Speed: 0.03
 --- !u!114 &905158229
@@ -21273,7 +21270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec788b0437dd62244b86faf0ca98c774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 1062813735}
+  leftright: 0
+  Rulebook: {fileID: 0}
 --- !u!114 &1054534544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21323,6 +21321,7 @@ GameObject:
   - component: {fileID: 1062813736}
   - component: {fileID: 1062813738}
   - component: {fileID: 1062813737}
+  - component: {fileID: 1062813739}
   m_Layer: 5
   m_Name: GuideBook_test2
   m_TagString: Untagged
@@ -21365,15 +21364,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Big_Border_Transform: {fileID: 0}
   JsonReader: {fileID: 0}
-  Guidebook_Page_Text: {fileID: 172928621}
-  Guidebook_Small: {fileID: 511775486}
+  PageCount_Text: {fileID: 0}
+  Guidebook_Small: {fileID: 141476131}
   Guidebook_Large: {fileID: 1470075794}
   Drag_Drop: {fileID: 1062813738}
-  Page_List: {fileID: 570854165}
-  Next_Page_Button: {fileID: 323283871}
-  Prev_Page_Button: {fileID: 1719551158}
-  Book_Animation: {fileID: 1009573401}
-  Guidebook_Page: 0
+  PageCount: 0
   Guidebook_EndPage: 4
   Animation_Speed: 0.03
 --- !u!114 &1062813738
@@ -21390,6 +21385,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mouse_Center: 0
   Is_Drag: 0
+--- !u!114 &1062813739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062813735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c234d247e28a474383e30fe568d0fb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 0}
+  MaxPage: 0
+  PageCount: 1
+  Animation_Speed: 0.03
+  Page_List: {fileID: 0}
+  Book_Animation: {fileID: 0}
+  Prev_Page_Button: {fileID: 0}
+  Next_Page_Button: {fileID: 0}
 --- !u!1 &1074619993
 GameObject:
   m_ObjectHideFlags: 0
@@ -25259,6 +25274,7 @@ MonoBehaviour:
   JsonReader: {fileID: 252757836}
   SpriteReader: {fileID: 731087666}
   Left_Drawer_Area: {fileID: 127596505}
+  Rulebook_Pos: {fileID: 8438706236183017773}
   Icon_Rulebook: {fileID: 4928603940813997841, guid: 510d830d229eba8489a732aaa3cd6e51, type: 3}
   obj_Rulebook: {fileID: 8946264950157538740, guid: 3a68efb1598ca8840a99fbd0201bbab5, type: 3}
   obj_PageType_1: {fileID: 2276355854633983899, guid: 3b2194f3cf74a8f4db3ce761fa64e315, type: 3}
@@ -27670,7 +27686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992c2f16aeedd2141a3992a6ed8ec7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 2037151669}
 --- !u!114 &1421672879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28110,7 +28125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec788b0437dd62244b86faf0ca98c774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 2037151669}
+  leftright: 0
+  Rulebook: {fileID: 0}
 --- !u!114 &1442623208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31881,7 +31897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992c2f16aeedd2141a3992a6ed8ec7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 1062813735}
 --- !u!114 &1675521793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32458,7 +32473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992c2f16aeedd2141a3992a6ed8ec7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 1062813735}
 --- !u!114 &1719551160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39947,15 +39961,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Big_Border_Transform: {fileID: 0}
   JsonReader: {fileID: 0}
-  Guidebook_Page_Text: {fileID: 329652765}
-  Guidebook_Small: {fileID: 799725101}
+  PageCount_Text: {fileID: 0}
+  Guidebook_Small: {fileID: 1800527194}
   Guidebook_Large: {fileID: 1319899530}
   Drag_Drop: {fileID: 2037151672}
-  Page_List: {fileID: 542217222}
-  Next_Page_Button: {fileID: 1442623206}
-  Prev_Page_Button: {fileID: 1421672877}
-  Book_Animation: {fileID: 0}
-  Guidebook_Page: 0
+  PageCount: 0
   Guidebook_EndPage: 4
   Animation_Speed: 0.03
 --- !u!114 &2037151672
@@ -40508,7 +40518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992c2f16aeedd2141a3992a6ed8ec7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 905158226}
 --- !u!114 &2053368907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41067,7 +41076,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec788b0437dd62244b86faf0ca98c774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 905158226}
+  leftright: 0
+  Rulebook: {fileID: 0}
 --- !u!114 &2101644423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41644,15 +41654,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Big_Border_Transform: {fileID: 0}
   JsonReader: {fileID: 0}
-  Guidebook_Page_Text: {fileID: 0}
+  PageCount_Text: {fileID: 0}
   Guidebook_Small: {fileID: 1666230401}
   Guidebook_Large: {fileID: 0}
   Drag_Drop: {fileID: 6435481145377784694}
-  Page_List: {fileID: 1884745826}
-  Next_Page_Button: {fileID: 0}
-  Prev_Page_Button: {fileID: 0}
-  Book_Animation: {fileID: 0}
-  Guidebook_Page: 0
+  PageCount: 0
   Guidebook_EndPage: 4
   Animation_Speed: 0.03
 --- !u!224 &346671688246461075
@@ -42412,7 +42418,7 @@ GameObject:
   - component: {fileID: 6435481145377784694}
   - component: {fileID: 17347062653189834}
   m_Layer: 5
-  m_Name: GuideBook
+  m_Name: Rulebook_Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42495,7 +42501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &4366604737680142210
 MonoBehaviour:
   m_ObjectHideFlags: 0

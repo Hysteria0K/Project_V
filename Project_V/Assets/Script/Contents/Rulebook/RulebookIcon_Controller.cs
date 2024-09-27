@@ -1,28 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.EventSystems;
+using UnityEngine;
 
-public class GuideBook : MonoBehaviour
+public class RulebookIcon_Controller : MonoBehaviour
 {
-    [Header("Object")]
+    [Header("Find_Object")]
     [SerializeField] private RectTransform Big_Border_Transform;
-    [SerializeField] private JsonReader JsonReader;
 
     private GameObject Left_Drawer_Area;
 
-    public TextMeshProUGUI PageCount_Text;
-
     private RectTransform Guidebook_Transform;
 
-    private Rect Table_Rect;
-    private Rect Letter_Rect;
     private Rect Left_Drawer_Area_Rect;
 
-    public GameObject Guidebook_Small;
-    public GameObject Guidebook_Large;
+    [Space (10f)]
+    public GameObject Rulebook_Small;
+    public GameObject Rulebook_Large;
     public Drag_Drop Drag_Drop;
 
     private bool OnTable;
@@ -32,20 +26,11 @@ public class GuideBook : MonoBehaviour
     private float Half_Height;
     private Vector3 Origin_Pos;
 
-    [Header("Page")]
-    public int PageCount;
-    public int Guidebook_EndPage; // 나중에 데이터파싱해서 사용 -> 자식 오브젝트 수로 판단
-
-    [Header("Control")]
-    [SerializeField] private float Animation_Speed = 0.03f;
-
     private void Awake()
     {
         Left_Drawer_Area = GameObject.Find("Left_Drawer_Area");
 
         Big_Border_Transform = GameObject.Find("Big_Border").GetComponent<RectTransform>();
-
-        //JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
 
         OnTable = false;
         Change_Check = false;
@@ -87,7 +72,7 @@ public class GuideBook : MonoBehaviour
         }
 
         if (OnTable == true)
-        { 
+        {
             //PageCount_Text.text = $"{PageCount}" + "Page"; 임시 주석처리
 
             if (this.transform.position != Origin_Pos && Drag_Drop.Is_Drag == false)
@@ -125,14 +110,14 @@ public class GuideBook : MonoBehaviour
 
     private void Guidebook_On_Table()
     {
-        Guidebook_Small.SetActive(true);
-        Guidebook_Large.SetActive(false);
+        Rulebook_Small.SetActive(true);
+        Rulebook_Large.SetActive(false);
     }
 
     private void Guidebook_Not_On_Table()
     {
-        Guidebook_Small.SetActive(false);
-        Guidebook_Large.SetActive(true);
+        Rulebook_Small.SetActive(false);
+        Rulebook_Large.SetActive(true);
     }
 
     private void Move_Limit(RectTransform Move, RectTransform Limit)

@@ -31,6 +31,11 @@ public class Drag_Drop : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndD
 
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
+        if (Is_Drag == false)
+        {
+            Is_Drag = true;
+        }
+
         if (Mouse_Center == false)
         {
             transform.position = eventData.position - (Vect2 - new Vector2(Saved_Position.x, Saved_Position.y));
@@ -64,6 +69,5 @@ public class Drag_Drop : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndD
         transform.SetAsLastSibling();
         Vect2 = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Saved_Position = ThisRect.position;
-        Is_Drag = true;
     }
 }
