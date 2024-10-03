@@ -36,9 +36,6 @@ public class GuideBook : MonoBehaviour
     public int PageCount;
     public int Guidebook_EndPage; // 나중에 데이터파싱해서 사용 -> 자식 오브젝트 수로 판단
 
-    [Header("Control")]
-    [SerializeField] private float Animation_Speed = 0.03f;
-
     private void Awake()
     {
         Left_Drawer_Area = GameObject.Find("Left_Drawer_Area");
