@@ -44,7 +44,7 @@ public class WriteLetter_JsonReader : MonoBehaviour
         WriteLetter_To_Dictionary();
 
         Debug.Log("JsonParse Complete");
-        Debug.Log(WriteLetter_Dictionary[1][3][1].Tag1); //WriteLetter_Dictionary[Day][Turn][Order].<Attributes>
+        //Debug.Log(WriteLetter_Dictionary[1][3][1].Tag1); //WriteLetter_Dictionary[Day][Turn][Order].<Attributes>
     }
 
     void Start()
@@ -89,7 +89,6 @@ public class WriteLetter_JsonReader : MonoBehaviour
 
             if (Saved_Turn != WriteLetter.writeletter[i].Turn)
             {
-                Debug.Log(Saved_Turn);
                 Day_Dictionary.Add(Saved_Turn, Turn_Dictionary);
                 Turn_Dictionary = new Dictionary<int, WriteLetter_Attributes>();
                 Saved_Turn = WriteLetter.writeletter[i].Turn;

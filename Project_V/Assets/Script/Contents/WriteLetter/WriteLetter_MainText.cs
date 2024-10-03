@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class WriteLetter_MainText : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     public GameObject MainText_effect;
+    public WriteLetter_Text WriteLetter_Text;
     private WriteLetter_Manager GameManager;
     // Start is called before the first frame update
 
@@ -33,6 +34,8 @@ public class WriteLetter_MainText : MonoBehaviour, IPointerEnterHandler, IPointe
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
+        WriteLetter_Text.Add_Text();
+        GameManager.Turn++;
         GameManager.Delete_WriteText();
     }
 }

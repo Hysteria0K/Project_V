@@ -57,7 +57,6 @@ public class WriteLetter_Manager : MonoBehaviour
             Destroy(Select_Text.GetChild(i).gameObject);
         }
 
-        Turn++;
         if (Turn <= 3) Spawn_WriteText();
     }
 }

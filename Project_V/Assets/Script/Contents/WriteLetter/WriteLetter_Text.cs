@@ -26,6 +26,10 @@ public class WriteLetter_Text : MonoBehaviour
     public GameObject SizeSet;
     public GameObject After_SizeCheck;
 
+    private WriteLetter_Manager GameManager;
+    private Selected_Text Selected_Text;
+    private Transform Text_List;
+
     [Space(15f)]
     [SerializeField] private bool SizeChecker = false;
     private float MainText_Size;
@@ -35,6 +39,10 @@ public class WriteLetter_Text : MonoBehaviour
     private void Awake()
     {
         SizeSet.GetComponent<TextMeshProUGUI>().text = MainText;
+
+        GameManager = GameObject.Find("GameManager").GetComponent<WriteLetter_Manager>();
+        Selected_Text = GameObject.Find("Selected_Text").GetComponent<Selected_Text>();
+        Text_List = GameObject.Find("Text_List").transform;
     }
 
     // Start is called before the first frame update
@@ -42,9 +50,10 @@ public class WriteLetter_Text : MonoBehaviour
     {
         MainText_txt.text = MainText;
         MainText_effect.text = MainText;
-        Tag1_txt.text = "#"+Tag1;
-        Tag2_txt.text = "#"+Tag2;
-        Tag3_txt.text = "#"+Tag3;
+
+        if (Tag1 != null) Tag1_txt.text = "#" + Tag1;
+        if (Tag2 != null) Tag2_txt.text = "#" + Tag2;
+        if (Tag3 != null) Tag3_txt.text = "#" + Tag3;
     }
 
     // Update is called once per frame
@@ -56,6 +65,7 @@ public class WriteLetter_Text : MonoBehaviour
         }
     }
 
+    #region 크기 체크
     private void SizeCheck()
     {
         if (SizeSet.GetComponent<RectTransform>().rect.width != 0)
@@ -75,5 +85,23 @@ public class WriteLetter_Text : MonoBehaviour
             SizeChecker = true;
         }
     }
+    #endregion
 
+    #region 문장, 태그 관리
+
+    public void Add_Text()
+    {
+        Text_List.GetChild(GameManager.Turn - 1).gameObject.GetComponent<TextMeshProUGUI>().text = MainText;
+
+        Selected_Text.Add_Tag(Tag1);
+        Selected_Text.Add_Tag(Tag2);
+        Selected_Text.Add_Tag(Tag3);
+
+        if (MasterPiece == false)
+        {
+            Selected_Text.Masterpiece = false;
+        }
+    }
+
+    #endregion
 }
