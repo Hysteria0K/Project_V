@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class WriteLetter_Manager : MonoBehaviour
 {
@@ -13,12 +14,22 @@ public class WriteLetter_Manager : MonoBehaviour
     [Space(15f)]
     [Header("Prefab")]
     public GameObject WriteLetter_Text;
+    public GameObject Result_Data;
 
     [Space(15f)]
     [Header("GameObject")]
     public WriteLetter_JsonReader WriteLetter_JsonReader;
     public Transform TextPositionSet;
     public Transform Select_Text;
+
+    public GameObject Selected_Text;
+    public Transform Selected_Text_List;
+
+    [Space(15f)]
+    public GameObject Result;
+    public Transform Result_Text_List;
+    public GameObject Result_Masterpiece;
+    public GameObject Result_Tag;
 
     void Awake()
     {
@@ -58,5 +69,59 @@ public class WriteLetter_Manager : MonoBehaviour
         }
 
         if (Turn <= 3) Spawn_WriteText();
+
+        else
+        {
+            Set_Result();
+        }
+    }
+
+    public void Set_Result()
+    {
+        for (int i = 0; i < Selected_Text_List.childCount;i++)
+        {
+            Result_Data.GetComponent<Result_Data>().Text[i] = Selected_Text_List.GetChild(i).gameObject.GetComponent<TextMeshProUGUI>().text;
+            Result_Text_List.GetChild(i).gameObject.GetComponent<TextMeshProUGUI>().text = Result_Data.GetComponent<Result_Data>().Text[i];
+        }
+
+        if (Selected_Text.GetComponent<Selected_Text>().Masterpiece == true)
+        {
+            Result_Data.GetComponent<Result_Data>().Masterpiece = true;
+            Result_Masterpiece.SetActive(true);
+        }
+
+        else
+        {
+            int temp = 0;
+            Result_Data.GetComponent<Result_Data>().Masterpiece = false;
+            Result_Data.GetComponent<Result_Data>().Tag_Dictionary = new Dictionary<string, int>();
+            Result_Data.GetComponent<Result_Data>().Tag_Dictionary = Selected_Text.GetComponent<Selected_Text>().Tag_Dictionary;
+
+            Result_Tag.GetComponent<TextMeshProUGUI>().text = string.Empty;
+
+            foreach (string key in Result_Data.GetComponent<Result_Data>().Tag_Dictionary.Keys)
+            {
+                if (Result_Data.GetComponent<Result_Data>().Tag_Dictionary[key] != 1)
+                {
+                    Result_Tag.GetComponent<TextMeshProUGUI>().text += "#" + key + " x" + Result_Data.GetComponent<Result_Data>().Tag_Dictionary[key];
+                }
+
+                else Result_Tag.GetComponent<TextMeshProUGUI>().text += "#" + key;
+
+                Result_Tag.GetComponent<TextMeshProUGUI>().text += "  ";
+                temp++;
+
+                if (temp == 3)
+                {
+                    Result_Tag.GetComponent<TextMeshProUGUI>().text += "\n";
+                    temp = 0;
+                }
+            }
+        }
+
+        Selected_Text.SetActive(false);
+        Result.gameObject.SetActive(true);
+
+        Instantiate(Result_Data);
     }
 }
