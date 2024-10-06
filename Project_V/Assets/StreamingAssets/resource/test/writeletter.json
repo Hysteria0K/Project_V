@@ -1,6 +1,6 @@
 {"writeletter":[
   {
-    "Day": 1.0,
+    "Id": "Test",
     "Turn": 1.0,
     "Order": 1.0,
     "Text": "예시 선택지 1★",
@@ -10,7 +10,7 @@
     "Masterpiece": true
   },
   {
-    "Day": 1.0,
+    "Id": "Test",
     "Turn": 1.0,
     "Order": 2.0,
     "Text": "예시 선택지 2",
@@ -20,7 +20,7 @@
     "Masterpiece": false
   },
   {
-    "Day": 1.0,
+    "Id": "Test",
     "Turn": 1.0,
     "Order": 3.0,
     "Text": "예시 선택지 3",
@@ -30,7 +30,7 @@
     "Masterpiece": false
   },
   {
-    "Day": 1.0,
+    "Id": "Test",
     "Turn": 2.0,
     "Order": 1.0,
     "Text": "예시 선택지 4",
@@ -40,7 +40,7 @@
     "Masterpiece": false
   },
   {
-    "Day": 1.0,
+    "Id": "Test",
     "Turn": 2.0,
     "Order": 2.0,
     "Text": "예시 선택지 5★",
@@ -50,7 +50,7 @@
     "Masterpiece": true
   },
   {
-    "Day": 1.0,
+    "Id": "Test",
     "Turn": 2.0,
     "Order": 3.0,
     "Text": "예시 선택지 6",
@@ -60,7 +60,7 @@
     "Masterpiece": false
   },
   {
-    "Day": 1.0,
+    "Id": "Test",
     "Turn": 3.0,
     "Order": 1.0,
     "Text": "예시 선택지 7",
@@ -70,7 +70,7 @@
     "Masterpiece": false
   },
   {
-    "Day": 1.0,
+    "Id": "Test",
     "Turn": 3.0,
     "Order": 2.0,
     "Text": "예시 선택지 8",
@@ -80,7 +80,7 @@
     "Masterpiece": false
   },
   {
-    "Day": 1.0,
+    "Id": "Test",
     "Turn": 3.0,
     "Order": 3.0,
     "Text": "예시 선택지 9★",
@@ -90,7 +90,7 @@
     "Masterpiece": true
   },
   {
-    "Day": 2.0,
+    "Id": 2.0,
     "Turn": 1.0,
     "Order": 1.0,
     "Text": "Test",

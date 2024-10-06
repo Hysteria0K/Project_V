@@ -2124,7 +2124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c55c6ff6501dd64fa3e6d190df307e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Day: 1
+  Id: Test
   Turn: 1
   WriteLetter_Text: {fileID: 5574198464375096501, guid: f7898c18bcdce3e40acb6d4ade20922f, type: 3}
   Result_Data: {fileID: 7407268220970699590, guid: 31f8307fe1ee1eb4bba346c4c006631c, type: 3}

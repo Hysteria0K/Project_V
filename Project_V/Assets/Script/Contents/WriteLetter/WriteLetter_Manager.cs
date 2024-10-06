@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 public class WriteLetter_Manager : MonoBehaviour
 {
     [Header("Control")]
-    public int Day;
+    public string Id;
     [Space(15f)]
     public int Turn;
 
@@ -33,7 +33,7 @@ public class WriteLetter_Manager : MonoBehaviour
 
     void Awake()
     {
-        // Day 불러오기 - 나중에 연결할 때 만들어야함 프로토타입에서는 인스펙터에서 제어함.
+        // Id 불러오기 - 나중에 연결할 때 만들어야함 프로토타입에서는 인스펙터에서 제어함.
         Turn = 1;
     }
 
@@ -49,13 +49,13 @@ public class WriteLetter_Manager : MonoBehaviour
 
     public void Spawn_WriteText()
     {
-        for(int i =1; i<= WriteLetter_JsonReader.WriteLetter_Dictionary[Day][Turn].Count; i++ )
+        for(int i =1; i<= WriteLetter_JsonReader.WriteLetter_Dictionary[Id][Turn].Count; i++ )
         {
-            WriteLetter_Text.GetComponent<WriteLetter_Text>().MainText = WriteLetter_JsonReader.WriteLetter_Dictionary[Day][Turn][i].Text;
-            WriteLetter_Text.GetComponent<WriteLetter_Text>().Tag1 = WriteLetter_JsonReader.WriteLetter_Dictionary[Day][Turn][i].Tag1;
-            WriteLetter_Text.GetComponent<WriteLetter_Text>().Tag2 = WriteLetter_JsonReader.WriteLetter_Dictionary[Day][Turn][i].Tag2;
-            WriteLetter_Text.GetComponent<WriteLetter_Text>().Tag3 = WriteLetter_JsonReader.WriteLetter_Dictionary[Day][Turn][i].Tag3;
-            WriteLetter_Text.GetComponent<WriteLetter_Text>().MasterPiece = WriteLetter_JsonReader.WriteLetter_Dictionary[Day][Turn][i].Masterpiece;
+            WriteLetter_Text.GetComponent<WriteLetter_Text>().MainText = WriteLetter_JsonReader.WriteLetter_Dictionary[Id][Turn][i].Text;
+            WriteLetter_Text.GetComponent<WriteLetter_Text>().Tag1 = WriteLetter_JsonReader.WriteLetter_Dictionary[Id][Turn][i].Tag1;
+            WriteLetter_Text.GetComponent<WriteLetter_Text>().Tag2 = WriteLetter_JsonReader.WriteLetter_Dictionary[Id][Turn][i].Tag2;
+            WriteLetter_Text.GetComponent<WriteLetter_Text>().Tag3 = WriteLetter_JsonReader.WriteLetter_Dictionary[Id][Turn][i].Tag3;
+            WriteLetter_Text.GetComponent<WriteLetter_Text>().MasterPiece = WriteLetter_JsonReader.WriteLetter_Dictionary[Id][Turn][i].Masterpiece;
 
             Instantiate(WriteLetter_Text, TextPositionSet.GetChild(i - 1).transform.position, new Quaternion(0, 0, 0, 0), Select_Text);
         }
