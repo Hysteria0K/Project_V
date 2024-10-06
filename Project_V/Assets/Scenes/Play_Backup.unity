@@ -3152,7 +3152,16 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: 44a91c424dd179e43a399d5f9837f66d, type: 3}
   Table_Area: {fileID: 655193894}
   Stamp_Bar_Edge: {fileID: 1943908690}
-  Is_Ready: 0
+  Drawer_Right: {fileID: 0}
+  Drawer_Right_BG: {fileID: 0}
+  Front_Table_Area: {fileID: 0}
+  Big_Border: {fileID: 0}
+  Stamp_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   Stamp_Value: 2
   Stamp_Down: 0
   Stamp_Down_Position: {x: 0, y: 0, z: 0}
@@ -5505,6 +5514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef818a0071586a4d92c76da5b8a4cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JsonReader: {fileID: 0}
   Telephone: {fileID: 3882363357672167873, guid: 7be85a74c87f2444297e12f570b2f4e3, type: 3}
   Canvas: {fileID: 1556057629}
   IsLocked: 0
@@ -7070,7 +7080,16 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: c1e78d72cc332d444a8e2e99a8c5c19d, type: 3}
   Table_Area: {fileID: 655193894}
   Stamp_Bar_Edge: {fileID: 1943908690}
-  Is_Ready: 0
+  Drawer_Right: {fileID: 0}
+  Drawer_Right_BG: {fileID: 0}
+  Front_Table_Area: {fileID: 0}
+  Big_Border: {fileID: 0}
+  Stamp_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   Stamp_Value: 1
   Stamp_Down: 0
   Stamp_Down_Position: {x: 0, y: 0, z: 0}
@@ -8523,7 +8542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec788b0437dd62244b86faf0ca98c774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 3957857769216990553}
+  leftright: 0
+  Rulebook: {fileID: 0}
 --- !u!114 &507161482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12431,12 +12451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cffc9860da55141bfd75ecfa9e06b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testc: {fileID: 21300000, guid: 40738095e42779e479d0af66972ac6f1, type: 3}
-  charlotte: {fileID: 21300000, guid: f376d040b8953a54c995aa0aa3748a8f, type: 3}
-  leni: {fileID: 21300000, guid: edf255527b9de4d40b7ceb612ce3dfd2, type: 3}
-  Dumystamp_1: {fileID: 21300000, guid: 2383c9ca9a37fbd4cb599424c89deccb, type: 3}
-  Dumystamp_2: {fileID: 21300000, guid: 3879d9ccc9d9e4a4f981c83b4b1047d9, type: 3}
-  Imvalidstamp: {fileID: 21300000, guid: 2718ff0632598b049a4ee26d16bd22fe, type: 3}
   D_308801: {fileID: 0}
   D_308001: {fileID: 0}
 --- !u!4 &731087667
@@ -13011,7 +13025,16 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: 13e4d41dfbde7364c85200618c881e90, type: 3}
   Table_Area: {fileID: 655193894}
   Stamp_Bar_Edge: {fileID: 1943908690}
-  Is_Ready: 0
+  Drawer_Right: {fileID: 0}
+  Drawer_Right_BG: {fileID: 0}
+  Front_Table_Area: {fileID: 0}
+  Big_Border: {fileID: 0}
+  Stamp_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   Stamp_Value: 9999
   Stamp_Down: 0
   Stamp_Down_Position: {x: 0, y: 0, z: 0}
@@ -20255,12 +20278,14 @@ MonoBehaviour:
   Spawn_Check: 0
   Letter: {fileID: 856275089615170457, guid: 90c990a16e1e08c4e8ad1c0656963434, type: 3}
   Letter_Area: {fileID: 1824933602}
+  Table_Area: {fileID: 0}
   Timer_Text: {fileID: 1750156834}
   Score_Text: {fileID: 1751196095}
   Telephone_Saver: {fileID: 382747385}
   Game_End: {fileID: 1855360996}
   Game_End_Score: {fileID: 203590851}
   Letter_Spawner: {fileID: 1825016793}
+  JsonReader: {fileID: 0}
   Current_Time: 0
   Min: 0
   Sec: 0
@@ -20278,6 +20303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7288af876fe3c84aa63d82f78f1eb74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JsonReader: {fileID: 0}
+  Day: 0
   Is_Dead: 1
   Dead_Count: 10
   Dead_Percentage: 40
@@ -24998,7 +25025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec788b0437dd62244b86faf0ca98c774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 3957857769216990553}
+  leftright: 0
+  Rulebook: {fileID: 0}
 --- !u!114 &1625714361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32001,18 +32029,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33722b361cc0dbb4fa97cfe0bc7525d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Table_Area_Transform: {fileID: 0}
-  Letter_Area_Transform: {fileID: 0}
   Big_Border_Transform: {fileID: 0}
   JsonReader: {fileID: 0}
-  Guidebook_Page_Text: {fileID: 5333580779896747321}
+  PageCount_Text: {fileID: 0}
   Guidebook_Small: {fileID: 5400183218177343183}
   Guidebook_Large: {fileID: 1275020242391878119}
   Drag_Drop: {fileID: 6608734125975013664}
-  Page_List: {fileID: 8842838360871380586}
-  Next_Page_Button: {fileID: 6022730096018035969}
-  Prev_Page_Button: {fileID: 3906797411003098849}
-  Guidebook_Page: 0
+  PageCount: 0
   Guidebook_EndPage: 4
 --- !u!1 &200768537952385102
 GameObject:
@@ -36604,7 +36627,16 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: c1e78d72cc332d444a8e2e99a8c5c19d, type: 3}
   Table_Area: {fileID: 0}
   Stamp_Bar_Edge: {fileID: 527345805620514336}
-  Is_Ready: 0
+  Drawer_Right: {fileID: 0}
+  Drawer_Right_BG: {fileID: 0}
+  Front_Table_Area: {fileID: 0}
+  Big_Border: {fileID: 0}
+  Stamp_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   Stamp_Value: 1
   Stamp_Down: 0
   Stamp_Down_Position: {x: 0, y: 0, z: 0}
@@ -37077,7 +37109,16 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: 13e4d41dfbde7364c85200618c881e90, type: 3}
   Table_Area: {fileID: 0}
   Stamp_Bar_Edge: {fileID: 527345805620514336}
-  Is_Ready: 0
+  Drawer_Right: {fileID: 0}
+  Drawer_Right_BG: {fileID: 0}
+  Front_Table_Area: {fileID: 0}
+  Big_Border: {fileID: 0}
+  Stamp_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   Stamp_Value: 9999
   Stamp_Down: 0
   Stamp_Down_Position: {x: 0, y: 0, z: 0}
@@ -41682,7 +41723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec788b0437dd62244b86faf0ca98c774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GuideBook: {fileID: 3957857769216990553}
+  leftright: 0
+  Rulebook: {fileID: 0}
 --- !u!1 &8313638705127054415
 GameObject:
   m_ObjectHideFlags: 0
@@ -42142,7 +42184,16 @@ MonoBehaviour:
   Stamp: {fileID: 6725727162504735853, guid: 44a91c424dd179e43a399d5f9837f66d, type: 3}
   Table_Area: {fileID: 0}
   Stamp_Bar_Edge: {fileID: 527345805620514336}
-  Is_Ready: 0
+  Drawer_Right: {fileID: 0}
+  Drawer_Right_BG: {fileID: 0}
+  Front_Table_Area: {fileID: 0}
+  Big_Border: {fileID: 0}
+  Stamp_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   Stamp_Value: 2
   Stamp_Down: 0
   Stamp_Down_Position: {x: 0, y: 0, z: 0}

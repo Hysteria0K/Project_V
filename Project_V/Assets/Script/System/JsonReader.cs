@@ -88,6 +88,10 @@ public class JsonReader : MonoBehaviour
         public int Dead_Count;
         public int Dead_Percentage;
         public bool Is_Invalid_Stamp;
+        public string Start_Story_Id;
+        public string End_Story_Id;
+        public string Letter_Id;
+
     }
 
     [System.Serializable]

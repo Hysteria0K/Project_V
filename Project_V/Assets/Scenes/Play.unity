@@ -18350,7 +18350,6 @@ MonoBehaviour:
   Drag_Drop: {fileID: 905158229}
   PageCount: 0
   Guidebook_EndPage: 4
-  Animation_Speed: 0.03
 --- !u!114 &905158229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21370,7 +21369,6 @@ MonoBehaviour:
   Drag_Drop: {fileID: 1062813738}
   PageCount: 0
   Guidebook_EndPage: 4
-  Animation_Speed: 0.03
 --- !u!114 &1062813738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21401,6 +21399,10 @@ MonoBehaviour:
   MaxPage: 0
   PageCount: 1
   Animation_Speed: 0.03
+  Fade_Time: 0.5
+  Fade_Delay: 0.05
+  Button_Delay: 0.4
+  Button_Ready: 1
   Page_List: {fileID: 0}
   Book_Animation: {fileID: 0}
   Prev_Page_Button: {fileID: 0}
@@ -25254,7 +25256,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JsonReader: {fileID: 252757836}
-  Day: 1
+  Day: 2
+  Start_Story_Id: 
+  End_Story_Id: 
+  Letter_Id: 
   Is_Dead: 0
   Dead_Count: 0
   Dead_Percentage: 0
@@ -39967,7 +39972,6 @@ MonoBehaviour:
   Drag_Drop: {fileID: 2037151672}
   PageCount: 0
   Guidebook_EndPage: 4
-  Animation_Speed: 0.03
 --- !u!114 &2037151672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41660,7 +41664,6 @@ MonoBehaviour:
   Drag_Drop: {fileID: 6435481145377784694}
   PageCount: 0
   Guidebook_EndPage: 4
-  Animation_Speed: 0.03
 --- !u!224 &346671688246461075
 RectTransform:
   m_ObjectHideFlags: 0
