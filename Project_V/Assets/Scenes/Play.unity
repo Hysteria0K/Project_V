@@ -25256,7 +25256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JsonReader: {fileID: 252757836}
-  Day: 2
+  Day: 1
   Start_Story_Id: 
   End_Story_Id: 
   Letter_Id: 

@@ -17,7 +17,7 @@ public class Dialogue_Manager : MonoBehaviour
     public GameObject Dialogue_Sprite2;
     public GameObject Dialogue_Sprite3;
 
-    public Test_JsonReader JsonReader;
+    public Dialogue_JsonReader JsonReader;
     public Sprite_Reader SpriteReader;
 
     public Image Next_Talk;
@@ -36,27 +36,21 @@ public class Dialogue_Manager : MonoBehaviour
     [SerializeField] private float Text_delay;
     [SerializeField] private float Next_Talk_Speed = 1f;
     [SerializeField] private float Auto_Delay = 1.5f;
-    [SerializeField] private string Next_Scene_Name = "Prototype";
+
+    [Space(15f)]
+    public string Next_Scene_Name;
+    public string Dialogue_Id = "1_Begin";
 
     // Start is called before the first frame update
     private void Awake()
     {
-        SceneName = SceneManager.GetActiveScene().name;
+
     }
 
     void Start()
     {
-        switch(SceneName)
-        {
-            case "Test_Dialogue":
-                {
-                    Next_Dialogue(0, JsonReader.Test_Dialogue.Test);
-                    MaxIndex = JsonReader.Test_Dialogue.Test.Length - 1;
-                    break;
-                }
-
-            default: break;
-        }
+        Next_Dialogue(0, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
+        MaxIndex = JsonReader.Dialogue_Dictionary[Dialogue_Id].Count - 1;
     }
 
     void Update()
@@ -77,17 +71,17 @@ public class Dialogue_Manager : MonoBehaviour
         }
     }
 
-    private void Next_Dialogue(int index, Test_JsonReader.Test_Dialogue_Attributes[] Json)
+    private void Next_Dialogue(int index, Dictionary<int, Dialogue_JsonReader.Dialogue_Attributes> Json)
     {
         StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
         Dialogue_Name.text = Json[index].Name;
 
-        SpriteControl(Dialogue_Sprite1, Json[index].Sprite1, Json[index].Pos1, Json[index].Layer1);
-        SpriteControl(Dialogue_Sprite2, Json[index].Sprite2, Json[index].Pos2, Json[index].Layer2);
-        SpriteControl(Dialogue_Sprite3, Json[index].Sprite3, Json[index].Pos3, Json[index].Layer3);
+        SpriteControl(Dialogue_Sprite1, Json[index].Sprite1, Json[index].Pos1);
+        SpriteControl(Dialogue_Sprite2, Json[index].Sprite2, Json[index].Pos2);
+        SpriteControl(Dialogue_Sprite3, Json[index].Sprite3, Json[index].Pos3);
     }
 
-    private void SpriteControl(GameObject Sprite, string Json_Sprite, int Json_Sprite_Pos, int Json_Sprite_Layer)
+    private void SpriteControl(GameObject Sprite, string Json_Sprite, int Json_Sprite_Pos)
     {
         if (Json_Sprite != "")
         {
@@ -174,7 +168,7 @@ public class Dialogue_Manager : MonoBehaviour
 
         if (Index <= MaxIndex && Text_End == true)
         {
-            Next_Dialogue(Index, JsonReader.Test_Dialogue.Test);
+            Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
             Next_Talk_a = 1;
             Next_Talk.color = new Color(Next_Talk.color.r, Next_Talk.color.g, Next_Talk.color.b, Next_Talk_a);
         }
