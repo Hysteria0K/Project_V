@@ -10,9 +10,10 @@ public class FileChecker : MonoBehaviour
     {
         string filePath = Path.Combine(Application.persistentDataPath, "resource");
 
+        BetterStreamingAssets.Initialize();
+
         if (!Directory.Exists(filePath))
         {
-            BetterStreamingAssets.Initialize();
             Debug.Log(filePath);
             CopyFilesToPersistentDataPath();
             SceneManager.LoadScene("Title");
@@ -20,7 +21,8 @@ public class FileChecker : MonoBehaviour
 
         else
         {
-            Debug.Log("복사불필요");
+            Debug.Log("리소스 폴더 존재, 파일 체크");
+            CheckJsonFiles();
             SceneManager.LoadScene("Title");
         }
 
@@ -43,15 +45,15 @@ public class FileChecker : MonoBehaviour
 
         string JsonFolderPath = targetFolderPath + "/jsonfiles";
 
-        string ImageFolderPath = targetFolderPath + "/imagefiles";
+        //string ImageFolderPath = targetFolderPath + "/imagefiles";
 
         string[] jsonFiles = BetterStreamingAssets.GetFiles("/", "*.json", SearchOption.AllDirectories);
 
-        string[] imageFiles = BetterStreamingAssets.GetFiles("/", "*.png", SearchOption.AllDirectories);
+        //string[] imageFiles = BetterStreamingAssets.GetFiles("/", "*.png", SearchOption.AllDirectories);
 
         Directory.CreateDirectory(JsonFolderPath);
 
-        Directory.CreateDirectory(ImageFolderPath);
+        //Directory.CreateDirectory(ImageFolderPath);
 
         foreach (string jsonFilePath in jsonFiles)
         {
@@ -65,7 +67,7 @@ public class FileChecker : MonoBehaviour
             }
         }
 
-        foreach (string imageFilePath in imageFiles)
+        /*foreach (string imageFilePath in imageFiles)
         {
             string fileName = Path.GetFileName(imageFilePath);
             string targetFilePath = Path.Combine(ImageFolderPath, fileName);
@@ -75,8 +77,44 @@ public class FileChecker : MonoBehaviour
                 byte[] fileBytes = BetterStreamingAssets.ReadAllBytes(imageFilePath);
                 File.WriteAllBytes(targetFilePath, fileBytes);
             }
-        }
+        }*/
 
         Debug.Log("복사 완료");
+    }
+
+    private void CheckJsonFiles()
+    {
+        string targetFolderPath = Application.persistentDataPath + "/resource";
+
+        string JsonFolderPath = targetFolderPath + "/jsonfiles";
+
+        string[] jsonFiles = BetterStreamingAssets.GetFiles("/", "*.json", SearchOption.AllDirectories);
+
+        foreach (string jsonFilePath in jsonFiles)
+        {
+            string fileName = Path.GetFileName(jsonFilePath);
+
+            string targetFilePath = Path.Combine(JsonFolderPath, fileName);
+
+            if (!File.Exists(targetFilePath))
+            {
+                byte[] fileBytes = BetterStreamingAssets.ReadAllBytes(jsonFilePath);
+                File.WriteAllBytes(targetFilePath, fileBytes);
+                Debug.Log(fileName + "수정 완료");
+            }
+
+            else
+            {
+                string JsonText = BetterStreamingAssets.ReadAllText(jsonFilePath);
+                string Directory_JsonFile = File.ReadAllText(JsonFolderPath +"/"+ fileName);
+
+                if (JsonText != Directory_JsonFile)
+                {
+                    byte[] fileBytes = BetterStreamingAssets.ReadAllBytes(jsonFilePath);
+                    File.WriteAllBytes(targetFilePath, fileBytes);
+                    Debug.Log(fileName + "수정 완료");
+                }
+            }
+        }
     }
 }

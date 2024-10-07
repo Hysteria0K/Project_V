@@ -24,7 +24,7 @@ public class Json_Patcher : MonoBehaviour
 #else
         Destroy(this.gameObject);
 #endif
-        Debug.Log("복사완료");
+        Debug.Log("복사 완료");
         Destroy(this.gameObject);
     }
 
