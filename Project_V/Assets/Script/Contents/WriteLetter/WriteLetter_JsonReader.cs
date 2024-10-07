@@ -23,6 +23,22 @@ public class WriteLetter_JsonReader : MonoBehaviour
         public string Tag3;
         public bool Masterpiece;
     }
+
+    [System.Serializable]
+    public class GameLevel_Attributes
+    {
+        public int Day;
+        public int Letter_Count_Max;
+        public float Limit_Time;
+        public bool Is_Dead;
+        public int Dead_Count;
+        public int Dead_Percentage;
+        public bool Is_Invalid_Stamp;
+        public string Start_Story_Id;
+        public string End_Story_Id;
+        public string Letter_Id;
+    }
+
     #endregion Attributes
 
     #region Parse
@@ -30,18 +46,29 @@ public class WriteLetter_JsonReader : MonoBehaviour
     {
         public WriteLetter_Attributes[] writeletter;
     }
-   
+    public class GameLevel_Parse
+    {
+        public GameLevel_Attributes[] gamelevel;
+    }
+
     #endregion Parse
 
     public WriteLetter_Parse WriteLetter;
+    public GameLevel_Parse GameLevel;
+
     public Dictionary<string, Dictionary<int, Dictionary<int, WriteLetter_Attributes>>> WriteLetter_Dictionary;
+    public Dictionary<int, GameLevel_Attributes> GameLevel_Dictionary;
 
     private void Awake()
     {
         WriteLetter = JsonUtility.FromJson<WriteLetter_Parse>(ReadJson("writeletter"));
+        GameLevel = JsonUtility.FromJson<GameLevel_Parse>(ReadJson("gamelevel"));
 
         WriteLetter_Dictionary = new Dictionary<string, Dictionary<int, Dictionary<int, WriteLetter_Attributes>>>();
         WriteLetter_To_Dictionary();
+
+        GameLevel_Dictionary = new Dictionary<int, GameLevel_Attributes>();
+        GameLevel_To_Dictionary();
 
         Debug.Log("JsonParse Complete");
         //Debug.Log(WriteLetter_Dictionary[1][3][1].Tag1); //WriteLetter_Dictionary[Id][Turn][Order].<Attributes>
@@ -98,6 +125,13 @@ public class WriteLetter_JsonReader : MonoBehaviour
         }
         Id_Dictionary.Add(Saved_Turn, Turn_Dictionary);
         WriteLetter_Dictionary.Add(Saved_Id, Id_Dictionary);
+    }
+    private void GameLevel_To_Dictionary()
+    {
+        for (int i = 0; i < GameLevel.gamelevel.Length; i++)
+        {
+            GameLevel_Dictionary.Add(GameLevel.gamelevel[i].Day, GameLevel.gamelevel[i]);
+        }
     }
     #endregion 배열, 자료형으로 변환
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using static JsonReader;
 
 public class Dialogue_JsonReader : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Dialogue_JsonReader : MonoBehaviour
         public string Sprite3;
         public int Pos3;
     }
+
+
     #endregion
 
     #region Parse
@@ -27,6 +30,7 @@ public class Dialogue_JsonReader : MonoBehaviour
     {
         public Dialogue_Attributes[] dialogue;
     }
+
 
     #endregion
 

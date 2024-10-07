@@ -19,6 +19,6 @@ public class Next_Scene : MonoBehaviour
 
     public void Load_Prologue()
     {
-        SceneManager.LoadScene("Test_Dialogue");
+        SceneManager.LoadScene("Dialogue");
     }
 }

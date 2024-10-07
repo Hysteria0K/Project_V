@@ -39,12 +39,13 @@ public class Dialogue_Manager : MonoBehaviour
 
     [Space(15f)]
     public string Next_Scene_Name;
-    public string Dialogue_Id = "1_Begin";
+    public string Dialogue_Id;
 
     // Start is called before the first frame update
     private void Awake()
     {
-
+        Dialogue_Id = Day_Saver.instance.Next_Dialogue_ID;
+        Next_Scene_Name = Day_Saver.instance.Next_Scene_Name;
     }
 
     void Start()

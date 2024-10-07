@@ -6,7 +6,6 @@ using TMPro;
 using UnityEngine.EventSystems;
 using static JsonReader;
 using System;
-using UnityEditor.U2D.Aseprite;
 using Unity.VisualScripting;
 
 public class RulebookMaker : MonoBehaviour

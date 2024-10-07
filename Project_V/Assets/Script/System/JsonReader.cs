@@ -55,13 +55,10 @@ public class JsonReader : MonoBehaviour
         public string Text;
         public string Sprite1;
         public int Pos1;
-        public int Layer1;
         public string Sprite2;
         public int Pos2;
-        public int Layer2;
         public string Sprite3;
         public int Pos3;
-        public int Layer3;
     }
 
     [System.Serializable]

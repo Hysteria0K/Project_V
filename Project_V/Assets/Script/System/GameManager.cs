@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI Score_Text;
     public Telephone_Saver Telephone_Saver;
     public GameObject Game_End;
+    public TextMeshProUGUI Game_End_Day_Text;
     public TextMeshProUGUI Game_End_Score;
     public Letter_Spawner Letter_Spawner;
     public JsonReader JsonReader;
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
         Game_End.SetActive(true);
+        Game_End_Day_Text.text = this.GetComponent<GameLevel>().Day.ToString() + "일차 종료!";
         Game_End_Score.text = "Score : " + Score.ToString();
         Score_Text.gameObject.SetActive(false);
         Timer_Text.gameObject.SetActive(false);
@@ -107,5 +109,16 @@ public class GameManager : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+    }
+
+    public void Next_Scene()
+    {
+        if (Day_Saver.instance != null)
+        {
+            Day_Saver.instance.Next_Dialogue_ID = JsonReader.GameLevel_Dictionary[this.GetComponent<GameLevel>().Day].End_Story_Id;
+            Day_Saver.instance.Next_Scene_Name = "WriteLetter";
+            Day_Saver.instance.WriteLetter_ID = JsonReader.GameLevel_Dictionary[this.GetComponent<GameLevel>().Day].Letter_Id;
+        }
+        SceneManager.LoadScene("Dialogue");
     }
 }

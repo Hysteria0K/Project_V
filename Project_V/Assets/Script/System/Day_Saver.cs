@@ -1,0 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class Day_Saver : MonoBehaviour
+{
+    public int Day;
+    public string Next_Dialogue_ID = "1_Begin"; //default / 다음 다이얼로그
+    public string Next_Scene_Name = "Play"; //default / 다음 다이얼로그 후에 올 씬 / Play or WriteLetter
+    public string WriteLetter_ID = "Test"; //default
+    
+    //얘네들을 불러오는 세이브 데이터로 쓰면 될듯 호감도 같은 것도 따로 세이브
+    //그렇다면 저장은 다이얼로그 씬에서 하고, 턴도 세이브 해두면 될듯
+
+    public static Day_Saver instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+
+        else
+        {
+            Destroy(this.gameObject);
+        } //singleton
+        
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    
+}

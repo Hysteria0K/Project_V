@@ -20,6 +20,10 @@ public class GameLevel : MonoBehaviour
 
     private void Awake()
     {
+        if (Day_Saver.instance != null)
+        {
+            Day = Day_Saver.instance.Day;
+        }
         Is_Dead = JsonReader.GameLevel_Dictionary[Day].Is_Dead;
         Dead_Count = JsonReader.GameLevel_Dictionary[Day].Dead_Count;
         Dead_Percentage = JsonReader.GameLevel_Dictionary[Day].Dead_Percentage;

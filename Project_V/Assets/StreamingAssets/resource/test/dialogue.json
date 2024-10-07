@@ -6,13 +6,10 @@
     "Text": "대화테스트1번",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
-    "Layer1": 0.0,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0,
-    "Layer3": 2.0
+    "Pos3": 874.0
   },
   {
     "Id": "1_Begin",
@@ -21,13 +18,10 @@
     "Text": "대화테스트2번",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
-    "Layer1": 0.0,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0,
-    "Layer3": 2.0
+    "Pos3": 874.0
   },
   {
     "Id": "1_Begin",
@@ -36,13 +30,10 @@
     "Text": "대화테스트3번",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
-    "Layer1": 0.0,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0,
-    "Layer3": 2.0
+    "Pos3": 874.0
   },
   {
     "Id": "1_Begin",
@@ -51,13 +42,10 @@
     "Text": "대화테스트4번",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
-    "Layer1": null,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0,
-    "Layer3": 2.0
+    "Pos3": 874.0
   },
   {
     "Id": "1_Begin",
@@ -66,13 +54,10 @@
     "Text": "대화테스트5번",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
-    "Layer1": 0.0,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0,
-    "Layer3": 2.0
+    "Pos3": 874.0
   },
   {
     "Id": "1_Begin",
@@ -81,13 +66,10 @@
     "Text": "대화테스트6번",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
-    "Layer1": 0.0,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0,
-    "Layer3": 2.0
+    "Pos3": 874.0
   },
   {
     "Id": "1_Begin",
@@ -96,13 +78,10 @@
     "Text": "대화테스트7번",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
-    "Layer1": 1.0,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0,
-    "Layer3": 2.0
+    "Pos3": 874.0
   },
   {
     "Id": "1_Begin",
@@ -111,13 +90,10 @@
     "Text": "대화테스트8번",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
-    "Layer1": 0.0,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0,
-    "Layer3": 2.0
+    "Pos3": 874.0
   },
   {
     "Id": "1_Begin",
@@ -126,13 +102,10 @@
     "Text": "대화테스트9번",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
-    "Layer1": 0.0,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0,
-    "Layer3": 2.0
+    "Pos3": 874.0
   },
   {
     "Id": "Stamp",
@@ -141,13 +114,10 @@
     "Text": "굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어",
     "Sprite1": "charlotte",
     "Pos1": 0.0,
-    "Layer1": null,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": null,
-    "Pos3": null,
-    "Layer3": null
+    "Pos3": null
   },
   {
     "Id": "Stamp",
@@ -156,13 +126,10 @@
     "Text": "선생님 도장 틀렸어요.",
     "Sprite1": "testc",
     "Pos1": 0.0,
-    "Layer1": null,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": null,
-    "Pos3": null,
-    "Layer3": null
+    "Pos3": null
   },
   {
     "Id": "Stamp",
@@ -171,13 +138,10 @@
     "Text": "그렇군요.",
     "Sprite1": "charlotte",
     "Pos1": 0.0,
-    "Layer1": null,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": null,
-    "Pos3": null,
-    "Layer3": null
+    "Pos3": null
   },
   {
     "Id": "Stamp",
@@ -186,13 +150,10 @@
     "Text": "주의하겠습니다.",
     "Sprite1": "charlotte",
     "Pos1": 0.0,
-    "Layer1": null,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": null,
-    "Pos3": null,
-    "Layer3": null
+    "Pos3": null
   },
   {
     "Id": "Stamp",
@@ -201,13 +162,10 @@
     "Text": "네 수고요.",
     "Sprite1": "testc",
     "Pos1": 0.0,
-    "Layer1": null,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": null,
-    "Pos3": null,
-    "Layer3": null
+    "Pos3": null
   },
   {
     "Id": "Stamp",
@@ -216,13 +174,10 @@
     "Text": "패처 정상작동 테스트",
     "Sprite1": null,
     "Pos1": null,
-    "Layer1": null,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": null,
-    "Pos3": null,
-    "Layer3": null
+    "Pos3": null
   },
   {
     "Id": "1_End",
@@ -231,12 +186,9 @@
     "Text": "완",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
-    "Layer1": 0.0,
     "Sprite2": null,
     "Pos2": null,
-    "Layer2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0,
-    "Layer3": 2.0
+    "Pos3": 874.0
   }
 ]}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class WriteLetter_Manager : MonoBehaviour
 {
@@ -33,6 +34,10 @@ public class WriteLetter_Manager : MonoBehaviour
 
     void Awake()
     {
+        if (Day_Saver.instance != null)
+        {
+            Id = Day_Saver.instance.WriteLetter_ID;
+        }
         // Id 불러오기 - 나중에 연결할 때 만들어야함 프로토타입에서는 인스펙터에서 제어함.
         Turn = 1;
     }
@@ -123,5 +128,15 @@ public class WriteLetter_Manager : MonoBehaviour
         Result.gameObject.SetActive(true);
 
         Instantiate(Result_Data);
+    }
+
+    public void Next_Scene()
+    {
+        if (Day_Saver.instance != null)
+        {   Day_Saver.instance.Day++;
+            Day_Saver.instance.Next_Dialogue_ID = WriteLetter_JsonReader.GameLevel_Dictionary[Day_Saver.instance.Day].Start_Story_Id;
+            Day_Saver.instance.Next_Scene_Name = "Play";
+        }
+        SceneManager.LoadScene("Dialogue");
     }
 }
