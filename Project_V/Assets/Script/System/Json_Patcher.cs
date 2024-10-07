@@ -7,7 +7,9 @@ using System.IO;
 
 public class Json_Patcher : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static string AES_key = "0123456789ABCDEF0123456789ABCDEF";
+    public static string AES_iv = "ABCDEF0123456789";
+
     private void Awake()
     {
 #if UNITY_EDITOR
@@ -42,6 +44,16 @@ public class Json_Patcher : MonoBehaviour
         string path = "Assets/StreamingAssets/resource/test/" + filename;
         File.WriteAllText(path, "{\""+ Header + "\":"+ ExcelToJsonConverter.ConvertExcelToJson("Assets/ExcelFiles/" + file + ".xlsx") + "}");
 
+        Encrypt_Json(filename);
+
         //Debug.Log(path);
+    }
+    private void Encrypt_Json(string filename)
+    {
+        string path = "Assets/StreamingAssets/resource/encrypted/" + filename;
+        string JsonFile = File.ReadAllText("Assets/StreamingAssets/resource/test/" + filename);
+        string encrypted = AESUtil.Encrypt(JsonFile, AES_key, AES_iv);
+
+        File.WriteAllText(path, encrypted);
     }
 }

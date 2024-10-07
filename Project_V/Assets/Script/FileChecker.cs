@@ -47,7 +47,7 @@ public class FileChecker : MonoBehaviour
 
         //string ImageFolderPath = targetFolderPath + "/imagefiles";
 
-        string[] jsonFiles = BetterStreamingAssets.GetFiles("/", "*.json", SearchOption.AllDirectories);
+        string[] jsonFiles = BetterStreamingAssets.GetFiles("/resource/encrypted", "*.json", SearchOption.AllDirectories);
 
         //string[] imageFiles = BetterStreamingAssets.GetFiles("/", "*.png", SearchOption.AllDirectories);
 
@@ -88,7 +88,7 @@ public class FileChecker : MonoBehaviour
 
         string JsonFolderPath = targetFolderPath + "/jsonfiles";
 
-        string[] jsonFiles = BetterStreamingAssets.GetFiles("/", "*.json", SearchOption.AllDirectories);
+        string[] jsonFiles = BetterStreamingAssets.GetFiles("/resource/encrypted", "*.json", SearchOption.AllDirectories);
 
         foreach (string jsonFilePath in jsonFiles)
         {

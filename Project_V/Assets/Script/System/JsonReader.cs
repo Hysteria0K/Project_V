@@ -218,7 +218,7 @@ public class JsonReader : MonoBehaviour
 
         return (JsonText);
 #else
-        string JsonText = File.ReadAllText(Application.persistentDataPath + "/resource/jsonfiles/" + Filename + ".json");
+        string JsonText = AESUtil.Decrypt(File.ReadAllText(Application.persistentDataPath + "/resource/jsonfiles/" + Filename + ".json"),Json_Patcher.AES_key, Json_Patcher.AES_iv);
 
         return (JsonText);
 #endif
