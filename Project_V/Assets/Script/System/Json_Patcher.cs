@@ -7,8 +7,8 @@ using System.IO;
 
 public class Json_Patcher : MonoBehaviour
 {
-    public static string AES_key = "0123456789ABCDEF0123456789ABCDEF";
-    public static string AES_iv = "ABCDEF0123456789";
+    private string AES_key = "0123456789ABCDEF0123456789ABCDEF";
+    private string AES_iv = "ABCDEF0123456789";
 
     private void Awake()
     {
