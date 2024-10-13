@@ -8,6 +8,7 @@ using System.Reflection;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using System;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Dialogue_Manager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Dialogue_Manager : MonoBehaviour
     public GameObject Dialogue_Sprite1;
     public GameObject Dialogue_Sprite2;
     public GameObject Dialogue_Sprite3;
+    public Image Background;
 
     public Dialogue_JsonReader JsonReader;
     public Sprite_Reader SpriteReader;
@@ -36,6 +38,8 @@ public class Dialogue_Manager : MonoBehaviour
     [SerializeField] private float Text_delay;
     [SerializeField] private float Next_Talk_Speed = 1f;
     [SerializeField] private float Auto_Delay = 1.5f;
+    [SerializeField] private float Fade_Delay = 0.01f;
+    [SerializeField] private float Wait_Delay = 1.0f;
 
     [Space(15f)]
     public string Next_Scene_Name;
@@ -74,12 +78,56 @@ public class Dialogue_Manager : MonoBehaviour
 
     private void Next_Dialogue(int index, Dictionary<int, Dialogue_JsonReader.Dialogue_Attributes> Json)
     {
-        StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
-        Dialogue_Name.text = Json[index].Name;
+        if (Json[index].BG != "")
+        {
+            SpriteReader.LoadSprite(Background, Json[index].BG);
+        }
 
         SpriteControl(Dialogue_Sprite1, Json[index].Sprite1, Json[index].Pos1);
         SpriteControl(Dialogue_Sprite2, Json[index].Sprite2, Json[index].Pos2);
         SpriteControl(Dialogue_Sprite3, Json[index].Sprite3, Json[index].Pos3);
+
+        switch (Json[index].Type)
+        {
+            case "talk":
+                {
+                    StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
+                    Dialogue_Name.text = Json[index].Name;
+                    break;
+                }
+            case "order":
+                {
+                    switch (Json[index].Name)
+                    {
+                        case "fade_out":
+                            {
+                                switch (Json[index].Text)
+                                {
+                                    case "background":
+                                        {
+                                            StartCoroutine(Fade(Background, false));
+                                            break;
+                                        }
+                                }
+                                break;
+                            }
+                        case "fade_in":
+                            {
+                                switch (Json[index].Text)
+                                {
+                                    case "background":
+                                        {
+                                            StartCoroutine(Fade(Background, true));
+                                            break;
+                                        }
+                                }
+                                break;
+                            }
+                    }
+                    break;
+                }
+            default:break;
+        }
     }
 
     private void SpriteControl(GameObject Sprite, string Json_Sprite, int Json_Sprite_Pos)
@@ -184,5 +232,65 @@ public class Dialogue_Manager : MonoBehaviour
     public void Next_Scene()
     {
         SceneManager.LoadScene(Next_Scene_Name);
+    }
+
+    IEnumerator Fade(Image target, bool fade_in)
+    {
+        float temp;
+        Text_End = false;
+
+        if (fade_in)
+        {
+            temp = 0;
+            Debug.Log("페이드인");
+        }
+
+        else
+        {
+            temp = 1;
+            Debug.Log("페이드아웃");
+        }
+
+        target.color = new Color(temp, temp, temp);
+
+        while (true)
+        {
+            yield return new WaitForSeconds(Fade_Delay);
+
+            if (fade_in)
+            {
+                temp += Fade_Delay;
+                target.color = new Color(temp, temp, temp);
+
+                if (temp >= 1)
+                {
+                    temp = 1;
+                    target.color = new Color(temp, temp, temp);
+                    Text_End = true;
+                    Next();
+                    break;
+                }
+            }
+
+            else
+            {
+                temp -= Fade_Delay;
+                target.color = new Color(temp, temp, temp);
+
+                if (temp <= 0)
+                {
+                    temp = 0;
+                    target.color = new Color(temp, temp, temp);
+
+                    yield return new WaitForSeconds(Wait_Delay); // 일단 까매지고나서 딜레이 넣음
+
+                    Text_End = true;
+                    Next();
+                    break;
+                }
+            }
+
+            Debug.Log(temp);
+        }
     }
 }

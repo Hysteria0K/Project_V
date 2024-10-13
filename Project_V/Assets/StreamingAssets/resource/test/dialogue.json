@@ -2,6 +2,7 @@
   {
     "Id": "1_Begin",
     "Index": 0.0,
+    "Type": "talk",
     "Name": "테스트1",
     "Text": "대화테스트1번",
     "Sprite1": "D_308801",
@@ -9,11 +10,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0
+    "Pos3": 874.0,
+    "BG": null
   },
   {
     "Id": "1_Begin",
     "Index": 1.0,
+    "Type": "talk",
     "Name": "테스트2",
     "Text": "대화테스트2번",
     "Sprite1": "D_308801",
@@ -21,11 +24,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0
+    "Pos3": 874.0,
+    "BG": null
   },
   {
     "Id": "1_Begin",
     "Index": 2.0,
+    "Type": "talk",
     "Name": "테스트3",
     "Text": "대화테스트3번",
     "Sprite1": "D_308801",
@@ -33,23 +38,55 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0
+    "Pos3": 874.0,
+    "BG": null
   },
   {
     "Id": "1_Begin",
     "Index": 3.0,
+    "Type": "talk",
     "Name": "테스트4",
-    "Text": "대화테스트4번",
+    "Text": "다음 번에 배경 페이드",
     "Sprite1": "D_308801",
     "Pos1": 874.0,
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0
+    "Pos3": 874.0,
+    "BG": null
   },
   {
     "Id": "1_Begin",
     "Index": 4.0,
+    "Type": "order",
+    "Name": "fade_out",
+    "Text": "background",
+    "Sprite1": "D_308801",
+    "Pos1": 874.0,
+    "Sprite2": null,
+    "Pos2": null,
+    "Sprite3": "D_308001",
+    "Pos3": 874.0,
+    "BG": null
+  },
+  {
+    "Id": "1_Begin",
+    "Index": 5.0,
+    "Type": "order",
+    "Name": "fade_in",
+    "Text": "background",
+    "Sprite1": "D_308801",
+    "Pos1": 874.0,
+    "Sprite2": null,
+    "Pos2": null,
+    "Sprite3": "D_308001",
+    "Pos3": 874.0,
+    "BG": "Test_Street"
+  },
+  {
+    "Id": "1_Begin",
+    "Index": 6.0,
+    "Type": "talk",
     "Name": "테스트5",
     "Text": "대화테스트5번",
     "Sprite1": "D_308801",
@@ -57,11 +94,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0
+    "Pos3": 874.0,
+    "BG": null
   },
   {
     "Id": "1_Begin",
-    "Index": 5.0,
+    "Index": 7.0,
+    "Type": "talk",
     "Name": "테스트6",
     "Text": "대화테스트6번",
     "Sprite1": "D_308801",
@@ -69,11 +108,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0
+    "Pos3": 874.0,
+    "BG": null
   },
   {
     "Id": "1_Begin",
-    "Index": 6.0,
+    "Index": 8.0,
+    "Type": "talk",
     "Name": "테스트7",
     "Text": "대화테스트7번",
     "Sprite1": "D_308801",
@@ -81,11 +122,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0
+    "Pos3": 874.0,
+    "BG": null
   },
   {
     "Id": "1_Begin",
-    "Index": 7.0,
+    "Index": 9.0,
+    "Type": "talk",
     "Name": "테스트8",
     "Text": "대화테스트8번",
     "Sprite1": "D_308801",
@@ -93,11 +136,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0
+    "Pos3": 874.0,
+    "BG": null
   },
   {
     "Id": "1_Begin",
-    "Index": 8.0,
+    "Index": 10.0,
+    "Type": "talk",
     "Name": "테스트9",
     "Text": "대화테스트9번",
     "Sprite1": "D_308801",
@@ -105,11 +150,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0
+    "Pos3": 874.0,
+    "BG": null
   },
   {
     "Id": "Stamp",
     "Index": 0.0,
+    "Type": "talk",
     "Name": "애들리",
     "Text": "굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어굉장히 긴 단어",
     "Sprite1": "charlotte",
@@ -117,11 +164,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": null,
-    "Pos3": null
+    "Pos3": null,
+    "BG": null
   },
   {
     "Id": "Stamp",
     "Index": 1.0,
+    "Type": "talk",
     "Name": "전화",
     "Text": "선생님 도장 틀렸어요.",
     "Sprite1": "testc",
@@ -129,11 +178,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": null,
-    "Pos3": null
+    "Pos3": null,
+    "BG": null
   },
   {
     "Id": "Stamp",
     "Index": 2.0,
+    "Type": "talk",
     "Name": "애들리",
     "Text": "그렇군요.",
     "Sprite1": "charlotte",
@@ -141,11 +192,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": null,
-    "Pos3": null
+    "Pos3": null,
+    "BG": null
   },
   {
     "Id": "Stamp",
     "Index": 3.0,
+    "Type": "talk",
     "Name": "애들리",
     "Text": "주의하겠습니다.",
     "Sprite1": "charlotte",
@@ -153,11 +206,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": null,
-    "Pos3": null
+    "Pos3": null,
+    "BG": null
   },
   {
     "Id": "Stamp",
     "Index": 4.0,
+    "Type": "talk",
     "Name": "전화",
     "Text": "네 수고요.",
     "Sprite1": "testc",
@@ -165,11 +220,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": null,
-    "Pos3": null
+    "Pos3": null,
+    "BG": null
   },
   {
     "Id": "Stamp",
     "Index": 5.0,
+    "Type": "talk",
     "Name": "테스트",
     "Text": "패처 정상작동 테스트",
     "Sprite1": null,
@@ -177,11 +234,13 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": null,
-    "Pos3": null
+    "Pos3": null,
+    "BG": null
   },
   {
     "Id": "1_End",
     "Index": 0.0,
+    "Type": "talk",
     "Name": "테스트1",
     "Text": "완",
     "Sprite1": "D_308801",
@@ -189,6 +248,7 @@
     "Sprite2": null,
     "Pos2": null,
     "Sprite3": "D_308001",
-    "Pos3": 874.0
+    "Pos3": 874.0,
+    "BG": null
   }
 ]}

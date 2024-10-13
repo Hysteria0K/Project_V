@@ -13,6 +13,7 @@ public class Dialogue_JsonReader : MonoBehaviour
         public string Id;
         public int Index;
         public string Name;
+        public string Type;
         public string Text;
         public string Sprite1;
         public int Pos1;
@@ -20,6 +21,7 @@ public class Dialogue_JsonReader : MonoBehaviour
         public int Pos2;
         public string Sprite3;
         public int Pos3;
+        public string BG;
     }
 
 

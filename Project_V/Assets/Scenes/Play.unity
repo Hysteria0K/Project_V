@@ -7854,7 +7854,7 @@ MonoBehaviour:
   Character_Sprite: {fileID: 1332708765}
   Char_Icon: {fileID: 1031211996}
   Is_Open: 0
-  Selected_Character: "\uD14C\uC2A4\uD2B82"
+  Selected_Character: "\uD14C\uC2A4\uD2B81"
   Temp_Char: 
   Character_Ready: 0
   Fade_Delay: 0.05
