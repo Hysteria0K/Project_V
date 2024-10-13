@@ -242,13 +242,11 @@ public class Dialogue_Manager : MonoBehaviour
         if (fade_in)
         {
             temp = 0;
-            Debug.Log("페이드인");
         }
 
         else
         {
             temp = 1;
-            Debug.Log("페이드아웃");
         }
 
         target.color = new Color(temp, temp, temp);
@@ -289,8 +287,6 @@ public class Dialogue_Manager : MonoBehaviour
                     break;
                 }
             }
-
-            Debug.Log(temp);
         }
     }
 }
