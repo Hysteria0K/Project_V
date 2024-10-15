@@ -1211,6 +1211,50 @@ RectTransform:
   m_AnchoredPosition: {x: -613, y: -154}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &995158133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 995158135}
+  - component: {fileID: 995158134}
+  m_Layer: 0
+  m_Name: Data_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &995158134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995158133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e68ed865ebbb14b833b9c32af24b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &995158135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995158133}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 789.88916, y: 455.12222, z: -4.6682053}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1020006943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2395,7 +2439,7 @@ MonoBehaviour:
   Id: Test
   Turn: 1
   WriteLetter_Text: {fileID: 5574198464375096501, guid: f7898c18bcdce3e40acb6d4ade20922f, type: 3}
-  Result_Data: {fileID: 7407268220970699590, guid: 31f8307fe1ee1eb4bba346c4c006631c, type: 3}
+  Result_Data_Prefab: {fileID: 7407268220970699590, guid: 31f8307fe1ee1eb4bba346c4c006631c, type: 3}
   WriteLetter_JsonReader: {fileID: 1898446669}
   TextPositionSet: {fileID: 623453427}
   Select_Text: {fileID: 2076177170}
@@ -2750,6 +2794,10 @@ PrefabInstance:
       propertyPath: WriteLetter_ID
       value: Test
       objectReference: {fileID: 0}
+    - target: {fileID: 7390993853137967003, guid: f75be02bf345fd74ca9aeb471285a189, type: 3}
+      propertyPath: Current_Scene_Name
+      value: Write_Letter
+      objectReference: {fileID: 0}
     - target: {fileID: 8923710035049968314, guid: f75be02bf345fd74ca9aeb471285a189, type: 3}
       propertyPath: m_LocalPosition.x
       value: 906.7611
@@ -2881,3 +2929,4 @@ SceneRoots:
   - {fileID: 1248573211}
   - {fileID: 361075500}
   - {fileID: 2094284312}
+  - {fileID: 995158135}

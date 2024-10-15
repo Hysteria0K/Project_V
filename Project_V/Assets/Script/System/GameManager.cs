@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour
             Day_Saver.instance.Next_Scene_Name = "WriteLetter";
             Day_Saver.instance.WriteLetter_ID = JsonReader.GameLevel_Dictionary[this.GetComponent<GameLevel>().Day].Letter_Id;
         }
+        Day_Saver.instance.Current_Scene_Name = "Dialogue";
         SceneManager.LoadScene("Dialogue");
     }
 }

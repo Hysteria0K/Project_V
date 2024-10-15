@@ -1,0 +1,45 @@
+{
+  "savedata": [
+    {
+      "Day": 2,
+      "Next_Dialogue_ID": "1_Begin",
+      "Next_Scene_Name": "Play",
+      "WriteLetter_ID": "Test",
+      "Current_Scene_Name": "Dialogue",
+      "Dialogue_Index": 0,
+      "Text": [
+        "예시 선택지 1★",
+        "예시 선택지 4",
+        "예시 선택지 7"
+      ],
+      "Tag_Dictionary": {
+        "태그1": 3,
+        "태그2": 3,
+        "태그3": 3
+      },
+      "Masterpiece": false
+    },
+    {
+      "Day": 1,
+      "Next_Dialogue_ID": "1_Begin",
+      "Next_Scene_Name": "",
+      "WriteLetter_ID": "Test",
+      "Current_Scene_Name": "Dialogue",
+      "Dialogue_Index": 0,
+      "Text": [],
+      "Tag_Dictionary": null,
+      "Masterpiece": false
+    },
+    {
+      "Day": 0,
+      "Next_Dialogue_ID": "",
+      "Next_Scene_Name": "",
+      "WriteLetter_ID": "",
+      "Current_Scene_Name": "",
+      "Dialogue_Index": 0,
+      "Text": [],
+      "Tag_Dictionary": null,
+      "Masterpiece": false
+    }
+  ]
+}

@@ -26,7 +26,7 @@ public class Dialogue_Manager : MonoBehaviour
 
     [Header("Value")]
     [SerializeField] private string SceneName;
-    [SerializeField] private int Index = 0;
+    [SerializeField] public int Index;
     [SerializeField] private int MaxIndex = 0;
     [SerializeField] private bool Text_End;
     [SerializeField] private float Next_Talk_a = 1;
@@ -50,11 +50,12 @@ public class Dialogue_Manager : MonoBehaviour
     {
         Dialogue_Id = Day_Saver.instance.Next_Dialogue_ID;
         Next_Scene_Name = Day_Saver.instance.Next_Scene_Name;
+        Index = 0;
     }
 
     void Start()
     {
-        Next_Dialogue(0, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
+        Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
         MaxIndex = JsonReader.Dialogue_Dictionary[Dialogue_Id].Count - 1;
     }
 
@@ -231,6 +232,7 @@ public class Dialogue_Manager : MonoBehaviour
 
     public void Next_Scene()
     {
+        Day_Saver.instance.Current_Scene_Name = Next_Scene_Name;
         SceneManager.LoadScene(Next_Scene_Name);
     }
 

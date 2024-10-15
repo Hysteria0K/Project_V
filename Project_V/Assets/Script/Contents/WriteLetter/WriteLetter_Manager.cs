@@ -15,7 +15,7 @@ public class WriteLetter_Manager : MonoBehaviour
     [Space(15f)]
     [Header("Prefab")]
     public GameObject WriteLetter_Text;
-    public GameObject Result_Data;
+    public GameObject Result_Data_Prefab;
 
     [Space(15f)]
     [Header("GameObject")]
@@ -83,32 +83,34 @@ public class WriteLetter_Manager : MonoBehaviour
 
     public void Set_Result()
     {
+        Instantiate(Result_Data_Prefab);
+
         for (int i = 0; i < Selected_Text_List.childCount;i++)
         {
-            Result_Data.GetComponent<Result_Data>().Text[i] = Selected_Text_List.GetChild(i).gameObject.GetComponent<TextMeshProUGUI>().text;
-            Result_Text_List.GetChild(i).gameObject.GetComponent<TextMeshProUGUI>().text = Result_Data.GetComponent<Result_Data>().Text[i];
+            Result_Data.instance.Text[i] = Selected_Text_List.GetChild(i).gameObject.GetComponent<TextMeshProUGUI>().text;
+            Result_Text_List.GetChild(i).gameObject.GetComponent<TextMeshProUGUI>().text = Result_Data.instance.Text[i];
         }
 
         if (Selected_Text.GetComponent<Selected_Text>().Masterpiece == true)
         {
-            Result_Data.GetComponent<Result_Data>().Masterpiece = true;
+            Result_Data.instance.Masterpiece = true;
             Result_Masterpiece.SetActive(true);
         }
 
         else
         {
             int temp = 0;
-            Result_Data.GetComponent<Result_Data>().Masterpiece = false;
-            Result_Data.GetComponent<Result_Data>().Tag_Dictionary = new Dictionary<string, int>();
-            Result_Data.GetComponent<Result_Data>().Tag_Dictionary = Selected_Text.GetComponent<Selected_Text>().Tag_Dictionary;
+            Result_Data.instance.Masterpiece = false;
+            Result_Data.instance.Tag_Dictionary = new Dictionary<string, int>();
+            Result_Data.instance.Tag_Dictionary = Selected_Text.GetComponent<Selected_Text>().Tag_Dictionary;
 
             Result_Tag.GetComponent<TextMeshProUGUI>().text = string.Empty;
 
-            foreach (string key in Result_Data.GetComponent<Result_Data>().Tag_Dictionary.Keys)
+            foreach (string key in Result_Data.instance.Tag_Dictionary.Keys)
             {
-                if (Result_Data.GetComponent<Result_Data>().Tag_Dictionary[key] != 1)
+                if (Result_Data.instance.Tag_Dictionary[key] != 1)
                 {
-                    Result_Tag.GetComponent<TextMeshProUGUI>().text += "#" + key + " x" + Result_Data.GetComponent<Result_Data>().Tag_Dictionary[key];
+                    Result_Tag.GetComponent<TextMeshProUGUI>().text += "#" + key + " x" + Result_Data.instance.Tag_Dictionary[key];
                 }
 
                 else Result_Tag.GetComponent<TextMeshProUGUI>().text += "#" + key;
@@ -126,8 +128,6 @@ public class WriteLetter_Manager : MonoBehaviour
 
         Selected_Text.SetActive(false);
         Result.gameObject.SetActive(true);
-
-        Instantiate(Result_Data);
     }
 
     public void Next_Scene()
@@ -137,6 +137,7 @@ public class WriteLetter_Manager : MonoBehaviour
             Day_Saver.instance.Next_Dialogue_ID = WriteLetter_JsonReader.GameLevel_Dictionary[Day_Saver.instance.Day].Start_Story_Id;
             Day_Saver.instance.Next_Scene_Name = "Play";
         }
+        Day_Saver.instance.Current_Scene_Name = "Dialogue";
         SceneManager.LoadScene("Dialogue");
     }
 }
