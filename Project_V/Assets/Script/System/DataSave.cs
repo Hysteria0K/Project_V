@@ -32,13 +32,15 @@ public class DataSave : MonoBehaviour
 
     public SaveData_Parse SaveData;
 
+    private void Awake()
+    {
+        SaveData = JsonUtility.FromJson<SaveData_Parse>(ReadJson("userdata"));
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        SaveData = JsonUtility.FromJson<SaveData_Parse>(ReadJson("userdata"));
-
-        Save_Data(0);
+        Save_Data(7);
     }
 
     // Update is called once per frame

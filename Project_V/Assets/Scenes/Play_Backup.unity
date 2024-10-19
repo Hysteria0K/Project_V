@@ -20283,6 +20283,7 @@ MonoBehaviour:
   Score_Text: {fileID: 1751196095}
   Telephone_Saver: {fileID: 382747385}
   Game_End: {fileID: 1855360996}
+  Game_End_Day_Text: {fileID: 0}
   Game_End_Score: {fileID: 203590851}
   Letter_Spawner: {fileID: 1825016793}
   JsonReader: {fileID: 0}
@@ -20305,6 +20306,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JsonReader: {fileID: 0}
   Day: 0
+  Start_Story_Id: 
+  End_Story_Id: 
+  Letter_Id: 
   Is_Dead: 1
   Dead_Count: 10
   Dead_Percentage: 40
