@@ -26,9 +26,4 @@ public class Result_Data : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         } //singleton
     }
-
-    private void Update()
-    {
-        Debug.Log(instance.Tag_Dictionary["еб╠в1"]);
-    }
 }
