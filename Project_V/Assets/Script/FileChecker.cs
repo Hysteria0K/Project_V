@@ -16,12 +16,18 @@ public class FileChecker : MonoBehaviour
         {
             Debug.Log(filePath);
             CopyFilesToPersistentDataPath();
+            Create_Userdata();
             SceneManager.LoadScene("Title");
         }
 
         else
         {
             Debug.Log("리소스 폴더 존재, 파일 체크");
+
+            if (!Directory.Exists(filePath + "/userdata") || !File.Exists(filePath + "/userdata/userdata.json"))
+            {
+                Create_Userdata();
+            }
             CheckJsonFiles();
             SceneManager.LoadScene("Title");
         }
@@ -43,11 +49,11 @@ public class FileChecker : MonoBehaviour
     {
         string targetFolderPath = Application.persistentDataPath + "/resource";
 
-        string JsonFolderPath = targetFolderPath + "/jsonfiles";
+        string JsonFolderPath = targetFolderPath + "/data";
 
         //string ImageFolderPath = targetFolderPath + "/imagefiles";
 
-        string[] jsonFiles = BetterStreamingAssets.GetFiles("/resource/encrypted", "*.json", SearchOption.AllDirectories);
+        string[] jsonFiles = BetterStreamingAssets.GetFiles("/resource/encrypted", "*.json", SearchOption.TopDirectoryOnly);
 
         //string[] imageFiles = BetterStreamingAssets.GetFiles("/", "*.png", SearchOption.AllDirectories);
 
@@ -86,9 +92,9 @@ public class FileChecker : MonoBehaviour
     {
         string targetFolderPath = Application.persistentDataPath + "/resource";
 
-        string JsonFolderPath = targetFolderPath + "/jsonfiles";
+        string JsonFolderPath = targetFolderPath + "/data";
 
-        string[] jsonFiles = BetterStreamingAssets.GetFiles("/resource/encrypted", "*.json", SearchOption.AllDirectories);
+        string[] jsonFiles = BetterStreamingAssets.GetFiles("/resource/encrypted", "*.json", SearchOption.TopDirectoryOnly);
 
         foreach (string jsonFilePath in jsonFiles)
         {
@@ -116,5 +122,28 @@ public class FileChecker : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void Create_Userdata()
+    {
+        string Folderpath = Application.persistentDataPath + "/resource/userdata";
+
+        Directory.CreateDirectory(Folderpath);
+
+        string[] jsonFiles = BetterStreamingAssets.GetFiles("/resource/encrypted/userdata", "*.json", SearchOption.TopDirectoryOnly);
+
+        foreach (string jsonFilePath in jsonFiles)
+        {
+            string fileName = Path.GetFileName(jsonFilePath);
+            string targetFilePath = Path.Combine(Folderpath, fileName);
+
+            if (!File.Exists(targetFilePath))
+            {
+                byte[] fileBytes = BetterStreamingAssets.ReadAllBytes(jsonFilePath);
+                File.WriteAllBytes(targetFilePath, fileBytes);
+            }
+        }
+
+        Debug.Log("유저 데이터 파일 생성 완료");
     }
 }

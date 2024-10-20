@@ -40,13 +40,7 @@ public class DataSave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Save_Data(0);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //Save_Data(0); 초기화용
     }
 
     public void Save_Data(int index)
@@ -84,7 +78,7 @@ public class DataSave : MonoBehaviour
         File.WriteAllText("Assets/StreamingAssets/resource/savedata/userdata" + ".json", JsonConvert.SerializeObject(SaveData, Formatting.Indented));
 
 #else
-        File.WriteAllText(Application.persistentDataPath + "/resource/jsonfiles/" + userdata + ".json"), JsonConvert.SerializeObject(SaveData, Formatting.Indented));
+        File.WriteAllText(Application.persistentDataPath + "/resource/userdata/" + "userdata.json", AESUtil.Encrypt(JsonConvert.SerializeObject(SaveData, Formatting.Indented), "0123456789ABCDEF0123456789ABCDEF", "ABCDEF0123456789"));
 
 #endif
     }
@@ -95,7 +89,7 @@ public class DataSave : MonoBehaviour
 
         return (JsonText);
 #else
-        string JsonText = AESUtil.Decrypt(File.ReadAllText(Application.persistentDataPath + "/resource/jsonfiles/" + Filename + ".json"), "0123456789ABCDEF0123456789ABCDEF", "ABCDEF0123456789");
+        string JsonText = AESUtil.Decrypt(File.ReadAllText(Application.persistentDataPath + "/resource/userdata/" + Filename + ".json"), "0123456789ABCDEF0123456789ABCDEF", "ABCDEF0123456789");
 
         return (JsonText);
 #endif
@@ -104,5 +98,14 @@ public class DataSave : MonoBehaviour
     public void Reload_Json()
     {
         SaveData = JsonConvert.DeserializeObject<SaveData_Parse>(ReadJson("userdata"));
+    }
+
+    private void Encrypt_Userdata_Json(string filename)
+    {
+        string path = "Assets/StreamingAssets/resource/encrypted/userdata/" + filename;
+        string JsonFile = File.ReadAllText("Assets/StreamingAssets/resource/savedata/" + filename);
+        string encrypted = AESUtil.Encrypt(JsonFile, "0123456789ABCDEF0123456789ABCDEF", "ABCDEF0123456789");
+
+        File.WriteAllText(path, encrypted);
     }
 }
