@@ -50,7 +50,7 @@ public class Dialogue_Manager : MonoBehaviour
     {
         Dialogue_Id = Day_Saver.instance.Next_Dialogue_ID;
         Next_Scene_Name = Day_Saver.instance.Next_Scene_Name;
-        Index = 0;
+        Index = Day_Saver.instance.Saved_Dialogue_Index;
     }
 
     void Start()
@@ -232,6 +232,7 @@ public class Dialogue_Manager : MonoBehaviour
 
     public void Next_Scene()
     {
+        Day_Saver.instance.Saved_Dialogue_Index = 0;
         Day_Saver.instance.Current_Scene_Name = Next_Scene_Name;
         SceneManager.LoadScene(Next_Scene_Name);
     }

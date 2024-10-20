@@ -1,79 +1,13 @@
 {
   "savedata": [
     {
-      "Day": 1,
-      "Next_Dialogue_ID": "1_Begin",
-      "Next_Scene_Name": "Play",
-      "WriteLetter_ID": "Test",
-      "Current_Scene_Name": "Dialogue",
-      "Dialogue_Index": 0,
-      "Text": [],
-      "Tag_Dictionary": null,
-      "Masterpiece": false
-    },
-    {
-      "Day": 1,
-      "Next_Dialogue_ID": "1_Begin",
-      "Next_Scene_Name": "",
-      "WriteLetter_ID": "Test",
-      "Current_Scene_Name": "Dialogue",
-      "Dialogue_Index": 0,
-      "Text": [],
-      "Tag_Dictionary": null,
-      "Masterpiece": false
-    },
-    {
       "Day": 0,
       "Next_Dialogue_ID": "",
       "Next_Scene_Name": "",
       "WriteLetter_ID": "",
       "Current_Scene_Name": "",
       "Dialogue_Index": 0,
-      "Text": [],
-      "Tag_Dictionary": null,
-      "Masterpiece": false
-    },
-    {
-      "Day": 0,
-      "Next_Dialogue_ID": "",
-      "Next_Scene_Name": "",
-      "WriteLetter_ID": "",
-      "Current_Scene_Name": "",
-      "Dialogue_Index": 0,
-      "Text": [],
-      "Tag_Dictionary": null,
-      "Masterpiece": false
-    },
-    {
-      "Day": 0,
-      "Next_Dialogue_ID": "",
-      "Next_Scene_Name": "",
-      "WriteLetter_ID": "",
-      "Current_Scene_Name": "",
-      "Dialogue_Index": 0,
-      "Text": [],
-      "Tag_Dictionary": null,
-      "Masterpiece": false
-    },
-    {
-      "Day": 0,
-      "Next_Dialogue_ID": "",
-      "Next_Scene_Name": "",
-      "WriteLetter_ID": "",
-      "Current_Scene_Name": "",
-      "Dialogue_Index": 0,
-      "Text": [],
-      "Tag_Dictionary": null,
-      "Masterpiece": false
-    },
-    {
-      "Day": 0,
-      "Next_Dialogue_ID": "",
-      "Next_Scene_Name": "",
-      "WriteLetter_ID": "",
-      "Current_Scene_Name": "",
-      "Dialogue_Index": 0,
-      "Text": [],
+      "Text": null,
       "Tag_Dictionary": null,
       "Masterpiece": false
     },
@@ -87,6 +21,83 @@
       "Text": null,
       "Tag_Dictionary": null,
       "Masterpiece": false
+    },
+    {
+      "Day": 0,
+      "Next_Dialogue_ID": "",
+      "Next_Scene_Name": "",
+      "WriteLetter_ID": "",
+      "Current_Scene_Name": "",
+      "Dialogue_Index": 0,
+      "Text": null,
+      "Tag_Dictionary": null,
+      "Masterpiece": false
+    },
+    {
+      "Day": 0,
+      "Next_Dialogue_ID": "",
+      "Next_Scene_Name": "",
+      "WriteLetter_ID": "",
+      "Current_Scene_Name": "",
+      "Dialogue_Index": 0,
+      "Text": null,
+      "Tag_Dictionary": null,
+      "Masterpiece": false
+    },
+    {
+      "Day": 0,
+      "Next_Dialogue_ID": "",
+      "Next_Scene_Name": "",
+      "WriteLetter_ID": "",
+      "Current_Scene_Name": "",
+      "Dialogue_Index": 0,
+      "Text": null,
+      "Tag_Dictionary": null,
+      "Masterpiece": false
+    },
+    {
+      "Day": 0,
+      "Next_Dialogue_ID": "",
+      "Next_Scene_Name": "",
+      "WriteLetter_ID": "",
+      "Current_Scene_Name": "",
+      "Dialogue_Index": 0,
+      "Text": null,
+      "Tag_Dictionary": null,
+      "Masterpiece": false
+    },
+    {
+      "Day": 0,
+      "Next_Dialogue_ID": "",
+      "Next_Scene_Name": "",
+      "WriteLetter_ID": "",
+      "Current_Scene_Name": "",
+      "Dialogue_Index": 0,
+      "Text": null,
+      "Tag_Dictionary": null,
+      "Masterpiece": false
+    },
+    {
+      "Day": 2,
+      "Next_Dialogue_ID": "1_Begin",
+      "Next_Scene_Name": "Play",
+      "WriteLetter_ID": "Test",
+      "Current_Scene_Name": "Dialogue",
+      "Dialogue_Index": 0,
+      "Text": [
+        "예시 선택지 1★",
+        "예시 선택지 5★",
+        "예시 선택지 9★"
+      ],
+      "Tag_Dictionary": {
+        "태그1": 1,
+        "태그2": 2,
+        "태그3": 2,
+        "태그4": 1,
+        "태그6": 2,
+        "태그5": 1
+      },
+      "Masterpiece": true
     }
   ]
 }

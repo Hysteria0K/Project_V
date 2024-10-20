@@ -94,6 +94,7 @@ public class WriteLetter_Manager : MonoBehaviour
         if (Selected_Text.GetComponent<Selected_Text>().Masterpiece == true)
         {
             Result_Data.instance.Masterpiece = true;
+            Result_Data.instance.Tag_Dictionary = new Dictionary<string, int>(Selected_Text.GetComponent<Selected_Text>().Tag_Dictionary);
             Result_Masterpiece.SetActive(true);
         }
 
@@ -101,8 +102,7 @@ public class WriteLetter_Manager : MonoBehaviour
         {
             int temp = 0;
             Result_Data.instance.Masterpiece = false;
-            Result_Data.instance.Tag_Dictionary = new Dictionary<string, int>();
-            Result_Data.instance.Tag_Dictionary = Selected_Text.GetComponent<Selected_Text>().Tag_Dictionary;
+            Result_Data.instance.Tag_Dictionary = new Dictionary<string, int>(Selected_Text.GetComponent<Selected_Text>().Tag_Dictionary);
 
             Result_Tag.GetComponent<TextMeshProUGUI>().text = string.Empty;
 

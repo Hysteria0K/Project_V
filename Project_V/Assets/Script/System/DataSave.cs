@@ -34,7 +34,7 @@ public class DataSave : MonoBehaviour
 
     private void Awake()
     {
-        SaveData = JsonUtility.FromJson<SaveData_Parse>(ReadJson("userdata"));
+        SaveData = JsonConvert.DeserializeObject<SaveData_Parse>(ReadJson("userdata"));
     }
 
     // Start is called before the first frame update

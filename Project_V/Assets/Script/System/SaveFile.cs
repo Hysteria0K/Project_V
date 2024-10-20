@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using System;
+using System.Reflection;
 
-public class SaveFile : MonoBehaviour
+public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     public class SaveData_Attributes
     {
@@ -20,33 +24,40 @@ public class SaveFile : MonoBehaviour
         public bool Masterpiece;
     }
 
-    public SaveData_Attributes SaveData;
 
-    public DataSave Data_Manager;
+    private DataSave Data_Manager;
+
+    public SaveData_Attributes SaveData;
+    public Image Panel;
     public TextMeshProUGUI Info;
     public TextMeshProUGUI Date;
 
+    public GameObject Result_Data_Prefab;
+
     public int Index_Num;
+
+    private bool is_empty = false;
+
+    private void Awake()
+    {
+        Data_Manager = GameObject.Find("Data_Manager").GetComponent<DataSave>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        SaveData= new SaveData_Attributes();
+        SaveData = new SaveData_Attributes();
 
         Load_Data(Index_Num);
+        Data_Text();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    #region 데이터 불러오고 텍스트로 출력
     private void Load_Data(int index)
     {
         if (Data_Manager.SaveData.savedata[index].Day == 0)
         {
-            //empty
+            is_empty = true;
         }
 
         else
@@ -61,8 +72,9 @@ public class SaveFile : MonoBehaviour
             {
                 SaveData.Dialogue_Index = Data_Manager.SaveData.savedata[index].Dialogue_Index;
 
-                if (Data_Manager.SaveData.savedata[index].Text.Length != 0)
+                if (Data_Manager.SaveData.savedata[index].Text != null)
                 {
+                    //Debug.Log(Data_Manager.SaveData.savedata[index].Tag_Dictionary["태그2"]);
                     SaveData.Text = Data_Manager.SaveData.savedata[index].Text;
                     SaveData.Tag_Dictionary = new Dictionary<string, int>(Data_Manager.SaveData.savedata[index].Tag_Dictionary);
                     SaveData.Masterpiece = Data_Manager.SaveData.savedata[index].Masterpiece;
@@ -70,4 +82,90 @@ public class SaveFile : MonoBehaviour
             }
         }
     }
+
+    private void Data_Text()
+    {
+        if (is_empty == true)
+        {
+            Info.text = string.Empty;
+            Date.text = string.Empty;
+        }
+
+        else
+        {
+            string temp = string.Empty;
+
+            switch (SaveData.Current_Scene_Name)
+            {
+                case "Play":
+                    {
+                        temp = "편지 분류 중";
+                        break;
+                    }
+                case "WriteLetter":
+                    {
+                        temp = "편지 쓰는 중";
+                        break;
+                    }
+                case "Dialogue":
+                    {
+                        switch (SaveData.Next_Scene_Name)
+                        {
+                            case "Play":
+                                {
+                                    temp = "분류 작업 전";
+                                    break;
+                                }
+                            case "WriteLetter":
+                                {
+                                    temp = "분류 작업 후";
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+            }
+
+            Info.text = SaveData.Day + "일 째, " + temp;
+            //Date.text 설정필요
+        }
+    }
+    #endregion
+
+    #region 커서 컨트롤
+    void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
+    {
+        if (is_empty == false)
+        {
+            Panel.color = new Color(100 / 255f, 100 / 255f, 100 / 255f, 218f / 255f);
+        }
+    }
+
+    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+    {
+        if (is_empty == false)
+        {
+            Panel.color = new Color(0, 0, 0, 218f / 255f);
+        }
+    }
+    void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        Day_Saver.instance.Day = SaveData.Day;
+        Day_Saver.instance.Next_Dialogue_ID = SaveData.Next_Dialogue_ID;
+        Day_Saver.instance.Next_Scene_Name = SaveData.Next_Scene_Name;
+        Day_Saver.instance.WriteLetter_ID = SaveData.WriteLetter_ID;
+        Day_Saver.instance.Current_Scene_Name = SaveData.Current_Scene_Name;
+        Day_Saver.instance.Saved_Dialogue_Index = SaveData.Dialogue_Index;
+
+        if (Data_Manager.SaveData.savedata[Index_Num].Text != null)
+        {
+            Instantiate(Result_Data_Prefab);
+            Result_Data.instance.Text = SaveData.Text;
+            Result_Data.instance.Tag_Dictionary = new Dictionary<string, int>(SaveData.Tag_Dictionary);
+            Result_Data.instance.Masterpiece = SaveData.Masterpiece;
+        }
+
+        SceneManager.LoadScene(Day_Saver.instance.Current_Scene_Name);
+    }
+    #endregion
 }
