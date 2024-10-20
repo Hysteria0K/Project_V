@@ -69,21 +69,18 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             SaveData.Next_Scene_Name = Data_Manager.SaveData.savedata[index].Next_Scene_Name;
             SaveData.WriteLetter_ID = Data_Manager.SaveData.savedata[index].WriteLetter_ID;
             SaveData.Current_Scene_Name = Data_Manager.SaveData.savedata[index].Current_Scene_Name;
-            
+
             if (Data_Manager.SaveData.savedata[index].Current_Scene_Name == "Dialogue")
             {
                 SaveData.Dialogue_Index = Data_Manager.SaveData.savedata[index].Dialogue_Index;
-
-                if (Data_Manager.SaveData.savedata[index].Text != null)
-                {
-                    SaveData.Text = Data_Manager.SaveData.savedata[index].Text;
-                    SaveData.Tag_Dictionary = new Dictionary<string, int>(Data_Manager.SaveData.savedata[index].Tag_Dictionary);
-                    SaveData.Masterpiece = Data_Manager.SaveData.savedata[index].Masterpiece;
-                }
             }
 
-            Debug.Log(Index_Num + "¹ø" + SaveData.Tag_Dictionary["ÅÂ±×1"]);
-            
+            if (Data_Manager.SaveData.savedata[index].Text != null)
+            {
+                SaveData.Text = Data_Manager.SaveData.savedata[index].Text;
+                SaveData.Tag_Dictionary = new Dictionary<string, int>(Data_Manager.SaveData.savedata[index].Tag_Dictionary);
+                SaveData.Masterpiece = Data_Manager.SaveData.savedata[index].Masterpiece;
+            }            
         }
     }
 
@@ -167,10 +164,10 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
                 if (Data_Manager.SaveData.savedata[Index_Num].Text != null)
                 {
-                    Result_Data_Prefab.GetComponent<Result_Data>().Text = SaveData.Text;
-                    Result_Data_Prefab.GetComponent<Result_Data>().Tag_Dictionary = new Dictionary<string, int>(SaveData.Tag_Dictionary);
-                    Result_Data_Prefab.GetComponent<Result_Data>().Masterpiece = SaveData.Masterpiece;
                     Instantiate(Result_Data_Prefab);
+                    Result_Data.instance.Text = SaveData.Text;
+                    Result_Data.instance.Tag_Dictionary = new Dictionary<string, int>(SaveData.Tag_Dictionary);
+                    Result_Data.instance.Masterpiece = SaveData.Masterpiece;
                 }
 
                 SceneManager.LoadScene(Day_Saver.instance.Current_Scene_Name);

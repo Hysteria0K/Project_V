@@ -2,22 +2,20 @@
   "savedata": [
     {
       "Day": 2,
-      "Next_Dialogue_ID": "1_End",
-      "Next_Scene_Name": "WriteLetter",
+      "Next_Dialogue_ID": "1_Begin",
+      "Next_Scene_Name": "Play",
       "WriteLetter_ID": "Test",
       "Current_Scene_Name": "Dialogue",
       "Dialogue_Index": 0,
       "Text": [
-        "예시 선택지 2",
+        "예시 선택지 1★",
         "예시 선택지 4",
-        "예시 선택지 8"
+        "예시 선택지 7"
       ],
       "Tag_Dictionary": {
+        "태그1": 3,
         "태그2": 3,
-        "태그4": 2,
-        "태그6": 2,
-        "태그1": 1,
-        "태그3": 1
+        "태그3": 3
       },
       "Masterpiece": false
     },
@@ -47,19 +45,17 @@
       "Next_Dialogue_ID": "1_Begin",
       "Next_Scene_Name": "Play",
       "WriteLetter_ID": "Test",
-      "Current_Scene_Name": "Play",
+      "Current_Scene_Name": "Dialogue",
       "Dialogue_Index": 0,
       "Text": [
         "예시 선택지 1★",
-        "예시 선택지 5★",
+        "예시 선택지 4",
         "예시 선택지 7"
       ],
       "Tag_Dictionary": {
-        "태그1": 2,
+        "태그1": 3,
         "태그2": 3,
-        "태그3": 2,
-        "태그4": 1,
-        "태그6": 1
+        "태그3": 3
       },
       "Masterpiece": false
     },
@@ -79,61 +75,36 @@
       "Next_Dialogue_ID": "1_Begin",
       "Next_Scene_Name": "Play",
       "WriteLetter_ID": "Test",
-      "Current_Scene_Name": "Play",
-      "Dialogue_Index": 0,
-      "Text": [
-        "예시 선택지 2",
-        "예시 선택지 4",
-        "예시 선택지 8"
-      ],
-      "Tag_Dictionary": {
-        "태그2": 3,
-        "태그4": 2,
-        "태그6": 2,
-        "태그1": 1,
-        "태그3": 1
-      },
-      "Masterpiece": false
-    },
-    {
-      "Day": 2,
-      "Next_Dialogue_ID": "1_Begin",
-      "Next_Scene_Name": "Play",
-      "WriteLetter_ID": "Test",
-      "Current_Scene_Name": "Play",
-      "Dialogue_Index": 0,
-      "Text": [
-        "예시 선택지 2",
-        "예시 선택지 4",
-        "예시 선택지 8"
-      ],
-      "Tag_Dictionary": {
-        "태그2": 3,
-        "태그4": 2,
-        "태그6": 2,
-        "태그1": 1,
-        "태그3": 1
-      },
-      "Masterpiece": false
-    },
-    {
-      "Day": 2,
-      "Next_Dialogue_ID": "1_Begin",
-      "Next_Scene_Name": "Play",
-      "WriteLetter_ID": "Test",
-      "Current_Scene_Name": "Play",
+      "Current_Scene_Name": "Dialogue",
       "Dialogue_Index": 0,
       "Text": [
         "예시 선택지 1★",
-        "예시 선택지 5★",
+        "예시 선택지 4",
         "예시 선택지 7"
       ],
       "Tag_Dictionary": {
-        "태그1": 2,
+        "태그1": 3,
         "태그2": 3,
-        "태그3": 2,
-        "태그4": 1,
-        "태그6": 1
+        "태그3": 3
+      },
+      "Masterpiece": false
+    },
+    {
+      "Day": 2,
+      "Next_Dialogue_ID": "1_Begin",
+      "Next_Scene_Name": "Play",
+      "WriteLetter_ID": "Test",
+      "Current_Scene_Name": "Dialogue",
+      "Dialogue_Index": 0,
+      "Text": [
+        "예시 선택지 1★",
+        "예시 선택지 4",
+        "예시 선택지 7"
+      ],
+      "Tag_Dictionary": {
+        "태그1": 3,
+        "태그2": 3,
+        "태그3": 3
       },
       "Masterpiece": false
     },
@@ -146,15 +117,32 @@
       "Dialogue_Index": 0,
       "Text": [
         "예시 선택지 1★",
-        "예시 선택지 5★",
-        "예시 선택지 8"
+        "예시 선택지 4",
+        "예시 선택지 7"
       ],
       "Tag_Dictionary": {
-        "태그1": 1,
+        "태그1": 3,
         "태그2": 3,
-        "태그3": 1,
-        "태그4": 2,
-        "태그6": 2
+        "태그3": 3
+      },
+      "Masterpiece": false
+    },
+    {
+      "Day": 2,
+      "Next_Dialogue_ID": "1_Begin",
+      "Next_Scene_Name": "Play",
+      "WriteLetter_ID": "Test",
+      "Current_Scene_Name": "Play",
+      "Dialogue_Index": 0,
+      "Text": [
+        "예시 선택지 1★",
+        "예시 선택지 4",
+        "예시 선택지 7"
+      ],
+      "Tag_Dictionary": {
+        "태그1": 3,
+        "태그2": 3,
+        "태그3": 3
       },
       "Masterpiece": false
     }
