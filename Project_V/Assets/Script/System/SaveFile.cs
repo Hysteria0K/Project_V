@@ -33,6 +33,7 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public TextMeshProUGUI Date;
 
     public GameObject Result_Data_Prefab;
+    private Save_UI Save_UI;
 
     public int Index_Num;
 
@@ -41,6 +42,7 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private void Awake()
     {
         Data_Manager = GameObject.Find("Data_Manager").GetComponent<DataSave>();
+        Save_UI = GameObject.Find("Save_UI").GetComponent<Save_UI>();
     }
 
     // Start is called before the first frame update
@@ -74,12 +76,14 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
                 if (Data_Manager.SaveData.savedata[index].Text != null)
                 {
-                    //Debug.Log(Data_Manager.SaveData.savedata[index].Tag_Dictionary["태그2"]);
                     SaveData.Text = Data_Manager.SaveData.savedata[index].Text;
                     SaveData.Tag_Dictionary = new Dictionary<string, int>(Data_Manager.SaveData.savedata[index].Tag_Dictionary);
                     SaveData.Masterpiece = Data_Manager.SaveData.savedata[index].Masterpiece;
                 }
             }
+
+            Debug.Log(Index_Num + "번" + SaveData.Tag_Dictionary["태그1"]);
+            
         }
     }
 
@@ -135,7 +139,7 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     #region 커서 컨트롤
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        if (is_empty == false)
+        if ((is_empty == false || SceneManager.GetActiveScene().name != "Title") && Save_UI.UI_Ready == true)
         {
             Panel.color = new Color(100 / 255f, 100 / 255f, 100 / 255f, 218f / 255f);
         }
@@ -143,29 +147,43 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
-        if (is_empty == false)
+        if ((is_empty == false || SceneManager.GetActiveScene().name != "Title") && Save_UI.UI_Ready == true)
         {
             Panel.color = new Color(0, 0, 0, 218f / 255f);
         }
     }
-    void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
+    void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
-        Day_Saver.instance.Day = SaveData.Day;
-        Day_Saver.instance.Next_Dialogue_ID = SaveData.Next_Dialogue_ID;
-        Day_Saver.instance.Next_Scene_Name = SaveData.Next_Scene_Name;
-        Day_Saver.instance.WriteLetter_ID = SaveData.WriteLetter_ID;
-        Day_Saver.instance.Current_Scene_Name = SaveData.Current_Scene_Name;
-        Day_Saver.instance.Saved_Dialogue_Index = SaveData.Dialogue_Index;
-
-        if (Data_Manager.SaveData.savedata[Index_Num].Text != null)
+        if (SceneManager.GetActiveScene().name == "Title")
         {
-            Instantiate(Result_Data_Prefab);
-            Result_Data.instance.Text = SaveData.Text;
-            Result_Data.instance.Tag_Dictionary = new Dictionary<string, int>(SaveData.Tag_Dictionary);
-            Result_Data.instance.Masterpiece = SaveData.Masterpiece;
-        }
+            if (is_empty == false && Save_UI.UI_Ready == true)
+            {
+                Day_Saver.instance.Day = SaveData.Day;
+                Day_Saver.instance.Next_Dialogue_ID = SaveData.Next_Dialogue_ID;
+                Day_Saver.instance.Next_Scene_Name = SaveData.Next_Scene_Name;
+                Day_Saver.instance.WriteLetter_ID = SaveData.WriteLetter_ID;
+                Day_Saver.instance.Current_Scene_Name = SaveData.Current_Scene_Name;
+                Day_Saver.instance.Saved_Dialogue_Index = SaveData.Dialogue_Index;
 
-        SceneManager.LoadScene(Day_Saver.instance.Current_Scene_Name);
+                if (Data_Manager.SaveData.savedata[Index_Num].Text != null)
+                {
+                    Result_Data_Prefab.GetComponent<Result_Data>().Text = SaveData.Text;
+                    Result_Data_Prefab.GetComponent<Result_Data>().Tag_Dictionary = new Dictionary<string, int>(SaveData.Tag_Dictionary);
+                    Result_Data_Prefab.GetComponent<Result_Data>().Masterpiece = SaveData.Masterpiece;
+                    Instantiate(Result_Data_Prefab);
+                }
+
+                SceneManager.LoadScene(Day_Saver.instance.Current_Scene_Name);
+            }
+        }
+        else
+        {
+            is_empty = false;
+            Data_Manager.Save_Data(Index_Num);
+            Data_Manager.Reload_Json();
+            Load_Data(Index_Num);
+            Data_Text();
+        }
     }
     #endregion
 }

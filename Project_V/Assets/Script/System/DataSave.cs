@@ -34,13 +34,13 @@ public class DataSave : MonoBehaviour
 
     private void Awake()
     {
-        SaveData = JsonConvert.DeserializeObject<SaveData_Parse>(ReadJson("userdata"));
+        Reload_Json();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Save_Data(7);
+        //Save_Data(0);
     }
 
     // Update is called once per frame
@@ -99,5 +99,10 @@ public class DataSave : MonoBehaviour
 
         return (JsonText);
 #endif
+    }
+
+    public void Reload_Json()
+    {
+        SaveData = JsonConvert.DeserializeObject<SaveData_Parse>(ReadJson("userdata"));
     }
 }

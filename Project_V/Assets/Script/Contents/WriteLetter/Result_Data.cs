@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Result_Data : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class Result_Data : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         } //singleton
+    }
 
+    private void Update()
+    {
+        Debug.Log(instance.Tag_Dictionary["еб╠в1"]);
     }
 }
