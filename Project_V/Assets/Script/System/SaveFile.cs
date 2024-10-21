@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System;
 using System.Reflection;
+using Unity.VisualScripting;
 
 public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
@@ -62,6 +63,13 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Off_Button();
+        }
+    }
     #region 데이터 불러오고 텍스트로 출력
     private void Load_Data(int index)
     {
