@@ -80,7 +80,7 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 SaveData.Text = Data_Manager.SaveData.savedata[index].Text;
                 SaveData.Tag_Dictionary = new Dictionary<string, int>(Data_Manager.SaveData.savedata[index].Tag_Dictionary);
                 SaveData.Masterpiece = Data_Manager.SaveData.savedata[index].Masterpiece;
-            }            
+            }
         }
     }
 
@@ -151,36 +151,61 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
-        if (SceneManager.GetActiveScene().name == "Title")
+        Load_SaveFile();
+
+        /*if (SceneManager.GetActiveScene().name == "Title")
         {
-            if (is_empty == false && Save_UI.UI_Ready == true)
-            {
-                Day_Saver.instance.Day = SaveData.Day;
-                Day_Saver.instance.Next_Dialogue_ID = SaveData.Next_Dialogue_ID;
-                Day_Saver.instance.Next_Scene_Name = SaveData.Next_Scene_Name;
-                Day_Saver.instance.WriteLetter_ID = SaveData.WriteLetter_ID;
-                Day_Saver.instance.Current_Scene_Name = SaveData.Current_Scene_Name;
-                Day_Saver.instance.Saved_Dialogue_Index = SaveData.Dialogue_Index;
-
-                if (Data_Manager.SaveData.savedata[Index_Num].Text != null)
-                {
-                    Instantiate(Result_Data_Prefab);
-                    Result_Data.instance.Text = SaveData.Text;
-                    Result_Data.instance.Tag_Dictionary = new Dictionary<string, int>(SaveData.Tag_Dictionary);
-                    Result_Data.instance.Masterpiece = SaveData.Masterpiece;
-                }
-
-                SceneManager.LoadScene(Day_Saver.instance.Current_Scene_Name);
-            }
+            Load_SaveFile();
         }
         else
         {
-            is_empty = false;
-            Data_Manager.Save_Data(Index_Num);
-            Data_Manager.Reload_Json();
-            Load_Data(Index_Num);
-            Data_Text();
+            Save_SaveFile();
+        }*/
+    }
+    #endregion
+
+    #region 技捞宏 颇老 包府
+
+    public void Load_SaveFile()
+    {
+        if (is_empty == false && Save_UI.UI_Ready == true)
+        {
+            Day_Saver.instance.Day = SaveData.Day;
+            Day_Saver.instance.Next_Dialogue_ID = SaveData.Next_Dialogue_ID;
+            Day_Saver.instance.Next_Scene_Name = SaveData.Next_Scene_Name;
+            Day_Saver.instance.WriteLetter_ID = SaveData.WriteLetter_ID;
+            Day_Saver.instance.Current_Scene_Name = SaveData.Current_Scene_Name;
+            Day_Saver.instance.Saved_Dialogue_Index = SaveData.Dialogue_Index;
+
+            if (Data_Manager.SaveData.savedata[Index_Num].Text != null)
+            {
+                Instantiate(Result_Data_Prefab);
+                Result_Data.instance.Text = SaveData.Text;
+                Result_Data.instance.Tag_Dictionary = new Dictionary<string, int>(SaveData.Tag_Dictionary);
+                Result_Data.instance.Masterpiece = SaveData.Masterpiece;
+            }
+
+            SceneManager.LoadScene(Day_Saver.instance.Current_Scene_Name);
         }
+    }
+
+    public void Save_SaveFile()
+    {
+        is_empty = false;
+        Data_Manager.Save_Data(Index_Num);
+        Data_Manager.Reload_Json();
+        Load_Data(Index_Num);
+        Data_Text();
+    }
+
+    public void Del_SaveFile()
+    {
+        is_empty = true;
+        Data_Manager.Delete_Data(Index_Num);
+        Data_Manager.Reload_Json();
+        Load_Data(Index_Num);
+        Data_Text();
+        Panel.color = new Color(0, 0, 0, 218f / 255f);
     }
     #endregion
 }

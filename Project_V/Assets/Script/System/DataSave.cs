@@ -108,4 +108,26 @@ public class DataSave : MonoBehaviour
 
         File.WriteAllText(path, encrypted);
     }
+
+    public void Delete_Data(int index)
+    {
+        SaveData_Attributes Temp;
+        Temp = new SaveData_Attributes();
+
+        Temp.Day = 0;
+        Temp.Next_Dialogue_ID = "";
+        Temp.Next_Scene_Name = "";
+        Temp.WriteLetter_ID = "";
+        Temp.Current_Scene_Name = "";
+
+        Temp.Dialogue_Index = 0;
+
+        Temp.Text = null;
+        Temp.Tag_Dictionary = null;
+        Temp.Masterpiece = false;
+
+        SaveData.savedata[index] = Temp;
+
+        OverWriteDataFile();
+    }
 }
