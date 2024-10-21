@@ -32,6 +32,9 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public TextMeshProUGUI Info;
     public TextMeshProUGUI Date;
 
+    public GameObject Button_List;
+    public GameObject Save_Button;
+
     public GameObject Result_Data_Prefab;
     private Save_UI Save_UI;
 
@@ -52,6 +55,11 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         Load_Data(Index_Num);
         Data_Text();
+
+        if (SceneManager.GetActiveScene().name == "Title")
+        {
+            Save_Button.SetActive(false);
+        }
     }
 
     #region 데이터 불러오고 텍스트로 출력
@@ -136,31 +144,43 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     #region 커서 컨트롤
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        if ((is_empty == false || SceneManager.GetActiveScene().name != "Title") && Save_UI.UI_Ready == true)
+        if (is_empty == false && Save_UI.UI_Ready == true)
         {
-            Panel.color = new Color(100 / 255f, 100 / 255f, 100 / 255f, 218f / 255f);
+            On_Button();
         }
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
-        if ((is_empty == false || SceneManager.GetActiveScene().name != "Title") && Save_UI.UI_Ready == true)
+        if (is_empty == false && Save_UI.UI_Ready == true)
         {
-            Panel.color = new Color(0, 0, 0, 218f / 255f);
+            Off_Button();
         }
     }
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
-        Load_SaveFile();
-
-        /*if (SceneManager.GetActiveScene().name == "Title")
+        if (is_empty == false)
         {
             Load_SaveFile();
         }
-        else
+
+        else if (SceneManager.GetActiveScene().name != "Title")
         {
             Save_SaveFile();
-        }*/
+            On_Button();
+        }
+    }
+    
+    private void On_Button()
+    {
+        Panel.color = new Color(100 / 255f, 100 / 255f, 100 / 255f, 218f / 255f);
+        Button_List.SetActive(true);
+    }
+
+    private void Off_Button()
+    {
+        Panel.color = new Color(0, 0, 0, 218f / 255f);
+        Button_List.SetActive(false);
     }
     #endregion
 
@@ -168,7 +188,7 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Load_SaveFile()
     {
-        if (is_empty == false && Save_UI.UI_Ready == true)
+        if (Save_UI.UI_Ready == true)
         {
             Day_Saver.instance.Day = SaveData.Day;
             Day_Saver.instance.Next_Dialogue_ID = SaveData.Next_Dialogue_ID;
@@ -205,7 +225,7 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         Data_Manager.Reload_Json();
         Load_Data(Index_Num);
         Data_Text();
-        Panel.color = new Color(0, 0, 0, 218f / 255f);
+        Off_Button();
     }
     #endregion
 }
