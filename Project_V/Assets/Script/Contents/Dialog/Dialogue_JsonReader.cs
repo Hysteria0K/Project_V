@@ -22,6 +22,7 @@ public class Dialogue_JsonReader : MonoBehaviour
         public string Sprite3;
         public int Pos3;
         public string BG;
+        public string MainTalk_Sprite;
     }
 
 

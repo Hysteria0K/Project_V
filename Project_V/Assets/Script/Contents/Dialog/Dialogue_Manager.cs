@@ -23,6 +23,7 @@ public class Dialogue_Manager : MonoBehaviour
     public Sprite_Reader SpriteReader;
 
     public Image Next_Talk;
+    public GameObject Main_Talk_Chr;
 
     [Header("Value")]
     [SerializeField] private string SceneName;
@@ -90,8 +91,18 @@ public class Dialogue_Manager : MonoBehaviour
 
         switch (Json[index].Type)
         {
+            case "main_talk":
+                {
+                    SpriteReader.LoadSprite(Main_Talk_Chr.GetComponent<Image>(), Json[index].MainTalk_Sprite);
+                    Main_Talk_Chr.SetActive(true);
+                    StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
+                    Dialogue_Name.text = Json[index].Name;
+                    break;
+                }
+
             case "talk":
                 {
+                    Main_Talk_Chr.SetActive(false);
                     StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
                     Dialogue_Name.text = Json[index].Name;
                     break;
