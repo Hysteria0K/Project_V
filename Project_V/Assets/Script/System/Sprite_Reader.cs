@@ -41,7 +41,7 @@ public class Sprite_Reader : MonoBehaviour
             Load_Handle.Completed += handle => OnSpriteLoaded(handle, Address, target);
         }
 
-        else if (target != null)
+        else
         {
             target.sprite = Sprite_Dictionary[Address].Result;
         }
@@ -54,10 +54,7 @@ public class Sprite_Reader : MonoBehaviour
             //Debug.Log(Address + "·Îµå");
             Sprite_Dictionary.Add(Address, handle);
 
-            if (target != null)
-            {
-                target.sprite = Sprite_Dictionary[Address].Result;
-            }
+            target.sprite = Sprite_Dictionary[Address].Result;
 
         }
         else
