@@ -56,6 +56,7 @@ public class Dialogue_Manager : MonoBehaviour
 
     void Start()
     {
+        //PreLoad_Sprite();
         Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
         MaxIndex = JsonReader.Dialogue_Dictionary[Dialogue_Id].Count - 1;
     }
@@ -93,8 +94,8 @@ public class Dialogue_Manager : MonoBehaviour
         {
             case "main_talk":
                 {
-                    SpriteReader.LoadSprite(Main_Talk_Chr.GetComponent<Image>(), Json[index].MainTalk_Sprite);
                     Main_Talk_Chr.SetActive(true);
+                    Main_Talk_Chr.GetComponent<Image>().sprite = GetSprite_From_Name(Json[index].MainTalk_Sprite);
                     StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
                     Dialogue_Name.text = Json[index].Name;
                     break;
@@ -302,5 +303,17 @@ public class Dialogue_Manager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void PreLoad_Sprite()
+    {
+        for (int i=0; i<=MaxIndex; i++)
+        {
+            if (JsonReader.Dialogue_Dictionary[Dialogue_Id][i].MainTalk_Sprite != "")
+            {
+                SpriteReader.LoadSprite(Main_Talk_Chr.GetComponent<Image>(), JsonReader.Dialogue_Dictionary[Dialogue_Id][i].MainTalk_Sprite);
+            }
+        }
+
     }
 }

@@ -13,11 +13,15 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Sprite_Reader : MonoBehaviour
 {
-    [Header("Dummy")]
+    [Header("Dummy")] //나중에 삭제 예정
     #region 더미 리소스
     public Sprite D_308801;
     public Sprite D_308001;
     #endregion 더미 리소스
+
+    [Header("PreLoad")]
+    public Sprite test1face;
+    public Sprite test2face;
 
     public Dictionary<string, AsyncOperationHandle<Sprite>> Sprite_Dictionary;
 
