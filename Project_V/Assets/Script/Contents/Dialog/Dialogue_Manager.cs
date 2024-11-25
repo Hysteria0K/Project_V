@@ -180,53 +180,22 @@ public class Dialogue_Manager : MonoBehaviour
         Vector2 Size = new Vector2(0, Dialogue_Mask.sizeDelta.y);
         Dialogue_Mask.sizeDelta = Size;
 
+
         Dialogue_Text.text = text;
         LayoutRebuilder.ForceRebuildLayoutImmediate(Dialogue_Text.rectTransform);
         float Dialogue_Size = Dialogue_Text.rectTransform.sizeDelta.x;
 
         Dialogue_Mask.position = new Vector2(Text_Origin_Pos.x - Dialogue_Size /2, Text_Origin_Pos.y);
         Dialogue_Text.rectTransform.position = Text_Origin_Pos;
+;
 
-<<<<<<< HEAD
-        TMP_TextInfo textInfo = Dialogue_Text.textInfo;
-
-
-
-        while (count != text.Length)
-        {
-            if (count < text.Length)
-            {
-                Dialogue_Text.text += text[count].ToString();
-
-                count++;
-            }
-=======
         while (Size.x <= Dialogue_Size)
         {
             Size.x += Text_Speed;
             Dialogue_Mask.sizeDelta = Size;
 
->>>>>>> parent of c879e11 (Revert "Îã§Ïù¥ÏñºÎ°úÍ∑∏ Í∏ÄÏûê Ï∂úÎ†• Î≥ÄÍ≤Ω")
-
             yield return new WaitForSeconds(d);
         }
-
-        for (int i = 0; i < textInfo.characterCount; i++)
-        {
-            if (!textInfo.characterInfo[i].isVisible) continue;
-
-            // ±€¿⁄¿« Vertex ªˆªÛ ∞°¡Æø¿±‚
-            int vertexIndex = textInfo.characterInfo[i].vertexIndex;
-            Color32[] vertexColors = textInfo.meshInfo[textInfo.characterInfo[i].materialReferenceIndex].colors32;
-
-            // æÀ∆ƒ∞™ ºˆ¡§
-            byte alpha = (byte)(255 * (i % 2 == 0 ? 0.5f : 1.0f)); // »¶ºˆ¥¬ π›≈ı∏Ì
-            for (int j = 0; j < 4; j++) // ∞¢ ±€¿⁄¿« 4∞≥ ¡§¡°ø° ¥Î«ÿ
-            {
-                vertexColors[vertexIndex + j].a = alpha;
-            }
-        }
-        Dialogue_Text.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
 
         Text_End = true;
         Skip_Timer = 0.0f;
