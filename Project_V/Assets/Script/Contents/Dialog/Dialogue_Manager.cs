@@ -9,6 +9,8 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using System;
 using TMPro;
 using Unity.VisualScripting;
+using System.Globalization;
+using System.Xml;
 
 public class Dialogue_Manager : MonoBehaviour
 {
@@ -175,16 +177,38 @@ public class Dialogue_Manager : MonoBehaviour
 
         Text_End = false;
 
+        TMP_TextInfo textInfo = Dialogue_Text.textInfo;
+
+
+
         while (count != text.Length)
         {
             if (count < text.Length)
             {
                 Dialogue_Text.text += text[count].ToString();
+
                 count++;
             }
 
             yield return new WaitForSeconds(d);
         }
+
+        for (int i = 0; i < textInfo.characterCount; i++)
+        {
+            if (!textInfo.characterInfo[i].isVisible) continue;
+
+            // 글자의 Vertex 색상 가져오기
+            int vertexIndex = textInfo.characterInfo[i].vertexIndex;
+            Color32[] vertexColors = textInfo.meshInfo[textInfo.characterInfo[i].materialReferenceIndex].colors32;
+
+            // 알파값 수정
+            byte alpha = (byte)(255 * (i % 2 == 0 ? 0.5f : 1.0f)); // 홀수는 반투명
+            for (int j = 0; j < 4; j++) // 각 글자의 4개 정점에 대해
+            {
+                vertexColors[vertexIndex + j].a = alpha;
+            }
+        }
+        Dialogue_Text.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
 
         Text_End = true;
         Skip_Timer = 0.0f;
