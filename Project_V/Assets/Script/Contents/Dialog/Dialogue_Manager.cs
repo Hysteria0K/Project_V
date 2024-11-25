@@ -187,6 +187,8 @@ public class Dialogue_Manager : MonoBehaviour
         Dialogue_Mask.position = new Vector2(Text_Origin_Pos.x - Dialogue_Size / 2, Text_Origin_Pos.y);
         Dialogue_Text.rectTransform.position = Text_Origin_Pos;
 
+        StartCoroutine(Text_Alpha());
+
         while (Size.x <= Dialogue_Size)
         {
             Size.x += Text_Speed;
@@ -199,6 +201,54 @@ public class Dialogue_Manager : MonoBehaviour
         Dialogue_Mask.sizeDelta = Size;
         Text_End = true;
         Skip_Timer = 0.0f;
+    }
+
+    IEnumerator Text_Alpha()
+    {
+        Dialogue_Text.ForceMeshUpdate();
+        TMP_TextInfo textInfo = Dialogue_Text.textInfo;
+
+        Dialogue_Text.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+
+        int Text_Index = 0;
+
+        while (Text_Index < Dialogue_Text.text.Length)
+        {
+            StartCoroutine(ChangeAlphaSequentially(textInfo, Dialogue_Text, Text_Index));
+            Text_Index++;
+            yield return new WaitForSeconds(0.08f);
+        }
+    }
+
+    IEnumerator ChangeAlphaSequentially(TMP_TextInfo textInfo, TMP_Text tmpText, int Index)
+    {
+        if (!textInfo.characterInfo[Index].isVisible)
+            yield break;
+
+        float alpha = 0.0f;
+
+        // 글자의 Vertex 색상 변경
+        int vertexIndex = textInfo.characterInfo[Index].vertexIndex;
+        int materialIndex = textInfo.characterInfo[Index].materialReferenceIndex;
+
+        Color32[] vertexColors = textInfo.meshInfo[materialIndex].colors32;
+
+        while (alpha <= 1.0f)
+        {
+            alpha += 0.05f;
+            // 기존 색상의 알파값만 변경
+            byte newAlpha = (byte)(255 * alpha);
+            for (int j = 0; j < 4; j++) // 글자의 4개 정점에 알파값 적용
+            {
+                vertexColors[vertexIndex + j].a = newAlpha;
+            }
+
+            // **텍스트 메쉬 갱신**
+            tmpText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+
+            // 다음 알파값으로 넘어가기 전 대기
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 
     private void Next_Talk_Control()
