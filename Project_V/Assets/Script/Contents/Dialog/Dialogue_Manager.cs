@@ -247,7 +247,7 @@ public class Dialogue_Manager : MonoBehaviour
             tmpText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
 
             // 다음 알파값으로 넘어가기 전 대기
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
