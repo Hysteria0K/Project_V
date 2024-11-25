@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,7 +45,7 @@ public class Dialogue_Manager : MonoBehaviour
     [SerializeField] private float Auto_Delay = 1.5f;
     [SerializeField] private float Fade_Delay = 0.01f;
     [SerializeField] private float Wait_Delay = 1.0f;
-    [SerializeField] private float Text_Speed = 10f; //±ÛÀÚ ¿·À¸·Î º¸¿©Áö´Â ¼Óµµ
+    [SerializeField] private float Text_Speed = 10f; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
 
     [Space(15f)]
     public string Next_Scene_Name;
@@ -147,7 +147,7 @@ public class Dialogue_Manager : MonoBehaviour
                     }
                     break;
                 }
-            default:break;
+            default: break;
         }
     }
 
@@ -180,14 +180,12 @@ public class Dialogue_Manager : MonoBehaviour
         Vector2 Size = new Vector2(0, Dialogue_Mask.sizeDelta.y);
         Dialogue_Mask.sizeDelta = Size;
 
-
         Dialogue_Text.text = text;
         LayoutRebuilder.ForceRebuildLayoutImmediate(Dialogue_Text.rectTransform);
         float Dialogue_Size = Dialogue_Text.rectTransform.sizeDelta.x;
 
-        Dialogue_Mask.position = new Vector2(Text_Origin_Pos.x - Dialogue_Size /2, Text_Origin_Pos.y);
+        Dialogue_Mask.position = new Vector2(Text_Origin_Pos.x - Dialogue_Size / 2, Text_Origin_Pos.y);
         Dialogue_Text.rectTransform.position = Text_Origin_Pos;
-;
 
         while (Size.x <= Dialogue_Size)
         {
@@ -197,6 +195,8 @@ public class Dialogue_Manager : MonoBehaviour
             yield return new WaitForSeconds(d);
         }
 
+        Size.x += Text_Speed;
+        Dialogue_Mask.sizeDelta = Size;
         Text_End = true;
         Skip_Timer = 0.0f;
     }
@@ -244,6 +244,7 @@ public class Dialogue_Manager : MonoBehaviour
             Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
             Next_Talk_a = 1;
             Next_Talk.color = new Color(Next_Talk.color.r, Next_Talk.color.g, Next_Talk.color.b, Next_Talk_a);
+            Text_End = false;
         }
     }
 
@@ -306,7 +307,7 @@ public class Dialogue_Manager : MonoBehaviour
                     temp = 0;
                     target.color = new Color(temp, temp, temp);
 
-                    yield return new WaitForSeconds(Wait_Delay); // ÀÏ´Ü ±î¸ÅÁö°í³ª¼­ µô·¹ÀÌ ³ÖÀ½
+                    yield return new WaitForSeconds(Wait_Delay); // ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                     Text_End = true;
                     Next();
@@ -318,7 +319,7 @@ public class Dialogue_Manager : MonoBehaviour
 
     private void PreLoad_Sprite()
     {
-        for (int i=0; i<=MaxIndex; i++)
+        for (int i = 0; i <= MaxIndex; i++)
         {
             if (JsonReader.Dialogue_Dictionary[Dialogue_Id][i].MainTalk_Sprite != "")
             {
