@@ -18,6 +18,7 @@ public class Dialogue_Manager : MonoBehaviour
     public GameObject Dialogue_Sprite2;
     public GameObject Dialogue_Sprite3;
     public Image Background;
+    public RectTransform Dialogue_Mask;
 
     public Dialogue_JsonReader JsonReader;
     public Sprite_Reader SpriteReader;
@@ -34,6 +35,7 @@ public class Dialogue_Manager : MonoBehaviour
     [SerializeField] private bool Next_Talk_Full = true;
     [SerializeField] private bool Is_Auto = false;
     [SerializeField] private float Skip_Timer;
+    private Vector2 Text_Origin_Pos;
 
     [Header("Control")]
     [SerializeField] private float Text_delay;
@@ -41,6 +43,7 @@ public class Dialogue_Manager : MonoBehaviour
     [SerializeField] private float Auto_Delay = 1.5f;
     [SerializeField] private float Fade_Delay = 0.01f;
     [SerializeField] private float Wait_Delay = 1.0f;
+    [SerializeField] private float Text_Speed = 10f; //글자 옆으로 보여지는 속도
 
     [Space(15f)]
     public string Next_Scene_Name;
@@ -52,6 +55,9 @@ public class Dialogue_Manager : MonoBehaviour
         Dialogue_Id = Day_Saver.instance.Next_Dialogue_ID;
         Next_Scene_Name = Day_Saver.instance.Next_Scene_Name;
         Index = Day_Saver.instance.Saved_Dialogue_Index;
+
+        Text_Origin_Pos = new Vector2(Screen.width / 2, Dialogue_Text.rectTransform.position.y);
+        Debug.Log(Text_Origin_Pos);
     }
 
     void Start()
@@ -169,19 +175,21 @@ public class Dialogue_Manager : MonoBehaviour
 
     IEnumerator Dialogue_Output(float d, string text)
     {
-        int count = 0;
+        Vector2 Size = new Vector2(0, Dialogue_Mask.sizeDelta.y);
+        Dialogue_Mask.sizeDelta = Size;
 
-        Dialogue_Text.text = "";
+        Dialogue_Text.text = text;
+        LayoutRebuilder.ForceRebuildLayoutImmediate(Dialogue_Text.rectTransform);
+        float Dialogue_Size = Dialogue_Text.rectTransform.sizeDelta.x;
 
-        Text_End = false;
+        Dialogue_Mask.position = new Vector2(Text_Origin_Pos.x - Dialogue_Size /2, Text_Origin_Pos.y);
+        Dialogue_Text.rectTransform.position = Text_Origin_Pos;
 
-        while (count != text.Length)
+        while (Size.x <= Dialogue_Size)
         {
-            if (count < text.Length)
-            {
-                Dialogue_Text.text += text[count].ToString();
-                count++;
-            }
+            Size.x += Text_Speed;
+            Dialogue_Mask.sizeDelta = Size;
+
 
             yield return new WaitForSeconds(d);
         }
