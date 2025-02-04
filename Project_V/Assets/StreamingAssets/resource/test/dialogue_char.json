@@ -1,0 +1,14 @@
+{"dialogue_char":[
+  {
+    "Id": "1_Begin",
+    "Char1": "D_308801",
+    "Char2": "D_308001",
+    "Char3": null
+  },
+  {
+    "Id": "1_End",
+    "Char1": "D_308801",
+    "Char2": "D_308001",
+    "Char3": null
+  }
+]}
