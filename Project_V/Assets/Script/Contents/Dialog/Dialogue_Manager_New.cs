@@ -64,9 +64,6 @@ public class Dialogue_Manager_New : MonoBehaviour
     void Start()
     {
         //PreLoad_Sprite();
-
-
-
         Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
         MaxIndex = JsonReader.Dialogue_Dictionary[Dialogue_Id].Count - 1;
     }
@@ -109,29 +106,44 @@ public class Dialogue_Manager_New : MonoBehaviour
                     Dialogue_Name.text = Json[index].Name;
                     break;
                 }
-            case "order":
+            case "order": // 케이스 이름을 테이블에 작성하면 작동함
                 {
+                    Text_End = true;
+
                     switch (Json[index].Cmd)
                     {
-                        case "fade_out":
+                        case "fade_out": // 배경 페이드 아웃
                             {
                                 StartCoroutine(Fade(Background, false));
                                 break;
                             }
-                        case "fade_in":
+                        case "fade_in": // 배경 페이드 인
                             {
                                 SpriteReader.LoadSprite(Background, Json[index].Cmd_Target);
                                 StartCoroutine(Fade(Background, true));
                                 break;
                             }
-                        case "chr1_image":
+                        case "chr1_image_change": //캐릭터1 이미지 변경, Cmd_Target이 변경 이미지
                             {
-                                Dialogue_Sprite1.GetComponent<Image>().sprite = GetSprite_From_Name(Json[index].Cmd_Target);
+                                Image_Change(Dialogue_Sprite1, Json[index].Cmd_Target);
                                 break;
                             }
-                        case "chr2_image":
+                        case "chr2_image_change": //캐릭터2 이미지 변경, Cmd_Target이 변경 이미지
                             {
-                                Dialogue_Sprite2.GetComponent<Image>().sprite = GetSprite_From_Name(Json[index].Cmd_Target);
+                                Image_Change(Dialogue_Sprite2, Json[index].Cmd_Target);
+                                break;
+                            }
+                        case "chr1_move":
+                            {
+                                if (Json[index].Move == false)
+                                {
+                                    Dialogue_Sprite1.GetComponent<RectTransform>().anchoredPosition = new Vector2(Json[index].Move_X, Json[index].Move_Y);
+                                }
+
+                                else
+                                {
+                                    StartCoroutine(Move(Dialogue_Sprite1, new Vector2(Json[index].Move_X, Json[index].Move_Y), Json[Index].Move_Spd));
+                                }
                                 break;
                             }
                     }
@@ -147,22 +159,13 @@ public class Dialogue_Manager_New : MonoBehaviour
         }
     }
 
-    /*private void SpriteControl(GameObject Sprite, string Json_Sprite, int Json_Sprite_Pos) // 구버전 스프라이트 이동
+    private void Image_Change(GameObject obj, string target) // 이미지 변경 용 함수
     {
-        if (Json_Sprite != "")
-        {
-            Sprite.SetActive(true);
-            Sprite.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, Json_Sprite_Pos);
-            Sprite.GetComponent<Image>().sprite = GetSprite_From_Name(Json_Sprite);
-        }
+        if (obj.activeInHierarchy == false) obj.transform.parent.gameObject.SetActive(true);
+        obj.GetComponent<Image>().sprite = GetSprite_From_Name(target);
+    }
 
-        else
-        {
-            Sprite.SetActive(false);
-        }
-    }*/
-
-    private Sprite GetSprite_From_Name(string classname)
+    private Sprite GetSprite_From_Name(string classname) // SpriteReader에 미리 로드 되어있는 이미지 불러오기
     {
         Type spriteReaderType = SpriteReader.GetType();
 
@@ -173,6 +176,8 @@ public class Dialogue_Manager_New : MonoBehaviour
 
     IEnumerator Dialogue_Output(float d, string text)
     {
+        Text_End = false;
+
         Vector2 Size = new Vector2(0, Dialogue_Mask.sizeDelta.y);
         Dialogue_Mask.sizeDelta = Size;
 
@@ -277,7 +282,6 @@ public class Dialogue_Manager_New : MonoBehaviour
         if (Index == MaxIndex)
         {
             Next_Scene();
-            Text_End = false;
         }
 
         if (Index <= MaxIndex && Text_End == true && JsonReader.Dialogue_Dictionary[Dialogue_Id][Index].Next == true)
@@ -286,7 +290,6 @@ public class Dialogue_Manager_New : MonoBehaviour
             Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
             Next_Talk_a = 1;
             Next_Talk.color = new Color(Next_Talk.color.r, Next_Talk.color.g, Next_Talk.color.b, Next_Talk_a);
-            Text_End = false;
         }
     }
 
@@ -359,6 +362,23 @@ public class Dialogue_Manager_New : MonoBehaviour
         }
     }
 
+    IEnumerator Move(GameObject obj, Vector2 target, float speed) // 서서히 움직이기 (움직임이 끝날때까지 Text_End 비활성화)
+    {
+        while (true)
+        {
+            obj.GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(obj.GetComponent<RectTransform>().anchoredPosition, target, speed * Time.deltaTime);
+            Text_End = false;
+
+            yield return new WaitForSeconds(0.01f);
+
+            if (Vector2.Distance(obj.GetComponent<RectTransform>().anchoredPosition, target) < 0.1f)
+            {
+                obj.GetComponent<RectTransform>().anchoredPosition = target;
+                Text_End = true;
+                break;
+            }
+        }
+    }
     private void PreLoad_Sprite()
     {
         for (int i = 0; i <= MaxIndex; i++)

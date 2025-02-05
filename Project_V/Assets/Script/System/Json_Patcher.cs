@@ -23,7 +23,6 @@ public class Json_Patcher : MonoBehaviour
         ExcelToJson("gamelevel", "gamelevel");
         ExcelToJson("character", "character");
         ExcelToJson("writeletter", "writeletter");
-        ExcelToJson("dialogue_char", "dialogue_char");
         ExcelToJson("dialogue_new", "dialogue_new");
 #else
         Destroy(this.gameObject);
