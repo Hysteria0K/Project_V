@@ -7,6 +7,8 @@ public class Click_Zone : MonoBehaviour, IPointerDownHandler
 {
     public Dialogue_Manager Dialogue_Manager;
 
+    public Dialogue_Manager_New Dialogue_Manager_New;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class Click_Zone : MonoBehaviour, IPointerDownHandler
 
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        Dialogue_Manager.Next();
+        Dialogue_Manager_New.Next();
+        //Dialogue_Manager.Next();
     }
 }

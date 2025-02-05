@@ -32,7 +32,7 @@ public class Dialogue_Manager_New : MonoBehaviour
     [SerializeField] private string SceneName;
     [SerializeField] public int Index;
     [SerializeField] private int MaxIndex = 0;
-    [SerializeField] private bool Text_End;
+    [SerializeField] private bool Text_End = true;
     [SerializeField] private float Next_Talk_a = 1;
     [SerializeField] private bool Next_Talk_Full = true;
     [SerializeField] private bool Is_Auto = false;
@@ -64,13 +64,16 @@ public class Dialogue_Manager_New : MonoBehaviour
     void Start()
     {
         //PreLoad_Sprite();
+
+
+
         Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
         MaxIndex = JsonReader.Dialogue_Dictionary[Dialogue_Id].Count - 1;
     }
 
     void Update()
     {
-        if (Text_End == true)
+        if (Text_End == true && JsonReader.Dialogue_Dictionary[Dialogue_Id][Index].Next == true) // 넘기기가 True 이고 텍스트 출력이 끝나면 깜빡이기
         {
             Next_Talk_Control();
         }
@@ -87,16 +90,7 @@ public class Dialogue_Manager_New : MonoBehaviour
     }
 
     private void Next_Dialogue(int index, Dictionary<int, Dialogue_New_JsonReader.Dialogue_Attributes> Json)
-    {/*
-        if (Json[index].BG != "")
-        {
-            SpriteReader.LoadSprite(Background, Json[index].BG);
-        }
-
-        SpriteControl(Dialogue_Sprite1, Json[index].Sprite1, Json[index].Pos1);
-        SpriteControl(Dialogue_Sprite2, Json[index].Sprite2, Json[index].Pos2);
-        SpriteControl(Dialogue_Sprite3, Json[index].Sprite3, Json[index].Pos3);
-
+    {
         switch (Json[index].Type)
         {
             case "main_talk":
@@ -117,40 +111,43 @@ public class Dialogue_Manager_New : MonoBehaviour
                 }
             case "order":
                 {
-                    switch (Json[index].Name)
+                    switch (Json[index].Cmd)
                     {
                         case "fade_out":
                             {
-                                switch (Json[index].Text)
-                                {
-                                    case "background":
-                                        {
-                                            StartCoroutine(Fade(Background, false));
-                                            break;
-                                        }
-                                }
+                                StartCoroutine(Fade(Background, false));
                                 break;
                             }
                         case "fade_in":
                             {
-                                switch (Json[index].Text)
-                                {
-                                    case "background":
-                                        {
-                                            StartCoroutine(Fade(Background, true));
-                                            break;
-                                        }
-                                }
+                                SpriteReader.LoadSprite(Background, Json[index].Cmd_Target);
+                                StartCoroutine(Fade(Background, true));
+                                break;
+                            }
+                        case "chr1_image":
+                            {
+                                Dialogue_Sprite1.GetComponent<Image>().sprite = GetSprite_From_Name(Json[index].Cmd_Target);
+                                break;
+                            }
+                        case "chr2_image":
+                            {
+                                Dialogue_Sprite2.GetComponent<Image>().sprite = GetSprite_From_Name(Json[index].Cmd_Target);
                                 break;
                             }
                     }
                     break;
                 }
             default: break;
-        }*/
+        }
+
+        if (Json[index].Set) // Set가 True일 경우 테이블 바로 아래열도 동시에 처리함. 여러 명령을 해야할 때 True로 여러개 엮으면 됨.
+        {
+            Index++;
+            Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
+        }
     }
 
-    private void SpriteControl(GameObject Sprite, string Json_Sprite, int Json_Sprite_Pos)
+    /*private void SpriteControl(GameObject Sprite, string Json_Sprite, int Json_Sprite_Pos) // 구버전 스프라이트 이동
     {
         if (Json_Sprite != "")
         {
@@ -163,7 +160,7 @@ public class Dialogue_Manager_New : MonoBehaviour
         {
             Sprite.SetActive(false);
         }
-    }
+    }*/
 
     private Sprite GetSprite_From_Name(string classname)
     {
@@ -277,19 +274,15 @@ public class Dialogue_Manager_New : MonoBehaviour
 
     public void Next()
     {
-        if (Text_End == true)
-        {
-            Index++;
-        }
-
-        if (Index > MaxIndex)
+        if (Index == MaxIndex)
         {
             Next_Scene();
             Text_End = false;
         }
 
-        if (Index <= MaxIndex && Text_End == true)
+        if (Index <= MaxIndex && Text_End == true && JsonReader.Dialogue_Dictionary[Dialogue_Id][Index].Next == true)
         {
+            Index++;
             Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
             Next_Talk_a = 1;
             Next_Talk.color = new Color(Next_Talk.color.r, Next_Talk.color.g, Next_Talk.color.b, Next_Talk_a);
@@ -297,20 +290,20 @@ public class Dialogue_Manager_New : MonoBehaviour
         }
     }
 
-    public void Auto_Change()
+    public void Auto_Change() // 오토 버튼
     {
         if (Is_Auto) Is_Auto = false;
         else Is_Auto = true;
     }
 
-    public void Next_Scene()
+    public void Next_Scene() // 다음 씬으로 , 스킵 버튼
     {
         Day_Saver.instance.Saved_Dialogue_Index = 0;
         Day_Saver.instance.Current_Scene_Name = Next_Scene_Name;
         SceneManager.LoadScene(Next_Scene_Name);
     }
 
-    IEnumerator Fade(Image target, bool fade_in)
+    IEnumerator Fade(Image target, bool fade_in) // 페이드 인 , 아웃
     {
         float temp;
         Text_End = false;
@@ -341,7 +334,7 @@ public class Dialogue_Manager_New : MonoBehaviour
                     temp = 1;
                     target.color = new Color(temp, temp, temp);
                     Text_End = true;
-                    Next();
+                    //Next(); // Next 활성화시 페이드 종료되면 바로 다음 인덱스
                     break;
                 }
             }
@@ -359,7 +352,7 @@ public class Dialogue_Manager_New : MonoBehaviour
                     yield return new WaitForSeconds(Wait_Delay); // �ϴ� ����������� ������ ����
 
                     Text_End = true;
-                    Next();
+                    //Next(); // Next 활성화시 페이드 종료되면 바로 다음 인덱스
                     break;
                 }
             }

@@ -4045,6 +4045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dialogue_Manager: {fileID: 0}
+  Dialogue_Manager_New: {fileID: 645788744}
 --- !u!1 &2062086553
 GameObject:
   m_ObjectHideFlags: 0
@@ -4190,8 +4191,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Dialogue_Manager, Assembly-CSharp
+      - m_Target: {fileID: 645788744}
+        m_TargetAssemblyTypeName: Dialogue_Manager_New, Assembly-CSharp
         m_MethodName: Next_Scene
         m_Mode: 1
         m_Arguments:
@@ -4519,8 +4520,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Dialogue_Manager, Assembly-CSharp
+      - m_Target: {fileID: 645788744}
+        m_TargetAssemblyTypeName: Dialogue_Manager_New, Assembly-CSharp
         m_MethodName: Auto_Change
         m_Mode: 1
         m_Arguments:
