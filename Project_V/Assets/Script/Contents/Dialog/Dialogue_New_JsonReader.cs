@@ -12,8 +12,7 @@ public class Dialogue_New_JsonReader : MonoBehaviour
         public string Id; // 사용될 씬 이름
         public int Index; // Index
         public string Type; // main_talk = 옆에 얼굴 나오는 대화 , talk = 옆에 얼굴 안나오는 대화 , order 단순 명령어 처리
-        public bool Set; // True 일 경우 해당 인덱스 바로 아래 열도 동시에 처리
-        public bool Next; // 해당 작업이 끝나면 다음 인덱스로 이동 활성화
+        public bool Set; // True 일 경우 해당 인덱스 바로 아래 열도 동시에 처리, 비워두는 걸로 구분
         public string Name; // 대화 주체 이름 출력
         public string Text; // 대화 스크립트
         public string MainTalk_Sprite; // Type이 main_talk 일 경우 출력될 스프라이트

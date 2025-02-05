@@ -70,7 +70,7 @@ public class Dialogue_Manager_New : MonoBehaviour
 
     void Update()
     {
-        if (Text_End == true && JsonReader.Dialogue_Dictionary[Dialogue_Id][Index].Next == true) // 넘기기가 True 이고 텍스트 출력이 끝나면 깜빡이기
+        if (Text_End == true && JsonReader.Dialogue_Dictionary[Dialogue_Id][Index].Set != true) // 넘기기가 True 이고 텍스트 출력이 끝나면 깜빡이기
         {
             Next_Talk_Control();
         }
@@ -136,6 +136,11 @@ public class Dialogue_Manager_New : MonoBehaviour
                         case "chr1_move": //캐릭터1 이동
                             {
                                 Chr_Move(Dialogue_Sprite1, Json[index].Move, new Vector2(Json[index].Move_X, Json[index].Move_Y), Json[Index].Move_Spd);
+                                break;
+                            }
+                        case "chr2_move": //캐릭터2 이동
+                            {
+                                Chr_Move(Dialogue_Sprite2, Json[index].Move, new Vector2(Json[index].Move_X, Json[index].Move_Y), Json[Index].Move_Spd);
                                 break;
                             }
                     }
@@ -289,7 +294,7 @@ public class Dialogue_Manager_New : MonoBehaviour
             Next_Scene();
         }
 
-        if (Index <= MaxIndex && Text_End == true && JsonReader.Dialogue_Dictionary[Dialogue_Id][Index].Next == true)
+        if (Index <= MaxIndex && Text_End == true && JsonReader.Dialogue_Dictionary[Dialogue_Id][Index].Set != true)
         {
             Index++;
             Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
