@@ -133,17 +133,9 @@ public class Dialogue_Manager_New : MonoBehaviour
                                 Image_Change(Dialogue_Sprite2, Json[index].Cmd_Target);
                                 break;
                             }
-                        case "chr1_move":
+                        case "chr1_move": //캐릭터1 이동
                             {
-                                if (Json[index].Move == false)
-                                {
-                                    Dialogue_Sprite1.GetComponent<RectTransform>().anchoredPosition = new Vector2(Json[index].Move_X, Json[index].Move_Y);
-                                }
-
-                                else
-                                {
-                                    StartCoroutine(Move(Dialogue_Sprite1, new Vector2(Json[index].Move_X, Json[index].Move_Y), Json[Index].Move_Spd));
-                                }
+                                Chr_Move(Dialogue_Sprite1, Json[index].Move, new Vector2(Json[index].Move_X, Json[index].Move_Y), Json[Index].Move_Spd);
                                 break;
                             }
                     }
@@ -152,17 +144,30 @@ public class Dialogue_Manager_New : MonoBehaviour
             default: break;
         }
 
-        if (Json[index].Set) // Set가 True일 경우 테이블 바로 아래열도 동시에 처리함. 여러 명령을 해야할 때 True로 여러개 엮으면 됨.
+        if (Json[index].Set) // Set가 True일 경우 테이블 바로 아래열도 동시에 처리함. 여러 명령을 해야할 때 True로 여러개 엮으면 됨. 대화와 동시에 할 경우 order가 대화보다 위에 있어야함
         {
             Index++;
             Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
         }
     }
 
-    private void Image_Change(GameObject obj, string target) // 이미지 변경 용 함수
+    private void Image_Change(GameObject obj, string target) // 캐릭터 이미지 변경 용 함수
     {
         if (obj.activeInHierarchy == false) obj.transform.parent.gameObject.SetActive(true);
         obj.GetComponent<Image>().sprite = GetSprite_From_Name(target);
+    }
+
+    private void Chr_Move(GameObject obj, bool Move_Check, Vector2 Move_Target, float Move_Spd)
+    {
+        if (Move_Check == false) // 텔레포트
+        {
+            obj.GetComponent<RectTransform>().anchoredPosition = Move_Target;
+        }
+
+        else // 부드럽게 이동
+        {
+            StartCoroutine(Move(obj, Move_Target, Move_Spd));
+        }
     }
 
     private Sprite GetSprite_From_Name(string classname) // SpriteReader에 미리 로드 되어있는 이미지 불러오기
