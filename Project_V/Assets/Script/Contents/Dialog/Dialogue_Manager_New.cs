@@ -90,21 +90,23 @@ public class Dialogue_Manager_New : MonoBehaviour
     {
         switch (Json[index].Type)
         {
-            case "main_talk":
-                {
-                    Main_Talk_Chr.SetActive(true);
-                    Main_Talk_Chr.GetComponent<Image>().sprite = GetSprite_From_Name(Json[index].MainTalk_Sprite);
-                    StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
-                    Dialogue_Name.text = Json[index].Name;
-                    break;
-                }
-
             case "talk":
                 {
-                    Main_Talk_Chr.SetActive(false);
-                    StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
-                    Dialogue_Name.text = Json[index].Name;
-                    break;
+                    if (Json[index].MainTalk_Sprite == "")
+                    {
+                        Main_Talk_Chr.SetActive(false);
+                        StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
+                        Dialogue_Name.text = Json[index].Name;
+                        break;
+                    }
+                    else
+                    {
+                        Main_Talk_Chr.SetActive(true);
+                        Main_Talk_Chr.GetComponent<Image>().sprite = GetSprite_From_Name(Json[index].MainTalk_Sprite);
+                        StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
+                        Dialogue_Name.text = Json[index].Name;
+                        break;
+                    }
                 }
             case "order": // 케이스 이름을 테이블에 작성하면 작동함
                 {
