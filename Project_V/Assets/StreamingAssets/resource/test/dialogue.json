@@ -268,5 +268,35 @@
     "Sprite3": "D_308001",
     "Pos3": 874.0,
     "BG": null
+  },
+  {
+    "Id": "chr1_daily",
+    "Index": 0.0,
+    "Type": "talk",
+    "Name": "테스트1",
+    "Text": "오늘은 날씨가 좋네요.",
+    "MainTalk_Sprite": null,
+    "Sprite1": null,
+    "Pos1": null,
+    "Sprite2": null,
+    "Pos2": null,
+    "Sprite3": null,
+    "Pos3": null,
+    "BG": null
+  },
+  {
+    "Id": "chr1_daily",
+    "Index": 1.0,
+    "Type": "talk",
+    "Name": "테스트1",
+    "Text": "춥다",
+    "MainTalk_Sprite": null,
+    "Sprite1": null,
+    "Pos1": null,
+    "Sprite2": null,
+    "Pos2": null,
+    "Sprite3": null,
+    "Pos3": null,
+    "BG": null
   }
 ]}
