@@ -20,8 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: 305e7221b91976c4e990371a0f80a407
-  - enabled: 1
-    path: Assets/Scenes/Dialogue.unity
+  - enabled: 0
+    path: Assets/Scenes/Dialogue_old.unity
     guid: 7797b875aa7c0fb4a98bc92f19cf74bf
   - enabled: 1
     path: Assets/Scenes/Play.unity
@@ -29,5 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WriteLetter.unity
     guid: 21b724a2653fe2845b3429b7b5c8c015
+  - enabled: 1
+    path: Assets/Scenes/Dialogue.unity
+    guid: ac35eee5230df264eb807397334ec4f0
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: b6782fb612c38564198953886670a475, type: 2}
