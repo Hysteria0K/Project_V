@@ -48,7 +48,8 @@ public class NPC_Icon : MonoBehaviour, IPointerDownHandler
             Npc_Select.Change_Standing_Image();
             SpriteReader.LoadSprite(this.GetComponent<Image>(), JsonReader.Character_Dictionary[Character_Name].Face_Sprite_Mono);
             Npc_Select.Change_Icon_Image();
-            Choice_UI.Fade_Out();
+
+            if (Choice_UI.gameObject.activeSelf) Choice_UI.Fade_Out();
         }
     }
 }

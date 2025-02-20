@@ -8683,7 +8683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JsonReader: {fileID: 252757836}
   Telephone: {fileID: 3882363357672167873, guid: 7be85a74c87f2444297e12f570b2f4e3, type: 3}
-  Canvas: {fileID: 1556057629}
+  Dialogue_obj: {fileID: 611773225}
   Choice_UI: {fileID: 250036165}
   IsLocked: 0
   Delay_Time: 0
@@ -12861,6 +12861,41 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &611773224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 611773225}
+  m_Layer: 5
+  m_Name: Dialogue_obj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &611773225
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611773224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1556057629}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &611997360
 GameObject:
   m_ObjectHideFlags: 0
@@ -26333,6 +26368,7 @@ MonoBehaviour:
   Dead_Count: 0
   Dead_Percentage: 0
   Is_Invalid_Stamp: 0
+  Goal: 
 --- !u!114 &1234890870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27873,6 +27909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Choice_UI: {fileID: 250036161}
   Telephone_Saver: {fileID: 382747385}
+  Dialogue_obj: {fileID: 611773225}
 --- !u!1 &1333322121
 GameObject:
   m_ObjectHideFlags: 0
@@ -31529,6 +31566,7 @@ RectTransform:
   - {fileID: 51028473}
   - {fileID: 2105962011}
   - {fileID: 137002464}
+  - {fileID: 611773225}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

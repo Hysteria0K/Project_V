@@ -28,6 +28,8 @@ public class Telephone_Dialogue : MonoBehaviour
 
     private int Share_Height;
 
+    public bool Is_Fixed;
+
     [Header("Control")]
     [SerializeField] public float Text_Delay;
     [SerializeField] public float Wait_Delay;
@@ -113,7 +115,10 @@ public class Telephone_Dialogue : MonoBehaviour
 
         //Telephone.Up_Check = true;
         Telephone.Text_End_Check = true;
-        Destroy(this.gameObject);
+        if (Is_Fixed != true)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     /*

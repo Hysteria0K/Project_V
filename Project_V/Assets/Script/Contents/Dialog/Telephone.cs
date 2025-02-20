@@ -71,10 +71,14 @@ public class Telephone : MonoBehaviour
         if (Index > MaxIndex && Text_End_Check == true)
         {
             Telephone_Saver.IsLocked = false;
-            Destroy(this.gameObject);
+
+            if (JsonReader.Dialogue_Dictionary[Reason][0].Cmd != "fix")
+            {
+                Destroy(this.gameObject);
+            }
         }
 
-        if (Text_End_Check == true && Destroy_Check == false)
+        if (Text_End_Check == true && JsonReader.Dialogue_Dictionary[Reason].ContainsKey(Index))
         {
             Text_End_Check = false;
             StartCoroutine(Delay_Make_Dialogue(Dialogue_Delay));
@@ -90,7 +94,6 @@ public class Telephone : MonoBehaviour
 
     private void Make_Dialogue()
     {
-
         Parse_text = JsonReader.Dialogue_Dictionary[Reason][Index].Text;
 
         // 명령어로 문장 변경
@@ -99,7 +102,9 @@ public class Telephone : MonoBehaviour
             Parse_text = Parse_text.Replace("<!Goal>", GameLevel.Goal);
         }
 
-
+        // 다이얼로그 고정
+        if (JsonReader.Dialogue_Dictionary[Reason][Index].Cmd == "fix") Dialogue.GetComponent<Telephone_Dialogue>().Is_Fixed = true;
+        else Dialogue.GetComponent<Telephone_Dialogue>().Is_Fixed = false;
 
         // Talker_Sprite = JsonReader.Telephone.Stamp[Index].Sprite;
         Talker = JsonReader.Dialogue_Dictionary[Reason][Index].Name;

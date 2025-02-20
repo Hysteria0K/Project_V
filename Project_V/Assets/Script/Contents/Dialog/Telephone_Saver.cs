@@ -6,7 +6,7 @@ public class Telephone_Saver : MonoBehaviour
 {
     public JsonReader JsonReader;
     public GameObject Telephone;
-    public RectTransform Canvas;
+    public RectTransform Dialogue_obj;
     public Choice_UI Choice_UI;
 
     public bool IsLocked;
@@ -27,6 +27,12 @@ public class Telephone_Saver : MonoBehaviour
         if (IsLocked == false && this.transform.childCount != 0)
         {
             IsLocked = true;
+
+            if (Dialogue_obj.childCount != 0)
+            {
+                Destroy(Dialogue_obj.GetChild(0).gameObject);
+            }
+
             StartCoroutine(Delay());
         }
     }
@@ -34,14 +40,19 @@ public class Telephone_Saver : MonoBehaviour
     public void Spawn_Telephone()
     {
         Telephone.GetComponent<Telephone>().Reason = this.transform.GetChild(0).GetComponent<Telephone_Saved>().Reason;
-        Instantiate(Telephone, new Vector3(104, 601, 0), new Quaternion(0, 0, 0, 0), Canvas);
+        Instantiate(Telephone, new Vector3(104, 601, 0), new Quaternion(0, 0, 0, 0), Dialogue_obj);
         Destroy(this.transform.GetChild(0).gameObject);
     }
 
     IEnumerator Delay()
     {
-        Choice_UI.Fade_Out(); // 캐릭터 대화 버튼 내리기
+        if (Choice_UI.gameObject.activeSelf)
+        {
+            Choice_UI.Fade_Out(); // 캐릭터 대화 버튼 내리기
+        }
+
         yield return new WaitForSeconds(Delay_Time);
+
         Spawn_Telephone();
     }
 }
