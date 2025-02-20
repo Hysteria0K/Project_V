@@ -5241,6 +5241,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8274997740708034071, guid: 2f5c8c31785ff8244b57af0ccca51312, type: 3}
+      propertyPath: m_text
+      value: "\uC624\uB298 \uD560 \uC77C..."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11183,6 +11187,7 @@ MonoBehaviour:
   JsonReader: {fileID: 252757836}
   Telephone_Saver: {fileID: 382747385}
   Choice_UI: {fileID: 250036165}
+  Dialogue_obj: {fileID: 611773225}
   Character_Name: "\uD14C\uC2A4\uD2B81"
   Available: 1
 --- !u!1 &511775486
@@ -11634,6 +11639,7 @@ MonoBehaviour:
   JsonReader: {fileID: 252757836}
   Telephone_Saver: {fileID: 382747385}
   Choice_UI: {fileID: 250036165}
+  Dialogue_obj: {fileID: 611773225}
   Character_Name: "\uD14C\uC2A4\uD2B82"
   Available: 1
 --- !u!114 &530536562
@@ -44763,6 +44769,10 @@ PrefabInstance:
     - target: {fileID: 6535116934846994528, guid: 2f5c8c31785ff8244b57af0ccca51312, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274997740708034071, guid: 2f5c8c31785ff8244b57af0ccca51312, type: 3}
+      propertyPath: m_text
+      value: "\uC77C\uC0C1"
       objectReference: {fileID: 0}
     - target: {fileID: 8274997740708034071, guid: 2f5c8c31785ff8244b57af0ccca51312, type: 3}
       propertyPath: m_fontColor.a

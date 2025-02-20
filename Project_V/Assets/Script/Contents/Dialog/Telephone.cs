@@ -26,8 +26,6 @@ public class Telephone : MonoBehaviour
 
     public bool Up_Check;
 
-    private bool Destroy_Check;
-
     [Header("Settings")]
     public float Up_Value = 80;
 
@@ -51,8 +49,6 @@ public class Telephone : MonoBehaviour
         Text_End_Check = true;
 
         Index = 0;
-
-        Destroy_Check = false;
 
         MaxIndex = JsonReader.Dialogue_Dictionary[Reason].Count - 1;
 

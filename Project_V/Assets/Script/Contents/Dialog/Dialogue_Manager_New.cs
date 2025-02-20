@@ -39,6 +39,8 @@ public class Dialogue_Manager_New : MonoBehaviour
     [SerializeField] private float Skip_Timer;
     private Vector2 Text_Origin_Pos;
 
+    private Coroutine AutoZoom;
+
     [Header("Control")]
     [SerializeField] private float Text_delay;
     [SerializeField] private float Next_Talk_Speed = 1f;
@@ -125,6 +127,16 @@ public class Dialogue_Manager_New : MonoBehaviour
                                 StartCoroutine(Fade(Background, true));
                                 break;
                             }
+                        case "auto_zoom_start":
+                            {
+                                AutoZoom = StartCoroutine(Auto_Zoom()); 
+                                break;
+                            }
+                        case "auto_zoom_end":
+                            {
+                                StopCoroutine(AutoZoom); // 일단 자연스럽게 보이는게 중요한거 같아서 스케일 1.0으로 초기화 안 시켰음
+                                break;
+                            }
                         case "chr1_image_change": //캐릭터1 이미지 변경, Cmd_Target이 변경 이미지
                             {
                                 Image_Change(Dialogue_Sprite1, Json[index].Cmd_Target);
@@ -164,7 +176,7 @@ public class Dialogue_Manager_New : MonoBehaviour
         obj.GetComponent<Image>().sprite = GetSprite_From_Name(target);
     }
 
-    private void Chr_Move(GameObject obj, bool Move_Check, Vector2 Move_Target, float Move_Spd)
+    private void Chr_Move(GameObject obj, bool Move_Check, Vector2 Move_Target, float Move_Spd) // 캐릭터 이미지 이동
     {
         if (Move_Check == false) // 텔레포트
         {
@@ -186,6 +198,7 @@ public class Dialogue_Manager_New : MonoBehaviour
         return fieldInfo.GetValue(SpriteReader) as Sprite;
     }
 
+    #region 텍스트 출력 관련 코루틴 모음
     IEnumerator Dialogue_Output(float d, string text)
     {
         Text_End = false;
@@ -264,7 +277,27 @@ public class Dialogue_Manager_New : MonoBehaviour
         }
     }
 
-    private void Next_Talk_Control()
+    #endregion
+
+    IEnumerator Auto_Zoom() // 배경 확대/축소 효과
+    {
+        bool zoom = true;
+        float scale = 1.0f;
+        float MaxScale = 1.05f;
+
+        while(true)
+        {
+            if (scale >= MaxScale) zoom = false;
+            if (zoom == false && scale <= 1.0f ) zoom = true;
+
+            if (zoom == true) scale += 0.0005f;
+            else scale -= 0.0005f;
+
+            Background.transform.localScale = new Vector3(scale, scale, scale);
+            yield return new WaitForSeconds(Fade_Delay);
+        }
+    }
+    private void Next_Talk_Control() // 버튼 깜빡이는 연출
     {
         if (Next_Talk_a >= 1)
         {
@@ -289,7 +322,7 @@ public class Dialogue_Manager_New : MonoBehaviour
         }
     }
 
-    public void Next()
+    public void Next() // 다음 대화
     {
         if (Index == MaxIndex)
         {
@@ -391,7 +424,7 @@ public class Dialogue_Manager_New : MonoBehaviour
             }
         }
     }
-    private void PreLoad_Sprite()
+    private void PreLoad_Sprite() // 스프라이트 미리 불러오기
     {
         for (int i = 0; i <= MaxIndex; i++)
         {

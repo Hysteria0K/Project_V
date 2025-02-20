@@ -28,7 +28,7 @@ public class Dialogue_New_JsonReader : MonoBehaviour
     #region Parse
     public class Dialogue_Parse
     {
-        public Dialogue_Attributes[] dialogue_new;
+        public Dialogue_Attributes[] dialogue;
     }
 
     #endregion
@@ -39,7 +39,7 @@ public class Dialogue_New_JsonReader : MonoBehaviour
 
     private void Awake()
     {
-        Dialogue = JsonUtility.FromJson<Dialogue_Parse>(ReadJson("dialogue_new"));
+        Dialogue = JsonUtility.FromJson<Dialogue_Parse>(ReadJson("dialogue"));
 
         Dialogue_Dictionary = new Dictionary<string, Dictionary<int, Dialogue_Attributes>>();
         Dialogue_To_Dictionary();
@@ -62,19 +62,19 @@ public class Dialogue_New_JsonReader : MonoBehaviour
     {
         Dictionary<int, Dialogue_Attributes> Temp_dictionary = new Dictionary<int, Dialogue_Attributes>();
 
-        string Saved_ID = Dialogue.dialogue_new[0].Id;
+        string Saved_ID = Dialogue.dialogue[0].Id;
 
-        for (int i = 0; i < Dialogue.dialogue_new.Length; i++)
+        for (int i = 0; i < Dialogue.dialogue.Length; i++)
         {
-            if (Saved_ID != Dialogue.dialogue_new[i].Id)
+            if (Saved_ID != Dialogue.dialogue[i].Id)
             {
                 //Debug.Log("º¯È¯");
                 Dialogue_Dictionary.Add(Saved_ID, Temp_dictionary);
                 Temp_dictionary = new Dictionary<int, Dialogue_Attributes>();
-                Saved_ID = Dialogue.dialogue_new[i].Id;
+                Saved_ID = Dialogue.dialogue[i].Id;
             }
 
-            Temp_dictionary.Add(Dialogue.dialogue_new[i].Index, Dialogue.dialogue_new[i]);
+            Temp_dictionary.Add(Dialogue.dialogue[i].Index, Dialogue.dialogue[i]);
         }
 
         Dialogue_Dictionary.Add(Saved_ID, Temp_dictionary);
