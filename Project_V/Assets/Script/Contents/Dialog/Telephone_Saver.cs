@@ -7,6 +7,7 @@ public class Telephone_Saver : MonoBehaviour
     public JsonReader JsonReader;
     public GameObject Telephone;
     public RectTransform Canvas;
+    public Choice_UI Choice_UI;
 
     public bool IsLocked;
 
@@ -39,6 +40,7 @@ public class Telephone_Saver : MonoBehaviour
 
     IEnumerator Delay()
     {
+        Choice_UI.Fade_Out(); // 캐릭터 대화 버튼 내리기
         yield return new WaitForSeconds(Delay_Time);
         Spawn_Telephone();
     }

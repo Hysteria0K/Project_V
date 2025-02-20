@@ -7,6 +7,8 @@ public class NPC_Dialogue : MonoBehaviour, IPointerDownHandler
 {
     public GameObject Choice_UI;
 
+    public Telephone_Saver Telephone_Saver;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,10 @@ public class NPC_Dialogue : MonoBehaviour, IPointerDownHandler
     }
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        Choice_UI.SetActive(true);
+        if (Telephone_Saver.IsLocked == false)
+        {
+            Choice_UI.SetActive(true);
+            Choice_UI.GetComponent<Choice_UI>().Fade_In();
+        }
     }
 }

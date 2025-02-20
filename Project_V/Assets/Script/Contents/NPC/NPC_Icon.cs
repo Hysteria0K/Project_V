@@ -9,6 +9,8 @@ public class NPC_Icon : MonoBehaviour, IPointerDownHandler
     public NPC_Select Npc_Select;
     public Sprite_Reader SpriteReader;
     public JsonReader JsonReader;
+    public Telephone_Saver Telephone_Saver;
+    public Choice_UI Choice_UI;
 
     [Header("Character")]
     public string Character_Name;
@@ -39,13 +41,14 @@ public class NPC_Icon : MonoBehaviour, IPointerDownHandler
 
     void IPointerDownHandler.OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (Npc_Select.Selected_Character != Character_Name && Npc_Select.Character_Ready == true)
+        if (Npc_Select.Selected_Character != Character_Name && Npc_Select.Character_Ready == true && Telephone_Saver.IsLocked == false)
         {
             Npc_Select.Temp_Char = Npc_Select.Selected_Character;
             Npc_Select.Selected_Character = Character_Name;
             Npc_Select.Change_Standing_Image();
             SpriteReader.LoadSprite(this.GetComponent<Image>(), JsonReader.Character_Dictionary[Character_Name].Face_Sprite_Mono);
             Npc_Select.Change_Icon_Image();
+            Choice_UI.Fade_Out();
         }
     }
 }

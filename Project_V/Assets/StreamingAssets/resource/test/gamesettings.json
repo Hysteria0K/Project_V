@@ -8,6 +8,6 @@
     "Dialogue_Delay": 0.3,
     "L_Spawn_Y": -500.0,
     "L_Move_Speed": 20.0,
-    "Telephone_Delay": 1.5
+    "Telephone_Delay": 0.5
   }
 ]}
