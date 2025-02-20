@@ -72,7 +72,7 @@ public class Telephone : MonoBehaviour
         {
             Telephone_Saver.IsLocked = false;
 
-            if (JsonReader.Dialogue_Dictionary[Reason][0].Cmd != "fix")
+            if (JsonReader.Dialogue_Dictionary[Reason][MaxIndex].Cmd != "fix")
             {
                 Destroy(this.gameObject);
             }

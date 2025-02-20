@@ -11,6 +11,7 @@ public class NPC_Icon : MonoBehaviour, IPointerDownHandler
     public JsonReader JsonReader;
     public Telephone_Saver Telephone_Saver;
     public Choice_UI Choice_UI;
+    public Transform Dialogue_obj;
 
     [Header("Character")]
     public string Character_Name;
@@ -48,6 +49,12 @@ public class NPC_Icon : MonoBehaviour, IPointerDownHandler
             Npc_Select.Change_Standing_Image();
             SpriteReader.LoadSprite(this.GetComponent<Image>(), JsonReader.Character_Dictionary[Character_Name].Face_Sprite_Mono);
             Npc_Select.Change_Icon_Image();
+
+
+            if (Dialogue_obj.childCount != 0)
+            {
+                Destroy(Dialogue_obj.GetChild(0).gameObject);
+            }
 
             if (Choice_UI.gameObject.activeSelf) Choice_UI.Fade_Out();
         }
