@@ -17,6 +17,7 @@ public class GameLevel : MonoBehaviour
     public int Dead_Count;
     public int Dead_Percentage;
     public bool Is_Invalid_Stamp;
+    public string Goal;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class GameLevel : MonoBehaviour
         Start_Story_Id = JsonReader.GameLevel_Dictionary[Day].Start_Story_Id;
         End_Story_Id = JsonReader.GameLevel_Dictionary[Day].End_Story_Id;
         Letter_Id = JsonReader.GameLevel_Dictionary[Day].Letter_Id;
+        Goal = JsonReader.GameLevel_Dictionary[Day].Goal;
     }
 
     // Start is called before the first frame update

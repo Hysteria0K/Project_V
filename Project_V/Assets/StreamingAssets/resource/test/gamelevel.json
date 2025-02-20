@@ -9,7 +9,8 @@
     "Is_Invalid_Stamp": true,
     "Start_Story_Id": "1_Begin",
     "End_Story_Id": "1_End",
-    "Letter_Id": "Test"
+    "Letter_Id": "Test",
+    "Goal": "치킨시켜 먹기"
   },
   {
     "Day": 2.0,
@@ -21,7 +22,8 @@
     "Is_Invalid_Stamp": false,
     "Start_Story_Id": "1_Begin",
     "End_Story_Id": "1_End",
-    "Letter_Id": "Test"
+    "Letter_Id": "Test",
+    "Goal": null
   },
   {
     "Day": 3.0,
@@ -33,7 +35,8 @@
     "Is_Invalid_Stamp": true,
     "Start_Story_Id": "1_Begin",
     "End_Story_Id": "1_End",
-    "Letter_Id": "Test"
+    "Letter_Id": "Test",
+    "Goal": null
   },
   {
     "Day": 4.0,
@@ -45,7 +48,8 @@
     "Is_Invalid_Stamp": false,
     "Start_Story_Id": "1_Begin",
     "End_Story_Id": "1_End",
-    "Letter_Id": "Test"
+    "Letter_Id": "Test",
+    "Goal": null
   },
   {
     "Day": 5.0,
@@ -57,7 +61,8 @@
     "Is_Invalid_Stamp": true,
     "Start_Story_Id": "1_Begin",
     "End_Story_Id": "1_End",
-    "Letter_Id": "Test"
+    "Letter_Id": "Test",
+    "Goal": null
   },
   {
     "Day": 6.0,
@@ -69,7 +74,8 @@
     "Is_Invalid_Stamp": false,
     "Start_Story_Id": "1_Begin",
     "End_Story_Id": "1_End",
-    "Letter_Id": "Test"
+    "Letter_Id": "Test",
+    "Goal": null
   },
   {
     "Day": 7.0,
@@ -81,7 +87,8 @@
     "Is_Invalid_Stamp": true,
     "Start_Story_Id": "1_Begin",
     "End_Story_Id": "1_End",
-    "Letter_Id": "Test"
+    "Letter_Id": "Test",
+    "Goal": null
   },
   {
     "Day": 8.0,
@@ -93,7 +100,8 @@
     "Is_Invalid_Stamp": false,
     "Start_Story_Id": "1_Begin",
     "End_Story_Id": "1_End",
-    "Letter_Id": "Test"
+    "Letter_Id": "Test",
+    "Goal": null
   },
   {
     "Day": 9.0,
@@ -105,7 +113,8 @@
     "Is_Invalid_Stamp": true,
     "Start_Story_Id": "1_Begin",
     "End_Story_Id": "1_End",
-    "Letter_Id": "Test"
+    "Letter_Id": "Test",
+    "Goal": null
   },
   {
     "Day": 10.0,
@@ -117,6 +126,7 @@
     "Is_Invalid_Stamp": false,
     "Start_Story_Id": "1_Begin",
     "End_Story_Id": "1_End",
-    "Letter_Id": "Test"
+    "Letter_Id": "Test",
+    "Goal": null
   }
 ]}

@@ -6,6 +6,8 @@ public class Telephone : MonoBehaviour
 {
     private JsonReader JsonReader;
 
+    private GameLevel GameLevel;
+
     public GameObject Dialogue;
 
     private Telephone_Saver Telephone_Saver;
@@ -37,6 +39,8 @@ public class Telephone : MonoBehaviour
     {
         Telephone_Saver = GameObject.Find("Telephone_Saver").GetComponent<Telephone_Saver>();
         JsonReader = GameObject.Find("JsonReader").GetComponent<JsonReader>();
+        GameLevel = GameObject.Find("GameManager").GetComponent<GameLevel>();
+
         thisRect = GetComponent<RectTransform>();
 
         Dialogue_Position = GameObject.Find("DialogueText_Position").transform.position;
@@ -88,6 +92,15 @@ public class Telephone : MonoBehaviour
     {
 
         Parse_text = JsonReader.Dialogue_Dictionary[Reason][Index].Text;
+
+        // 명령어로 문장 변경
+        if (Parse_text.Contains("<!Goal>"))
+        {
+            Parse_text = Parse_text.Replace("<!Goal>", GameLevel.Goal);
+        }
+
+
+
         // Talker_Sprite = JsonReader.Telephone.Stamp[Index].Sprite;
         Talker = JsonReader.Dialogue_Dictionary[Reason][Index].Name;
 
