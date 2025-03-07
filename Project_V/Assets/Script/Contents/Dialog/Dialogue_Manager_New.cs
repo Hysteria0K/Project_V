@@ -21,6 +21,8 @@ public class Dialogue_Manager_New : MonoBehaviour
     public GameObject Dialogue_Sprite3;
     public Image Background;
     public RectTransform Dialogue_Mask;
+    public RectTransform Select;
+    public GameObject Select_Button;
 
     public Dialogue_New_JsonReader JsonReader;
     public Sprite_Reader SpriteReader;
@@ -31,7 +33,7 @@ public class Dialogue_Manager_New : MonoBehaviour
     [Header("Value")]
     [SerializeField] private string SceneName;
     [SerializeField] public int Index;
-    [SerializeField] private int MaxIndex = 0;
+    [SerializeField] public int MaxIndex = 0;
     [SerializeField] private bool Text_End = true;
     [SerializeField] private float Next_Talk_a = 1;
     [SerializeField] private bool Next_Talk_Full = true;
@@ -40,6 +42,7 @@ public class Dialogue_Manager_New : MonoBehaviour
     private Vector2 Text_Origin_Pos;
 
     private Coroutine AutoZoom;
+    private List<Coroutine> Saved_Text_Effect;
 
     [Header("Control")]
     [SerializeField] private float Text_delay;
@@ -66,6 +69,7 @@ public class Dialogue_Manager_New : MonoBehaviour
     void Start()
     {
         //PreLoad_Sprite();
+        Saved_Text_Effect = new List<Coroutine>();
         Next_Dialogue(Index, JsonReader.Dialogue_Dictionary[Dialogue_Id]);
         MaxIndex = JsonReader.Dialogue_Dictionary[Dialogue_Id].Count - 1;
     }
@@ -83,12 +87,13 @@ public class Dialogue_Manager_New : MonoBehaviour
 
             if (Skip_Timer >= Auto_Delay)
             {
+                Skip_Timer = 0.0f;
                 Next();
             }
         }
     }
 
-    private void Next_Dialogue(int index, Dictionary<int, Dialogue_New_JsonReader.Dialogue_Attributes> Json)
+    public void Next_Dialogue(int index, Dictionary<int, Dialogue_New_JsonReader.Dialogue_Attributes> Json)
     {
         switch (Json[index].Type)
         {
@@ -97,7 +102,17 @@ public class Dialogue_Manager_New : MonoBehaviour
                     if (Json[index].MainTalk_Sprite == "")
                     {
                         Main_Talk_Chr.SetActive(false);
-                        StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
+
+                        if (Saved_Text_Effect.Count != 0)
+                        {
+                            foreach (var coroutine in Saved_Text_Effect)
+                            {
+                                if (coroutine != null) StopCoroutine(coroutine);
+                            }
+                            Saved_Text_Effect.Clear();
+                        }
+
+                        Saved_Text_Effect.Add(StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text)));
                         Dialogue_Name.text = Json[index].Name;
                         break;
                     }
@@ -105,7 +120,17 @@ public class Dialogue_Manager_New : MonoBehaviour
                     {
                         Main_Talk_Chr.SetActive(true);
                         Main_Talk_Chr.GetComponent<Image>().sprite = GetSprite_From_Name(Json[index].MainTalk_Sprite);
-                        StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text));
+
+                        if (Saved_Text_Effect.Count != 0)
+                        {
+                            foreach (var coroutine in Saved_Text_Effect)
+                            {
+                                if (coroutine != null) StopCoroutine(coroutine);
+                            }
+                            Saved_Text_Effect.Clear();
+                        }
+
+                        Saved_Text_Effect.Add(StartCoroutine(Dialogue_Output(Text_delay, Json[index].Text)));
                         Dialogue_Name.text = Json[index].Name;
                         break;
                     }
@@ -155,6 +180,15 @@ public class Dialogue_Manager_New : MonoBehaviour
                         case "chr2_move": //캐릭터2 이동
                             {
                                 Chr_Move(Dialogue_Sprite2, Json[index].Move, new Vector2(Json[index].Move_X, Json[index].Move_Y), Json[Index].Move_Spd);
+                                break;
+                            }
+                        case "select": //선택지 출력, text = 버튼 텍스트, Cmd_Target = 이동할 분기
+                            {
+                                Select_Button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Json[index].Text;
+                                Select_Button.GetComponent<Dialogue_Select>().Type = Json[index].Cmd_Target;
+                                Instantiate(Select_Button, Select);
+                                LayoutRebuilder.ForceRebuildLayoutImmediate(Select.GetComponent<RectTransform>());
+                                Text_End = false;
                                 break;
                             }
                     }
@@ -213,7 +247,7 @@ public class Dialogue_Manager_New : MonoBehaviour
         Dialogue_Mask.position = new Vector2(Text_Origin_Pos.x - Dialogue_Size / 2, Text_Origin_Pos.y);
         Dialogue_Text.rectTransform.position = Text_Origin_Pos;
 
-        StartCoroutine(Text_Alpha());
+        Saved_Text_Effect.Add(StartCoroutine(Text_Alpha()));
 
         while (Size.x <= Dialogue_Size)
         {
@@ -226,7 +260,6 @@ public class Dialogue_Manager_New : MonoBehaviour
         Size.x += Text_Speed;
         Dialogue_Mask.sizeDelta = Size;
         Text_End = true;
-        Skip_Timer = 0.0f;
     }
 
     IEnumerator Text_Alpha()
@@ -240,7 +273,7 @@ public class Dialogue_Manager_New : MonoBehaviour
 
         while (Text_Index < Dialogue_Text.text.Length)
         {
-            StartCoroutine(ChangeAlphaSequentially(textInfo, Dialogue_Text, Text_Index));
+            Saved_Text_Effect.Add(StartCoroutine(ChangeAlphaSequentially(textInfo, Dialogue_Text, Text_Index)));
             Text_Index++;
             yield return new WaitForSeconds(0.08f);
         }
@@ -324,7 +357,7 @@ public class Dialogue_Manager_New : MonoBehaviour
 
     public void Next() // 다음 대화
     {
-        if (Index == MaxIndex)
+        if (Index >= MaxIndex && Text_End == true)
         {
             Next_Scene();
         }
@@ -341,7 +374,12 @@ public class Dialogue_Manager_New : MonoBehaviour
     public void Auto_Change() // 오토 버튼
     {
         if (Is_Auto) Is_Auto = false;
-        else Is_Auto = true;
+        else
+        { 
+            Skip_Timer = 0.0f;
+            Is_Auto = true;
+        } 
+
     }
 
     public void Next_Scene() // 다음 씬으로 , 스킵 버튼
@@ -371,6 +409,11 @@ public class Dialogue_Manager_New : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Fade_Delay);
+
+            if (Text_End == true)
+            {
+                Text_End = false;
+            }
 
             if (fade_in)
             {

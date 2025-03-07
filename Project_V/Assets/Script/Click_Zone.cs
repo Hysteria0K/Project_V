@@ -5,8 +5,6 @@ using UnityEngine.EventSystems;
 
 public class Click_Zone : MonoBehaviour, IPointerDownHandler
 {
-    public Dialogue_Manager Dialogue_Manager;
-
     public Dialogue_Manager_New Dialogue_Manager_New;
 
     // Start is called before the first frame update
