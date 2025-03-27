@@ -16,6 +16,7 @@ public class DataSave : MonoBehaviour
         public string WriteLetter_ID;
         public string Current_Scene_Name;
         public int Dialogue_Index;
+        public bool Auto_Zoom_Act;
 
         public string[] Text;
         public Dictionary<string, int> Tag_Dictionary;
@@ -56,7 +57,8 @@ public class DataSave : MonoBehaviour
 
         if (Temp.Current_Scene_Name == "Dialogue")
         {
-            Temp.Dialogue_Index = GameObject.Find("Dialogue_Manager").GetComponent<Dialogue_Manager>().Index;
+            Temp.Dialogue_Index = GameObject.Find("Dialogue_Manager_New").GetComponent<Dialogue_Manager_New>().Index;
+            Temp.Auto_Zoom_Act = GameObject.Find("Dialogue_Manager_New").GetComponent<Dialogue_Manager_New>().Auto_Zoom_Act;
         }
 
         if (Result_Data.instance != null)

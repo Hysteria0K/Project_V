@@ -11,6 +11,7 @@ public class Day_Saver : MonoBehaviour
     public string WriteLetter_ID = "Test"; //default
     public string Current_Scene_Name = "Dialogue"; //default
     public int Saved_Dialogue_Index = 0; //Default;
+    public bool Auto_Zoom_Act = false;
     
     //얘네들을 불러오는 세이브 데이터로 쓰면 될듯 호감도 같은 것도 따로 세이브
     //그렇다면 저장은 다이얼로그 씬에서 하고, 턴도 세이브 해두면 될듯

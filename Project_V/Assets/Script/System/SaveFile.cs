@@ -19,6 +19,7 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         public string WriteLetter_ID;
         public string Current_Scene_Name;
         public int Dialogue_Index;
+        public bool Auto_Zoom_Act;
 
         public string[] Text;
         public Dictionary<string, int> Tag_Dictionary;
@@ -89,6 +90,7 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             if (Data_Manager.SaveData.savedata[index].Current_Scene_Name == "Dialogue")
             {
                 SaveData.Dialogue_Index = Data_Manager.SaveData.savedata[index].Dialogue_Index;
+                SaveData.Auto_Zoom_Act = Data_Manager.SaveData.savedata[index].Auto_Zoom_Act;
             }
 
             if (Data_Manager.SaveData.savedata[index].Text != null)
@@ -204,6 +206,7 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             Day_Saver.instance.WriteLetter_ID = SaveData.WriteLetter_ID;
             Day_Saver.instance.Current_Scene_Name = SaveData.Current_Scene_Name;
             Day_Saver.instance.Saved_Dialogue_Index = SaveData.Dialogue_Index;
+            Day_Saver.instance.Auto_Zoom_Act = SaveData.Auto_Zoom_Act;
 
             if (Data_Manager.SaveData.savedata[Index_Num].Text != null)
             {

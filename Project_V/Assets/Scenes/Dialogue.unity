@@ -1613,6 +1613,7 @@ MonoBehaviour:
   Main_Talk_Chr: {fileID: 1441916679}
   SceneName: 
   Index: 0
+  Auto_Zoom_Act: 0
   MaxIndex: 0
   Text_End: 0
   Next_Talk_a: 1
@@ -3175,8 +3176,8 @@ RectTransform:
   - {fileID: 2744903614971278053}
   - {fileID: 55760551}
   - {fileID: 65574624}
-  - {fileID: 625682594}
   - {fileID: 1441916680}
+  - {fileID: 625682594}
   - {fileID: 520086358}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4454,7 +4455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4435039b01f5884fb4e0cdce2b8ec93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dialogue_Manager: {fileID: 0}
   Dialogue_Manager_New: {fileID: 645788744}
 --- !u!1 &2062086553
 GameObject:

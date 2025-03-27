@@ -33,6 +33,7 @@ public class Dialogue_Manager_New : MonoBehaviour
     [Header("Value")]
     [SerializeField] private string SceneName;
     [SerializeField] public int Index;
+    [SerializeField] public bool Auto_Zoom_Act;
     [SerializeField] public int MaxIndex = 0;
     [SerializeField] private bool Text_End = true;
     [SerializeField] private float Next_Talk_a = 1;
@@ -59,11 +60,25 @@ public class Dialogue_Manager_New : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+
+        // 세이브 파일 로드
         Dialogue_Id = Day_Saver.instance.Next_Dialogue_ID;
         Next_Scene_Name = Day_Saver.instance.Next_Scene_Name;
         Index = Day_Saver.instance.Saved_Dialogue_Index;
 
+        if (Day_Saver.instance.Auto_Zoom_Act == true)
+        {
+            AutoZoom = StartCoroutine(Auto_Zoom());
+            Auto_Zoom_Act = true;
+        }
+        else Auto_Zoom_Act = false;
+
+
+
+
+
         Text_Origin_Pos = new Vector2(Screen.width / 2, Dialogue_Text.rectTransform.position.y);
+        Auto_Zoom_Act = false;
     }
 
     void Start()
@@ -154,12 +169,14 @@ public class Dialogue_Manager_New : MonoBehaviour
                             }
                         case "auto_zoom_start":
                             {
-                                AutoZoom = StartCoroutine(Auto_Zoom()); 
+                                AutoZoom = StartCoroutine(Auto_Zoom());
+                                Auto_Zoom_Act = true;
                                 break;
                             }
                         case "auto_zoom_end":
                             {
                                 StopCoroutine(AutoZoom); // 일단 자연스럽게 보이는게 중요한거 같아서 스케일 1.0으로 초기화 안 시켰음
+                                Auto_Zoom_Act = false;
                                 break;
                             }
                         case "chr1_image_change": //캐릭터1 이미지 변경, Cmd_Target이 변경 이미지

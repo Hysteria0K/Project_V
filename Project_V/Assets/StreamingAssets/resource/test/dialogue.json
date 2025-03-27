@@ -140,7 +140,7 @@
     "Type": "order",
     "Set": true,
     "Name": null,
-    "Text": "쓸데없는 내용~ <- 반영 안되는게 맞음",
+    "Text": "쓸데없는 내용 <- 반영 안되는게 맞음",
     "MainTalk_Sprite": null,
     "Cmd": "fade_in",
     "Cmd_Target": "Test_Street",
