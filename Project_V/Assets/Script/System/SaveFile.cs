@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Reflection;
 using Unity.VisualScripting;
+using Newtonsoft.Json;
 
 public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
@@ -20,6 +21,16 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         public string Current_Scene_Name;
         public int Dialogue_Index;
         public bool Auto_Zoom_Act;
+
+        public string chr1;
+        public float chr1_x;
+        public float chr1_y;
+        public string chr2;
+        public float chr2_x;
+        public float chr2_y;
+        public string chr3;
+        public float chr3_x;
+        public float chr3_y;
 
         public string[] Text;
         public Dictionary<string, int> Tag_Dictionary;
@@ -91,6 +102,16 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 SaveData.Dialogue_Index = Data_Manager.SaveData.savedata[index].Dialogue_Index;
                 SaveData.Auto_Zoom_Act = Data_Manager.SaveData.savedata[index].Auto_Zoom_Act;
+                SaveData.chr1 = Data_Manager.SaveData.savedata[index].chr1;
+                SaveData.chr2 = Data_Manager.SaveData.savedata[index].chr2;
+                SaveData.chr3 = Data_Manager.SaveData.savedata[index].chr3;
+                SaveData.chr1_x = Data_Manager.SaveData.savedata[index].chr1_x;
+                SaveData.chr2_x = Data_Manager.SaveData.savedata[index].chr2_x;
+                SaveData.chr3_x = Data_Manager.SaveData.savedata[index].chr3_x;
+                SaveData.chr1_y = Data_Manager.SaveData.savedata[index].chr1_y;
+                SaveData.chr2_y = Data_Manager.SaveData.savedata[index].chr2_y;
+                SaveData.chr3_y = Data_Manager.SaveData.savedata[index].chr3_y;
+
             }
 
             if (Data_Manager.SaveData.savedata[index].Text != null)
@@ -207,6 +228,15 @@ public class SaveFile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             Day_Saver.instance.Current_Scene_Name = SaveData.Current_Scene_Name;
             Day_Saver.instance.Saved_Dialogue_Index = SaveData.Dialogue_Index;
             Day_Saver.instance.Auto_Zoom_Act = SaveData.Auto_Zoom_Act;
+            Day_Saver.instance.chr1 = SaveData.chr1;
+            Day_Saver.instance.chr2 = SaveData.chr2;
+            Day_Saver.instance.chr3 = SaveData.chr3;
+            Day_Saver.instance.chr1_x = SaveData.chr1_x;
+            Day_Saver.instance.chr2_x = SaveData.chr2_x;
+            Day_Saver.instance.chr3_x = SaveData.chr3_x;
+            Day_Saver.instance.chr1_y = SaveData.chr1_y;
+            Day_Saver.instance.chr2_y = SaveData.chr2_y;
+            Day_Saver.instance.chr3_y = SaveData.chr3_y;
 
             if (Data_Manager.SaveData.savedata[Index_Num].Text != null)
             {

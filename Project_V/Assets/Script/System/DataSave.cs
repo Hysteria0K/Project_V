@@ -18,6 +18,16 @@ public class DataSave : MonoBehaviour
         public int Dialogue_Index;
         public bool Auto_Zoom_Act;
 
+        public string chr1;
+        public float chr1_x;
+        public float chr1_y;
+        public string chr2;
+        public float chr2_x;
+        public float chr2_y;
+        public string chr3;
+        public float chr3_x;
+        public float chr3_y;
+
         public string[] Text;
         public Dictionary<string, int> Tag_Dictionary;
         public bool Masterpiece;
@@ -57,8 +67,21 @@ public class DataSave : MonoBehaviour
 
         if (Temp.Current_Scene_Name == "Dialogue")
         {
-            Temp.Dialogue_Index = GameObject.Find("Dialogue_Manager_New").GetComponent<Dialogue_Manager_New>().Index;
-            Temp.Auto_Zoom_Act = GameObject.Find("Dialogue_Manager_New").GetComponent<Dialogue_Manager_New>().Auto_Zoom_Act;
+            Dialogue_Manager_New Dialogue_M = GameObject.Find("Dialogue_Manager_New").GetComponent<Dialogue_Manager_New>();
+
+            Temp.Dialogue_Index = Dialogue_M.Index;
+            Temp.Auto_Zoom_Act = Dialogue_M.Auto_Zoom_Act;
+
+            Temp.chr1 = Dialogue_M.chr1;
+            Temp.chr2 = Dialogue_M.chr2;
+            Temp.chr3 = Dialogue_M.chr3;    
+            Temp.chr1_x = Dialogue_M.chr1_x;
+            Temp.chr2_x = Dialogue_M.chr2_x;
+            Temp.chr3_x = Dialogue_M.chr3_x;
+            Temp.chr1_y = Dialogue_M.chr1_y;
+            Temp.chr2_y = Dialogue_M.chr2_y;
+            Temp.chr3_y = Dialogue_M.chr3_y;
+
         }
 
         if (Result_Data.instance != null)

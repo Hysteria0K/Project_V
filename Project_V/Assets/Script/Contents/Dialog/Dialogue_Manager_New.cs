@@ -11,6 +11,7 @@ using TMPro;
 using Unity.VisualScripting;
 using System.Globalization;
 using System.Xml;
+using Newtonsoft.Json;
 
 public class Dialogue_Manager_New : MonoBehaviour
 {
@@ -57,6 +58,20 @@ public class Dialogue_Manager_New : MonoBehaviour
     public string Next_Scene_Name;
     public string Dialogue_Id;
 
+    [Header("Chr_Sprite")]
+    public string chr1;
+    public float chr1_x;
+    public float chr1_y;
+    public string chr2;
+    public float chr2_x;
+    public float chr2_y;
+    public string chr3;
+    public float chr3_x;
+    public float chr3_y;
+
+
+
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -73,9 +88,32 @@ public class Dialogue_Manager_New : MonoBehaviour
         }
         else Auto_Zoom_Act = false;
 
+        if (Day_Saver.instance.chr1 != "")
+        {
+            if (Day_Saver.instance.chr1 != null) Image_Change(Dialogue_Sprite1, Day_Saver.instance.chr1);
+            Dialogue_Sprite1.GetComponent<RectTransform>().anchoredPosition = new Vector2 (Day_Saver.instance.chr1_x, Day_Saver.instance.chr1_y);
+        }
 
+        if (Day_Saver.instance.chr2 != "")
+        {
+            if (Day_Saver.instance.chr2 != null) Image_Change(Dialogue_Sprite2, Day_Saver.instance.chr2);
+            Dialogue_Sprite2.GetComponent<RectTransform>().anchoredPosition = new Vector2(Day_Saver.instance.chr2_x, Day_Saver.instance.chr2_y);
+        }
 
+        if (Day_Saver.instance.chr3 != "")
+        {
+            if (Day_Saver.instance.chr3 != null) Image_Change(Dialogue_Sprite3, Day_Saver.instance.chr3);
+            Dialogue_Sprite3.GetComponent<RectTransform>().anchoredPosition = new Vector2(Day_Saver.instance.chr3_x, Day_Saver.instance.chr3_y);
+        }
 
+        // 로드 끝
+
+        chr1_x = Dialogue_Sprite1.GetComponent<RectTransform>().anchoredPosition.x;
+        chr1_y = Dialogue_Sprite1.GetComponent<RectTransform>().anchoredPosition.y;
+        chr2_x = Dialogue_Sprite2.GetComponent<RectTransform>().anchoredPosition.x;
+        chr2_y = Dialogue_Sprite2.GetComponent<RectTransform>().anchoredPosition.y;
+        chr3_x = Dialogue_Sprite3.GetComponent<RectTransform>().anchoredPosition.x;
+        chr3_y = Dialogue_Sprite3.GetComponent<RectTransform>().anchoredPosition.y;
 
         Text_Origin_Pos = new Vector2(Screen.width / 2, Dialogue_Text.rectTransform.position.y);
         Auto_Zoom_Act = false;
@@ -182,21 +220,27 @@ public class Dialogue_Manager_New : MonoBehaviour
                         case "chr1_image_change": //캐릭터1 이미지 변경, Cmd_Target이 변경 이미지
                             {
                                 Image_Change(Dialogue_Sprite1, Json[index].Cmd_Target);
+                                chr1 = Json[index].Cmd_Target;
                                 break;
                             }
                         case "chr2_image_change": //캐릭터2 이미지 변경, Cmd_Target이 변경 이미지
                             {
                                 Image_Change(Dialogue_Sprite2, Json[index].Cmd_Target);
+                                chr2 = Json[index].Cmd_Target;
                                 break;
                             }
                         case "chr1_move": //캐릭터1 이동
                             {
                                 Chr_Move(Dialogue_Sprite1, Json[index].Move, new Vector2(Json[index].Move_X, Json[index].Move_Y), Json[Index].Move_Spd);
+                                chr1_x = Json[index].Move_X;
+                                chr1_y = Json[index].Move_Y;
                                 break;
                             }
                         case "chr2_move": //캐릭터2 이동
                             {
                                 Chr_Move(Dialogue_Sprite2, Json[index].Move, new Vector2(Json[index].Move_X, Json[index].Move_Y), Json[Index].Move_Spd);
+                                chr2_x = Json[index].Move_X;
+                                chr2_y = Json[index].Move_Y;
                                 break;
                             }
                         case "select": //선택지 출력, text = 버튼 텍스트, Cmd_Target = 이동할 분기
